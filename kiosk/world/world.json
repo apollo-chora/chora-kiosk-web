@@ -1,0 +1,1117 @@
+{
+  "format": "chora-kiosk/world/v1",
+  "about": "The demo world the seed tool makes (T6.1, K101): one learner, three goals with their concepts, edges and campaign progress, three Companions and the published atoms of their daily doses. Taken from the approved mockup (Version 6, K86): HOOK_MAP 2640, ATLAS 2681, COMP_SHEETS 2810, DOSE 2978, CX_DOSE_Q 3091, DASH 5089. AI-made records are NOT here: prepared-choices.json lists them and the golden run makes them. Keys are the prepared-choice list's world keys (a superset of them). Ids: the tenant and the learner are fixed (INTERFACES.md section 6); every API-made record gets its id from the product and the seed tool writes it to seed-ids.json; SQL-made rows use fixed UUIDv7s the seed tool derives from the key. Content stays English (K41); text marked authored by the orchestrator awaits the owner's fact review (T6.6).",
+  "how_made": {
+    "order_rule": "Production's reads list goals, concepts and edges NEWEST FIRST (consumption repo/pg goal.go:230-237, concept_node.go:194-202, concept_edge.go:196-205), and the lens lays children out in the order edges arrive (kiosk-web concept-lens.ts:205-224). So the seed creates goals, concepts and edges in REVERSE of this file's order, one call at a time, and every read returns them in this file's order, the mockup's.",
+    "tenant": {
+      "db": "chora_tenancy",
+      "step": "sql-identity",
+      "path": "SQL as chora_tenancy_app_rw: INSERT INTO tenants (tenant_id, name); no RLS, status defaults to active. Migration 0021's platform tenant stays (K130)."
+    },
+    "learner": {
+      "db": "chora_identity",
+      "step": "sql-identity",
+      "path": "SQL as chora_identity_app_rw, one transaction with chora.tenant_id and chora.user_gcid set: users (gcid, email, identity_provider 'oidc', federated_subject 'kiosk:apollo-visitor'); one tenant_memberships row per role; user_mana with a generous balance and one 'promo' credit in mana_ledger (recorded now: the ledger is partitioned by month from its migration). No API makes them on the kiosk."
+    },
+    "dashboard": {
+      "db": "chora_identity, chora_consumption",
+      "step": "dashboard (after the owner's review, just before the snapshot)",
+      "path": "SQL: user_mana.balance_units to learner.dashboard.mana with one debit ledger entry, and learner_streaks to learner.dashboard.streak_days with the last activity on the snapshot's UTC day (K131 then adds 1 on an event day's first dose open). A visit's LIVE presses cost 0 to 20 mana each (identity migrations 0009, 0023, 0024) and every reset restores the snapshot."
+    },
+    "atom": {
+      "db": "chora_creation, projected into chora_consumption.atom_index",
+      "step": "api-world, FIRST: before any goal, concept or Companion exists",
+      "path": "POST /api/atoms {question_type 'mcq', title, stem, body, tags: [topic]}, no cognitive_level (a set level that differs from the serve rung's label is excluded from the campaign lane, dose_campaign_wiring.go:272-274); wait for its atom_index row; POST /api/atoms/{id}/questions {type 'mcq', prompt: the stem, mcq_payload.options [{label, is_correct, explainer}]}, the explanation on the correct option only (the server shuffles the options, questions_handler.go:1113-1116); POST /api/atoms/{id}/publish; wait until atom_index reads it published WITH its served answer key and topic tag (the question POST re-emits atom.created carrying both, outside the outbox, questions_handler.go:89-119). All atoms first because in production each atom.published fans out kg-explorer suggestion requests for won focal concepts in Companion-attached goals (consumption atom_refresh_wiring.go:56); the kiosk edition no longer wires that fan-out (consumption cmd/server/kiosk.go:208-220), so the order is kept as a second guard. The publish embeds the atom on Vertex after it answers and only logs a failure, so api-world waits for every atom's chora_creation.atom_embeddings row. Needs T1.4b's atom-created and atom-published subscriptions (FINDINGS S3); atom.published updates only an existing atom_index row."
+    },
+    "concept": {
+      "db": "chora_consumption",
+      "step": "api-world",
+      "path": "POST /api/v1/me/concept-graph/concepts {title, atomRefs}, atomRefs = the atoms whose concept this is; concept_key is production's slug of the title. Reverse order (order_rule)."
+    },
+    "edge": {
+      "db": "chora_consumption",
+      "step": "api-world",
+      "path": "POST /api/v1/me/concept-graph/edges {sourceConceptId, targetConceptId, class}: kind hierarchy is 'hierarchy' (source parent, target child), kind link is 'lateral' (concept_graph/edge.go:16-19; lateral edges never add subtree members). Reverse order (order_rule). K188 (21 Oct): the world holds no link edges; every map is a pure tree."
+    },
+    "goal": {
+      "db": "chora_consumption",
+      "step": "api-world",
+      "path": "POST /api/v1/me/goals {kind 'curiosity', conceptSet: its concepts' keys, northStarNote: the root's title (as production's createMap sends it), rootConceptId} after its concepts and edges, in reverse order (order_rule). Then the Companions, then each goal's march by POST /api/v1/me/goals/{id}/campaign/focus {conceptId} (in the root's subtree; no won check), again in reverse, water's last: the focus retargets the attached Companion's resonance (goals_campaign_handler.go:232-241; acquire never sets it), and the active Companion is the one on the most recently updated goal (consumption subscribers/companion_resolver.go:82-110), so water's focus is the last goal update of all."
+    },
+    "companion": {
+      "db": "chora_consumption",
+      "step": "api-world, then sql-progress",
+      "path": "POST /api/v1/me/companions/acquire {goalId, companionName, species, mode 'dev_hatched'} (no mana; stage 1, 2 slots; attaches the goal; dev_hatched is accepted in every edition, acquisition.go:13-28): Nova, then Ember, then Pingu, after every goal and before any march. Then SQL: companion_instances growth_exp and growth_stage, skill_slots_unlocked = stage + 1, evolution_tier, the species-path skill grants of every stage reached (unequipped), one 'admin_grant' row in companion_growth_events; NO companion_growth_daily_counters rows, so the golden run's first dose open credits Pingu +2 (K102)."
+    },
+    "campaign": {
+      "db": "chora_consumption",
+      "step": "sql-progress (res-won and res-back toggle Reservoirs)",
+      "path": "SQL campaign_node_progress, one live row per concept with campaign state: won = rungs_cleared 6, six rung_cleared_at stamps ending at won_at (the won_on date), current_rung_correct 0; climbing = rungs_cleared n with n stamps, current_rung_correct = counted, won_at NULL, last_advance_date before the seed's UTC day (a rung clears only on a later UTC day than the last advance); state none = no row."
+    },
+    "retention": {
+      "db": "chora_consumption",
+      "step": "sql-progress",
+      "path": "SQL topic_retention keyed by each climbing concept's concept_key, strength 60, last_reviewed_at = the seed time: R = exp(-days/strength) stays at 0.6 or above for 30 days, so no climbing hex cools and every serve climbs (maps_cooling.go; topic_retention.go:111-117, 0.6)."
+    },
+    "cues": {
+      "db": "chora_consumption",
+      "step": "sql-progress",
+      "path": "SQL learner_weakness: shaky = an active row whose target_concept_id is the concept; due = an active row with a retention row of its own (topic_id = the row's id) below 0.6 for the whole window, apart from the concept-key row that keeps the hex from cooling; mastered = a 'grown' row on the concept's key. Each row needs concept_label and a 768-wide concept_embedding (NOT NULL; how the seed makes it is T6.2's choice). Production's lens draws a due concept shaky as well (concept-lens.ts:578-590)."
+    },
+    "dose": {
+      "db": "chora_consumption",
+      "step": "sql-progress, with T2.18 (K127)",
+      "path": "Each goal's dose universe is exactly its five card atoms (bound to its concepts; no learning paths). Review: one sm2_states row, for the review atom only (easiness 1.3, interval 1, last reviewed 3 days before the seed: decay above 0.4 throughout). Stretch: an active growth edge whose cached_drill_atom_ids hold the stretch atom (growth edges own the slot whenever any active row exists, daily_dose.go:435-440); for Urban heat and Food safety that edge matches no concept on the map (the mockup draws no cue there). Campaign: the march's two atoms (DOSE_COMPOSER_V2_ENABLED, F13; T2.18). Curiosity: the remaining atom, through the fresh top-up. T6.4 checks every event date."
+    }
+  },
+  "tenant": {
+    "key": "tenant.apollo",
+    "id": "01a1411f-7f20-7834-bdd5-6f80318297bf",
+    "name": "Apollo Showcase"
+  },
+  "learner": {
+    "key": "learner.visitor",
+    "gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+    "email": "visitor@apollo.kiosk.invalid",
+    "roles": [
+      "learner",
+      "author",
+      "instructor",
+      "auditor"
+    ],
+    "dashboard": {
+      "streak_days": 6,
+      "mana": 1240,
+      "source": "DASH 5089: streak 6, mana '1,240'"
+    }
+  },
+  "goals": [
+    {
+      "key": "goal.water",
+      "title": "Singapore’s water",
+      "root": "concept.water.root",
+      "march": "concept.water.res",
+      "companion": "companion.pingu",
+      "course": {
+        "title": "Water for Life",
+        "concepts": [
+          "concept.water.catch",
+          "concept.water.res",
+          "concept.water.taps",
+          "concept.water.newater"
+        ]
+      }
+    },
+    {
+      "key": "goal.nature",
+      "title": "City in Nature",
+      "root": "concept.nature.root",
+      "march": "concept.nature.otters",
+      "companion": "companion.nova",
+      "course": {
+        "title": "Nature Ranger",
+        "concepts": [
+          "concept.nature.root",
+          "concept.nature.connectors",
+          "concept.nature.otters"
+        ]
+      }
+    },
+    {
+      "key": "goal.hawker",
+      "title": "Hawker culture",
+      "root": "concept.hawker.root",
+      "march": "concept.hawker.unesco",
+      "companion": "companion.ember",
+      "course": {
+        "title": "Food Heritage",
+        "concepts": [
+          "concept.hawker.root",
+          "concept.hawker.unesco",
+          "concept.hawker.chicken"
+        ]
+      }
+    }
+  ],
+  "concepts": [
+    {
+      "key": "concept.water.root",
+      "goal": "goal.water",
+      "mockup_id": "root",
+      "order": 1,
+      "title": "Singapore’s water",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-02"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.water.saving",
+      "goal": "goal.water",
+      "mockup_id": "saving",
+      "order": 2,
+      "title": "Saving water",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-03"
+      },
+      "cue": "mastered"
+    },
+    {
+      "key": "concept.water.desal",
+      "goal": "goal.water",
+      "mockup_id": "desal",
+      "order": 3,
+      "title": "Desalination",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-13"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.water.used",
+      "goal": "goal.water",
+      "mockup_id": "used",
+      "order": 4,
+      "title": "Used water",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 2,
+        "counted": 0
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.water.taps",
+      "goal": "goal.water",
+      "mockup_id": "taps",
+      "order": 5,
+      "title": "Four National Taps",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-05"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.water.newater",
+      "goal": "goal.water",
+      "mockup_id": "newater",
+      "order": 6,
+      "title": "NEWater",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-11"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.water.catch",
+      "goal": "goal.water",
+      "mockup_id": "catch",
+      "order": 7,
+      "title": "Local catchment",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-08"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.water.res",
+      "goal": "goal.water",
+      "mockup_id": "res",
+      "order": 8,
+      "title": "Reservoirs",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 5,
+        "counted": 1
+      },
+      "cue": "due"
+    },
+    {
+      "key": "concept.water.import",
+      "goal": "goal.water",
+      "mockup_id": "import",
+      "order": 9,
+      "title": "Imported water",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 2,
+        "counted": 0
+      },
+      "cue": "shaky"
+    },
+    {
+      "key": "concept.nature.root",
+      "goal": "goal.nature",
+      "mockup_id": "nature",
+      "order": 1,
+      "title": "City in Nature",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-01"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.nature.connectors",
+      "goal": "goal.nature",
+      "mockup_id": "connectors",
+      "order": 2,
+      "title": "Park connectors",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 3,
+        "counted": 0
+      },
+      "cue": "shaky"
+    },
+    {
+      "key": "concept.nature.mangroves",
+      "goal": "goal.nature",
+      "mockup_id": "mangroves",
+      "order": 3,
+      "title": "Mangroves",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-06"
+      },
+      "cue": "mastered"
+    },
+    {
+      "key": "concept.nature.otters",
+      "goal": "goal.nature",
+      "mockup_id": "otters",
+      "order": 4,
+      "title": "Smooth-coated otters",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 2,
+        "counted": 0
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.nature.supertrees",
+      "goal": "goal.nature",
+      "mockup_id": "supertrees",
+      "order": 5,
+      "title": "Supertrees",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-09"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.nature.heat",
+      "goal": "goal.nature",
+      "mockup_id": "heat",
+      "order": 6,
+      "title": "Urban heat",
+      "campaign": {
+        "state": "none"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.hawker.root",
+      "goal": "goal.hawker",
+      "mockup_id": "hawker",
+      "order": 1,
+      "title": "Hawker culture",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-04"
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.hawker.unesco",
+      "goal": "goal.hawker",
+      "mockup_id": "unesco",
+      "order": 2,
+      "title": "UNESCO listing",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 2,
+        "counted": 0
+      },
+      "cue": null
+    },
+    {
+      "key": "concept.hawker.centres",
+      "goal": "goal.hawker",
+      "mockup_id": "centres",
+      "order": 3,
+      "title": "Hawker centres",
+      "campaign": {
+        "state": "won",
+        "won_on": "2026-10-07"
+      },
+      "cue": "due"
+    },
+    {
+      "key": "concept.hawker.chicken",
+      "goal": "goal.hawker",
+      "mockup_id": "chicken",
+      "order": 5,
+      "title": "Chicken rice",
+      "campaign": {
+        "state": "none"
+      },
+      "cue": "mastered"
+    },
+    {
+      "key": "concept.hawker.kopi",
+      "goal": "goal.hawker",
+      "mockup_id": "kopi",
+      "order": 6,
+      "title": "Kopi",
+      "campaign": {
+        "state": "climbing",
+        "rungs_cleared": 3,
+        "counted": 0
+      },
+      "cue": "shaky"
+    },
+    {
+      "key": "concept.hawker.safety",
+      "goal": "goal.hawker",
+      "mockup_id": "safety",
+      "order": 4,
+      "title": "Food safety",
+      "campaign": {
+        "state": "none"
+      },
+      "cue": null
+    }
+  ],
+  "edges": [
+    {
+      "goal": "goal.water",
+      "order": 1,
+      "from": "concept.water.root",
+      "to": "concept.water.saving",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 2,
+      "from": "concept.water.root",
+      "to": "concept.water.desal",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 3,
+      "from": "concept.water.root",
+      "to": "concept.water.used",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 4,
+      "from": "concept.water.root",
+      "to": "concept.water.taps",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 5,
+      "from": "concept.water.taps",
+      "to": "concept.water.newater",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 6,
+      "from": "concept.water.taps",
+      "to": "concept.water.catch",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 7,
+      "from": "concept.water.catch",
+      "to": "concept.water.res",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.water",
+      "order": 8,
+      "from": "concept.water.taps",
+      "to": "concept.water.import",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.nature",
+      "order": 1,
+      "from": "concept.nature.root",
+      "to": "concept.nature.connectors",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.nature",
+      "order": 2,
+      "from": "concept.nature.root",
+      "to": "concept.nature.mangroves",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.nature",
+      "order": 3,
+      "from": "concept.nature.mangroves",
+      "to": "concept.nature.otters",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.nature",
+      "order": 4,
+      "from": "concept.nature.root",
+      "to": "concept.nature.supertrees",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.nature",
+      "order": 5,
+      "from": "concept.nature.supertrees",
+      "to": "concept.nature.heat",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.hawker",
+      "order": 1,
+      "from": "concept.hawker.root",
+      "to": "concept.hawker.unesco",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.hawker",
+      "order": 2,
+      "from": "concept.hawker.root",
+      "to": "concept.hawker.centres",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.hawker",
+      "order": 3,
+      "from": "concept.hawker.centres",
+      "to": "concept.hawker.safety",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.hawker",
+      "order": 4,
+      "from": "concept.hawker.root",
+      "to": "concept.hawker.chicken",
+      "kind": "hierarchy"
+    },
+    {
+      "goal": "goal.hawker",
+      "order": 5,
+      "from": "concept.hawker.root",
+      "to": "concept.hawker.kopi",
+      "kind": "hierarchy"
+    }
+  ],
+  "companions": [
+    {
+      "key": "companion.pingu",
+      "name": "Pingu",
+      "species": "penguin",
+      "goal": "goal.water",
+      "active": true,
+      "stage": 1,
+      "exp_seeded": 30,
+      "exp_shown": 32,
+      "abilities": 1,
+      "slots": 2
+    },
+    {
+      "key": "companion.nova",
+      "name": "Nova",
+      "species": "owl",
+      "goal": "goal.nature",
+      "active": false,
+      "stage": 2,
+      "exp_seeded": 118,
+      "exp_shown": 118,
+      "abilities": 2,
+      "slots": 3
+    },
+    {
+      "key": "companion.ember",
+      "name": "Ember",
+      "species": "fox",
+      "goal": "goal.hawker",
+      "active": false,
+      "stage": 3,
+      "exp_seeded": 264,
+      "exp_shown": 264,
+      "abilities": 3,
+      "slots": 4
+    }
+  ],
+  "atoms": [
+    {
+      "key": "atom.water.four-taps",
+      "goal": "goal.water",
+      "concept": "concept.water.taps",
+      "topic": "Four National Taps",
+      "title": "The Four National Taps",
+      "body": "Singapore draws its water from four sources: local catchment, imported water, NEWater and desalinated water.",
+      "mcq": {
+        "stem": "Which of these is not one of Singapore’s Four National Taps?",
+        "options": [
+          "Local catchment",
+          "Imported water",
+          "Desalinated water",
+          "Groundwater wells"
+        ],
+        "correct": 3,
+        "explanation": "The four taps are local catchment, imported water, NEWater and desalinated water. Groundwater wells are not one of them."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose pingu card 0 (review)",
+        "draft.water.q1"
+      ]
+    },
+    {
+      "key": "atom.water.johor",
+      "goal": "goal.water",
+      "concept": "concept.water.import",
+      "topic": "Imported water",
+      "title": "Water from Johor",
+      "body": "Singapore buys part of its water from Johor in Malaysia, under a water agreement that runs until 2061.",
+      "mcq": {
+        "stem": "Singapore’s remaining water agreement with Malaysia runs until which year?",
+        "options": [
+          "2031",
+          "2045",
+          "2061",
+          "2099"
+        ],
+        "correct": 2,
+        "explanation": "The 1962 Water Agreement with Malaysia ends in 2061, which is one reason Singapore builds its other taps."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose pingu card 1 (stretch)",
+        "draft.water.q3 (the open question with its picture)"
+      ]
+    },
+    {
+      "key": "atom.water.marina-reservoir",
+      "goal": "goal.water",
+      "concept": "concept.water.res",
+      "topic": "Reservoirs",
+      "title": "A reservoir in the city centre",
+      "body": "Marina Reservoir sits right in the city centre. It was made by building a barrage across the mouth of the Marina Channel.",
+      "mcq": {
+        "stem": "How was Marina Reservoir in the city centre made?",
+        "options": [
+          "By digging a new lake in the middle of the island",
+          "By building a barrage across the mouth of the Marina Channel",
+          "By filling an old quarry with seawater",
+          "By joining two rivers in the north"
+        ],
+        "correct": 1,
+        "explanation": "A barrage built across the mouth of the Marina Channel turned it into a reservoir right in the city centre."
+      },
+      "authored": "orchestrator, for the owner's fact review",
+      "uses": [
+        "dose pingu card 2 (new)"
+      ]
+    },
+    {
+      "key": "atom.water.marina-barrage",
+      "goal": "goal.water",
+      "concept": "concept.water.res",
+      "topic": "Reservoirs",
+      "title": "More than a water store",
+      "body": "The Marina Barrage also keeps out the sea, which helps reduce flooding in the low-lying parts of the city.",
+      "mcq": {
+        "stem": "Besides holding water for the city, what else does the Marina Barrage do?",
+        "options": [
+          "It turns seawater into drinking water",
+          "It makes electricity from the waves",
+          "It keeps out the sea and helps reduce flooding in low-lying areas",
+          "It cools the buildings around Marina Bay"
+        ],
+        "correct": 2,
+        "explanation": "The barrage keeps out the sea, which helps reduce flooding in the low-lying parts of the city."
+      },
+      "authored": "orchestrator, for the owner's fact review",
+      "uses": [
+        "dose pingu card 3 (new)"
+      ]
+    },
+    {
+      "key": "atom.water.catching-rain",
+      "goal": "goal.water",
+      "concept": "concept.water.catch",
+      "topic": "Local catchment",
+      "title": "Catching the rain",
+      "body": "About two thirds of Singapore’s land collects rainwater, and drains and canals carry it to the reservoirs.",
+      "mcq": {
+        "stem": "About how much of Singapore’s land collects rainwater for its water supply?",
+        "options": [
+          "About a tenth",
+          "About a third",
+          "About two thirds",
+          "Nearly all of it"
+        ],
+        "correct": 2,
+        "explanation": "About two thirds of Singapore’s land is water catchment; drains and canals carry the rain to the reservoirs."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose pingu card 4 (new)"
+      ]
+    },
+    {
+      "key": "atom.nature.mangroves",
+      "goal": "goal.nature",
+      "concept": "concept.nature.mangroves",
+      "topic": "Mangroves",
+      "title": "How mangroves guard the coast",
+      "body": "Mangrove roots hold the mud and soften the waves, which protects the shore from erosion.",
+      "mcq": {
+        "stem": "How do mangroves help protect Singapore’s coast?",
+        "options": [
+          "They pump seawater back out to sea",
+          "Their roots hold the mud and soften the waves",
+          "They raise the land a little every year",
+          "They keep fish away from the shore"
+        ],
+        "correct": 1,
+        "explanation": "Mangrove roots trap mud and break the force of the waves, which slows erosion along the shore."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose nova card 0 (review)"
+      ]
+    },
+    {
+      "key": "atom.nature.heat",
+      "goal": "goal.nature",
+      "concept": "concept.nature.heat",
+      "topic": "Urban heat",
+      "title": "Why a city runs warm",
+      "body": "Roads and buildings soak up the sun and give off heat, while trees and plants shade the ground and help cool it.",
+      "mcq": {
+        "stem": "Which of these helps cool a hot street in the city?",
+        "options": [
+          "More dark roads and car parks",
+          "Bigger glass walls facing the sun",
+          "Trees that shade the ground",
+          "Fewer plants along the pavement"
+        ],
+        "correct": 2,
+        "explanation": "Roads and buildings soak up the sun and give off heat; trees shade the ground and cool the air around them."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose nova card 1 (stretch)",
+        "draft.nature.q3"
+      ]
+    },
+    {
+      "key": "atom.nature.otters-return",
+      "goal": "goal.nature",
+      "concept": "concept.nature.otters",
+      "topic": "Smooth-coated otters",
+      "title": "Why the otters came back",
+      "body": "Otters mostly eat fish, so seeing them again is a sign that the rivers and reservoirs are healthier.",
+      "mcq": {
+        "stem": "What does the return of otters tell us about Singapore’s rivers and reservoirs?",
+        "options": [
+          "They are too salty for fish",
+          "They have been drained for building",
+          "They are closed to all animals",
+          "They are healthier, with enough fish for the otters to eat"
+        ],
+        "correct": 3,
+        "explanation": "Otters mostly eat fish, so seeing them again is a sign that the rivers and reservoirs are healthier."
+      },
+      "authored": "orchestrator, for the owner's fact review",
+      "uses": [
+        "dose nova card 2 (new)"
+      ]
+    },
+    {
+      "key": "atom.nature.otters-city",
+      "goal": "goal.nature",
+      "concept": "concept.nature.otters",
+      "topic": "Smooth-coated otters",
+      "title": "Otters in the city",
+      "body": "Otter families are now often seen along rivers, reservoirs and the coast, even close to the city centre.",
+      "mcq": {
+        "stem": "Where are otter families often seen in Singapore today?",
+        "options": [
+          "Along rivers, reservoirs and the coast, even near the city centre",
+          "Only inside the zoo",
+          "Only on islands far from the mainland",
+          "Only deep inside the nature reserves"
+        ],
+        "correct": 0,
+        "explanation": "Otter families now often turn up along rivers, reservoirs and the coast, even close to the city centre."
+      },
+      "authored": "orchestrator, for the owner's fact review",
+      "uses": [
+        "dose nova card 3 (new)"
+      ]
+    },
+    {
+      "key": "atom.nature.connectors",
+      "goal": "goal.nature",
+      "concept": "concept.nature.connectors",
+      "topic": "Park connectors",
+      "title": "Green paths between parks",
+      "body": "Park connectors are paths that link parks and green spaces across the island, for walking and cycling.",
+      "mcq": {
+        "stem": "What does Singapore’s Park Connector Network link up?",
+        "options": [
+          "Parks and green spaces across the island",
+          "Reservoirs and the sea",
+          "Schools and shopping malls",
+          "Hawker centres and MRT stations"
+        ],
+        "correct": 0,
+        "explanation": "Park connectors link parks and green spaces across Singapore, so people can walk and cycle between them."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose nova card 4 (new)",
+        "draft.nature.q1"
+      ]
+    },
+    {
+      "key": "atom.hawker.centres",
+      "goal": "goal.hawker",
+      "concept": "concept.hawker.centres",
+      "topic": "Hawker centres",
+      "title": "Why hawker centres were built",
+      "body": "From the 1970s, street hawkers moved into purpose-built centres with water, drainage and licences.",
+      "mcq": {
+        "stem": "Why did Singapore move street hawkers into hawker centres from the 1970s?",
+        "options": [
+          "To turn the stalls into restaurants",
+          "To close down street food for good",
+          "To serve only tourists",
+          "To give hawkers clean water, drainage and licences"
+        ],
+        "correct": 3,
+        "explanation": "Purpose-built centres gave hawkers clean water, proper drainage and licences, which made street food cleaner and safer."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose ember card 0 (review)",
+        "draft.hawker.q1"
+      ]
+    },
+    {
+      "key": "atom.hawker.food-safety",
+      "goal": "goal.hawker",
+      "concept": "concept.hawker.safety",
+      "topic": "Food safety",
+      "title": "Keeping hawker food safe",
+      "body": "Hawker stalls need a licence, and the clean water and drainage at hawker centres help keep the food safe.",
+      "mcq": {
+        "stem": "What must a hawker stall have before it can sell food?",
+        "options": [
+          "A licence",
+          "A website",
+          "A delivery van",
+          "Its own dining hall"
+        ],
+        "correct": 0,
+        "explanation": "Every hawker stall needs a licence, and the clean water and drainage at hawker centres help keep the food safe."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose ember card 1 (stretch)"
+      ]
+    },
+    {
+      "key": "atom.hawker.unesco-heritage",
+      "goal": "goal.hawker",
+      "concept": "concept.hawker.unesco",
+      "topic": "UNESCO listing",
+      "title": "A living heritage",
+      "body": "UNESCO added Singapore’s hawker culture to its list of intangible cultural heritage in December 2020.",
+      "mcq": {
+        "stem": "What did UNESCO do for Singapore’s hawker culture in December 2020?",
+        "options": [
+          "It named it the world’s cheapest food",
+          "It closed the oldest hawker centres",
+          "It added it to its list of intangible cultural heritage",
+          "It moved the hawkers into restaurants"
+        ],
+        "correct": 2,
+        "explanation": "In December 2020 UNESCO added Singapore’s hawker culture to its list of intangible cultural heritage."
+      },
+      "authored": "orchestrator, for the owner's fact review",
+      "uses": [
+        "dose ember card 2 (new)"
+      ]
+    },
+    {
+      "key": "atom.hawker.unesco-why",
+      "goal": "goal.hawker",
+      "concept": "concept.hawker.unesco",
+      "topic": "UNESCO listing",
+      "title": "Why UNESCO listed it",
+      "body": "It is a living tradition: hawkers pass their recipes down, and people from every community eat side by side.",
+      "mcq": {
+        "stem": "Why does UNESCO call hawker culture a living tradition?",
+        "options": [
+          "Every hawker centre is more than a hundred years old",
+          "Hawkers pass their recipes down, and people from every community eat side by side",
+          "Hawker food is cooked only on special holidays",
+          "Only tourists are allowed to eat there"
+        ],
+        "correct": 1,
+        "explanation": "Hawkers pass their recipes down through the generations, and people from every community eat side by side."
+      },
+      "authored": "orchestrator, for the owner's fact review",
+      "uses": [
+        "dose ember card 3 (new)"
+      ]
+    },
+    {
+      "key": "atom.hawker.chicken-rice",
+      "goal": "goal.hawker",
+      "concept": "concept.hawker.chicken",
+      "topic": "Chicken rice",
+      "title": "A hawker favourite",
+      "body": "Chicken rice, tender chicken served with rice cooked in chicken stock, is one of the best-known hawker dishes.",
+      "mcq": {
+        "stem": "What gives the rice in chicken rice its flavour?",
+        "options": [
+          "It is fried with chilli",
+          "It is cooked in chicken stock",
+          "It is steamed in coconut milk",
+          "It is soaked in soy sauce"
+        ],
+        "correct": 1,
+        "explanation": "The rice is cooked in chicken stock, often with garlic and ginger, which gives it its rich flavour."
+      },
+      "authored": "mockup",
+      "uses": [
+        "dose ember card 4 (new)"
+      ]
+    },
+    {
+      "key": "atom.water.newater-process",
+      "goal": "goal.water",
+      "concept": null,
+      "topic": "NEWater",
+      "title": "How used water becomes NEWater",
+      "body": "NEWater starts as used water. After treatment at a water reclamation plant, it is cleaned in three steps: microfiltration strains out fine particles and germs, reverse osmosis pushes the water through a membrane that holds back dissolved salts, and ultraviolet light destroys any germs that are left.",
+      "mcq": {
+        "stem": "After the water reclamation plant, in what order is used water cleaned to make NEWater?",
+        "options": [
+          "Reverse osmosis, then UV light, then microfiltration",
+          "Microfiltration, then reverse osmosis, then UV light",
+          "UV light, then microfiltration, then reverse osmosis",
+          "Microfiltration, then UV light, then reverse osmosis"
+        ],
+        "correct": 1,
+        "explanation": "Microfiltration strains out fine particles first, reverse osmosis then holds back dissolved salts, and UV light destroys any germs that are left."
+      },
+      "uses": [
+        "draft.h4 (step 4), its word and picture chips, copy.water.q2"
+      ],
+      "authored": "orchestrator, for the owner's fact review"
+    },
+    {
+      "key": "atom.nature.sungei-buloh",
+      "goal": "goal.nature",
+      "concept": null,
+      "topic": "Sungei Buloh Wetland Reserve",
+      "title": "Sungei Buloh Wetland Reserve",
+      "body": "Sungei Buloh Wetland Reserve, in the north-west of Singapore, protects mangroves and mudflats. Every year, from about September to March, migratory shorebirds stop there to rest and feed on their long journeys.",
+      "mcq": {
+        "stem": "When do migratory shorebirds stop at Sungei Buloh Wetland Reserve?",
+        "options": [
+          "Only once every ten years",
+          "Only in June",
+          "Every year, from about September to March",
+          "Every night of the year"
+        ],
+        "correct": 2,
+        "explanation": "From about September to March each year, migratory shorebirds stop at Sungei Buloh to rest and feed."
+      },
+      "uses": [
+        "draft.nature.q2"
+      ],
+      "authored": "orchestrator, for the owner's fact review"
+    },
+    {
+      "key": "atom.hawker.kaya",
+      "goal": "goal.hawker",
+      "concept": null,
+      "topic": "Kaya toast",
+      "title": "Kaya toast",
+      "body": "Kaya toast is a classic Singapore breakfast: toasted bread with kaya and butter, often eaten with soft-boiled eggs and a cup of kopi. Kaya is a sweet jam of coconut milk, eggs and sugar, often flavoured with pandan leaves.",
+      "mcq": {
+        "stem": "What is kaya toast often eaten with at breakfast?",
+        "options": [
+          "Fried rice and soup",
+          "Ice cream and fruit",
+          "Noodles and curry",
+          "Soft-boiled eggs and a cup of kopi"
+        ],
+        "correct": 3,
+        "explanation": "Kaya toast is often eaten with soft-boiled eggs and a cup of kopi."
+      },
+      "uses": [
+        "draft.hawker.q2"
+      ],
+      "authored": "orchestrator, for the owner's fact review"
+    },
+    {
+      "key": "atom.hawker.teh-tarik",
+      "goal": "goal.hawker",
+      "concept": null,
+      "topic": "Teh tarik",
+      "title": "Teh tarik",
+      "body": "Teh tarik is hot tea with condensed milk. “Tarik” means “pull” in Malay: the tea is poured back and forth between two mugs from a height, which mixes in the milk, cools the tea and gives it a frothy top.",
+      "mcq": {
+        "stem": "What does “tarik” mean in teh tarik?",
+        "options": [
+          "Sweet",
+          "Pull",
+          "Hot",
+          "Milk"
+        ],
+        "correct": 1,
+        "explanation": "“Tarik” means “pull” in Malay, after the way the tea is poured back and forth between two mugs."
+      },
+      "uses": [
+        "draft.hawker.q3"
+      ],
+      "authored": "orchestrator, for the owner's fact review"
+    }
+  ],
+  "doses": {
+    "companion.pingu": [
+      {
+        "index": 0,
+        "category": "review",
+        "reason": "review",
+        "xp": 20,
+        "atom": "atom.water.four-taps"
+      },
+      {
+        "index": 1,
+        "category": "stretch",
+        "reason": "weakness",
+        "xp": 50,
+        "atom": "atom.water.johor"
+      },
+      {
+        "index": 2,
+        "category": "new",
+        "reason": "campaign",
+        "xp": 30,
+        "atom": "atom.water.marina-reservoir"
+      },
+      {
+        "index": 3,
+        "category": "new",
+        "reason": "campaign",
+        "xp": 30,
+        "atom": "atom.water.marina-barrage"
+      },
+      {
+        "index": 4,
+        "category": "new",
+        "reason": "curiosity",
+        "xp": 30,
+        "atom": "atom.water.catching-rain"
+      }
+    ],
+    "companion.nova": [
+      {
+        "index": 0,
+        "category": "review",
+        "reason": "review",
+        "xp": 20,
+        "atom": "atom.nature.mangroves"
+      },
+      {
+        "index": 1,
+        "category": "stretch",
+        "reason": "weakness",
+        "xp": 50,
+        "atom": "atom.nature.heat"
+      },
+      {
+        "index": 2,
+        "category": "new",
+        "reason": "campaign",
+        "xp": 30,
+        "atom": "atom.nature.otters-return"
+      },
+      {
+        "index": 3,
+        "category": "new",
+        "reason": "campaign",
+        "xp": 30,
+        "atom": "atom.nature.otters-city"
+      },
+      {
+        "index": 4,
+        "category": "new",
+        "reason": "curiosity",
+        "xp": 30,
+        "atom": "atom.nature.connectors"
+      }
+    ],
+    "companion.ember": [
+      {
+        "index": 0,
+        "category": "review",
+        "reason": "review",
+        "xp": 20,
+        "atom": "atom.hawker.centres"
+      },
+      {
+        "index": 1,
+        "category": "stretch",
+        "reason": "weakness",
+        "xp": 50,
+        "atom": "atom.hawker.food-safety"
+      },
+      {
+        "index": 2,
+        "category": "new",
+        "reason": "campaign",
+        "xp": 30,
+        "atom": "atom.hawker.unesco-heritage"
+      },
+      {
+        "index": 3,
+        "category": "new",
+        "reason": "campaign",
+        "xp": 30,
+        "atom": "atom.hawker.unesco-why"
+      },
+      {
+        "index": 4,
+        "category": "new",
+        "reason": "curiosity",
+        "xp": 30,
+        "atom": "atom.hawker.chicken-rice"
+      }
+    ]
+  }
+}

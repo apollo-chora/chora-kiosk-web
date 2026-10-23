@@ -5,7 +5,7 @@
  *
  * KIOSK_WALK_TARGET=fixtures: this worktree's production build (tools/serve-dist.mjs on 18410)
  *   over the dev fixture server (18401), T4's port range. Record checks there are fixture data.
- * KIOSK_WALK_TARGET=stack: the kiosk itself, KIOSK_WALK_EDGE (http://127.0.0.1:8093), only with
+ * KIOSK_WALK_TARGET=stack: the kiosk itself, KIOSK_WALK_EDGE (http://127.0.0.1:8094), only with
  *   KIOSK_WALK_STACK_GO=1 (the orchestrator's slot); nothing is started.
  */
 import { defineConfig, devices } from '@playwright/test';

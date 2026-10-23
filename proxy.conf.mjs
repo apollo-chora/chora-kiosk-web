@@ -4,7 +4,7 @@
 // KIOSK_WEB_API_TARGET picks the backend and has no default, so a dev session always says
 // which one it is talking to:
 //   the dev fixture server:  KIOSK_WEB_API_TARGET=http://127.0.0.1:18301  (npm run start:fixtures)
-//   this root's gateway:     KIOSK_WEB_API_TARGET=http://127.0.0.1:8093  (npm run start:stack)
+//   this root's kiosk edge:   KIOSK_WEB_API_TARGET=http://127.0.0.1:8094  (npm run start:stack)
 const target = process.env.KIOSK_WEB_API_TARGET;
 if (!target) {
   throw new Error('[kiosk-web] KIOSK_WEB_API_TARGET is not set; use npm run start:fixtures or npm run start:stack');

@@ -13,8 +13,8 @@ import { normalizeConceptKey } from '../../src/app/shared/concept-key.ts';
 import { STEP4_SCENARIO_STANDIN } from './mockup-world.mjs';
 
 const { list, mockup } = readInputs();
-const demo = JSON.parse(readFileSync(new URL('../../../kiosk/world/world.json', import.meta.url), 'utf8'));
-const routing = readFileSync(new URL('../../../kiosk/config/models.example.yaml', import.meta.url), 'utf8');
+const demo = JSON.parse(readFileSync(new URL('../../kiosk/world/world.json', import.meta.url), 'utf8'));
+const routing = readFileSync(new URL('../../kiosk/config/models.example.yaml', import.meta.url), 'utf8');
 const world = buildWorld(list);
 const manifest = buildManifest(list, world);
 const allChoices = list.stages.flatMap((s) => s.choices.map((c) => ({ ...c, stage: s.id })));
@@ -410,7 +410,7 @@ test('the hook story runs on the fixtures: map, suggestions, accept, the adopted
     assert.equal(pic.headers.get('content-type'), 'image/svg+xml');
     const fs = m.choices['words.r.s'].records;
     const revisedJob = await get(`/api/atoms/${fs.atom_id}/question-jobs/${fs.job_id}`);
-    assert.deepEqual(shape(revisedJob.pipeline_trace), shape(recorded('../../../kiosk/stack/tests/words-trace.recorded.json').pipeline_trace));
+    assert.deepEqual(shape(revisedJob.pipeline_trace), shape(recorded('../../kiosk/stack/tests/words-trace.recorded.json').pipeline_trace));
     // K187: the scenario chip's paths carry the labelled stand-in note until the golden run records them.
     assert.equal(notes['words.r.s'], undefined);
     assert.equal(revisedJob.pipeline_trace.find((s) => s.name === 'critique').notes, STEP4_SCENARIO_STANDIN.critique);
@@ -571,7 +571,7 @@ test('K159: City in Nature and Hawker culture take water\'s mix: q2 a multiple c
 });
 
 test("K158 (W20): each prepared paper is a run left at its review: the paper's map, its Companion, its bytes' sha256, and a panel", () => {
-  const sums = new Map(readFileSync(new URL('../../../kiosk/world/papers/papers.sha256', import.meta.url), 'utf8').trim().split('\n').map((l) => l.split(/\s+/).reverse()));
+  const sums = new Map(readFileSync(new URL('../../kiosk/world/papers/papers.sha256', import.meta.url), 'utf8').trim().split('\n').map((l) => l.split(/\s+/).reverse()));
   for (const [bank, companion] of [['water', 'pingu'], ['nature', 'nova'], ['hawker', 'ember']]) {
     const e = manifest.choices[`paper.${bank}`];
     assert.equal(e.kind, 'weakness_paper');

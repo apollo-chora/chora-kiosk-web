@@ -1,0 +1,107 @@
+# The kiosk's one model file (ADR-260 D4, K72). It holds no secret.
+#
+# THIS EXAMPLE IS THE OWNER'S MAC DEVELOPMENT CONFIG: its Vertex AI project is
+# chora-489812 (K124). The showroom uses NUS-ISS's own project (K93, K125);
+# the handover's file is a template with that one value to fill in.
+#
+# It lives in <kiosk home>/config/ twice: models.yaml, the copy you edit, and
+# models.active.yaml, the one file the model gateway reads, once, when it
+# starts. Nothing copies one over the other for you (K146). A change: edit
+# models.yaml; check it with the gateway's own validator (validate-models,
+# which exits 0 only when the file is valid and prints its sha256); copy it to
+# models.active.yaml and compare the sha256; restart the model gateway; wait
+# for healthy; then press "Check again" on the readiness board. Never edit
+# models.active.yaml itself: every reset restarts the gateway, which reads it.
+# README-WINDOWS "Change a model" has the commands.
+#
+# The gateway refuses to start when this file does not match the schema, when
+# a tier, a routing target or a key name is missing, when a model in use has no
+# price, or when a Vertex AI provider has no API key (the kiosk has no Google
+# identity: no ADC, no token, only the key in vertex.env).
+version: 1
+
+# Each provider: where it lives, the NAME of its key (never the key itself),
+# and its time limits in seconds. Ollama's are 80 s, under the agents' 90 s
+# client timeout, so the gateway's typed timeout and its meter line land
+# first; K48's 20 s and 45 s are kiosk-web's fallback timers, not these.
+# The provider names are fixed:
+#   ollama  text and the reader, on the Ollama account; its key is in
+#           providers.env.
+#   vertex  pictures and embeddings on Vertex AI (K124, K126), and the reader
+#           only while its tier names vertex (K158, K165);
+#           its key, bound to a service account that holds only Vertex AI
+#           User, is in vertex.env (make-vertex-key.sh writes it). project is
+#           the Google Cloud project the key belongs to. The opening check
+#           proves the key's billing with the embedding, a billed call on the
+#           same key and project, without drawing a picture (K177, which
+#           retired K116's text probe and its check_model). A call Vertex AI
+#           answers 429 (its shared capacity busy) is tried again twice, within
+#           the call's own time limit. reader_s is one reader call's time
+#           limit, read only while the reader is on vertex (W20).
+# A Vertex tier names its location: global is base_url itself, a region is
+# base_url's host with "<region>-" in front (asia-southeast1-aiplatform...).
+providers:
+  ollama: { base_url: "https://ollama.com", key: OLLAMA_API_KEY, single_s: 80, crew_s: 80 }
+  vertex: { base_url: "https://aiplatform.googleapis.com", project: "chora-489812", key: VERTEX_API_KEY, single_s: 20, picture_s: 45, reader_s: 40 }
+
+# Each tier: a provider and a model id, plus an optional fallback model on the
+# same provider for a text tier. The image tier has no fallback (K106): past a
+# failure the labelled prepared picture shows. The embedding tier must give 768
+# dimensions, the width of every vector column, and has no fallback (vectors
+# must never mix spaces). It takes no routing row: its model line is the one
+# place the embedding model is named, and the services that embed are given
+# that name from it (K197). The reader tier is gemma4 on ollama (K179: K177's
+# trial read all three prepared papers right, 10 to 14 s each): a vision model
+# reads the paper as a picture, with no location, within the ollama provider's
+# time limits. It goes back to vertex by its one line (K165: gemini-3.8-flash,
+# location global); the vertex reader's price and reader_s stay for that.
+#
+# K62's swap of a slow hard tier is a one-line edit of tiers.hard.model (and a
+# price line for the new model). K132 moved light and companion off
+# glm-5.3-flash, which spent most of its output thinking and once passed 20 s.
+tiers:
+  hard:      { provider: ollama, model: "deepseek-v4-pro" }
+  middle:    { provider: ollama, model: "gpt-oss:120b" }
+  light:     { provider: ollama, model: "gpt-oss:120b" }
+  companion: { provider: ollama, model: "gpt-oss:120b" }
+  image:     { provider: vertex, model: "gemini-3-pro-image", location: "global" }
+  embedding: { provider: vertex, model: "gemini-embedding-001", location: "asia-southeast1", dimensions: 768 }
+  reader:    { provider: ollama, model: "gemma4" }   # K179: the weakness analyser's two agents
+
+# Routing: an agent-id override wins; otherwise the model id the agent asks
+# for decides. An id that matches neither is refused, never sent to a default.
+# Embeddings are not routed here: the embedding tier takes its own model, and
+# an embedding asked for any other model is refused (K197).
+routing:
+  by_requested_model:          # what the 7 kiosk agents' own configs ask for today
+    gemini-3.1-pro-preview: hard     # qgen generation and evaluation, oe_evaluator
+    gemini-2.5-pro: hard             # their fallback; the qgen composer
+    gemini-3.5-flash: middle         # qgen assurance, qgen_critic, oe_moderator
+    gemini-2.5-flash: middle         # their fallback
+    gemini-2.5-flash-lite: light     # kg_explorer's fallback
+    gemini-3-pro-image: image        # qgen_renderer
+    gemini-2.5-flash-image: image    # the renderer's dead fallback id routes to the live image tier
+  by_agent:                    # overrides, which win over the default
+    companion_chat: companion
+    kg_explorer: light
+    companion_extractor: reader      # W20: the weakness analyser reads a paper (the reader tier)
+    companion_diagnoser: reader
+
+# Prices, in USD: per million input and output tokens for a text model, per
+# picture for the image model, and for the embedding model per million input
+# tokens (in_per_m alone) or per million billed characters (in_per_m_chars),
+# the unit its provider bills by. Read 2026-10-15 (ollama.com) and 2026-10-16 (Vertex AI).
+prices:
+  "deepseek-v4-pro":       { in_per_m: 1.32, out_per_m: 3.96 }
+  "gpt-oss:120b":          { in_per_m: 0.15, out_per_m: 0.60 }
+  "gemini-3-pro-image":    { per_picture: 0.134 }    # a 1K or 2K picture on Vertex AI
+  "gemini-embedding-001":  { in_per_m: 0.15 } # K199: Google's "Gemini Embedding" row, US$0.00015 per 1,000 input tokens online, read 21 Oct 2026
+  "gemma4":                { in_per_m: 0.14, out_per_m: 0.40 } # the reader (K179); ollama.com/pricing, 21 Oct 2026
+  "gemini-3.8-flash":      { in_per_m: 0.75, out_per_m: 3.75 } # the reader on vertex, kept for going back (K165); UNVERIFIED, see below
+# The K165 reader row is UNVERIFIED (19 Oct 2026): Google's Vertex AI pricing
+# page did not render for the stack session. It is the 3.x Flash family's
+# introductory price to 31 Dec 2026 as a search summary of that page gave it
+# (higher from 1 Jan 2027). Read the page and correct it before the handover.
+
+limits:
+  pictures_per_day: 50         # K67; the day is Asia/Singapore. No spend alert (K105).

@@ -33,7 +33,7 @@
 // Usage: node dev/fixture-server.mjs --port 18301 [--dir dev/fixtures]
 import { createServer } from 'node:http';
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
-import { join, relative, dirname } from 'node:path';
+import { join, relative, dirname, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const MARKER = 'KIOSK_DEV_FIXTURE';
@@ -56,7 +56,9 @@ export function loadFixtureRoutes(dir) {
   const routes = [];
   const seen = new Map();
   for (const file of files) {
-    const rel = relative(dir, file);
+    // A portable file id: the fixtures' "after" regexes name it with "/" (as the generator writes
+    // them), so Windows' "\" would never match.
+    const rel = relative(dir, file).split(sep).join('/');
     const f = JSON.parse(readFileSync(file, 'utf8'));
     if (f.fixture !== MARKER) throw new Error(`[fixture-server] ${rel} lacks the "fixture": "${MARKER}" marker`);
     if (!f.method || !f.path) throw new Error(`[fixture-server] ${rel} needs a method and a path`);

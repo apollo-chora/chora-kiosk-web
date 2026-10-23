@@ -43,7 +43,9 @@ import {
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const KIOSK_WEB = join(HERE, '..', '..');
-const REPO = join(KIOSK_WEB, '..');
+// The standalone repo: the kiosk inputs are vendored beside this repo (kiosk/world/, kiosk/config/),
+// so the generator reads them from here rather than from a monorepo parent.
+const REPO = KIOSK_WEB;
 const LIST_FILE = join(REPO, 'kiosk', 'world', 'prepared-choices.json');
 const WORLD_FILE = join(REPO, 'kiosk', 'world', 'world.json');
 const ROUTING_FILE = join(REPO, 'kiosk', 'config', 'models.example.yaml');

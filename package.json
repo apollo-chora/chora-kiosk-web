@@ -7,7 +7,7 @@
   "scripts": {
     "ng": "ng",
     "start:fixtures": "KIOSK_WEB_API_TARGET=http://127.0.0.1:18301 ng serve --host 127.0.0.1 --port 18300",
-    "start:stack": "KIOSK_WEB_API_TARGET=http://127.0.0.1:8093 ng serve --host 127.0.0.1 --port 18300",
+    "start:stack": "KIOSK_WEB_API_TARGET=http://127.0.0.1:8094 ng serve --host 127.0.0.1 --port 18300",
     "fixtures": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON dev/world/make-fixtures.mjs pictures && node dev/fixture-server.mjs --port 18301",
     "fixtures:write": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON dev/world/make-fixtures.mjs write",
     "fixtures:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON dev/world/make-fixtures.mjs check",
