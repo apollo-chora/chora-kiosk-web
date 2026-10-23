@@ -9,6 +9,11 @@
  * pool 'forks' + isolate true: each spec file gets its own module graph.
  * The npm scripts give node a 6 GB heap: a run that dies with exit 134 printed no summary
  * and is not green.
+ *
+ * testTimeout/hookTimeout are 20s, not vitest's 5s default. A full run takes 2-3 minutes
+ * over 121 files, and the Angular + jsdom setup in a hook can exceed 5s on a loaded machine:
+ * measured 2026-10-23, runs failing with "Test timed out in 5000ms" in a different file each
+ * time, every one of them passing in isolation and none of them failing an assertion.
  */
 import { defineConfig } from 'vite';
 import angular from '@analogjs/vite-plugin-angular';
@@ -30,6 +35,8 @@ export default defineConfig(() => ({
     include: ['src/**/*.spec.ts'],
     pool: 'forks',
     isolate: true,
+    testTimeout: 20000,
+    hookTimeout: 20000,
     coverage: {
       provider: 'v8',
       reportOnFailure: true,
