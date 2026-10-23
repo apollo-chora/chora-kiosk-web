@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.nature.supertrees",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/49950d76-98b9-7f19-8641-78262fe56d2e/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "49950d76-98b9-7f19-8641-78262fe56d2e",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Gardens by the Bay",
+    "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+    "rationale": "The garden at Marina Bay where the Supertrees stand, beside two cooled glass domes.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:36:40Z"
+  }
+}

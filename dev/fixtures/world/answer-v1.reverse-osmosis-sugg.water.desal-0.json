@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); v1.reverse-osmosis, option Microfiltration",
+  "method": "POST",
+  "path": "/api/v1/me/goals/8897f102-bb85-7701-ba94-9c60bbca2258/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "6cf0bffd-5324-7a37-8738-e7ee27be85a9",
+    "selected_option_id": "45a9397fcce7f69e"
+  },
+  "status": 200,
+  "body": {
+    "correct": false,
+    "rung": 1,
+    "is_refresher": false,
+    "counted": false,
+    "cleared_rung": 0,
+    "won": false,
+    "paced_today": false,
+    "rungs_cleared": 0,
+    "current_rung_correct": 0,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "c16193213247371d",
+    "explainer": "Reverse osmosis pushes water through a semi-permeable membrane under pressure. Dissolved salts and most contaminants stay behind."
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "recorded": "From the kiosk stack through the edge 127.0.0.1:18080 on 2026-10-19 (GET only): the conductor's GET /api/v1/kiosk/xray/{trace}?kind=campaign_set for set.water.res.r6 (03:02:17 UTC), verbatim; and words.f's job read (GET /api/atoms/{atom}/question-jobs/{job}, 03:03:09 UTC) without its candidate_questions.",
+  "xray": {
+    "run_id": "9c9d66752af935530caffd6c3e5d7d67",
+    "kind": "campaign_set",
+    "trace_id": "9c9d66752af935530caffd6c3e5d7d67",
+    "generated_at": "2026-10-18T04:41:10.056634Z",
+    "stages": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-18T04:40:06.279565+00:00",
+        "completed_at": "2026-10-18T04:40:06.279572+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:06.286753+00:00",
+        "completed_at": "2026-10-18T04:40:06.286767+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": "simulated_on_local"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:06.290354+00:00",
+        "completed_at": "2026-10-18T04:40:06.290361+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:32.455551+00:00",
+        "completed_at": "2026-10-18T04:40:32.455823+00:00",
+        "duration_ms": 0,
+        "attempt": 1,
+        "input_tokens": 1380,
+        "output_tokens": 2051,
+        "safety": null
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:32.458936+00:00",
+        "completed_at": "2026-10-18T04:40:32.458941+00:00",
+        "duration_ms": 0,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": "simulated_on_local"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:38.832921+00:00",
+        "completed_at": "2026-10-18T04:40:38.835011+00:00",
+        "duration_ms": 2,
+        "attempt": 1,
+        "input_tokens": 4191,
+        "output_tokens": 1004,
+        "safety": null
+      },
+      {
+        "name": "critique_verdict",
+        "status": "REJECTED",
+        "started_at": "2026-10-18T04:40:38.835143+00:00",
+        "completed_at": "2026-10-18T04:40:38.835150+00:00",
+        "duration_ms": 0,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "accepted": false,
+        "safety": null
+      },
+      {
+        "name": "critique_verdict",
+        "status": "REJECTED",
+        "started_at": "2026-10-18T04:40:38.835156+00:00",
+        "completed_at": "2026-10-18T04:40:38.835158+00:00",
+        "duration_ms": 0,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "accepted": false,
+        "safety": null
+      },
+      {
+        "name": "quality_gate",
+        "status": "RETRY",
+        "started_at": "2026-10-18T04:40:38.840833+00:00",
+        "completed_at": "2026-10-18T04:40:38.840843+00:00",
+        "duration_ms": 0,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "regenerate_rejected",
+        "status": "RETRY",
+        "started_at": "2026-10-18T04:40:38.847516+00:00",
+        "completed_at": "2026-10-18T04:40:38.847536+00:00",
+        "duration_ms": 0,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:55.919816+00:00",
+        "completed_at": "2026-10-18T04:40:55.920166+00:00",
+        "duration_ms": 0,
+        "attempt": 2,
+        "input_tokens": 1380,
+        "output_tokens": 2355,
+        "safety": null
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:40:55.924821+00:00",
+        "completed_at": "2026-10-18T04:40:55.924830+00:00",
+        "duration_ms": 0,
+        "attempt": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": "simulated_on_local"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:41:01.452808+00:00",
+        "completed_at": "2026-10-18T04:41:01.452992+00:00",
+        "duration_ms": 0,
+        "attempt": 2,
+        "input_tokens": 4329,
+        "output_tokens": 987,
+        "safety": null
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-18T04:41:01.453010+00:00",
+        "completed_at": "2026-10-18T04:41:01.453012+00:00",
+        "duration_ms": 0,
+        "attempt": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "accepted": true,
+        "safety": null
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-18T04:41:01.453014+00:00",
+        "completed_at": "2026-10-18T04:41:01.453015+00:00",
+        "duration_ms": 0,
+        "attempt": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "accepted": true,
+        "safety": null
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-18T04:41:01.454614+00:00",
+        "completed_at": "2026-10-18T04:41:01.454619+00:00",
+        "duration_ms": 0,
+        "attempt": 2,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:41:01.460574+00:00",
+        "completed_at": "2026-10-18T04:41:01.460578+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:41:01.462640+00:00",
+        "completed_at": "2026-10-18T04:41:01.462644+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "compose_test_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:41:10.052798+00:00",
+        "completed_at": "2026-10-18T04:41:10.053317+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "safety": null
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:41:10.056625+00:00",
+        "completed_at": "2026-10-18T04:41:10.056634+00:00",
+        "duration_ms": 0,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      }
+    ],
+    "decisions": [
+      {
+        "agent": "qgen_question",
+        "decision": "accepted",
+        "at": "2026-10-18T04:41:10Z",
+        "model": "",
+        "reasoning_summary": "all 2 candidate(s) accepted"
+      },
+      {
+        "agent": "qgen_critic",
+        "decision": "accepted",
+        "at": "2026-10-18T04:41:10Z",
+        "model": "",
+        "reasoning_summary": "all 2 candidate(s) accepted"
+      }
+    ]
+  },
+  "words_job": {
+    "job_id": "01a14d53-9ca9-701d-8fb4-c0a26f7f508e",
+    "atom_id": "01a14d37-3a0d-7b08-a74b-aae8a90a857b",
+    "status": "succeeded",
+    "mana_charged": 0,
+    "created_at": "2026-10-18T04:44:47.657011Z",
+    "started_at": "2026-10-18T04:44:47.659976Z",
+    "completed_at": "2026-10-18T04:45:07.369868Z",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-18T04:44:47.708920+00:00",
+        "completed_at": "2026-10-18T04:44:47.708924+00:00"
+      },
+      {
+        "name": "guardrail_pre",
+        "notes": "not_screened (local edition)",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:44:47.711602+00:00",
+        "completed_at": "2026-10-18T04:44:47.711609+00:00"
+      },
+      {
+        "name": "generate",
+        "notes": "candidate produced",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:59.917327+00:00",
+        "completed_at": "2026-10-18T04:44:59.917499+00:00",
+        "input_tokens": 869,
+        "output_tokens": 1892,
+        "candidate_json": "{\"input_tokens\": 869, \"intent\": \"new_question\", \"options\": [{\"explainer\": \"Sedimentation relies on gravity to settle suspended solids; it does not kill or inactivate germs that may remain in the water.\", \"is_correct\": false, \"label\": \"Sedimentation\", \"option_id\": \"A\"}, {\"explainer\": \"Microfiltration physically removes larger particles and some bacteria, but smaller germs can pass through its pores.\", \"is_correct\": false, \"label\": \"Microfiltration\", \"option_id\": \"B\"}, {\"explainer\": \"UV disinfection uses ultraviolet light to inactivate and destroy germs that slip through the earlier membrane stages, providing final disinfection before the water becomes NEWater.\", \"is_correct\": true, \"label\": \"UV disinfection\", \"option_id\": \"C\"}, {\"explainer\": \"Reverse osmosis filters out very small contaminants using a semi-permeable membrane, but it is a physical barrier, not a disinfection step that kills germs.\", \"is_correct\": false, \"label\": \"Reverse osmosis\", \"option_id\": \"D\"}], \"output_tokens\": 1892, \"question_type\": \"mcq\", \"stem\": \"Using the flow diagram below of the NEWater process, which treatment stage destroys germs that slip through the microfiltration and reverse osmosis membranes?\", \"tokens_consumed_total\": 2761}"
+      },
+      {
+        "name": "guardrail_post",
+        "notes": "not_screened (local edition)",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:59.920788+00:00",
+        "completed_at": "2026-10-18T04:44:59.920794+00:00"
+      },
+      {
+        "name": "critique",
+        "notes": "Stem is clear, correct answer correctly identified, and four options include non‑empty explainers with plausible distractors.",
+        "status": "ACCEPTED",
+        "attempt": 1,
+        "accepted": true,
+        "started_at": "2026-10-18T04:45:05.515810+00:00",
+        "completed_at": "2026-10-18T04:45:05.515950+00:00",
+        "input_tokens": 2952,
+        "output_tokens": 1018,
+        "suggested_revisions": []
+      },
+      {
+        "name": "quality_gate",
+        "notes": "Stem is clear, correct answer correctly identified, and four options include non‑empty explainers with plausible distractors.",
+        "status": "ACCEPTED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:45:05.517384+00:00",
+        "completed_at": "2026-10-18T04:45:05.517389+00:00"
+      },
+      {
+        "name": "publish_completed",
+        "notes": "accepted",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:45:05.520511+00:00",
+        "completed_at": "2026-10-18T04:45:05.520513+00:00"
+      }
+    ]
+  }
+}

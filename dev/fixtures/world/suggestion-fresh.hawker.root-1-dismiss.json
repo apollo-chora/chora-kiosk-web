@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.hawker.root",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/8ff6b37e-7afc-70e2-8be9-891c75e1f0f9/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "8ff6b37e-7afc-70e2-8be9-891c75e1f0f9",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Laksa",
+    "focalConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+    "rationale": "Rice noodles in a spicy soup made rich with coconut milk.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:39:10Z"
+  }
+}

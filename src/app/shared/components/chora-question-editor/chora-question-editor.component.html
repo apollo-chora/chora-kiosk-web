@@ -1,0 +1,135 @@
+<div class="chora-question-editor" [attr.data-testid]="testId('editor')">
+  <!-- Question prompt / stem -->
+  <label class="chora-question-editor__field-label">
+    {{ 'shared.question_editor.prompt_label' | translate }}
+  </label>
+  <textarea
+    class="chora-question-editor__prompt"
+    rows="2"
+    [value]="question().prompt"
+    (input)="setPrompt($any($event.target).value)"
+    [attr.data-testid]="testId('prompt')"
+    [attr.aria-label]="'shared.question_editor.prompt_label' | translate"
+    [attr.placeholder]="'shared.question_editor.prompt_placeholder' | translate"
+  ></textarea>
+
+  <!-- Stem-media slot: hosts project the question/stem illustration (and its
+       regenerate control) here so it renders directly below the stem and ABOVE
+       the options/answer. Empty unless a host projects `[stemMedia]` content. -->
+  <ng-content select="[stemMedia]"></ng-content>
+
+  @if (isMcq()) {
+    <ul class="chora-question-editor__options" [attr.data-testid]="testId('options')">
+      @for (opt of question().options; track $index; let i = $index) {
+        <li
+          class="chora-question-editor__option"
+          [class.chora-question-editor__option--correct]="opt.is_correct"
+        >
+          <span class="chora-question-editor__letter" aria-hidden="true">
+            {{ optionLetter(i) }}
+          </span>
+
+          <div class="chora-question-editor__option-body">
+            <textarea
+              class="chora-question-editor__option-label"
+              rows="1"
+              [value]="opt.label"
+              (input)="setOptionLabel(i, $any($event.target).value)"
+              [attr.data-testid]="testId('option-' + i)"
+              [attr.aria-label]="
+                ('shared.question_editor.option_aria' | translate) +
+                ' ' +
+                optionLetter(i)
+              "
+              [attr.placeholder]="
+                'shared.question_editor.option_placeholder' | translate
+              "
+            ></textarea>
+            <textarea
+              class="chora-question-editor__option-explainer"
+              rows="1"
+              [value]="opt.explainer"
+              (input)="setOptionExplainer(i, $any($event.target).value)"
+              [attr.data-testid]="testId('explainer-' + i)"
+              [attr.aria-label]="
+                ('shared.question_editor.explainer_aria' | translate) +
+                ' ' +
+                optionLetter(i)
+              "
+              [attr.placeholder]="
+                'shared.question_editor.explainer_placeholder' | translate
+              "
+            ></textarea>
+          </div>
+
+          <label class="chora-question-editor__correct-toggle">
+            <input
+              type="radio"
+              [name]="correctGroup()"
+              [checked]="opt.is_correct"
+              (change)="setCorrect(i)"
+              [attr.data-testid]="testId('correct-' + i)"
+            />
+            <span>{{ 'shared.question_editor.correct' | translate }}</span>
+          </label>
+
+          <button
+            type="button"
+            class="chora-question-editor__option-remove"
+            [disabled]="!canRemoveOption()"
+            (click)="removeOption(i)"
+            [attr.data-testid]="testId('remove-option-' + i)"
+            [attr.aria-label]="'shared.question_editor.remove_option' | translate"
+          >
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </li>
+      }
+    </ul>
+
+    <button
+      type="button"
+      class="chora-question-editor__add-option"
+      [disabled]="!canAddOption()"
+      (click)="addOption()"
+      [attr.data-testid]="testId('add-option')"
+    >
+      <i class="fa-solid fa-plus" aria-hidden="true"></i>
+      {{ 'shared.question_editor.add_option' | translate }}
+    </button>
+  } @else {
+    <label class="chora-question-editor__field-label">
+      {{ 'shared.question_editor.model_answer_label' | translate }}
+    </label>
+    <textarea
+      class="chora-question-editor__model-answer"
+      rows="3"
+      [value]="question().model_answer"
+      (input)="setModelAnswer($any($event.target).value)"
+      [attr.data-testid]="testId('model-answer')"
+      [attr.aria-label]="'shared.question_editor.model_answer_label' | translate"
+      [attr.placeholder]="
+        'shared.question_editor.model_answer_placeholder' | translate
+      "
+    ></textarea>
+  }
+
+  <!-- Answer-media slot: hosts project the model-answer illustration (and its
+       Remove control) here so it renders directly below the options/answer.
+       Empty unless a host projects `[answerMedia]` content. -->
+  <ng-content select="[answerMedia]"></ng-content>
+
+  @if (!validation().valid) {
+    <div
+      class="chora-question-editor__errors"
+      role="alert"
+      [attr.data-testid]="testId('errors')"
+    >
+      <ul class="chora-question-editor__errors-list">
+        @for (err of validation().errors; track err) {
+          <li>{{ err | translate }}</li>
+        }
+      </ul>
+    </div>
+  }
+</div>

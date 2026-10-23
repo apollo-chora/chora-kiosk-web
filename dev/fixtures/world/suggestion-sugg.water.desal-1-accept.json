@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.water.desal",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/ebb87080-8b5e-75cf-babc-858c3c8ebf2c/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "ebb87080-8b5e-75cf-babc-858c3c8ebf2c",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Reverse osmosis",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "The membrane step that holds back salt. NEWater uses it too.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:31:40Z"
+  }
+}

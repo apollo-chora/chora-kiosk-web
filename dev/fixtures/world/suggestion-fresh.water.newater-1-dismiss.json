@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.newater",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/7467574c-286f-74ad-a289-ed19331b0317/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "7467574c-286f-74ad-a289-ed19331b0317",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Wafer fabs",
+    "focalConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+    "rationale": "Chip factories are NEWater’s biggest users: they need water purer than tap water.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:34:10Z"
+  }
+}

@@ -1,0 +1,384 @@
+{
+  "about": "W52 (K182): the proposed weak spots of nine real reads of the three prepared papers, edges only, as consumption serves them. gemma4.* and prepared.* were recorded 21 Oct 06:55 UTC by the stack's K177 trial through the kiosk's own gateway (.handoffs/kiosk-phase2/K177-TRIAL.md): gemma4's LIVE reads and the golden run's earlier Gemini reviews. take.* are the prepared papers of the take 01a15d6e-f704-7097-bba2-7be9246bfbbd (gemma4, 21 Oct 07:39 to 07:40 UTC), read only from consumption's weakness_doc_uploads.review_payload.",
+  "runs": {
+    "gemma4.hawker": {
+      "upload_id": "01a15d3d-ecc9-703e-8655-f6532e941798",
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "pe-0",
+          "concept_label": "UNESCO Heritage Classifications",
+          "summary": "Distinguishing between World Heritage sites (physical places) and Intangible Cultural Heritage (living practices).",
+          "suggested_angles": [
+            "Compare tangible vs. intangible heritage examples",
+            "Explore the criteria for Intangible Cultural Heritage"
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-1",
+          "concept_label": "Singaporean Coffee-Shop Terminology",
+          "summary": "Understanding the specific meanings of 'O' and 'C' in traditional coffee orders.",
+          "suggested_angles": [
+            "Create a cheat sheet for Kopi/Teh modifiers (O, C, Kosong, Peng)"
+          ],
+          "strength": 0.8,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-2",
+          "concept_label": "Urban Planning and Public Health History",
+          "summary": "The historical purpose behind transitioning street hawkers into centralized hawker centres.",
+          "suggested_angles": [
+            "Study the impact of running water and waste management on urban health in the 70s/80s"
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-3",
+          "concept_label": "Teh Tarik Preparation",
+          "summary": "The functional purposes of the 'pulling' motion in tea preparation.",
+          "suggested_angles": [
+            "Explore the physics of aeration in beverages"
+          ],
+          "strength": 0.5,
+          "suggested_difficulty": "standard"
+        }
+      ]
+    },
+    "gemma4.nature": {
+      "upload_id": "01a15d3e-1c2b-7700-b00e-ef637a93539f",
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "pe-0",
+          "concept_label": "Otter Dietary Habits",
+          "summary": "Distinguishing between herbivorous and carnivorous diets in local wildlife.",
+          "suggested_angles": [
+            "Review the characteristics of carnivores vs herbivores",
+            "Study the local food web of the Singapore coastline"
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-1",
+          "concept_label": "Ecological Functions of Mangroves",
+          "summary": "Understanding the biological and protective roles mangroves play in coastal ecosystems.",
+          "suggested_angles": [
+            "Explore how root systems prevent soil erosion",
+            "Investigate the 'nursery' concept for juvenile marine life"
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-2",
+          "concept_label": "Supertree Structure and Function",
+          "summary": "Distinguishing between naturally occurring biological organisms and engineered sustainable structures.",
+          "suggested_angles": [
+            "Compare natural tree functions with the mechanical functions of Supertrees (solar panels, rainwater collection)"
+          ],
+          "strength": 0.8,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-3",
+          "concept_label": "Evapotranspiration Cooling",
+          "summary": "Understanding that trees cool the air through both shade and the release of water vapour.",
+          "suggested_angles": [
+            "Study the process of transpiration in leaves",
+            "Experiment with the temperature difference under a tree vs in a shaded concrete area"
+          ],
+          "strength": 0.4,
+          "suggested_difficulty": "easier"
+        }
+      ]
+    },
+    "gemma4.water": {
+      "upload_id": "01a15d3e-5377-7032-ba96-392017899ff8",
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "pe-0",
+          "concept_label": "Singapore's Four National Taps",
+          "summary": "The learner is familiar with the components but lacks complete precision in naming the specific official categories of the National Taps.",
+          "suggested_angles": [
+            "Review the official terminology of the Four National Taps to distinguish between catchment and desalination."
+          ],
+          "strength": 0.5,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "pe-1",
+          "concept_label": "Desalination Process (Reverse Osmosis)",
+          "summary": "The learner is unable to identify the specific mechanism used to remove salt from seawater, confusing it with microfiltration.",
+          "suggested_angles": [
+            "Compare the pore sizes of microfiltration versus reverse osmosis membranes."
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-2",
+          "concept_label": "Economics of Water Production",
+          "summary": "The learner attributes the cost of desalination to the 'dirtiness' of the source rather than the energy requirements of the process.",
+          "suggested_angles": [
+            "Explore the energy-intensity of the desalination process compared to gravity-fed catchment systems."
+          ],
+          "strength": 0.8,
+          "suggested_difficulty": "harder"
+        }
+      ]
+    },
+    "prepared.hawker": {
+      "upload_id": "01a154f1-6497-72bf-9b39-7fc37d136e04",
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "pe-0",
+          "concept_label": "UNESCO Heritage Classifications: Tangible vs. Intangible",
+          "summary": "Distinguishing between physical World Heritage sites (monuments and places) and Representative Intangible Cultural Heritage (living cultural practices, traditions, and culinary customs).",
+          "suggested_angles": [
+            "Compare physical landmarks (e.g., Singapore Botanic Gardens) with living traditions (e.g., Hawker Culture) to clarify tangible versus intangible categories.",
+            "Explore the core criteria UNESCO uses to safeguard living community practices and shared knowledge."
+          ],
+          "strength": 0.85,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-1",
+          "concept_label": "Historical Purpose and Development of Hawker Centres",
+          "summary": "Understanding the socio-historical drivers for establishing permanent hawker centres in the 1970s and 1980s, focusing on urban sanitation, public health, and municipal infrastructure.",
+          "suggested_angles": [
+            "Review archival images and urban planning records showing early street food sanitation challenges versus purpose-built centres with running water.",
+            "Discuss the social policy goals of providing affordable, hygienic meals to local working-class residents during rapid post-independence industrialization."
+          ],
+          "strength": 0.85,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-2",
+          "concept_label": "Traditional Nanyang Drink Customization and Dialect Terminology",
+          "summary": "Mastering the dialect modifiers used to customize traditional coffee (kopi) and tea (teh) orders in local beverage culture.",
+          "suggested_angles": [
+            "Use a systematic visual chart breaking down base drinks with suffixes: 'O' (black with sugar), 'C' (evaporated milk), 'kosong' (unsweetened), and 'peng' (iced).",
+            "Role-play mock orders at a drinks stall to build automaticity with local dialect terms (Hokkien, Cantonese, and Malay loanwords)."
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        }
+      ]
+    },
+    "prepared.nature": {
+      "upload_id": "01a154ee-caee-7a69-9aef-cb29e45b02b6",
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "pe-0",
+          "concept_label": "Diet and Feeding Habits of Native Otters",
+          "summary": "Understanding the carnivorous dietary adaptations of smooth-coated otters, identifying them primarily as fish and crustacean hunters rather than plant eaters.",
+          "suggested_angles": [
+            "Exploring otter hunting behaviors and adaptations as apex freshwater and coastal predators.",
+            "Connecting otter populations along waterways to healthy fish stocks."
+          ],
+          "strength": 0.9,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-1",
+          "concept_label": "Ecological Value and Coastal Functions of Mangroves",
+          "summary": "Recognizing the essential ecosystem services provided by mangrove forests, specifically coastal erosion prevention and serving as nursery grounds for marine species.",
+          "suggested_angles": [
+            "Examining mangrove root architecture and how it traps sediment to reduce wave impact.",
+            "Mapping the life cycle of juvenile fish and crustaceans sheltered within mangrove roots."
+          ],
+          "strength": 0.85,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-2",
+          "concept_label": "Architectural and Environmental Features of Supertrees",
+          "summary": "Distinguishing the engineered structure of the Supertrees\u2014steel vertical gardens supporting living epiphytes and sustainability technology\u2014from natural living trees.",
+          "suggested_angles": [
+            "Investigating how vertical gardens (epiphytes, ferns, bromeliads) are cultivated on human-made structures.",
+            "Exploring the green engineering systems integrated into Supertrees, such as photovoltaic cells and rainwater collection."
+          ],
+          "strength": 0.85,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-3",
+          "concept_label": "Mechanisms of Urban Cooling by Vegetation",
+          "summary": "Deepening knowledge of how trees cool urban spaces by integrating leaf transpiration (evaporative cooling) alongside physical solar shading.",
+          "suggested_angles": [
+            "Demonstrating evaporative cooling through leaf transpiration experiments.",
+            "Connecting canopy shading with transpiration rates to see how both work together to combat urban heat."
+          ],
+          "strength": 0.5,
+          "suggested_difficulty": "standard"
+        }
+      ]
+    },
+    "prepared.water": {
+      "upload_id": "01a154ed-a152-76dc-a539-31fcb3753aaf",
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "pe-0",
+          "concept_label": "Singapore's Four National Taps",
+          "summary": "Recognising the four distinct supply sources that make up Singapore's water security strategy: local catchment water, imported water, NEWater, and desalinated water.",
+          "suggested_angles": [
+            "Review the visual infographic of the Four National Taps to see how rainwater collection is integrated under local catchment",
+            "Explore how each tap plays a unique strategic role in national water resilience"
+          ],
+          "strength": 0.5,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "pe-1",
+          "concept_label": "Membrane Separation Stages in Desalination",
+          "summary": "Distinguishing the specific functions of filtration membranes, particularly how reverse osmosis separates dissolved mineral salts while microfiltration targets suspended particles.",
+          "suggested_angles": [
+            "Compare pore sizes of microfiltration versus reverse osmosis membranes to connect pore scale to what gets filtered out",
+            "Trace seawater through a multi-stage desalination flow diagram from intake to mineral separation"
+          ],
+          "strength": 0.8,
+          "suggested_difficulty": "harder"
+        },
+        {
+          "proposed_edge_id": "pe-2",
+          "concept_label": "Energy Requirements of Desalination",
+          "summary": "Connecting the physics of reverse osmosis to production cost, specifically the high electrical energy required to push water through membranes against high osmotic pressure.",
+          "suggested_angles": [
+            "Connect pressure and energy use in reverse osmosis to understand the main operational cost driver of desalination plants",
+            "Compare the energy profiles of conventional reservoir treatment versus membrane desalination"
+          ],
+          "strength": 0.85,
+          "suggested_difficulty": "harder"
+        }
+      ]
+    },
+    "take.water": {
+      "upload_id": "01a15d66-ef1c-7e08-bffe-c53a06aa1d15",
+      "proposed_edges": [
+        {
+          "summary": "The learner is familiar with the general concept of multiple water sources but is currently conflating rainwater with the broader category of local catchment and missing desalinated water.",
+          "strength": 0.4,
+          "concept_label": "Singapore's Four National Taps",
+          "proposed_edge_id": "pe-0",
+          "suggested_angles": [
+            "Clarify the hierarchy of 'Local Catchment' as an umbrella term that includes rainwater collection."
+          ],
+          "suggested_difficulty": "easier"
+        },
+        {
+          "summary": "The learner can identify that filtration occurs in desalination but is unable to distinguish between the role of microfiltration (particle removal) and reverse osmosis (salt removal).",
+          "strength": 0.8,
+          "concept_label": "Desalination Process: Salt Removal",
+          "proposed_edge_id": "pe-1",
+          "suggested_angles": [
+            "Compare and contrast the pore sizes of microfiltration versus reverse osmosis membranes."
+          ],
+          "suggested_difficulty": "harder"
+        },
+        {
+          "summary": "The learner attributes the higher cost of desalinated water to the 'cleanliness' of the source water rather than the energy requirements of the process.",
+          "strength": 0.7,
+          "concept_label": "Energy Costs of Desalination",
+          "proposed_edge_id": "pe-2",
+          "suggested_angles": [
+            "Explore the physics of high-pressure pumps required for reverse osmosis to explain the energy-cost link."
+          ],
+          "suggested_difficulty": "standard"
+        }
+      ]
+    },
+    "take.nature": {
+      "upload_id": "01a15d67-164c-7d23-9136-0dea86d67723",
+      "proposed_edges": [
+        {
+          "summary": "Understanding the dietary requirements of smooth-coated otters as carnivores.",
+          "strength": 0.9,
+          "concept_label": "Otter Diet and Classification",
+          "proposed_edge_id": "pe-0",
+          "suggested_angles": [
+            "Review the difference between herbivores, carnivores, and omnivores using local wildlife examples."
+          ],
+          "suggested_difficulty": "harder"
+        },
+        {
+          "summary": "Recognizing the critical environmental roles mangroves play in coastal protection and as nurseries for marine life.",
+          "strength": 0.8,
+          "concept_label": "Ecological Functions of Mangroves",
+          "proposed_edge_id": "pe-1",
+          "suggested_angles": [
+            "Explore the 'roots' of the mangrove and how they physically stop soil from washing away."
+          ],
+          "suggested_difficulty": "harder"
+        },
+        {
+          "summary": "Understanding that Supertrees are man-made steel structures designed for environmental functions rather than natural trees.",
+          "strength": 0.9,
+          "concept_label": "Sustainable Architecture: Supertrees",
+          "proposed_edge_id": "pe-2",
+          "suggested_angles": [
+            "Analyze the 'technological' parts of the Supertree (solar panels, rain collection) to distinguish them from biological trees."
+          ],
+          "suggested_difficulty": "harder"
+        },
+        {
+          "summary": "Identifying that plants cool the air not just through shade, but through the release of water vapour.",
+          "strength": 0.4,
+          "concept_label": "Plant Transpiration and Cooling",
+          "proposed_edge_id": "pe-3",
+          "suggested_angles": [
+            "Compare the temperature of a shaded concrete area versus a shaded area under a living tree."
+          ],
+          "suggested_difficulty": "easier"
+        }
+      ]
+    },
+    "take.hawker": {
+      "upload_id": "01a15d67-35ac-7533-b86d-aa5330be0ab9",
+      "proposed_edges": [
+        {
+          "summary": "Distinguishing between tangible World Heritage sites (places) and Intangible Cultural Heritage (living practices).",
+          "strength": 0.9,
+          "concept_label": "UNESCO Intangible Cultural Heritage",
+          "proposed_edge_id": "pe-0",
+          "suggested_angles": [
+            "Explore the difference between tangible and intangible heritage with examples from other countries."
+          ],
+          "suggested_difficulty": "harder"
+        },
+        {
+          "summary": "Understanding the specific suffixes in local coffee ordering (e.g., 'O' vs 'C').",
+          "strength": 0.7,
+          "concept_label": "Singaporean Coffee Nomenclature",
+          "proposed_edge_id": "pe-1",
+          "suggested_angles": [
+            "Create a comparison chart for Kopi, Kopi-O, and Kopi-C."
+          ],
+          "suggested_difficulty": "standard"
+        },
+        {
+          "summary": "Understanding the public health and hygiene drivers behind the transition from street hawking to centralized centres in the 1970s/80s.",
+          "strength": 0.9,
+          "concept_label": "Historical Purpose of Hawker Centres",
+          "proposed_edge_id": "pe-2",
+          "suggested_angles": [
+            "Study the transition from street vending to centralized markets in the context of mid-century urban hygiene."
+          ],
+          "suggested_difficulty": "harder"
+        },
+        {
+          "summary": "Recognizing the functional purposes of the 'pulling' motion in Teh Tarik beyond temperature control.",
+          "strength": 0.4,
+          "concept_label": "Teh Tarik Preparation Technique",
+          "proposed_edge_id": "pe-3",
+          "suggested_angles": [
+            "Experiment with the physical effects of aeration on liquids to understand frothing."
+          ],
+          "suggested_difficulty": "easier"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption maps_handler.go (mapCardDTO; title the root's, counts over the root's sub-tree); kind and northStarNote as kiosk/world/world.json's seed posts each goal; times the manifest's made_at",
+  "method": "GET",
+  "path": "/api/v1/me/maps",
+  "status": 200,
+  "body": {
+    "items": [
+      {
+        "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+        "title": "Singapore’s water",
+        "northStarNote": "Singapore’s water",
+        "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "kind": "curiosity",
+        "status": "active",
+        "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "conceptCount": 9,
+        "shakyCount": 2,
+        "masteredCount": 1,
+        "createdAt": "2026-10-20T06:36:50Z",
+        "updatedAt": "2026-10-20T06:36:50Z"
+      },
+      {
+        "goalId": "ee509ced-84c3-7947-b40e-aaac7b613781",
+        "title": "City in Nature",
+        "northStarNote": "City in Nature",
+        "rootConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+        "kind": "curiosity",
+        "status": "active",
+        "attachedCompanionId": "cc69f1d2-9824-7d13-b9ee-9b732f56e480",
+        "conceptCount": 6,
+        "shakyCount": 1,
+        "masteredCount": 1,
+        "createdAt": "2026-10-20T06:36:50Z",
+        "updatedAt": "2026-10-20T06:36:50Z"
+      },
+      {
+        "goalId": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+        "title": "Hawker culture",
+        "northStarNote": "Hawker culture",
+        "rootConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "kind": "curiosity",
+        "status": "active",
+        "attachedCompanionId": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+        "conceptCount": 6,
+        "shakyCount": 2,
+        "masteredCount": 1,
+        "createdAt": "2026-10-20T06:36:50Z",
+        "updatedAt": "2026-10-20T06:36:50Z"
+      }
+    ]
+  }
+}

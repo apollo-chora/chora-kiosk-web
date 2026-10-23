@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.hawker.centres",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/508d8ef3-3886-78fb-8354-e45267230d98/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "508d8ef3-3886-78fb-8354-e45267230d98",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Satay",
+    "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+    "rationale": "Small pieces of meat grilled on skewers and eaten with a peanut dip.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:38:20Z"
+  }
+}

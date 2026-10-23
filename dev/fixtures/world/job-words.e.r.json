@@ -1,0 +1,113 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "creation question_jobs_handler.go (jobResponse; candidate_questions as candidateDraft); stage names from qgen_crew.py, counts illustrative; words.e.r: DRAFT and its chips of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6); the critic's note recorded through the edge (dev/world/step4-critique.recorded.json, K155)",
+  "method": "GET",
+  "path": "/api/atoms/9b623743-8432-74b7-8782-e9a22d5b7ec7/question-jobs/f278e4bb-e2f2-7a09-a4d2-7f0992c24512",
+  "status": 200,
+  "body": {
+    "job_id": "f278e4bb-e2f2-7a09-a4d2-7f0992c24512",
+    "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+    "status": "succeeded",
+    "mana_charged": 1,
+    "created_at": "2026-10-20T05:52:40Z",
+    "started_at": "2026-10-20T05:52:41Z",
+    "completed_at": "2026-10-20T05:53:20Z",
+    "candidate_questions": [
+      {
+        "draft_id": "3c584d21-b253-7aeb-bdb7-b22fbd1654f8",
+        "type": "mcq",
+        "prompt": "At a NEWater plant, a guide shows visitors how used water is cleaned. Which stage destroys germs that slip through the membranes?",
+        "mcq_payload": {
+          "options": [
+            {
+              "option_id": "opt_1",
+              "label": "Microfiltration",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_2",
+              "label": "Reverse osmosis",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_3",
+              "label": "UV disinfection",
+              "is_correct": true,
+              "explainer": "UV light damages the germs’ DNA, so they cannot multiply."
+            },
+            {
+              "option_id": "opt_4",
+              "label": "Chlorination",
+              "is_correct": false,
+              "explainer": ""
+            }
+          ]
+        },
+        "model_used": "deepseek-v4-pro"
+      }
+    ],
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:52:40Z",
+        "completed_at": "2026-10-20T05:52:40Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:52:40Z",
+        "completed_at": "2026-10-20T05:52:41Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:52:41Z",
+        "completed_at": "2026-10-20T05:52:52Z",
+        "attempt": 1,
+        "input_tokens": 1460,
+        "output_tokens": 520,
+        "notes": "candidate produced"
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:52:52Z",
+        "completed_at": "2026-10-20T05:52:53Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:52:53Z",
+        "completed_at": "2026-10-20T05:53:01Z",
+        "attempt": 1,
+        "input_tokens": 1980,
+        "output_tokens": 240,
+        "notes": "Stand-in critic note (K187): the golden run records the scenario chip’s own.",
+        "accepted": true,
+        "suggested_revisions": []
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:53:01Z",
+        "completed_at": "2026-10-20T05:53:01Z",
+        "attempt": 1,
+        "notes": "Stand-in critic note (K187): the golden run records the scenario chip’s own."
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:53:10Z",
+        "completed_at": "2026-10-20T05:53:10Z",
+        "attempt": 1,
+        "notes": "accepted"
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.newater",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/82f19d33-8b9b-7489-a248-116fa8fe559c/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "82f19d33-8b9b-7489-a248-116fa8fe559c",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Deep Tunnel Sewerage System",
+    "focalConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+    "rationale": "Deep tunnels carry used water by gravity to the plants where NEWater is made.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:34:10Z"
+  }
+}

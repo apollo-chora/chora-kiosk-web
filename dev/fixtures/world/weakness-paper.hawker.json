@@ -1,0 +1,67 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption growth_edge_uploads_handler.go:67-97 (the job; the panel only while AWAITING_REVIEW); paper.hawker, its panel the mockup world's stand-in",
+  "method": "GET",
+  "path": "/api/v1/me/growth-edges/uploads/bb4db956-552b-78bf-8cec-718113c262cd",
+  "status": 200,
+  "body": {
+    "upload_id": "bb4db956-552b-78bf-8cec-718113c262cd",
+    "status": "AWAITING_REVIEW",
+    "review": {
+      "familiar": {
+        "familiar_id": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+        "name": "Ember"
+      },
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "e5687d12-7301-7202-9ac4-558ecb7ef8d1",
+          "concept_label": "UNESCO Intangible Cultural Heritage",
+          "summary": "Distinguishing between tangible World Heritage sites (places) and Intangible Cultural Heritage (living practices).",
+          "strength": 0.9,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "747ddd2d-74e0-79b1-b207-395d67d0579d",
+          "concept_label": "Singaporean Coffee Nomenclature",
+          "summary": "Understanding the specific suffixes in local coffee ordering (e.g., 'O' vs 'C').",
+          "strength": 0.7,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "6556df82-2ecf-7c9b-a798-8d81df96aeff",
+          "concept_label": "Historical Purpose of Hawker Centres",
+          "summary": "Understanding the public health and hygiene drivers behind the transition from street hawking to centralized centres in the 1970s/80s.",
+          "strength": 0.9,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "8427baeb-984d-723e-be17-9f10c12d3f3b",
+          "concept_label": "Teh Tarik Preparation Technique",
+          "summary": "Recognizing the functional purposes of the 'pulling' motion in Teh Tarik beyond temperature control.",
+          "strength": 0.4,
+          "suggested_difficulty": "standard"
+        }
+      ],
+      "candidate_struggles": [],
+      "available_outputs": []
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/growth-edges/uploads/bb4db956-552b-78bf-8cec-718113c262cd/resume$"
+      ],
+      "status": 200,
+      "body": {
+        "upload_id": "bb4db956-552b-78bf-8cec-718113c262cd",
+        "status": "COMPLETED",
+        "upserted_growth_edge_ids": [
+          "00587326-a64a-78b4-bdb1-1d168f14a280",
+          "a4857221-05de-7d15-8118-a099d236417d",
+          "5117fc00-6760-7e8d-97c1-65b2765692d0",
+          "f62358ab-598c-76c2-87e3-045bc05c2c02"
+        ]
+      }
+    }
+  ]
+}

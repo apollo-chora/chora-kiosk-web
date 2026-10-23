@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); dev/world/f43-presses.recorded.json (the owner's presses of 19 Oct, chora_consumption rows read only, ends by title), press 1",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/01a1544f-53ce-7ff9-9101-d9aa903a39a8/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "01a1544f-53ce-7ff9-9101-d9aa903a39a8",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Environmental impact of desalination",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Brine discharge and marine effects in Singapore context",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-19T13:17:25.759098+00:00"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "format": "chora-kiosk/contract-plan/v1",
+  "about": "W68 (T3.3): the reads tools/contract/record.mjs records, GET only, one at a time, through the kiosk edge, on the untouched prepared start, each expanded over the golden run's manifest (a world key prefix, or a prepared choice kind and its records). Each route's server handler was read for writes on 22 Oct (census of every GET kiosk-web's clients send, re-derived for the serve door, the xray and the dose read): all are pure reads but the serve door, which writes on a miss, the xray, which calls the serve door, and the dose read. The serve door is read only for the golden run's prepared sets and the run stops at its first answer that is not ready; an xray is read only after its own set was served ready.",
+  "routes": [
+    { "id": "kiosk.readiness", "path": "/api/v1/kiosk/readiness" },
+    { "id": "kiosk.manifest", "path": "/api/v1/kiosk/prewarm/manifest" },
+    { "id": "kiosk.reset", "path": "/api/v1/kiosk/reset" },
+    { "id": "kiosk.visits", "path": "/api/v1/kiosk/visits" },
+    { "id": "maps.list", "path": "/api/v1/me/maps" },
+    { "id": "maps.graph", "path": "/api/v1/me/maps/{id}/graph", "each": { "world": "goal." } },
+    { "id": "suggestions.list", "path": "/api/v1/me/concept-graph/suggestions", "query": { "goalId": "{id}" }, "each": { "world": "goal." } },
+    { "id": "suggestions.request", "path": "/api/v1/me/concept-graph/suggestions/requests/{request_id}", "each": { "kind": "suggestions" } },
+    {
+      "id": "campaign.serve",
+      "path": "/api/v1/me/goals/{goal_id}/campaign/questions",
+      "query": { "concept_id": "{concept_id}", "rung": "{rung}" },
+      "each": { "kind": "practice_set" },
+      "expect": {
+        "field": "status",
+        "equals": "ready",
+        "why": "a serve that is not ready adopts a set or spends a tap and starts the qgen crew (consumption goals_campaign_questions_handler.go:130-152), so this read may have written"
+      }
+    },
+    {
+      "id": "kiosk.xray",
+      "path": "/api/v1/kiosk/xray/{trace_id}",
+      "query": { "kind": "campaign_set", "goal_id": "{goal_id}", "concept_id": "{concept_id}", "rung": "{rung}" },
+      "each": { "kind": "practice_set" },
+      "requires": {
+        "route": "campaign.serve",
+        "field": "status",
+        "equals": "ready",
+        "why": "the xray calls the serve door for its set (kiosk-conductor app/xray.go:121-123)"
+      }
+    },
+    { "id": "companions.growth", "path": "/api/v1/me/companions/{id}/growth", "each": { "world": "companion." } },
+    { "id": "companions.growth-events", "path": "/api/v1/me/companions/{id}/growth-events", "each": { "world": "companion." } },
+    { "id": "companions.skills", "path": "/api/v1/me/companions/{id}/skills", "each": { "world": "companion." } },
+    { "id": "atoms.get", "path": "/api/atoms/{id}", "each": { "world": "atom." } },
+    { "id": "jobs.draft", "path": "/api/atoms/{atom_id}/question-jobs/{job_id}", "each": { "kind": "question_draft" } },
+    { "id": "jobs.words", "path": "/api/atoms/{atom_id}/question-jobs/{job_id}", "each": { "kind": "word_revision" } },
+    { "id": "jobs.picture", "path": "/api/atoms/{atom_id}/question-jobs/{regen_job_id}", "each": { "kind": "picture_regen" } },
+    { "id": "banks.get", "path": "/api/v1/question-banks/{bank_id}", "each": { "kind": "bank" } },
+    { "id": "test-sets.get", "path": "/api/v1/test-sets/{test_set_id}", "each": { "kind": "bank" } },
+    { "id": "assessments.take", "path": "/api/v1/me/assessments/{assessment_id}", "each": { "kind": "graded_sample" } },
+    { "id": "assessments.grading", "path": "/api/v1/assessments/{assessment_id}/submissions/{submission_id}/grading", "each": { "kind": "graded_sample" } },
+    { "id": "uploads.read", "path": "/api/v1/me/growth-edges/uploads/{upload_id}", "each": { "kind": "weakness_paper" } },
+    { "id": "today.dashboard", "path": "/api/me/dashboard" },
+    { "id": "today.mana", "path": "/api/v1/me/mana" }
+  ],
+  "never": [
+    {
+      "path": "^/api/companion/daily-dose(/|$)",
+      "why": "every dose read publishes daily_dose.served.v1, upserts the streak and adds 50 XP (consumption companion_handlers.go:933-968), and /ai calls a model"
+    }
+  ],
+  "not_read_only": [
+    { "route": "POST /api/v1/kiosk/session", "why": "the recorder makes this one call, and its answer is the session token, so it is never written" },
+    { "route": "GET /api/companion/daily-dose?goal_id=", "why": "writes on every read (the never list)" },
+    { "route": "GET /api/v1/me/goals/{goal}/campaign/questions on a concept with no ready set (a V1 twin, a new idea)", "why": "adopts a set or spends a tap and starts the qgen crew" },
+    { "route": "GET /api/v1/me/goals/{goal}/campaign/questions/fresh/{fresh_set_id}", "why": "a fresh set exists only after a LIVE press (POST .../fresh, a model call)" },
+    { "route": "GET /api/v1/me/assessments/{id} in progress (the dashboard's own take)", "why": "needs POST /api/v1/assessments and a start; the graded samples' reads are recorded instead" },
+    { "route": "the answers to every POST and PATCH the clients send (accept, answer, submit, request-grading, regenerate-image, generate, greeting, create, start, save, approve, release, grade edits, a review's confirm, an upload, visits, reset, readiness)", "why": "each writes, and most start a model call" }
+  ]
+}

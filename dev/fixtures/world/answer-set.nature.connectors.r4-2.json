@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); set.nature.connectors.r4, option Schools and shopping malls",
+  "method": "POST",
+  "path": "/api/v1/me/goals/ee509ced-84c3-7947-b40e-aaac7b613781/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "c34a44c5-04f5-724e-81cf-e673c05aeedd",
+    "selected_option_id": "414e3cfa27eb0ed7"
+  },
+  "status": 200,
+  "body": {
+    "correct": false,
+    "rung": 4,
+    "is_refresher": false,
+    "counted": false,
+    "cleared_rung": 0,
+    "won": false,
+    "paced_today": false,
+    "rungs_cleared": 3,
+    "current_rung_correct": 0,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "faed54e894ae287d",
+    "explainer": "Park connectors link parks and green spaces across Singapore, so people can walk and cycle between them."
+  }
+}

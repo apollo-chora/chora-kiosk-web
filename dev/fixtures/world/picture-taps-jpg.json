@@ -1,0 +1,9 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "a picture the golden run would make, drawn by make-fixtures.mjs (ILLUS_IMG.taps, mockup 2609)",
+  "method": "GET",
+  "path": "/KIOSK_DEV_FIXTURE/pictures/taps.jpg",
+  "status": 200,
+  "file": "pictures/taps.jpg",
+  "content_type": "image/jpeg"
+}

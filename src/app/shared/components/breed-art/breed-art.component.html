@@ -1,0 +1,33 @@
+<figure
+  class="breed-art"
+  [class.is-shiny]="shiny()"
+  [class.is-bare]="bare()"
+  [attr.data-mood]="mood()"
+  [attr.data-stage]="stage()"
+  [attr.data-breed]="species()"
+  [attr.data-fallback]="isFallback() ? 'true' : null"
+  [style.--breed-art-w.px]="dimensions().width"
+  [style.--breed-art-h.px]="dimensions().height"
+  data-testid="breed-art">
+  <img
+    class="breed-art__image"
+    [src]="artUrl()"
+    [alt]="altText()"
+    [width]="dimensions().width"
+    [height]="dimensions().height"
+    loading="lazy" />
+  @if (shiny()) {
+    <span class="breed-art__shiny" aria-hidden="true">
+      <i class="fa-solid fa-sparkles"></i>
+    </span>
+  }
+  @if (isFallback()) {
+    <figcaption
+      class="breed-art__fallback-badge"
+      [attr.aria-label]="'familiar.breed_art_pending_aria' | translate"
+      data-testid="breed-art-pending">
+      <i class="fa-solid fa-paintbrush" aria-hidden="true"></i>
+      {{ 'familiar.breed_art_pending' | translate }}
+    </figcaption>
+  }
+</figure>

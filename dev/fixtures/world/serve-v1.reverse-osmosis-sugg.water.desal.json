@@ -1,0 +1,125 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_questions_handler.go (status ready, sanitised: is_correct and explainer stripped, options re-keyed by served_id.go and sorted; V5 trace); v1.reverse-osmosis, adopted (V1) by the concept the accept mints; the question of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/me/goals/8897f102-bb85-7701-ba94-9c60bbca2258/campaign/questions",
+  "query": {
+    "concept_id": "6cf0bffd-5324-7a37-8738-e7ee27be85a9",
+    "rung": "1"
+  },
+  "status": 200,
+  "body": {
+    "status": "ready",
+    "concept_id": "6cf0bffd-5324-7a37-8738-e7ee27be85a9",
+    "concept_key": "reverse-osmosis",
+    "rung": 1,
+    "questions": {
+      "candidates": [
+        {
+          "question_type": "mcq",
+          "stem": "Both NEWater and desalinated water pass through one step that pushes water through a membrane fine enough to hold back dissolved salts. Which step is it?",
+          "options": [
+            {
+              "option_id": "0c53b4949f5434f2",
+              "label": "UV disinfection"
+            },
+            {
+              "option_id": "45a9397fcce7f69e",
+              "label": "Microfiltration"
+            },
+            {
+              "option_id": "9b18981455332e7e",
+              "label": "Sedimentation"
+            },
+            {
+              "option_id": "c16193213247371d",
+              "label": "Reverse osmosis"
+            }
+          ]
+        }
+      ]
+    },
+    "source": "question_bank",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:39:20Z",
+        "completed_at": "2026-10-20T05:39:24Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:20Z",
+        "completed_at": "2026-10-20T05:39:24Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:20Z",
+        "completed_at": "2026-10-20T05:39:24Z"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:24Z",
+        "completed_at": "2026-10-20T05:39:28Z",
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:34Z",
+        "completed_at": "2026-10-20T05:39:38Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:38Z",
+        "completed_at": "2026-10-20T05:39:42Z",
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:39:42Z",
+        "completed_at": "2026-10-20T05:39:46Z",
+        "attempt": 1,
+        "accepted": true
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:39:46Z",
+        "completed_at": "2026-10-20T05:39:50Z",
+        "attempt": 1
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:46Z",
+        "completed_at": "2026-10-20T05:39:50Z"
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:46Z",
+        "completed_at": "2026-10-20T05:39:50Z"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:39:46Z",
+        "completed_at": "2026-10-20T05:39:50Z"
+      }
+    ],
+    "trace_id": "89286d55c076effa65a559ae535eb43e"
+  }
+}

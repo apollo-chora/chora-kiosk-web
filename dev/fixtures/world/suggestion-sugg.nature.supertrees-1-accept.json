@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.nature.supertrees",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/4d8c1026-9405-7c71-b21a-17ef193621cd/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "4d8c1026-9405-7c71-b21a-17ef193621cd",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Solar power",
+    "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+    "rationale": "Some Supertrees carry solar panels on top.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:32:30Z"
+  }
+}

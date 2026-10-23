@@ -1,0 +1,159 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "kiosk conductor xray.go (Compose: the serve door's trace, then the governance decisions; shape recorded 19 Oct, src/app/xray/xray.recorded.json); set.hawker.unesco.r3",
+  "method": "GET",
+  "path": "/api/v1/kiosk/xray/8c8870a244dafa3419468d6eccaae4e8",
+  "query": {
+    "kind": "campaign_set",
+    "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+    "concept_id": "df1b5701-d242-76a8-8502-8397e7021366",
+    "rung": "3"
+  },
+  "status": 200,
+  "body": {
+    "run_id": "8c8870a244dafa3419468d6eccaae4e8",
+    "kind": "campaign_set",
+    "trace_id": "8c8870a244dafa3419468d6eccaae4e8",
+    "generated_at": "2026-10-20T05:44:50Z",
+    "stages": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:44:20Z",
+        "completed_at": "2026-10-20T05:44:24Z",
+        "duration_ms": 4000,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:20Z",
+        "completed_at": "2026-10-20T05:44:24Z",
+        "duration_ms": 4000,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": "simulated_on_local"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:20Z",
+        "completed_at": "2026-10-20T05:44:24Z",
+        "duration_ms": 4000,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:24Z",
+        "completed_at": "2026-10-20T05:44:28Z",
+        "duration_ms": 4000,
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640,
+        "safety": null
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:34Z",
+        "completed_at": "2026-10-20T05:44:38Z",
+        "duration_ms": 4000,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": "simulated_on_local"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:38Z",
+        "completed_at": "2026-10-20T05:44:42Z",
+        "duration_ms": 4000,
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310,
+        "safety": null
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:44:42Z",
+        "completed_at": "2026-10-20T05:44:46Z",
+        "duration_ms": 4000,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "accepted": true,
+        "safety": null
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:44:46Z",
+        "completed_at": "2026-10-20T05:44:50Z",
+        "duration_ms": 4000,
+        "attempt": 1,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:46Z",
+        "completed_at": "2026-10-20T05:44:50Z",
+        "duration_ms": 4000,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:46Z",
+        "completed_at": "2026-10-20T05:44:50Z",
+        "duration_ms": 4000,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:44:46Z",
+        "completed_at": "2026-10-20T05:44:50Z",
+        "duration_ms": 4000,
+        "attempt": null,
+        "input_tokens": null,
+        "output_tokens": null,
+        "safety": null
+      }
+    ],
+    "decisions": [
+      {
+        "agent": "qgen_question",
+        "decision": "accepted",
+        "at": "2026-10-20T05:44:50Z",
+        "model": "",
+        "reasoning_summary": "all 1 candidate(s) accepted"
+      },
+      {
+        "agent": "qgen_critic",
+        "decision": "accepted",
+        "at": "2026-10-20T05:44:50Z",
+        "model": "",
+        "reasoning_summary": "all 1 candidate(s) accepted"
+      }
+    ]
+  }
+}

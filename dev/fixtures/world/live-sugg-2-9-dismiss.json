@@ -1,0 +1,19 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); dev/world/f43-presses.recorded.json (the owner's presses of 19 Oct, chora_consumption rows read only, ends by title), press 2",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/01a1544f-9a69-7196-ba96-2ece0c9031ca/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "01a1544f-9a69-7196-ba96-2ece0c9031ca",
+    "kind": "edge",
+    "status": "dismissed",
+    "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+    "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+    "class": "lateral",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Reservoirs store water collected from local catchments",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-19T13:17:44.000975+00:00"
+  }
+}

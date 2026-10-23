@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.nature.supertrees",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/55615ef6-d924-776c-b325-b898a657220d/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "55615ef6-d924-776c-b325-b898a657220d",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Vertical gardens",
+    "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+    "rationale": "Supertrees are covered in living plants, like gardens standing upright.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:32:30Z"
+  }
+}

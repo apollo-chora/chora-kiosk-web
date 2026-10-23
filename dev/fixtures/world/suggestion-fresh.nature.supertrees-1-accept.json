@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.nature.supertrees",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/eeaf30a2-38de-7c78-894b-5cde8b96e1c9/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "eeaf30a2-38de-7c78-894b-5cde8b96e1c9",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Rainwater harvesting",
+    "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+    "rationale": "Some Supertrees collect rainwater that is used to water the gardens’ plants.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:36:40Z"
+  }
+}

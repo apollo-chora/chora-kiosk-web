@@ -1,0 +1,152 @@
+// Copied from chora-web at eeaec46eb (src/styles/_tokens.scss), values unchanged; only the comments' dashes differ (the kiosk's no-dash style rule).
+:root {
+  // Primary branding
+  // ⚠ `--chora-color-primary` is a BRAND/SURFACE colour, not a text colour.
+  // At #1976d2 it clears WCAG AA 4.5:1 only against near-white, and it has now
+  // drifted into TEXT in three separate components (A+ sidebar active label
+  // 2026-05-17; R+ offering-workspace tab + R+ exam-workspace tab 2026-07-15,
+  // both ~4.4:1). Use it for fills, borders, underlines, focus rings and other
+  // non-text indicators (those need only 3:1 per WCAG 1.4.11) - and use
+  // `--chora-color-primary-strong` the moment it becomes `color:`.
+  // Large text (>=24px, or >=18.66px bold) needs only 3:1, so `--chora-color-primary`
+  // on a big bold heading is legitimate: this is a rule to APPLY, not to
+  // blanket-replace. Measure the specific pair before changing it.
+  --chora-color-primary: #1976d2;
+  // `--chora-color-primary-strong` - AA-safe text colour intended for use
+  // on the lightly-tinted primary background (`rgba(25,118,210,0.08)` ≈
+  // #edf4fb over white). #0d47a1 yields ~7.35:1 on that pair (the default
+  // primary #1976d2 scored only 4.14:1, below WCAG AA 4.5:1 for normal
+  // text). Adopted 2026-05-17 to close the axe color-contrast finding on
+  // the sidebar active label. Reuse anywhere primary text lands on a
+  // primary-tinted surface.
+  --chora-color-primary-strong: #0d47a1;
+  --chora-color-secondary: #7b1fa2;
+
+  // Surface-A+ accent (Phyllis essay-chip + my-atoms list).
+  // `--chora-color-accent-aplus-strong` - AA-safe text colour for the
+  // lightly-tinted accent background (`rgba(59,130,246,0.12)` ≈ #e3ecfa
+  // over white). #1d4ed8 yields ~8.8:1 on that pair (the previous
+  // #3b82f6 scored only 3.09:1, below WCAG AA 4.5:1). Adopted
+  // 2026-05-17 to close the axe color-contrast finding on the essay
+  // question-type chip in the "Your recent atoms" list.
+  --chora-color-accent-aplus-strong: #1d4ed8;
+
+  // Semantic feedback
+  --chora-color-success: #2e7d32;
+  --chora-color-warning: #f9a825;
+  --chora-color-danger: #d32f2f;
+
+  // AA-safe values for six tokens that were referenced-but-undefined and whose
+  // var() fallbacks painted live WCAG AA failures on text (CHO-1602). Measured
+  // worst-case over #ffffff and #f5f5f5 (normal-text 4.5:1 floor); defining them
+  // collapses the drifting per-site fallbacks onto one readable colour and lets
+  // them leave token-contract's PRE_EXISTING_DRIFT quarantine.
+  --chora-color-accent-aplus: #1d4ed8; // = -accent-aplus-strong (blue-700); 6.70:1 / 6.15:1
+  --chora-color-accent: #7b1fa2; // = --chora-color-secondary (purple-700), AA-safe sibling of the #c084fc fallback; 8.20:1 / 7.52:1
+  --chora-color-accent-rplus: #6d28d9; // violet-700, AA-safe darkening of the #8b5cf6 fallback (keeps the R+ violet hue); 7.10:1 / 6.52:1
+  --chora-color-info: #1d4ed8; // = polyglass --info-strong (blue-700); 6.70:1 / 6.15:1
+  --chora-color-warning-text: #92400e; // = polyglass --warning-strong (amber-800); 7.09:1 / 6.50:1
+  // Error is its own semantic, NOT an alias of --chora-color-danger (#d32f2f,
+  // red-700): Material red-800, one step darker and visually adjacent; 5.62:1 / 5.16:1
+  --chora-color-error: #c62828;
+
+  // Behavioral loop colors
+  --chora-color-curiosity: #7c4dff;
+  --chora-color-reward: #ffab00;
+  --chora-color-social: #00bcd4;
+
+  // Familiar accent
+  --chora-color-familiar: #e91e63;
+
+  // Surfaces
+  --chora-color-surface-0: #fafafa;
+  --chora-color-surface-1: #ffffff;
+  --chora-color-surface-2: #f5f5f5;
+
+  // Text
+  --chora-color-text-primary: #212121;
+  --chora-color-text-secondary: #616161;
+  --chora-color-text-disabled: #9e9e9e;
+
+  // Text aliases. Until 2026-07-16 these four names existed ONLY as var()
+  // fallbacks: they were referenced ~880 times across the app but never
+  // defined, so every reference silently painted whatever fallback its author
+  // happened to type. Most fallbacks were sensible darks (#666, #111), but the
+  // components authored against a dark theme carried white ones, and those
+  // painted white text onto the light surfaces this app actually has, at about
+  // 1:1 contrast (invisible). Defining the names makes the fallbacks dead code
+  // and gives all ~880 sites one AA-safe colour. Guarded by
+  // `token-contract.spec.ts` (no undefined token) + `text-token-contrast.spec.ts`
+  // (every text colour AA on every surface).
+  --chora-color-text: #212121; // alias of -primary
+  --chora-color-text-muted: #616161; // alias of -secondary
+  --chora-color-text-strong: #212121; // alias of -primary; #212121 is the darkest defined
+  --chora-color-text-tertiary: #616161; // alias of -secondary
+
+  // `--chora-color-text-tertiary-light` is deliberately NOT defined here, and
+  // it is not a text colour despite living in the text namespace. Its only 3
+  // uses are `background:` at alpha 0.1 (a2a-activation.component.scss:346,
+  // partner-registration.component.scss:182, partner-suspension.component.scss:98),
+  // so defining it as a text colour would paint solid dark chips with dark text
+  // on them. It was misnamed. Leave it undefined so those 3 sites keep their
+  // rgba(148,163,184,0.1) tint fallback; the real fix is renaming them onto a
+  // surface/tint token. `token-contract.spec.ts` records this as a named
+  // exception so nobody "helpfully" defines it later.
+  //
+  // `--chora-color-text-faint` is also absent, but for a different reason: it
+  // has no consumers at all. Its only 3 sites were in the authored-courses-panel
+  // deleted on 2026-07-16, so defining it would be dead code.
+  //
+  // Nothing here may alias to `--chora-color-text-disabled` (#9e9e9e, ~2.7:1).
+  // That token is AA-exempt only because WCAG 2.1 SC 1.4.3 exempts inactive
+  // controls; it is not a legal colour for live text.
+
+  // Borders
+  --chora-color-border: #e0e0e0;
+
+  // Developer console
+  --chora-color-console-bg: #1a1a1a;
+  --chora-color-console-text: #00ff41;
+
+  // Spacing (8px base grid)
+  --chora-space-xs: 4px;
+  --chora-space-sm: 8px;
+  --chora-space-md: 16px;
+  --chora-space-lg: 24px;
+  --chora-space-xl: 32px;
+  --chora-space-2xl: 48px;
+
+  // Border radius
+  --chora-radius-sm: 4px;
+  --chora-radius-md: 8px;
+  --chora-radius-lg: 12px;
+  --chora-radius-full: 9999px;
+
+  // Shadows
+  --chora-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --chora-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --chora-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  // Layout
+  --chora-sidebar-width: 240px;
+  --chora-sidebar-collapsed-width: 56px;
+  --chora-top-nav-height: 56px;
+  --chora-familiar-panel-width: 320px;
+
+  // Transitions
+  --chora-transition-fast: 150ms ease-in-out;
+  --chora-transition-normal: 200ms ease-in-out;
+  --chora-transition-slow: 300ms ease-in-out;
+
+  // Reveal easing (owner's first-class UX token, design-language.md §6.9): a
+  // human, decelerating curve for progressive-reveal panels / slide-ins /
+  // node micro-interactions - never linear/abrupt on a reveal.
+  --chora-ease-reveal: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --chora-reveal-slide: 200ms;
+  --chora-reveal-stagger: 120ms;
+
+  // Logical property aliases (RTL-safe)
+  // Use these instead of physical margin-left/right, padding-left/right
+  --chora-sidebar-inset-start: var(--chora-sidebar-width);
+  --chora-sidebar-inset-start-collapsed: var(--chora-sidebar-collapsed-width);
+}

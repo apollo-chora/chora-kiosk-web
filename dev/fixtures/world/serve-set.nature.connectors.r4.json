@@ -1,0 +1,125 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_questions_handler.go (status ready, sanitised: is_correct and explainer stripped, options re-keyed by served_id.go and sorted; V5 trace); set.nature.connectors.r4; the question of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/me/goals/ee509ced-84c3-7947-b40e-aaac7b613781/campaign/questions",
+  "query": {
+    "concept_id": "c34a44c5-04f5-724e-81cf-e673c05aeedd",
+    "rung": "4"
+  },
+  "status": 200,
+  "body": {
+    "status": "ready",
+    "concept_id": "c34a44c5-04f5-724e-81cf-e673c05aeedd",
+    "concept_key": "park-connectors",
+    "rung": 4,
+    "questions": {
+      "candidates": [
+        {
+          "question_type": "mcq",
+          "stem": "What does Singapore’s Park Connector Network link up?",
+          "options": [
+            {
+              "option_id": "04c9ec334f08ed2d",
+              "label": "Hawker centres and MRT stations"
+            },
+            {
+              "option_id": "414e3cfa27eb0ed7",
+              "label": "Schools and shopping malls"
+            },
+            {
+              "option_id": "ccf55ca3bbdad53a",
+              "label": "Reservoirs and the sea"
+            },
+            {
+              "option_id": "faed54e894ae287d",
+              "label": "Parks and green spaces across the island"
+            }
+          ]
+        }
+      ]
+    },
+    "source": "question_bank",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:43:30Z",
+        "completed_at": "2026-10-20T05:43:34Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:30Z",
+        "completed_at": "2026-10-20T05:43:34Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:30Z",
+        "completed_at": "2026-10-20T05:43:34Z"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:34Z",
+        "completed_at": "2026-10-20T05:43:38Z",
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:44Z",
+        "completed_at": "2026-10-20T05:43:48Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:48Z",
+        "completed_at": "2026-10-20T05:43:52Z",
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:43:52Z",
+        "completed_at": "2026-10-20T05:43:56Z",
+        "attempt": 1,
+        "accepted": true
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:43:56Z",
+        "completed_at": "2026-10-20T05:44:00Z",
+        "attempt": 1
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:56Z",
+        "completed_at": "2026-10-20T05:44:00Z"
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:56Z",
+        "completed_at": "2026-10-20T05:44:00Z"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:56Z",
+        "completed_at": "2026-10-20T05:44:00Z"
+      }
+    ],
+    "trace_id": "9e988b155c9e4d7e862b8bd9960b1cec"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); dev/world/f43-presses.recorded.json (the owner's presses of 19 Oct, chora_consumption rows read only, ends by title), press 1",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/01a1544f-53ce-7c99-b2a3-1f974214a2cb/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "01a1544f-53ce-7c99-b2a3-1f974214a2cb",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Desalination plants",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Key infrastructure supplying fresh water via desalination",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-19T13:17:25.759098+00:00"
+  }
+}

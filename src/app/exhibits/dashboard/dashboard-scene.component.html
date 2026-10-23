@@ -1,0 +1,348 @@
+<div class="exhibit">
+  <div class="ex-head">
+    <div>
+      <div class="crumb">{{ 'db.kicker' | translate }}</div>
+      @if (exhibit.mode() === 'take') {
+        <h2>{{ 'dbx.title' | translate }}</h2>
+        <p>{{ (exhibit.attempt()?.status === 'submitted' ? 'dbx.subDone' : 'dbx.sub') | translate }}</p>
+      } @else {
+        <h2>{{ 'db.title' | translate }}</h2>
+        <p>{{ 'db.sub' | translate }}</p>
+      }
+    </div>
+  </div>
+  @switch (exhibit.status()) {
+    @case ('failed') {
+      <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+    }
+    @case ('ready') {
+      @if (exhibit.mode() === 'take' && exhibit.picked() && exhibit.attempt(); as a) {
+        <div class="dbx">
+          <div class="dbx-head glass">
+            <span [class]="'db-chip ' + chip(a).cls">
+              @if (a.status === 'submitted') {
+                <kiosk-icon name="check" />
+              }
+              {{ chip(a).key | translate }}
+            </span>
+            <div class="dbx-title">
+              <h3 kioskContent>{{ exhibit.picked()?.testSet?.title }}</h3>
+              <span>{{ 'dbx.meta' | translate: { n: a.take?.questions?.length, w: ('db.windowVal' | translate: window(a)) } }}</span>
+            </div>
+            @if (question(); as v) {
+              <span class="dbx-prog">
+                <span class="dbx-dots" aria-hidden="true">
+                  @for (x of a.take?.questions; track x.test_set_question_id; let i = $index) {
+                    <i [class.on]="i === v.idx" [class.ans]="!!a.answers.get(x.test_set_question_id)?.trim()"></i>
+                  }
+                </span>
+                {{ 'dbx.of' | translate: { i: v.idx + 1, n: v.n } }}
+              </span>
+            }
+          </div>
+          @if (question(); as v) {
+            <div class="dbx-card glass" [class.two]="!!side()">
+              <div class="dbx-main">
+                <div class="dbx-qtop">
+                  <span class="dbx-num">{{ v.idx + 1 }}</span>
+                  <span class="dbx-kind" [class.oe]="v.q.question_type === 'oe'">{{ (v.q.question_type === 'oe' ? 'db.oe' : 'db.mcq') | translate }}</span>
+                  <span class="dbx-pts">{{ 'db.pts' | translate: { n: v.q.points ?? v.q.points_possible } }}</span>
+                </div>
+                <p class="dbx-stem" kioskContent>{{ v.stem }}</p>
+                @if (v.q.question_type === 'mcq') {
+                  <div class="opts dbx-opts" role="radiogroup">
+                    @for (o of v.options; track o.id; let i = $index) {
+                      <button
+                        class="opt"
+                        [class.sel]="v.value === o.id"
+                        data-act="dbxPick"
+                        role="radio"
+                        [attr.aria-checked]="v.value === o.id"
+                        [disabled]="!!exhibit.busy()"
+                        (click)="exhibit.answer(v.q.test_set_question_id, o.id)">
+                        <span class="mk">{{ marker(i) }}</span><span kioskContent>{{ o.text }}</span>
+                      </button>
+                    }
+                  </div>
+                  <!-- W26 (K161): the key was written with the question, so the mark is deterministic (the contract with grading). -->
+                  <div class="dbx-hint dbx-mcq-note"><kiosk-icon name="info" /><span>{{ 'dbx.mcqNote' | translate }}</span></div>
+                } @else {
+                  <label class="dbx-lbl" for="dbxtext">{{ 'grade.answer' | translate }}</label>
+                  <textarea
+                    id="dbxtext"
+                    maxlength="600"
+                    [placeholder]="'dbx.ph' | translate"
+                    [value]="v.value"
+                    [disabled]="!!exhibit.busy()"
+                    (input)="exhibit.answer(v.q.test_set_question_id, $any($event.target).value)"></textarea>
+                  <div class="dbx-hint"><kiosk-icon name="info" /><span>{{ 'dbx.oeHint' | translate }}</span></div>
+                }
+                @if (exhibit.failed() === 'submit') {
+                  <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+                }
+                <div class="dbx-nav">
+                  <button class="btn btn-quiet btn-sm" data-act="dbxPrev" [disabled]="!!exhibit.busy()" (click)="exhibit.step(-1)">
+                    {{ (v.idx === 0 ? 'dbx.toList' : 'dbx.prevQ') | translate }}
+                  </button>
+                  @if (exhibit.unanswered(); as u) {
+                    <p class="dbx-unanswered" role="status">{{ 'dbx.unansweredWarn' | translate: u }}</p>
+                  }
+                  @if (v.last) {
+                    <button class="btn btn-primary btn-sm" data-act="dbxSubmit" [disabled]="!!exhibit.busy()" (click)="exhibit.submit()">
+                      @if (exhibit.busy() === 'submit') {
+                        <span class="db-spin" aria-hidden="true"></span>{{ 'dbx.submitting' | translate }}
+                      } @else {
+                        {{ (exhibit.unanswered() ? 'dbx.submitAnyway' : 'dbx.submit') | translate }}
+                      }
+                    </button>
+                  } @else {
+                    <button class="btn btn-primary btn-sm" data-act="dbxNext" (click)="exhibit.step(1)">{{ 'dbx.nextQ' | translate }} <kiosk-icon name="arrow" /></button>
+                  }
+                </div>
+              </div>
+              @if (side(); as s) {
+                <div class="dbx-side">
+                  <div class="dbx-side-h">
+                    <b>{{ 'img.label' | translate }}</b>
+                    @if (s.modeKey) {
+                      <span class="mode-tag">{{ s.modeKey | translate }}</span>
+                    }
+                  </div>
+                  <div class="dbx-pic">
+                    <img [src]="s.url" [alt]="s.altKey | translate" />
+                    <span class="ai-mark"><kiosk-icon name="ai" />{{ 'ai.mark' | translate }}</span>
+                  </div>
+                  @if (s.when || s.caption) {
+                    <div class="dbx-ver">
+                      @if (s.when) {
+                        <span><kiosk-icon name="clock" />{{ 'db.src.morning' | translate: { when: s.when } }}<kiosk-prepared-info /></span>
+                      }
+                      @if (s.kept) {
+                        <span><kiosk-icon name="info" />{{ 'dbx.keptDemo' | translate }}</span>
+                      }
+                      @if (s.caption) {
+                        <span>{{ 'dbx.q3Cap' | translate }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+          @if (results(); as r) {
+            <div class="dbx-done">
+              <div class="dbx-card glass dbx-resc">
+                <div class="dbx-sum">
+                  @if (r.total; as t) {
+                    <b>{{ 'dbx.total' | translate: t }}</b><span>{{ 'dbx.sum' | translate: { p: r.got, m: r.of } }}</span>
+                  } @else if (r.oe) {
+                    <b>{{ 'dbx.sum' | translate: { p: r.got, m: r.of } }}</b><span>{{ 'dbx.sumOE' | translate: { m: r.oe.points } }}</span>
+                  } @else {
+                    <b>{{ 'dbx.total' | translate: { p: r.got, m: r.of } }}</b>
+                  }
+                </div>
+                <ol class="dbx-rlist">
+                  @for (row of r.rows; track row.id; let i = $index) {
+                    <li class="dbx-res">
+                      <span class="n">{{ i + 1 }}</span>
+                      <div>
+                        <div class="stem" kioskContent>{{ row.stem }}</div>
+                        @if (row.type === 'mcq') {
+                          @if (!row.answered) {
+                            <span class="dbx-out no">{{ 'dbx.unanswered' | translate }} · {{ 'db.pts' | translate: { n: 0 } }}</span>
+                          } @else {
+                            <span class="dbx-out" [class.ok]="row.correct" [class.no]="!row.correct">
+                              @if (row.correct) {
+                                <kiosk-icon name="check" />
+                              }
+                              {{ (row.correct ? 'dbx.right' : 'dbx.wrong') | translate }} · {{ 'db.pts' | translate: { n: row.earned } }}
+                            </span>
+                          }
+                          @if ((!row.correct && row.key) || row.why) {
+                            <div class="dbx-notes">
+                              @if (!row.correct && row.key) {
+                                <span class="dbx-key" kioskContent>{{ 'dbx.key' | translate: { k: row.key } }}</span>
+                              }
+                              @if (row.why) {
+                                <span class="dbx-why" kioskContent>{{ row.why }}</span>
+                              }
+                            </div>
+                          }
+                        } @else if (row.oe === 'released') {
+                          <span class="dbx-out ok"><kiosk-icon name="check" />{{ 'dbx.oeReleased' | translate: { s: row.score, m: row.points } }}</span>
+                          <div class="dbx-notes"><span class="dbx-why">{{ 'grade.releasedBy' | translate }}</span></div>
+                        } @else if (row.oe === 'empty') {
+                          <span class="dbx-out wait">{{ 'dbx.oeEmpty' | translate }}</span>
+                        } @else {
+                          <span class="dbx-out wait"><kiosk-icon name="clock" />{{ 'dbx.oeWaiting' | translate }}</span>
+                          <div class="dbx-notes"><span class="dbx-why">{{ 'dbx.oeHeld' | translate }}</span></div>
+                        }
+                      </div>
+                    </li>
+                  }
+                </ol>
+                <div class="dbx-release"><kiosk-icon name="info" /><span>{{ 'dbx.releaseNote' | translate }}</span></div>
+              </div>
+              <div class="dbx-narr glass">
+                <div class="kick">{{ 'dbx.narrKick' | translate }}</div>
+                <h3>{{ (r.oe ? 'dbx.narrTitle' : 'dbx.narrTitleMcq') | translate }}</h3>
+                <div class="dbx-way"><b>{{ 'dbx.narrMcqH' | translate }}</b><p>{{ 'dbx.narrMcq' | translate }}</p></div>
+                @if (r.oe) {
+                  <div class="dbx-way oe"><b>{{ 'dbx.narrOeH' | translate }}</b><p>{{ 'dbx.narrOe' | translate }}</p></div>
+                }
+                @if (r.held) {
+                  <p class="dbx-kiosk">{{ 'dbx.narrKiosk' | translate }}</p>
+                }
+                @if (r.oe && 'oe' in r.oe && (r.oe.oe === 'waiting' || (r.oe.oe === 'empty' && canSample()))) {
+                  <button class="btn btn-curiosity btn-sm" data-act="dbxToGrade" (click)="toGrade()">
+                    {{ (r.oe.oe === 'waiting' ? 'dbx.toGrade' : 'dbx.toGradeSample') | translate: { x: ('ex.grade.title' | translate) } }} <kiosk-icon name="arrow" />
+                  </button>
+                }
+                <button class="link" data-act="dbxList" (click)="exhibit.toList()">{{ 'dbx.toList' | translate }}</button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else {
+      <div class="db-today glass">
+        <div class="db-stat">
+          <span class="ic goal"><kiosk-icon name="goal" /></span>
+          <div><span class="lbl">{{ 'db.goal' | translate }}</span><span class="val" kioskContent>{{ exhibit.goalTitle() }}</span></div>
+          <span class="db-active">{{ 'db.active' | translate }}</span>
+        </div>
+        <span class="db-sep"></span>
+        @if (exhibit.streakDays() !== null) {
+          <div class="db-stat">
+            <span class="ic streak"><kiosk-icon name="flame" /></span>
+            <div><span class="lbl">{{ 'db.streak' | translate }}</span><span class="val">{{ 'db.days' | translate: { n: exhibit.streakDays() } }}</span></div>
+          </div>
+        }
+        @if (exhibit.manaBalance() !== null) {
+          <div class="db-stat">
+            <span class="ic mana"><kiosk-icon name="gem" /></span>
+            <div>
+              <span class="lbl">{{ 'db.mana' | translate }}</span><span class="val">{{ units(exhibit.manaBalance() ?? 0) }}</span>
+              <!-- W43 (K172): what spends mana here, the two debits the ledger verified, never a full price list. -->
+              <span class="db-mana-note">{{ 'db.manaNote' | translate }}</span>
+            </div>
+          </div>
+        }
+        <button class="btn btn-primary btn-sm db-dose" data-act="dbDose" (click)="openDose()">{{ 'db.dose' | translate }}</button>
+      </div>
+      <div class="db-main">
+        <div class="db-banks glass">
+          <div class="db-h">
+            <h3>{{ 'db.banks' | translate }}</h3>
+            <span>{{ 'db.banksHint' | translate }}</span>
+          </div>
+          @for (b of exhibit.banks(); track b.key) {
+            <button
+              class="db-bank"
+              [class.on]="b.key === exhibit.picked()?.key"
+              [class.db-hint]="!exhibit.picked() && b.step4"
+              data-act="dbBank"
+              [attr.data-id]="b.key"
+              [attr.aria-pressed]="b.key === exhibit.picked()?.key"
+              (click)="exhibit.pick(b.key)">
+              <span [class]="'sw ' + b.id"><kiosk-icon [name]="b.icon" /></span>
+              <span>
+                <b kioskContent>{{ b.name }}</b>
+                <span class="meta">{{ 'db.bankMeta' | translate: { n: b.rows.length } }}</span>
+                @if (b.step4) {
+                  <span class="tag">{{ 'db.step4Tag' | translate }}</span>
+                }
+              </span>
+            </button>
+          }
+          <div class="db-flow">
+            @for (i of flow; track i) {
+              @if (i > 1) {
+                <i aria-hidden="true">›</i>
+              }
+              <span [class.on]="i <= lit()">{{ 'db.flow' + i | translate }}</span>
+            }
+          </div>
+          <div class="db-why"><kiosk-icon name="info" /><span>{{ 'db.why' | translate }}</span></div>
+        </div>
+        <div class="db-assess glass">
+          <div class="kick">{{ 'db.feeds' | translate }}</div>
+          @if (exhibit.picked(); as b) {
+            <div class="db-title">
+              <span [class]="'db-chip ' + chip(exhibit.attempt()).cls">
+                @if (exhibit.attempt()?.status === 'submitted') {
+                  <kiosk-icon name="check" />
+                }
+                {{ chip(exhibit.attempt()).key | translate }}
+              </span>
+              <h3 kioskContent>{{ b.testSet.title }}</h3>
+            </div>
+            <dl class="db-meta">
+              @if (exhibit.attempt(); as a) {
+                <div><dt>{{ 'db.window' | translate }}</dt><dd>{{ 'db.windowVal' | translate: window(a) }}</dd></div>
+              }
+              <div><dt>{{ 'db.questions' | translate }}</dt><dd>{{ b.rows.length }}</dd></div>
+              <div><dt>{{ 'db.points' | translate }}</dt><dd>{{ b.testSet.total_points }}</dd></div>
+              @if (exhibit.attempt()?.take; as t) {
+                <div><dt>{{ 'db.attempts' | translate }}</dt><dd>{{ t.learner_attempt_count }} / {{ t.max_attempts }}</dd></div>
+              }
+            </dl>
+            <div class="db-qhead">{{ 'db.qhead' | translate }}</div>
+            <ol class="db-qs">
+              @for (r of b.rows; track r.testSetQuestionId; let i = $index) {
+                <li class="db-q">
+                  <span class="n">{{ i + 1 }}</span>
+                  <div>
+                    <div class="stem" kioskContent>{{ r.stem }}</div>
+                    <div class="tags">
+                      <span [class.oe]="r.type === 'oe'">{{ (r.type === 'oe' ? 'db.oe' : 'db.mcq') | translate }}</span>
+                      @if (source(r.source); as src) {
+                        <span
+                          >{{ src.key | translate: (src.key === 'db.src.alsoGrade' ? { x: ('ex.grade.title' | translate) } : src.params) }}
+                          @if (src.key === 'db.src.morning') {
+                            <kiosk-prepared-info />
+                          }
+                        </span>
+                      }
+                    </div>
+                  </div>
+                  <span class="pts">{{ 'db.pts' | translate: { n: r.points } }}</span>
+                </li>
+              }
+            </ol>
+            <div class="db-act">
+              @if (exhibit.attempt()?.take; as t) {
+                <button class="btn btn-primary btn-sm" data-act="dbxOpen" (click)="exhibit.open()">
+                  {{ (exhibit.attempt()?.status === 'submitted' ? 'dbx.seeResults' : 'dbx.continue') | translate }}
+                </button>
+                @if (exhibit.attempt()?.status === 'submitted') {
+                  <span class="db-note">{{ 'dbx.submittedNote' | translate }}</span>
+                }
+              } @else {
+                <button class="btn btn-primary btn-sm" data-act="dbxTake" [disabled]="!!exhibit.busy()" (click)="exhibit.take()">
+                  @if (exhibit.busy() === 'take') {
+                    <span class="db-spin" aria-hidden="true"></span>{{ 'db.joining' | translate }}
+                  } @else {
+                    {{ 'db.join' | translate }}
+                  }
+                </button>
+                <span class="stamp"><kiosk-icon name="info" />{{ 'db.standIn' | translate }}</span>
+                @if (exhibit.failed() === 'take') {
+                  <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+                }
+              }
+            </div>
+          } @else {
+            <div class="db-empty">
+              <div class="inner"><kiosk-icon name="pointer" /><p>{{ 'db.empty' | translate }}</p></div>
+            </div>
+          }
+        </div>
+      </div>
+      }
+    }
+  }
+</div>
+
+<ng-template #footer>
+  <kiosk-tour-footer><kiosk-xray-button kind="dash" /></kiosk-tour-footer>
+</ng-template>

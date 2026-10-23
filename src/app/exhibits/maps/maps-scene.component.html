@@ -1,0 +1,277 @@
+@if (region(); as r) {
+  <div class="exhibit">
+    <div class="ex-head">
+      <div>
+        <div class="crumb">{{ 'maps.kicker' | translate }} › <b>{{ r.title }}</b></div>
+        <h2>{{ r.title }}</h2>
+      </div>
+    </div>
+  </div>
+  <div class="lens-bar">
+    <!-- K204: the tabs and the campaign line share the row above the map's frame; the caption sits under them. -->
+    <div class="lens-row">
+      <div class="lens-pills" role="radiogroup" [attr.aria-label]="'lens.label' | translate">
+        @for (p of paints; track p.key) {
+          <button class="lens-pill" [class.on]="paint() === p.key" data-act="paint" [attr.data-paint]="p.key" role="radio" [attr.aria-checked]="paint() === p.key" (click)="setPaint(p.key)">
+            <kiosk-icon [name]="p.icon" />{{ 'lens.' + p.key | translate }}
+          </button>
+        }
+      </div>
+      @if (hud(); as h) {
+        <div class="camp-hud">
+          <kiosk-icon name="flag" /><span>{{ h.march ? ('hud.march' | translate: { name: h.name, c: h.march }) : ('hud.unassigned' | translate) }}</span
+          ><span class="hud-won">{{ 'hud.won' | translate: { w: h.won, n: h.n } }}</span>
+        </div>
+      }
+    </div>
+    <!-- K204: two lines under the tabs, the lead bold; one line, so no space slips in before the Chinese rest. -->
+    <p class="lens-cap"><b>{{ 'lens.lead.' + paint() | translate }}</b>{{ 'sp.sentence' | translate }}{{ 'lens.cap.' + paint() | translate }}</p>
+  </div>
+  <div class="lens-host" id="maplens">
+    <!-- Remounted per language (the lens computes its labels with translate.instant()) and per map. -->
+    @for (l of [lang()]; track l) {
+      @for (m of [r.map]; track m.goalId) {
+        <chora-aplus-concept-lens-map
+          [concepts]="m.concepts"
+          [edges]="m.edges"
+          [focusId]="lensFocus()"
+          [rootId]="r.rootId"
+          [lens]="paint()"
+          [campaign]="m.campaign ?? null"
+          [glowIds]="glowIds()"
+          [fogGhosts]="fogGhosts()"
+          [frameHalfX]="frame.halfX"
+          [frameHalfY]="frame.halfY"
+          [chrome]="chrome"
+          [shiftX]="drawer.concept() ? frame.drawerShift : 0"
+          (select)="drawer.open($event)"
+          (fogTap)="drawer.open($event, 'sugg')" />
+      }
+    }
+  </div>
+  <div class="kdrawer glass in-map" id="panel" [class.open]="!!view()">
+    @if (view(); as v) {
+      <div class="kd-bar">
+        <span>{{ 'kd.bar' | translate }}</span
+        ><button class="kd-x" data-act="closeConcept" [attr.aria-label]="'xr.close' | translate" (click)="drawer.close()">×</button>
+      </div>
+      <h3 class="kd-title" kioskContent>{{ v.title }}</h3>
+      <div class="kd-tabs">
+        @for (t of tabs; track t) {
+          <button data-act="kdtab" [attr.data-tab]="t" [class.on]="drawer.tab() === t" (click)="drawer.setTab(t)">{{ 'kd.tab.' + t | translate }}</button>
+        }
+      </div>
+      <div class="kd-body">
+        @if (drawer.tab() === 'overview') {
+          <div class="tier t1">
+            <div class="t1-row">
+              <div class="terrain">
+                @for (c of v.terrain; track c) {
+                  <span [class]="c">{{ 'kd.t.' + c | translate }}</span>
+                }
+              </div>
+              <button class="link dose-link" data-act="doseFromMap" (click)="doseFromMap(v.region)"><kiosk-icon name="clock" />{{ 'kd.dose' | translate }}</button>
+            </div>
+            <div class="camp-line" style="margin-top: 8px">
+              @switch (v.camp.kind) {
+                @case ('won') {
+                  {{ $any(v.camp).today ? ('kd.wonToday' | translate) : ('kd.won' | translate: { d: $any(v.camp).when }) }}@if ($any(v.camp).held) {
+                    · {{ 'kd.held' | translate: { n: $any(v.camp).held } }}
+                  }
+                }
+                @case ('climbing') {
+                  {{ 'kd.climbing' | translate: { n: $any(v.camp).rungs, r: ('rung.' + $any(v.camp).next | translate) } }}@if ($any(v.camp).counted) {
+                    · {{ 'kd.counted' | translate: { n: $any(v.camp).counted } }}
+                  }
+                }
+                @default {
+                  {{ 'kd.claimed' | translate }}
+                }
+              }
+            </div>
+          </div>
+          <div class="tier t2">
+            <kiosk-ladder [cleared]="v.cleared" />
+          </div>
+          <div class="tier t3" style="display: flex; flex-direction: column; gap: 10px; min-height: 0">
+            @if (drawer.practice().state === 'none') {
+              @if (v.set; as s) {
+                <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start">
+                  <span class="badge ok"><kiosk-icon name="check" />{{ 'panel.ready' | translate }}</span>
+                  <button class="btn btn-curiosity btn-sm" data-act="practise" (click)="drawer.practise(v.region)">{{ 'panel.practise' | translate }}</button>
+                  <span class="stamp"><kiosk-icon name="clock" />{{ 'stamp.prepared' | translate: { when: s.preparedWhen } }}<kiosk-prepared-info /></span>
+                </div>
+              } @else {
+                <div class="gated">{{ (v.won ? 'kd.noPracticeWon' : 'kd.noPractice') | translate }}</div>
+              }
+            }
+            @if (drawer.practice().state === 'failed') {
+              <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+            }
+            @if (drawer.practice(); as p) {
+              @if (p.state === 'ready') {
+                <p class="q-stem" kioskContent>{{ p.question.stem }}</p>
+                <div class="opts" [class.done]="drawer.answer().state === 'done'">
+                  @for (o of p.question.options | visitOrder; track o.optionId; let i = $index) {
+                    <button [class]="'opt ' + optionClass(o.optionId)" data-act="mapAnswer" [disabled]="drawer.answer().state !== 'none'" (click)="drawer.choose(v.region, o.optionId)">
+                      <span class="mk">{{ markers[i] }}</span><span kioskContent>{{ o.text }}</span>
+                    </button>
+                  }
+                </div>
+                @switch (drawer.answer().state) {
+                  @case ('checking') {
+                    <div class="verdict" style="background: var(--primary-bg); color: var(--primary-strong)">
+                      <div class="mini-trace"><span class="run">{{ 'q.checking' | translate }}</span></div>
+                    </div>
+                  }
+                  @case ('failed') {
+                    <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                  }
+                }
+                @if (drawer.answer(); as a) {
+                  @if (a.state === 'done') {
+                    <div class="verdict" kioskReveal [class.ok]="a.result.correct" [class.no]="!a.result.correct">
+                      <!-- W22: &ngsp; keeps the space Angular drops between two elements ("Correct.This"). -->
+                      <b>{{ (a.result.correct ? 'q.right' : 'q.miss') | translate }}</b>&ngsp;<span kioskContent>{{ a.result.explainer }}</span
+                      ><span class="rules">{{ 'q.rules' | translate }}</span>
+                    </div>
+                  }
+                }
+                <!-- W54: the story's two badges where step 3 and the Companions quiz have them, after the question
+                     and its verdict: the same writer and critic AIs wrote and checked it, a LIVE fresh one too. -->
+                <div class="badges">
+                  <span class="badge"><kiosk-icon name="pen" />{{ 'badge.writer' | translate }}</span>
+                  <span class="badge ok"><kiosk-icon name="check" />{{ 'badge.critic' | translate }}</span>
+                </div>
+                @if (drawer.won(); as w) {
+                  <div class="won-banner" kioskReveal>
+                    <kiosk-icon name="flag" />
+                    <div>
+                      {{ 'kd.hexWon' | translate }}
+                      @if (w.grew && w.grew !== 'waiting') {
+                        <span>{{ 'kd.hexWonExp' | translate: { name: v.region.companionName, n: w.grew.gained } }}</span>
+                      }
+                    </div>
+                  </div>
+                  <!-- K218 (W96): a won hex takes no more questions, and says so where "Write a new question" stood. -->
+                  <p class="gated won-done">{{ 'kd.wonNoQ' | translate: { idea: v.title } }}</p>
+                  <!-- K50: no reveal runs by itself when a hex is won; the visitor may ask, LIVE (mockup wonAskHTML).
+                       K218, K219: the ask set apart in its own box, its heading saying what the press will do (gap (c)'s
+                       line folded into it), the ideas it brings listed inside. -->
+                  <section class="won-ask" [attr.aria-labelledby]="'won-ask-' + v.id">
+                    <h4 class="won-ask__head" [id]="'won-ask-' + v.id">{{ 'kd.wonAskHead' | translate: { name: v.region.companionName, idea: v.title } }}</h4>
+                    <kiosk-live-row
+                      [liveKey]="v.suggKey"
+                      kind="sugg"
+                      [label]="'live.suggWon' | translate: { name: v.region.companionName }"
+                      [params]="{ focalConceptId: v.id, goalId: v.region.goalId }"
+                      [preparedAt]="v.preparedAt"
+                      [fallbackAt]="v.fallbackAt"
+                      [liveAt]="v.list.liveAt"
+                      [additive]="true"
+                      [disabled]="drawer.busy()" />
+                    <!-- K189 (2), R1: the hex's one list of waiting ideas, the fresh ones on top; emptied, it says where they went (condition a). -->
+                    @if (v.list.nothingNew) {
+                      <p class="gated sugg-empty" role="status">{{ 'live.suggEmpty' | translate }}</p>
+                    }
+                    @if (v.list.rows.length) {
+                      <div class="kd-sub">{{ 'kd.suggBy' | translate: { name: v.region.companionName } }}</div>
+                      <kiosk-sugg-rows [rows]="v.list.rows" [disabled]="drawer.busy()" (decide)="decide(v.region, $event)" />
+                    } @else if (v.emptied) {
+                      <p class="gated sugg-emptied">{{ v.emptyKey | translate: { name: v.region.companionName } }}</p>
+                    }
+                  </section>
+                } @else if (!v.won) {
+                  <kiosk-live-row
+                    [liveKey]="v.liveKey"
+                    kind="q"
+                    [label]="'live.q' | translate"
+                    [params]="{ goalId: v.region.goalId, conceptId: v.id, rung: p.rung }"
+                    [preparedAt]="p.preparedAt"
+                    [disabled]="drawer.answer().state === 'checking'" />
+                }
+              }
+            }
+          </div>
+        } @else if (sugg(); as s) {
+          @switch (s.kind) {
+            @case ('locked') {
+              <div class="gated">{{ 'kd.sugg.locked' | translate }}</div>
+            }
+            @case ('none') {
+              <p class="gated sugg-emptied">{{ 'kd.sugg.none' | translate: { name: s.region.companionName } }}</p>
+            }
+            @default {
+              <!-- K189 (2), R1: one list of waiting ideas, the fresh ones on top; empty, it says so (condition a). -->
+              @if (s.list.nothingNew) {
+                <p class="gated sugg-empty" role="status">{{ 'live.suggEmpty' | translate }}</p>
+              }
+              @if (s.list.rows.length) {
+                <div class="kd-sub">{{ 'kd.suggBy' | translate: { name: s.region.companionName } }}</div>
+                <kiosk-sugg-rows [rows]="s.list.rows" [disabled]="drawer.busy()" (decide)="decide(s.region, $event)" />
+              } @else if (s.empty) {
+                <p class="gated sugg-emptied">{{ s.emptyKey | translate: { name: s.region.companionName } }}</p>
+              }
+              <kiosk-live-row
+                [liveKey]="s.suggKey"
+                kind="sugg"
+                [label]="'live.sugg' | translate: { name: s.region.companionName }"
+                [params]="{ focalConceptId: s.id, goalId: s.region.goalId }"
+                [preparedAt]="s.preparedAt"
+                [fallbackAt]="s.fallbackAt"
+                [liveAt]="s.list.liveAt"
+                [additive]="true"
+                [disabled]="drawer.busy()" />
+            }
+          }
+          @if (drawer.decideFailed()) {
+            <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+          }
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <div class="exhibit">
+    <div class="ex-head">
+      <div>
+        <div class="crumb">{{ 'maps.kicker' | translate }}</div>
+        <h2>{{ 'maps.title' | translate }}</h2>
+        <p>{{ 'maps.sub' | translate }}</p>
+      </div>
+    </div>
+  </div>
+  @switch (exhibit.status()) {
+    @case ('failed') {
+      <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+    }
+    @case ('ready') {
+      <div class="atlas-wrap">
+        <svg
+          class="atlas"
+          id="atlas"
+          viewBox="0 0 1600 637"
+          [style.transform-origin]="zooming() === null ? null : zoomOrigin(zooming()!)"
+          [style.transform]="zooming() === null ? null : 'scale(2.2)'"
+          [style.opacity]="zooming() === null ? null : 0">
+          @for (a of atlas(); track a.key; let i = $index) {
+            <g class="region" data-act="region" [attr.data-id]="a.key" (click)="openRegion(i)">
+              <circle class="blob" [attr.cx]="a.cx" cy="300" r="232" />
+              <text class="r-title" [attr.x]="a.cx" y="152">{{ a.title }}</text>
+              @for (p of a.minis; track p.id) {
+                <path class="mini" [class.r]="p.cls === 'r'" [class.f]="p.cls === 'f'" [attr.transform]="'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ') scale(.26)'" [attr.d]="hexPath" />
+              }
+              <text class="r-count" [attr.x]="a.cx" y="436">{{ 'maps.count' | translate: { n: a.counts.n, w: a.counts.won } }}</text>
+              <text class="r-comp" [attr.x]="a.cx" y="462">{{ 'maps.with' | translate: { name: a.companion } }}</text>
+              <text class="r-open" [attr.x]="a.cx" y="494">{{ 'maps.open' | translate }}</text>
+            </g>
+          }
+        </svg>
+      </div>
+    }
+  }
+}
+
+<ng-template #footer>
+  <kiosk-tour-footer><kiosk-xray-button kind="maps" /></kiosk-tour-footer>
+</ng-template>

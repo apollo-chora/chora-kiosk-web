@@ -1,0 +1,203 @@
+{
+  "recorded": "From the kiosk stack through the edge 127.0.0.1:18080 on 2026-10-19 (GET only): the manifest's choices sugg.water.desal, draft.h4 and pic.illus verbatim (GET /api/v1/kiosk/prewarm/manifest, 02:31:32 UTC), and draft.h4's job read (GET /api/atoms/{atom}/question-jobs/{job}, 02:41:08 UTC) without its candidate_questions.",
+  "choices": {
+    "sugg.water.desal": {
+      "kind": "suggestions",
+      "stage": "main",
+      "hidden": false,
+      "prepared_at": "2026-10-18T04:38:47Z",
+      "run_at": "2026-10-18T04:38:35Z",
+      "params_sha256": "d3bc4981ea42467a02f7b97316c4c5ab01d085049fee94c1a9e6bb17093d6cfa",
+      "world_sha256": "5d612f3c3f19e9a94fbf568a013b784da8cc6d2c08e1fb8b6dac0a7b22beae9b",
+      "params": {
+        "focal": "concept.water.desal",
+        "goal": "goal.water",
+        "hidden": false,
+        "min_count": 3
+      },
+      "records": {
+        "edge_suggestion_ids": [
+          "01a14d4e-1d0a-7464-b876-77b1c715f794",
+          "01a14d4e-1d0a-7d0a-85b7-4f54d085bec4",
+          "01a14d4e-1d0a-7731-a798-3fc3045f0730",
+          "01a14d4e-1d0a-769a-8e08-c77f3e1afbc7",
+          "01a14d4e-1d0a-721c-a40d-31a67901dd90",
+          "01a14d4e-1d0a-7a2e-8e4b-8ad82e3af757"
+        ],
+        "focal_concept_id": "01a14d37-4e0b-7564-b27a-38d80198ddbb",
+        "goal_id": "01a14d37-4e58-7586-af62-54b4704aaaf1",
+        "request_id": "01a14d4d-efee-7931-b5ec-d9a929452961",
+        "suggestion_ids": [
+          "01a14d4e-1d0a-7e00-99d0-cb039fc34391",
+          "01a14d4e-1d0a-7974-b6af-1653a2a96e3b",
+          "01a14d4e-1d0a-7b84-8fed-8cf2fb6e45e3",
+          "01a14d4e-1d0a-76d3-89f5-d538f39eaf16",
+          "01a14d4e-1d0a-7a03-aff5-c13af881a613",
+          "01a14d4e-1d0a-7075-b2a7-3925b0e4da82"
+        ],
+        "titles": [
+          "Reverse osmosis",
+          "Desalination plants",
+          "Energy consumption",
+          "Environmental impact",
+          "Capacity and future expansion",
+          "Water quality from desalination"
+        ]
+      },
+      "models": {
+        "companion": "gpt-oss:120b",
+        "embedding": "text-embedding-004",
+        "hard": "deepseek-v4-pro",
+        "image": "gemini-3-pro-image",
+        "light": "gpt-oss:120b",
+        "middle": "gpt-oss:120b"
+      }
+    },
+    "draft.h4": {
+      "kind": "question_draft",
+      "stage": "main",
+      "hidden": false,
+      "prepared_at": "2026-10-18T04:44:47Z",
+      "run_at": "2026-10-18T04:44:29Z",
+      "params_sha256": "eebd251eff707eb852773245274682cdae3a87c754c0d7f2d8684348c8817bd0",
+      "world_sha256": "5d612f3c3f19e9a94fbf568a013b784da8cc6d2c08e1fb8b6dac0a7b22beae9b",
+      "params": {
+        "atom": "atom.water.newater-process",
+        "expect_image_mode": "mermaid",
+        "image_for_stem": true,
+        "metadata": null,
+        "prompt": "Write one multiple-choice question for visitors aged 12 and up about how Singapore turns used water into NEWater. Ask which treatment stage destroys germs that slip through the membranes. Use exactly these four options in this order: Microfiltration, Reverse osmosis, UV disinfection, Chlorination. The correct answer is UV disinfection. Do not add explanations. Add a flow diagram of the NEWater process that shows only these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, NEWater.",
+        "question_type": "mcq"
+      },
+      "records": {
+        "atom_id": "01a14d37-3a0d-7b08-a74b-aae8a90a857b",
+        "draft_id": "01a14d53-9ad4-7aa1-996d-d7108a3a7716",
+        "image_gcs_uri": "gs://chora-kiosk-pictures/tenants/01a1411f-7f20-7834-bdd5-6f80318297bf/jobs/01a14d53-5618-74b6-84d9-22c98901f2ea/92d7e470c64e42d2b05f1b615a91c730.png",
+        "image_mode": "mermaid",
+        "image_url": "/blobs/chora-kiosk-pictures/tenants/01a1411f-7f20-7834-bdd5-6f80318297bf/jobs/01a14d53-5618-74b6-84d9-22c98901f2ea/92d7e470c64e42d2b05f1b615a91c730.png",
+        "job_id": "01a14d53-5618-74b6-84d9-22c98901f2ea",
+        "question_type": "mcq"
+      },
+      "models": {
+        "companion": "gpt-oss:120b",
+        "embedding": "text-embedding-004",
+        "hard": "deepseek-v4-pro",
+        "image": "gemini-3-pro-image",
+        "light": "gpt-oss:120b",
+        "middle": "gpt-oss:120b"
+      }
+    },
+    "pic.illus": {
+      "kind": "picture_regen",
+      "stage": "main",
+      "hidden": false,
+      "prepared_at": "2026-10-18T04:50:11Z",
+      "run_at": "2026-10-18T04:49:44Z",
+      "params_sha256": "47baf71107260c25cfaba5cd8594c9836dda8f015fa8459e5a5f800d5c496e9c",
+      "world_sha256": "5d612f3c3f19e9a94fbf568a013b784da8cc6d2c08e1fb8b6dac0a7b22beae9b",
+      "params": {
+        "draft": "draft.h4",
+        "mode": "scene",
+        "prompt": "Turn the diagram into a friendly illustration of how used water becomes NEWater: water passing through fine membranes, then glowing UV lamps, then clean water flowing out. No words, letters or labels in the picture.",
+        "source": null
+      },
+      "records": {
+        "atom_id": "01a14d37-3a0d-7b08-a74b-aae8a90a857b",
+        "draft_id": "01a14d53-9ad4-7aa1-996d-d7108a3a7716",
+        "image_gcs_uri": "gs://chora-kiosk-pictures/tenants/01a1411f-7f20-7834-bdd5-6f80318297bf/jobs/01a14d58-2465-7b35-9269-a94cdcaebd1e/01a14d5888917effbf85aa6c89d57159.png",
+        "image_url": "/blobs/chora-kiosk-pictures/tenants/01a1411f-7f20-7834-bdd5-6f80318297bf/jobs/01a14d58-2465-7b35-9269-a94cdcaebd1e/01a14d5888917effbf85aa6c89d57159.png",
+        "mode": "scene",
+        "parent_job_id": "01a14d53-5618-74b6-84d9-22c98901f2ea",
+        "regen_job_id": "01a14d58-2465-7b35-9269-a94cdcaebd1e",
+        "source_image_gcs_uri": null
+      },
+      "models": {
+        "companion": "gpt-oss:120b",
+        "embedding": "text-embedding-004",
+        "hard": "deepseek-v4-pro",
+        "image": "gemini-3-pro-image",
+        "light": "gpt-oss:120b",
+        "middle": "gpt-oss:120b"
+      }
+    }
+  },
+  "job": {
+    "job_id": "01a14d53-5618-74b6-84d9-22c98901f2ea",
+    "atom_id": "01a14d37-3a0d-7b08-a74b-aae8a90a857b",
+    "status": "succeeded",
+    "mana_charged": 0,
+    "created_at": "2026-10-18T04:44:29.59231Z",
+    "started_at": "2026-10-18T04:44:29.59433Z",
+    "completed_at": "2026-10-18T04:44:47.188794Z",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-18T04:44:29.650645+00:00",
+        "completed_at": "2026-10-18T04:44:29.650647+00:00"
+      },
+      {
+        "name": "guardrail_pre",
+        "notes": "not_screened (local edition)",
+        "status": "COMPLETED",
+        "started_at": "2026-10-18T04:44:29.652947+00:00",
+        "completed_at": "2026-10-18T04:44:29.652952+00:00"
+      },
+      {
+        "name": "generate",
+        "notes": "candidate produced",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:41.666648+00:00",
+        "completed_at": "2026-10-18T04:44:41.667059+00:00",
+        "input_tokens": 1186,
+        "output_tokens": 1757,
+        "candidate_json": "{\"image_specs\": [{\"mode\": \"mermaid\", \"placement\": \"stem\", \"source\": \"graph TD;\\n    A[Used water] --> B[Water reclamation plant];\\n    B --> C[Microfiltration];\\n    C --> D[Reverse osmosis];\\n    D --> E[NEWater];\"}], \"input_tokens\": 1186, \"intent\": \"new_question\", \"options\": [{\"explainer\": \"Microfiltration physically removes larger particles and some bacteria, but it does not destroy the smaller germs that can pass through its pores.\", \"is_correct\": false, \"label\": \"Microfiltration\", \"option_id\": \"A\"}, {\"explainer\": \"Reverse osmosis filters out very small contaminants using a semi-permeable membrane, but it is a physical barrier, not a disinfection step that kills germs.\", \"is_correct\": false, \"label\": \"Reverse osmosis\", \"option_id\": \"B\"}, {\"explainer\": \"UV disinfection uses ultraviolet light to inactivate and destroy any germs that have slipped through the earlier membrane stages, providing final disinfection before the water becomes NEWater.\", \"is_correct\": true, \"label\": \"UV disinfection\", \"option_id\": \"C\"}, {\"explainer\": \"Chlorination is sometimes used later to maintain water quality in distribution, but the specific stage in the NEWater process that destroys germs immediately after the membranes is UV disinfection.\", \"is_correct\": false, \"label\": \"Chlorination\", \"option_id\": \"D\"}], \"output_tokens\": 1757, \"question_type\": \"mcq\", \"stem\": \"Using the flow diagram below of the NEWater process, which treatment stage destroys germs that slip through the microfiltration and reverse osmosis membranes?\", \"tokens_consumed_total\": 2943}"
+      },
+      {
+        "name": "guardrail_post",
+        "notes": "not_screened (local edition)",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:41.670304+00:00",
+        "completed_at": "2026-10-18T04:44:41.670307+00:00"
+      },
+      {
+        "name": "critique",
+        "notes": "Stem is clear; four well‑explained options include one correct UV disinfection with plausible distractors, and all required fields are present.",
+        "status": "ACCEPTED",
+        "attempt": 1,
+        "accepted": true,
+        "started_at": "2026-10-18T04:44:45.600492+00:00",
+        "completed_at": "2026-10-18T04:44:45.600579+00:00",
+        "input_tokens": 2775,
+        "output_tokens": 602,
+        "suggested_revisions": []
+      },
+      {
+        "name": "quality_gate",
+        "notes": "Stem is clear; four well‑explained options include one correct UV disinfection with plausible distractors, and all required fields are present.",
+        "status": "ACCEPTED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:45.601525+00:00",
+        "completed_at": "2026-10-18T04:44:45.601527+00:00"
+      },
+      {
+        "name": "render_image",
+        "notes": "rendered 1/1 image(s)",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:45.795533+00:00",
+        "completed_at": "2026-10-18T04:44:45.795536+00:00"
+      },
+      {
+        "name": "publish_completed",
+        "notes": "accepted",
+        "status": "COMPLETED",
+        "attempt": 1,
+        "started_at": "2026-10-18T04:44:45.797220+00:00",
+        "completed_at": "2026-10-18T04:44:45.797222+00:00"
+      }
+    ]
+  }
+}

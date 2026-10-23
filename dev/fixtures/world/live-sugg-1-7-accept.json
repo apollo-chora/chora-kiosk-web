@@ -1,0 +1,19 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); dev/world/f43-presses.recorded.json (the owner's presses of 19 Oct, chora_consumption rows read only, ends by title), press 1",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/01a1544f-53ce-722f-aae5-b44028e7b770/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "01a1544f-53ce-722f-aae5-b44028e7b770",
+    "kind": "edge",
+    "status": "accepted",
+    "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+    "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+    "class": "hierarchy",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Local catchment is a component of Four National Taps",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-19T13:17:25.759098+00:00"
+  }
+}

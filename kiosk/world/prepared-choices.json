@@ -1,0 +1,198 @@
+{
+  "format": "chora-kiosk/prepared-choices/v1",
+  "about": "Every AI-made record of the kiosk's golden run (K101), in run order. Format: kiosk/world/PREPARED-CHOICES.md. Content stays English (K41). World data: the approved mockup (apollo-kiosk-mockup.html, Version 6): HOOK_MAP 2640, ATLAS 2681, DRAFT 4238, GRADE 3539, DASH 5089, FRESH 5799.",
+  "templates": {
+    "word_revision": {
+      "lines": [
+        "Write a new version of this multiple-choice question that follows the instruction below.",
+        "Change what the instruction asks for and keep the rest of the question as it is.",
+        "",
+        "Question: {stem}",
+        "{options}",
+        "Correct answer: {answer}",
+        "",
+        "Instruction: {instruction}"
+      ],
+      "option_line": "{letter}. {label}",
+      "option_line_explained": "{letter}. {label} (explanation: {explainer})",
+      "example": {
+        "candidate": {
+          "prompt": "The diagram shows how used water becomes NEWater. Which stage destroys germs that slip through the membranes?",
+          "mcq_payload": {
+            "options": [
+              { "label": "Microfiltration", "is_correct": false, "explainer": "" },
+              { "label": "Reverse osmosis", "is_correct": false, "explainer": "" },
+              { "label": "UV disinfection", "is_correct": true, "explainer": "UV light damages the germs' DNA, so they cannot multiply." },
+              { "label": "Chlorination", "is_correct": false, "explainer": "" }
+            ]
+          }
+        },
+        "instruction": "Replace the option that could also be right",
+        "prompt": "Write a new version of this multiple-choice question that follows the instruction below.\nChange what the instruction asks for and keep the rest of the question as it is.\n\nQuestion: The diagram shows how used water becomes NEWater. Which stage destroys germs that slip through the membranes?\nA. Microfiltration\nB. Reverse osmosis\nC. UV disinfection (explanation: UV light damages the germs' DNA, so they cannot multiply.)\nD. Chlorination\nCorrect answer: C\n\nInstruction: Replace the option that could also be right"
+      }
+    }
+  },
+  "world_keys": {
+    "goal.water": "Goal and map: Singapore’s water (HOOK_MAP), Pingu's goal",
+    "goal.nature": "Goal and map: City in Nature (ATLAS nature), Nova's goal",
+    "goal.hawker": "Goal and map: Hawker culture (ATLAS hawker), Ember's goal",
+    "concept.water.root": "Singapore’s water (root, won)",
+    "concept.water.used": "Used water (climbing, 2 rungs cleared)",
+    "concept.water.res": "Reservoirs (climbing, 5 rungs cleared and 1 correct answer; won only between seed steps res-won and res-back)",
+    "concept.water.import": "Imported water (climbing, 2 rungs cleared)",
+    "concept.water.newater": "NEWater (won; holds Pingu's pending suggestions)",
+    "concept.water.desal": "Desalination (won; holds Pingu's pending suggestions)",
+    "concept.nature.root": "City in Nature (root, won)",
+    "concept.nature.otters": "Smooth-coated otters (climbing, 2 rungs cleared)",
+    "concept.nature.supertrees": "Supertrees (won; holds Nova's pending suggestions)",
+    "concept.nature.connectors": "Park connectors (climbing, 3 rungs cleared)",
+    "concept.hawker.root": "Hawker culture (root, won)",
+    "concept.hawker.unesco": "UNESCO listing (climbing, 2 rungs cleared)",
+    "concept.hawker.centres": "Hawker centres (won; holds Ember's pending suggestions)",
+    "concept.hawker.kopi": "Kopi (climbing, 3 rungs cleared)",
+    "companion.pingu": "Pingu the penguin, stage 1, the ACTIVE Companion, bound to goal.water",
+    "companion.nova": "Nova the owl, stage 2, bound to goal.nature",
+    "companion.ember": "Ember the fox, stage 3, bound to goal.hawker",
+    "atom.water.newater-process": "Published atom: how used water becomes NEWater (step 4's question is written for it)",
+    "atom.water.four-taps": "Published atom: the Four National Taps",
+    "atom.water.johor": "Published atom: water from Johor and the 2061 agreement",
+    "atom.nature.connectors": "Published atom: the Park Connector Network",
+    "atom.nature.sungei-buloh": "Published atom: Sungei Buloh Wetland Reserve and its migratory shorebirds",
+    "atom.nature.heat": "Published atom: urban heat and how trees cool a street",
+    "atom.hawker.centres": "Published atom: hawker centres and their customs",
+    "atom.hawker.kaya": "Published atom: kaya toast",
+    "atom.hawker.teh-tarik": "Published atom: teh tarik"
+  },
+  "stages": [
+    {
+      "id": "main",
+      "seed_before": "sql-progress",
+      "seed_after": null,
+      "choices": [
+        { "key": "sugg.water.desal", "kind": "suggestions", "goal": "goal.water", "focal": "concept.water.desal", "min_count": 3, "hidden": false },
+        { "key": "sugg.nature.supertrees", "kind": "suggestions", "goal": "goal.nature", "focal": "concept.nature.supertrees", "min_count": 2, "max_concepts": 5, "hidden": false },
+        { "key": "sugg.hawker.centres", "kind": "suggestions", "goal": "goal.hawker", "focal": "concept.hawker.centres", "min_count": 2, "max_concepts": 3, "hidden": false },
+
+        { "key": "fresh.water.newater", "kind": "suggestions", "goal": "goal.water", "focal": "concept.water.newater", "min_count": 2, "hidden": true },
+        { "key": "fresh.water.desal", "kind": "suggestions", "goal": "goal.water", "focal": "concept.water.desal", "min_count": 2, "hidden": true },
+        { "key": "fresh.water.root", "kind": "suggestions", "goal": "goal.water", "focal": "concept.water.root", "min_count": 2, "max_concepts": 2, "hidden": true },
+        { "key": "fresh.nature.supertrees", "kind": "suggestions", "goal": "goal.nature", "focal": "concept.nature.supertrees", "min_count": 2, "max_concepts": 5, "hidden": true },
+        { "key": "fresh.nature.root", "kind": "suggestions", "goal": "goal.nature", "focal": "concept.nature.root", "min_count": 2, "max_concepts": 3, "hidden": true },
+        { "key": "fresh.hawker.centres", "kind": "suggestions", "goal": "goal.hawker", "focal": "concept.hawker.centres", "min_count": 2, "max_concepts": 3, "hidden": true },
+        { "key": "fresh.hawker.root", "kind": "suggestions", "goal": "goal.hawker", "focal": "concept.hawker.root", "min_count": 2, "max_concepts": 2, "hidden": true },
+
+        { "key": "v1.reverse-osmosis", "kind": "adoptable_set", "goal": "goal.water", "parent": "concept.water.desal", "from": "sugg.water.desal", "concept_key": "reverse-osmosis", "also_in": [], "rung": 1 },
+
+        { "key": "set.water.res.r6", "kind": "practice_set", "goal": "goal.water", "concept": "concept.water.res", "rung": 6 },
+        { "key": "set.water.import.r3", "kind": "practice_set", "goal": "goal.water", "concept": "concept.water.import", "rung": 3 },
+        { "key": "set.water.used.r3", "kind": "practice_set", "goal": "goal.water", "concept": "concept.water.used", "rung": 3 },
+        { "key": "set.nature.otters.r3", "kind": "practice_set", "goal": "goal.nature", "concept": "concept.nature.otters", "rung": 3 },
+        { "key": "set.nature.connectors.r4", "kind": "practice_set", "goal": "goal.nature", "concept": "concept.nature.connectors", "rung": 4 },
+        { "key": "set.hawker.unesco.r3", "kind": "practice_set", "goal": "goal.hawker", "concept": "concept.hawker.unesco", "rung": 3 },
+        { "key": "set.hawker.kopi.r4", "kind": "practice_set", "goal": "goal.hawker", "concept": "concept.hawker.kopi", "rung": 4 },
+
+        { "key": "draft.h4", "kind": "question_draft", "atom": "atom.water.newater-process", "question_type": "mcq", "image_for_stem": true, "expect_image_mode": "mermaid", "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up about how Singapore turns used water into NEWater. Ask which treatment stage destroys germs that slip through the membranes. Use exactly these four options in this order: Microfiltration, Reverse osmosis, UV disinfection, Chlorination. The correct answer is UV disinfection. Do not add explanations. Add a flow diagram of the NEWater process that shows only these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, NEWater." },
+
+        { "key": "words.r", "kind": "word_revision", "from": "draft.h4", "instruction": "Turn it into a real-life scenario" },
+        { "key": "words.s", "kind": "word_revision", "from": "draft.h4", "instruction": "Make the question simpler" },
+        { "key": "words.e", "kind": "word_revision", "from": "draft.h4", "instruction": "Add a one-line explanation" },
+        { "key": "words.r.s", "kind": "word_revision", "from": "words.r", "instruction": "Make the question simpler" },
+        { "key": "words.r.e", "kind": "word_revision", "from": "words.r", "instruction": "Add a one-line explanation" },
+        { "key": "words.s.r", "kind": "word_revision", "from": "words.s", "instruction": "Turn it into a real-life scenario" },
+        { "key": "words.s.e", "kind": "word_revision", "from": "words.s", "instruction": "Add a one-line explanation" },
+        { "key": "words.e.r", "kind": "word_revision", "from": "words.e", "instruction": "Turn it into a real-life scenario" },
+        { "key": "words.e.s", "kind": "word_revision", "from": "words.e", "instruction": "Make the question simpler" },
+        { "key": "words.r.s.e", "kind": "word_revision", "from": "words.r.s", "instruction": "Add a one-line explanation" },
+        { "key": "words.r.e.s", "kind": "word_revision", "from": "words.r.e", "instruction": "Make the question simpler" },
+        { "key": "words.s.r.e", "kind": "word_revision", "from": "words.s.r", "instruction": "Add a one-line explanation" },
+        { "key": "words.s.e.r", "kind": "word_revision", "from": "words.s.e", "instruction": "Turn it into a real-life scenario" },
+        { "key": "words.e.r.s", "kind": "word_revision", "from": "words.e.r", "instruction": "Make the question simpler" },
+        { "key": "words.e.s.r", "kind": "word_revision", "from": "words.e.s", "instruction": "Turn it into a real-life scenario" },
+
+        { "key": "pic.uv", "kind": "picture_regen", "draft": "draft.h4", "source": null, "mode": "mermaid",
+          "prompt": "Redraw the flow diagram of the NEWater process with these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, UV disinfection, NEWater." },
+        { "key": "pic.where", "kind": "picture_regen", "draft": "draft.h4", "source": null, "mode": "mermaid",
+          "prompt": "Redraw the flow diagram of the NEWater process with these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, NEWater. Then show where NEWater goes: to industry such as wafer fabs, and to the reservoirs." },
+        { "key": "pic.uv.where", "kind": "picture_regen", "draft": "draft.h4", "source": null, "mode": "mermaid",
+          "prompt": "Redraw the flow diagram of the NEWater process with these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, UV disinfection, NEWater. Then show where NEWater goes: to industry such as wafer fabs, and to the reservoirs." },
+        { "key": "pic.illus", "kind": "picture_regen", "draft": "draft.h4", "source": null, "mode": "scene",
+          "prompt": "Turn the diagram into a friendly illustration of how used water becomes NEWater: water passing through fine membranes, then glowing UV lamps, then clean water flowing out. No words, letters or labels in the picture." },
+        { "key": "pic.illus.sketch", "kind": "picture_regen", "draft": "draft.h4", "source": "pic.illus", "mode": "scene",
+          "prompt": "Restyle this picture as a pencil sketch of the same scene. No words, letters or labels in the picture." },
+        { "key": "pic.illus.photo", "kind": "picture_regen", "draft": "draft.h4", "source": "pic.illus", "mode": "scene",
+          "prompt": "Restyle this picture as a photorealistic photograph of the same scene. It must look like a real photograph taken in a water treatment plant, not like artwork. No words, letters or labels in the picture." },
+        { "key": "pic.illus.photo.tanks", "kind": "picture_regen", "draft": "draft.h4", "source": "pic.illus.photo", "mode": "scene",
+          "prompt": "Show steel tanks and membrane units instead of the glass and sponges" },
+        { "key": "pic.sketch.photo", "kind": "picture_regen", "draft": "draft.h4", "source": "pic.illus.sketch", "mode": "scene",
+          "prompt": "Restyle this picture as a photorealistic photograph of the same scene. It must look like a real photograph taken in a water treatment plant, not like artwork. No words, letters or labels in the picture." },
+        { "key": "pic.sketch.photo.tanks", "kind": "picture_regen", "draft": "draft.h4", "source": "pic.sketch.photo", "mode": "scene",
+          "prompt": "Show steel tanks and membrane units instead of the glass and sponges" },
+        { "key": "pic.photo.sketch", "kind": "picture_regen", "draft": "draft.h4", "source": "pic.illus.photo", "mode": "scene",
+          "prompt": "Restyle this picture as a pencil sketch of the same scene. No words, letters or labels in the picture." },
+
+        { "key": "draft.water.q1", "kind": "question_draft", "atom": "atom.water.four-taps", "question_type": "mcq", "image_for_stem": false, "expect_image_mode": null, "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up: which of Singapore's Four National Taps cleans used water until it is safe enough to drink? Use these four options in this order: Local catchment water, NEWater, Desalinated water, Imported water. The correct answer is NEWater. Give each option a one-sentence explanation." },
+        { "key": "draft.water.q3", "kind": "question_draft", "atom": "atom.water.johor", "question_type": "oe", "image_for_stem": true, "expect_image_mode": "scene", "metadata": null,
+          "prompt": "Write one open-ended question for visitors aged 12 and up: Singapore buys part of its water from Johor under an agreement that ends in 2061, so why does Singapore also invest in NEWater and desalination? Give a rubric of three criteria: names the 2061 end of the agreement as a risk (4 points); explains that NEWater and desalination do not depend on rain or on another country (4 points); notes a trade-off such as their high energy use (2 points). Give a model answer. Add an illustration of Singapore's four water sources: a reservoir fed by rain, a pipeline from Johor, a NEWater plant and a desalination plant by the sea. No words, letters or labels in the picture." },
+        { "key": "draft.nature.q1", "kind": "question_draft", "atom": "atom.nature.connectors", "question_type": "mcq", "image_for_stem": false, "expect_image_mode": null, "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up: what are Singapore's park connectors built for? Use these four options in this order: Carrying rainwater from parks to the reservoirs; Giving buses a faster route across the island; Linking parks so people can walk, jog and cycle between them; Fencing nature reserves off from visitors. The correct answer is the third option. Give each option a one-sentence explanation." },
+        { "key": "draft.nature.q2", "kind": "question_draft", "atom": "atom.nature.sungei-buloh", "question_type": "mcq", "image_for_stem": true, "expect_image_mode": "scene", "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up about the birds in the picture, shorebirds feeding on the mudflats of Sungei Buloh Wetland Reserve: why do they stop at Sungei Buloh each year? Use these four options in this order: To nest and raise their chicks; To rest and feed on their long migration; To escape Singapore's cold season; To be fed by the reserve's rangers. The correct answer is the second option. Give each option a one-sentence explanation. Add an illustration of shorebirds such as sandpipers and plovers feeding on a muddy shore beside mangroves at low tide. No words, letters or labels in the picture." },
+        { "key": "draft.nature.q3", "kind": "question_draft", "atom": "atom.nature.heat", "question_type": "oe", "image_for_stem": true, "expect_image_mode": "scene", "metadata": null,
+          "prompt": "Write one open-ended question for visitors aged 12 and up about the picture, two Singapore streets on the same hot afternoon, one lined with big shady trees and one with none: why does the street with trees feel cooler, and what else do such trees give a city like Singapore? Give a rubric of three criteria: explains that the trees' shade stops the sun from heating the road, the pavement and the people below (4 points); explains that leaves give off water vapour, which cools the air around them (4 points); names one more benefit, such as cleaner air, a home for birds and insects, or slowing the rain that runs off the streets (2 points). Give a model answer. Add an illustration of two Singapore streets side by side on a sunny afternoon: one shaded by a row of large rain trees with people walking comfortably, the other with no trees, bright and glaring. No words, letters or labels in the picture." },
+        { "key": "draft.hawker.q1", "kind": "question_draft", "atom": "atom.hawker.centres", "question_type": "mcq", "image_for_stem": false, "expect_image_mode": null, "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up: at a hawker centre, what does it mean to \"chope\" a seat? Use these four options in this order: To wipe it clean after eating; To reserve it, often with a packet of tissues; To share it with a stranger at a busy table; To pay for it before ordering. The correct answer is the second option. Give each option a one-sentence explanation." },
+        { "key": "draft.hawker.q2", "kind": "question_draft", "atom": "atom.hawker.kaya", "question_type": "mcq", "image_for_stem": true, "expect_image_mode": "scene", "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up about the breakfast in the picture, a kaya toast set from a Singapore coffee shop: kaya, the spread in the toast, is made mainly from which ingredients? Use these four options in this order: Peanuts, butter and salt; Durian, cream and sugar; Coconut milk, eggs and sugar; Mango, milk and honey. The correct answer is the third option. Give each option a one-sentence explanation. Add a photorealistic picture of a kaya toast set on a marble coffee-shop table: toasted bread spread with kaya and a slab of cold butter, two soft-boiled eggs in a small dish, and a cup of kopi. It must look like a real photograph, not like artwork. No words, letters or labels in the picture." },
+        { "key": "draft.hawker.q3", "kind": "question_draft", "atom": "atom.hawker.teh-tarik", "question_type": "oe", "image_for_stem": true, "expect_image_mode": "scene", "metadata": null,
+          "prompt": "Write one open-ended question for visitors aged 12 and up about the picture, a drinks stall holder at a Singapore hawker centre pouring teh tarik from one mug to another held far apart: why is teh tarik \"pulled\" like this, and why do skills like this matter to hawker culture? Give a rubric of three criteria: explains that pouring from a height mixes the tea with the condensed milk (3 points); explains that it cools the tea to drinking temperature and gives it a frothy top (4 points); explains that hawkers pass the skill down, and that it is part of the hawker culture UNESCO recognised in 2020 (3 points). Give a model answer. Add a photorealistic picture of a hawker pouring a long stream of milky tea between two steel mugs held far apart at a busy hawker centre stall. It must look like a real photograph, not like artwork. No words, letters or labels in the picture." },
+
+        { "key": "accept.water.q1", "kind": "accept", "draft": "draft.water.q1", "picture": null },
+        { "key": "copy.water.q2", "kind": "manual_copy", "from": "draft.h4", "picture": "original" },
+        { "key": "accept.water.q3", "kind": "accept", "draft": "draft.water.q3", "picture": "original" },
+        { "key": "accept.nature.q1", "kind": "accept", "draft": "draft.nature.q1", "picture": null },
+        { "key": "accept.nature.q2", "kind": "accept", "draft": "draft.nature.q2", "picture": "original" },
+        { "key": "accept.nature.q3", "kind": "accept", "draft": "draft.nature.q3", "picture": "original" },
+        { "key": "accept.hawker.q1", "kind": "accept", "draft": "draft.hawker.q1", "picture": null },
+        { "key": "accept.hawker.q2", "kind": "accept", "draft": "draft.hawker.q2", "picture": "original" },
+        { "key": "accept.hawker.q3", "kind": "accept", "draft": "draft.hawker.q3", "picture": "original" },
+
+        { "key": "bank.water", "kind": "bank", "name": "Singapore’s water", "description": "", "test_set_title": "Water for Life: Unit 1 quiz",
+          "questions": ["accept.water.q1", "copy.water.q2", "accept.water.q3"] },
+        { "key": "bank.nature", "kind": "bank", "name": "City in Nature", "description": "", "test_set_title": "Nature Ranger: Unit 1 quiz",
+          "questions": ["accept.nature.q1", "accept.nature.q2", "accept.nature.q3"] },
+        { "key": "bank.hawker", "kind": "bank", "name": "Hawker culture", "description": "", "test_set_title": "Food Heritage: Unit 1 quiz",
+          "questions": ["accept.hawker.q1", "accept.hawker.q2", "accept.hawker.q3"] },
+        { "key": "bank.grading", "kind": "bank", "name": "Singapore’s water: open question", "description": "", "test_set_title": "Water for Life: open question",
+          "questions": ["accept.water.q3"] },
+
+        { "key": "sample.strong", "kind": "graded_sample", "bank": "bank.grading",
+          "answer": "Imported water depends on an agreement with Malaysia that ends in 2061, which is a risk. NEWater and desalination give Singapore water that does not depend on rain or on another country. The trade-off is that both use a lot of energy." },
+        { "key": "sample.weak", "kind": "graded_sample", "bank": "bank.grading",
+          "answer": "Singapore is small and has no big rivers, so it needs more water sources." },
+
+        { "key": "greet.pingu", "kind": "greeting", "companion": "companion.pingu" },
+        { "key": "greet.nova", "kind": "greeting", "companion": "companion.nova" },
+        { "key": "greet.ember", "kind": "greeting", "companion": "companion.ember" },
+
+        { "key": "dose.water", "kind": "dose_open", "goal": "goal.water" },
+        { "key": "dose.nature", "kind": "dose_open", "goal": "goal.nature" },
+        { "key": "dose.hawker", "kind": "dose_open", "goal": "goal.hawker" },
+
+        { "key": "paper.water", "kind": "weakness_paper", "paper": "paper-water.png", "goal": "goal.water", "companion": "companion.pingu", "upload_kind": "marked_test" },
+        { "key": "paper.nature", "kind": "weakness_paper", "paper": "paper-nature.png", "goal": "goal.nature", "companion": "companion.nova", "upload_kind": "marked_test" },
+        { "key": "paper.hawker", "kind": "weakness_paper", "paper": "paper-hawker.png", "goal": "goal.hawker", "companion": "companion.ember", "upload_kind": "marked_test" },
+        { "key": "paper.water.essay", "kind": "weakness_paper", "paper": "paper-water-essay.png", "goal": "goal.water", "companion": "companion.pingu", "upload_kind": "marked_test" }
+      ]
+    },
+    {
+      "id": "res-won",
+      "seed_before": "res-won",
+      "seed_after": "res-back",
+      "choices": [
+        { "key": "fresh.water.res", "kind": "suggestions", "goal": "goal.water", "focal": "concept.water.res", "min_count": 2, "hidden": true }
+      ]
+    }
+  ]
+}

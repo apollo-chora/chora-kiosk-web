@@ -1,0 +1,9 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "a picture the golden run would make, drawn by make-fixtures.mjs (K159 dev stand-in (W27))",
+  "method": "GET",
+  "path": "/KIOSK_DEV_FIXTURE/pictures/scene-hawker-teh-tarik.svg",
+  "status": 200,
+  "file": "pictures/scene-hawker-teh-tarik.svg",
+  "content_type": "image/svg+xml"
+}

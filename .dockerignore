@@ -1,0 +1,36 @@
+# Never send local secrets/config into the Docker build context.
+.env
+.env.*
+!.env.example
+
+# VCS + editor
+.git
+.gitignore
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node + build output (rebuilt inside the image). node_modules in particular
+# must stay out: a Windows node_modules copied into the Linux builder breaks
+# esbuild's platform binary.
+node_modules/
+dist/
+.angular/
+out-tsc/
+coverage/
+
+# Test output
+playwright-report/
+test-results/
+
+# The dev fixtures' pictures, drawn from the mockup by npm run fixtures
+dev/fixtures/pictures/
+
+# Secrets
+*.pem
+*.key

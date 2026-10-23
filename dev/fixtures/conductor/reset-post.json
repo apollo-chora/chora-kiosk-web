@@ -1,0 +1,45 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "services/chora-kiosk-conductor/API.md section 5 (8db3427e1), example values",
+  "method": "POST",
+  "path": "/api/v1/kiosk/reset",
+  "resets": true,
+  "status": 202,
+  "body": {
+    "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+    "state": "running",
+    "phase": "pausing",
+    "phases": [
+      {
+        "id": "pausing",
+        "state": "running",
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": null
+      },
+      {
+        "id": "restoring_data",
+        "state": "pending",
+        "started_at": null,
+        "finished_at": null
+      },
+      {
+        "id": "clearing_queues_and_pictures",
+        "state": "pending",
+        "started_at": null,
+        "finished_at": null
+      },
+      {
+        "id": "starting",
+        "state": "pending",
+        "started_at": null,
+        "finished_at": null
+      }
+    ],
+    "started_at": "2026-10-20T06:31:21Z",
+    "finished_at": null,
+    "took_s": null,
+    "estimate_s": 31,
+    "failed_phase": null,
+    "failed_step": null
+  }
+}

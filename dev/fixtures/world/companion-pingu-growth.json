@@ -1,0 +1,60 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption companion_growth_handlers.go (growthResp), camelCased and wrapped in {data} by the gateway's companion bridge (companionbridge.go); stage, EXP and abilities of kiosk/world/world.json; tools of curve.go toolsByStage",
+  "method": "GET",
+  "path": "/api/v1/me/companions/4468bbd0-6fd6-77dc-aa5f-c38cd27693ea/growth",
+  "status": 200,
+  "body": {
+    "data": {
+      "companionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+      "growthStage": 1,
+      "stageName": "",
+      "displayName": "Pingu",
+      "species": "penguin",
+      "shinyVariant": false,
+      "rarity": "common",
+      "expCurrent": 32,
+      "expNextThreshold": 50,
+      "expCumulative": 32,
+      "effectiveLlmTier": "flash-lite",
+      "effectiveMaxOutputTokens": 1024,
+      "unlockedTools": [
+        "cite_atom"
+      ],
+      "ahaMomentConsumed": false,
+      "hatchedAt": "2026-10-01T02:00:00Z",
+      "lastStageUpAt": null
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^FIXTURE world/answer-set\\.water\\.res\\.r6-0\\.json$"
+      ],
+      "status": 200,
+      "body": {
+        "data": {
+          "companionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+          "growthStage": 2,
+          "stageName": "",
+          "displayName": "Pingu",
+          "species": "penguin",
+          "shinyVariant": false,
+          "rarity": "common",
+          "expCurrent": 15,
+          "expNextThreshold": 200,
+          "expCumulative": 65,
+          "effectiveLlmTier": "flash-lite",
+          "effectiveMaxOutputTokens": 1024,
+          "unlockedTools": [
+            "atom_search",
+            "cite_atom"
+          ],
+          "ahaMomentConsumed": false,
+          "hatchedAt": "2026-10-01T02:00:00Z",
+          "lastStageUpAt": "2026-10-20T07:35:50Z"
+        }
+      }
+    }
+  ]
+}

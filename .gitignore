@@ -1,0 +1,10 @@
+# Build and test output (this repo stands alone, so node_modules/ is ignored here too)
+node_modules/
+/.angular/
+/dist/
+/out-tsc/
+/coverage/
+/test-results/
+/playwright-report/
+# The dev fixtures' pictures, drawn from the mockup by npm run fixtures (dev/world/make-fixtures.mjs)
+/dev/fixtures/pictures/

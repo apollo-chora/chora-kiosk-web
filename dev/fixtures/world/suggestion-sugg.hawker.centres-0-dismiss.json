@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.hawker.centres",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/98f8e9f5-1dd9-776f-8821-09fc9c36a93e/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "98f8e9f5-1dd9-776f-8821-09fc9c36a93e",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Family-run stalls",
+    "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+    "rationale": "Many hawker stalls are run by families who pass their recipes down.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:33:20Z"
+  }
+}

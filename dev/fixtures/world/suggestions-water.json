@@ -1,0 +1,702 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go (suggestionDTO, pending only, ?goalId= fenced); every batch of kiosk/world/prepared-choices.json on this map, the hidden ones too",
+  "method": "GET",
+  "path": "/api/v1/me/concept-graph/suggestions",
+  "query": {
+    "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258"
+  },
+  "status": 200,
+  "body": {
+    "suggestions": [
+      {
+        "suggestionId": "ee17c829-e411-7125-abc0-f9a8696631bc",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Seawater intake",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "rationale": "Where desalination starts: seawater drawn in from the coast.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:31:40Z"
+      },
+      {
+        "suggestionId": "ebb87080-8b5e-75cf-babc-858c3c8ebf2c",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Reverse osmosis",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "rationale": "The membrane step that holds back salt. NEWater uses it too.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:31:40Z"
+      },
+      {
+        "suggestionId": "d4c34971-2398-7c92-a73b-1c4c4c82adeb",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Energy use",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "rationale": "Pushing seawater through membranes takes a lot of electricity.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:31:40Z"
+      },
+      {
+        "suggestionId": "82f19d33-8b9b-7489-a248-116fa8fe559c",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Deep Tunnel Sewerage System",
+        "focalConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+        "rationale": "Deep tunnels carry used water by gravity to the plants where NEWater is made.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:34:10Z"
+      },
+      {
+        "suggestionId": "7467574c-286f-74ad-a289-ed19331b0317",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Wafer fabs",
+        "focalConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+        "rationale": "Chip factories are NEWater’s biggest users: they need water purer than tap water.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:34:10Z"
+      },
+      {
+        "suggestionId": "ed679741-bb2f-7ad5-bf6d-8586b09466f1",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Marina East dual-mode plant",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "rationale": "It treats seawater in dry weather and reservoir water when it rains.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:35:00Z"
+      },
+      {
+        "suggestionId": "c6d31a1a-d1f0-7744-a049-e7a381c9bdb0",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Brine",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "rationale": "The very salty water left over from desalination. PUB studies how to recover minerals.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:35:00Z"
+      },
+      {
+        "suggestionId": "544820e8-5485-7473-9207-2cbbcb18fe4e",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Water efficiency labels",
+        "focalConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "rationale": "Ticks on taps, toilets and washing machines show how much water they save.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:35:50Z"
+      },
+      {
+        "suggestionId": "270254fd-942e-77aa-badd-e4ca66e19119",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Linggiu Reservoir",
+        "focalConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "rationale": "A reservoir in Johor, paid for by Singapore, that keeps the Johor River supply up.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:35:50Z"
+      },
+      {
+        "suggestionId": "e75f2ccc-78c7-7179-965d-d0371968305f",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Marina Barrage",
+        "focalConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+        "rationale": "A dam across Marina Channel that made a city-centre reservoir and eases floods.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T06:35:50Z"
+      },
+      {
+        "suggestionId": "776b7607-4e96-7d1a-939c-35da8893a9c8",
+        "kind": "concept",
+        "status": "pending",
+        "title": "ABC Waters Programme",
+        "focalConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+        "rationale": "Turns drains, canals and reservoirs into clean streams and lakes people can enjoy.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T06:35:50Z"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/ee17c829-e411-7125-abc0-f9a8696631bc/(accept|dismiss)$",
+        "^POST /api/v1/me/concept-graph/suggestions/ebb87080-8b5e-75cf-babc-858c3c8ebf2c/(accept|dismiss)$",
+        "^POST /api/v1/me/concept-graph/suggestions/d4c34971-2398-7c92-a73b-1c4c4c82adeb/(accept|dismiss)$"
+      ],
+      "status": 200,
+      "body": {
+        "suggestions": [
+          {
+            "suggestionId": "82f19d33-8b9b-7489-a248-116fa8fe559c",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Deep Tunnel Sewerage System",
+            "focalConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "rationale": "Deep tunnels carry used water by gravity to the plants where NEWater is made.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:34:10Z"
+          },
+          {
+            "suggestionId": "7467574c-286f-74ad-a289-ed19331b0317",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Wafer fabs",
+            "focalConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "rationale": "Chip factories are NEWater’s biggest users: they need water purer than tap water.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:34:10Z"
+          },
+          {
+            "suggestionId": "ed679741-bb2f-7ad5-bf6d-8586b09466f1",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Marina East dual-mode plant",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "It treats seawater in dry weather and reservoir water when it rains.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:35:00Z"
+          },
+          {
+            "suggestionId": "c6d31a1a-d1f0-7744-a049-e7a381c9bdb0",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Brine",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "The very salty water left over from desalination. PUB studies how to recover minerals.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:35:00Z"
+          },
+          {
+            "suggestionId": "544820e8-5485-7473-9207-2cbbcb18fe4e",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Water efficiency labels",
+            "focalConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "rationale": "Ticks on taps, toilets and washing machines show how much water they save.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:35:50Z"
+          },
+          {
+            "suggestionId": "270254fd-942e-77aa-badd-e4ca66e19119",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Linggiu Reservoir",
+            "focalConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "rationale": "A reservoir in Johor, paid for by Singapore, that keeps the Johor River supply up.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:35:50Z"
+          },
+          {
+            "suggestionId": "e75f2ccc-78c7-7179-965d-d0371968305f",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Marina Barrage",
+            "focalConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "rationale": "A dam across Marina Channel that made a city-centre reservoir and eases floods.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T06:35:50Z"
+          },
+          {
+            "suggestionId": "776b7607-4e96-7d1a-939c-35da8893a9c8",
+            "kind": "concept",
+            "status": "pending",
+            "title": "ABC Waters Programme",
+            "focalConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "rationale": "Turns drains, canals and reservoirs into clean streams and lakes people can enjoy.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T06:35:50Z"
+          }
+        ]
+      }
+    }
+  ],
+  "patches": [
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7c99-b2a3-1f974214a2cb/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-7c99-b2a3-1f974214a2cb",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Desalination plants",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Key infrastructure supplying fresh water via desalination",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7a2c-bfbb-b256cc7d9ba9/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-7a2c-bfbb-b256cc7d9ba9",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Reverse osmosis technology",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Primary tech used in Singapore's desalination",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7b9a-b285-db8969a99494/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-7b9a-b285-db8969a99494",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Energy consumption of desalination",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Assessing power needs and efficiency",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-744a-a707-359fba1e1d83/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-744a-a707-359fba1e1d83",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Desalination's role in Four National Taps",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "How desalination fits the national water strategy",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7ff9-9101-d9aa903a39a8/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-7ff9-9101-d9aa903a39a8",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Environmental impact of desalination",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Brine discharge and marine effects in Singapore context",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7016-abdc-9dda75aa1b2d/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-7016-abdc-9dda75aa1b2d",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Imported water is a component of Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-773e-b0b4-3fa577971e6e/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-773e-b0b4-3fa577971e6e",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "NEWater is a component of Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-722f-aae5-b44028e7b770/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-722f-aae5-b44028e7b770",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Local catchment is a component of Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-3a4b-7adf-a871-4f156b28e6ee$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-796f-98a5-47dc92caeb23/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-53ce-796f-98a5-47dc92caeb23",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "lateral",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Reservoirs store water collected from local catchments",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:25.759098+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7fea-9443-87428d98c761/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7fea-9443-87428d98c761",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Desalination",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Core water source complementing the Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7057-87fc-574e075c3d4a/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7057-87fc-574e075c3d4a",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Desalination Process",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "How seawater is turned into potable water in Singapore",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7623-8b8f-b4e2df7a74e5/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7623-8b8f-b4e2df7a74e5",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Energy Use in Desalination",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Assessing power demand of Singapore's desalination plants",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-77c0-870f-e122f57d4df9/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-77c0-870f-e122f57d4df9",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Environmental Impact of Desalination",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Effects of brine discharge and marine ecology",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-73c5-9c4c-9873c58f4070/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-73c5-9c4c-9873c58f4070",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Desalination Capacity in Singapore",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Current output and role in national water security",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-73d5-9d19-9ec8318a7d6a/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-73d5-9d19-9ec8318a7d6a",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Imported water is one of the Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-74c7-8b84-0f9b4af5e295/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-74c7-8b84-0f9b4af5e295",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Local catchment is a tap under the Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7e11-b461-89db41b4f576/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7e11-b461-89db41b4f576",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Future Desalination Plans",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Planned expansions and technology upgrades",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7cf1-8095-8f9480b2db61/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7cf1-8095-8f9480b2db61",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "NEWater is a tap within the Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7196-ba96-2ece0c9031ca/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7196-ba96-2ece0c9031ca",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "lateral",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Reservoirs store water collected from local catchments",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-70fc-b684-5f4cc1cf6247/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-70fc-b684-5f4cc1cf6247",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "lateral",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "Saving water complements the supply-focused Four National Taps",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^GET /api/v1/me/concept-graph/suggestions/requests/01a1544f-7b46-73b2-9a42-1bee5561f579$"
+      ],
+      "until": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7458-937f-39a28eb82888/(accept|dismiss)$"
+      ],
+      "append": {
+        "suggestions": [
+          {
+            "suggestionId": "01a1544f-9a69-7458-937f-39a28eb82888",
+            "kind": "edge",
+            "status": "pending",
+            "sourceConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "lateral",
+            "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "rationale": "NEWater treats used water into high-grade supply",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-19T13:17:44.000975+00:00"
+          }
+        ]
+      }
+    }
+  ]
+}

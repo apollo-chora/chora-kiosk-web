@@ -1,0 +1,40 @@
+{
+  "recorded": "GET /api/atoms/{atom}/question-jobs/{job} through the kiosk edge 127.0.0.1:18080, 2026-10-19 10:14:15 UTC (after one kiosk session mint): the golden run's prepared draft.h4 and its 15 word revisions, job ids from the conductor's prewarm manifest. Each job's critique rows (creation's single lane), status, accepted and notes verbatim; every other row and field left out. words.e.f.s was rejected once (scoring_mode missing), then accepted. K155 (the orchestrator's Q2, 19 Oct): the dev fixture world's critic notes are these, never the mockup's. K187 (21 Oct): the rows of the 11 paths that held the replaced fixd chip were dropped; the scenario chip’s rows come with the next golden run.",
+  "critique": {
+    "draft.h4": [
+      {
+        "status": "ACCEPTED",
+        "accepted": true,
+        "notes": "Stem is clear; four well‑explained options include one correct UV disinfection with plausible distractors, and all required fields are present."
+      }
+    ],
+    "words.e": [
+      {
+        "status": "ACCEPTED",
+        "accepted": true,
+        "notes": "Stem is clear, four well‑balanced options with a single correct answer and each option includes a meaningful explainer."
+      }
+    ],
+    "words.e.s": [
+      {
+        "status": "ACCEPTED",
+        "accepted": true,
+        "notes": "Stem is clear, four well‑explained options with one correct answer and plausible distractors."
+      }
+    ],
+    "words.s.e": [
+      {
+        "status": "ACCEPTED",
+        "accepted": true,
+        "notes": "Stem is clear; four options each have detailed explainers, a single correct answer (UV disinfection) and plausible distractors."
+      }
+    ],
+    "words.s": [
+      {
+        "status": "ACCEPTED",
+        "accepted": true,
+        "notes": "Stem is clear and concise; four well‑explained options with one correct answer and plausible distractors."
+      }
+    ]
+  }
+}

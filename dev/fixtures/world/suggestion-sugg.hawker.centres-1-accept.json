@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.hawker.centres",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/686e913d-f298-79d9-97e2-979858d8d29c/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "686e913d-f298-79d9-97e2-979858d8d29c",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Tray return",
+    "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+    "rationale": "Diners return their trays, so the next person finds a clean table.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:33:20Z"
+  }
+}

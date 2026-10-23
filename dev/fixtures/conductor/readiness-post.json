@@ -1,0 +1,116 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "services/chora-kiosk-conductor/API.md section 3 (fixed at 9562d818b), example values; session_started_since_reset as API.md section 3 at 99ed7abe3 (K151); live.reader as API.md section 3 at 1d11018c2 (K158 D8); live.save as API.md section 3 at 758c7d9e5 (K177)",
+  "method": "POST",
+  "path": "/api/v1/kiosk/readiness",
+  "status": 202,
+  "body": {
+    "generated_at": "2026-10-20T06:02:11Z",
+    "overall": "ready",
+    "session_started_since_reset": false,
+    "live": {
+      "text": {
+        "on": true,
+        "off_reason": null
+      },
+      "picture": {
+        "on": true,
+        "off_reason": null
+      },
+      "reader": {
+        "on": true,
+        "off_reason": null
+      },
+      "save": {
+        "on": true,
+        "off_reason": null
+      }
+    },
+    "opening_check": {
+      "state": "running",
+      "checked_at": null
+    },
+    "services": {
+      "state": "ok",
+      "running": 20,
+      "expected": 20,
+      "down": []
+    },
+    "snapshot": {
+      "state": "ok",
+      "prepared_at": "2026-10-20T06:02:00Z",
+      "restored_at": "2026-10-20T06:31:40Z",
+      "marker": "match"
+    },
+    "providers": {
+      "ollama": "works",
+      "vertex": "works"
+    },
+    "text_models": {
+      "deepseek-v4-pro": "works",
+      "gpt-oss:120b": "works"
+    },
+    "internet": "up",
+    "pictures": {
+      "day": "2026-10-20",
+      "used": 12,
+      "cap": 50
+    },
+    "model_config": {
+      "state": "valid",
+      "roles": {
+        "hard": {
+          "provider": "ollama",
+          "model": "deepseek-v4-pro"
+        },
+        "middle": {
+          "provider": "ollama",
+          "model": "gpt-oss:120b"
+        },
+        "light": {
+          "provider": "ollama",
+          "model": "gpt-oss:120b"
+        },
+        "companion": {
+          "provider": "ollama",
+          "model": "gpt-oss:120b"
+        },
+        "image": {
+          "provider": "vertex",
+          "model": "gemini-3-pro-image"
+        },
+        "embedding": {
+          "provider": "vertex",
+          "model": "text-embedding-004"
+        }
+      }
+    },
+    "last_reset": {
+      "outcome": "done",
+      "finished_at": "2026-10-20T06:31:52Z",
+      "took_s": 31,
+      "failed_phase": null,
+      "failed_step": null
+    },
+    "disk": {
+      "state": "ok",
+      "free_percent": 61
+    },
+    "memory": {
+      "state": "ok",
+      "headroom_mib": 1840,
+      "unmeasured": [
+        "chora-kiosk-conductor",
+        "docker-api-proxy"
+      ]
+    },
+    "ports": {
+      "state": "ok",
+      "published": 1
+    },
+    "databases": {
+      "state": "ok"
+    },
+    "telemetry": "none_by_design"
+  }
+}

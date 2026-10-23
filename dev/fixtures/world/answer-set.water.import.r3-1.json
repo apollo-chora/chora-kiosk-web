@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); set.water.import.r3, option Build more NEWater and desalination plants",
+  "method": "POST",
+  "path": "/api/v1/me/goals/8897f102-bb85-7701-ba94-9c60bbca2258/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+    "selected_option_id": "306c9ae82c48dd28"
+  },
+  "status": 200,
+  "body": {
+    "correct": true,
+    "rung": 3,
+    "is_refresher": false,
+    "counted": true,
+    "cleared_rung": 0,
+    "won": false,
+    "paced_today": false,
+    "rungs_cleared": 2,
+    "current_rung_correct": 1,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "306c9ae82c48dd28",
+    "explainer": "NEWater and desalination give Singapore water that does not depend on another country, so building them prepares for 2061."
+  }
+}

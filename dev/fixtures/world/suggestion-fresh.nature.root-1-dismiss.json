@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.nature.root",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/3f161993-deb4-7002-b92c-4fefcc423a9b/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "3f161993-deb4-7002-b92c-4fefcc423a9b",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Bukit Timah Nature Reserve",
+    "focalConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+    "rationale": "It holds Singapore’s largest remaining patch of primary rainforest.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:37:30Z"
+  }
+}

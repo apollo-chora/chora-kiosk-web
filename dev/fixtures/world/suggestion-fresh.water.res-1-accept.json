@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.res",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/776b7607-4e96-7d1a-939c-35da8893a9c8/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "776b7607-4e96-7d1a-939c-35da8893a9c8",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "ABC Waters Programme",
+    "focalConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+    "rationale": "Turns drains, canals and reservoirs into clean streams and lakes people can enjoy.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T06:35:50Z"
+  }
+}

@@ -1,0 +1,197 @@
+<div class="exhibit" [class.long-stem]="longStem()">
+  <div class="ex-head">
+    <div>
+      <div class="crumb">{{ 'grade.kicker' | translate }}</div>
+      <h2>{{ 'grade.title' | translate }}</h2>
+      @if (fromDash(); as d) {
+        <p>{{ 'grade.subFromDash' | translate: { x: d.title } }}</p>
+      } @else {
+        <p>{{ 'grade.sub' | translate }}</p>
+      }
+    </div>
+  </div>
+  @switch (exhibit.status()) {
+    @case ('failed') {
+      <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+    }
+    @case ('ready') {
+      @if (exhibit.question(); as q) {
+        <div class="grade-grid">
+          <div class="qcard glass">
+            <!-- W97: the card's body gives way above its LIVE row (the foot): the answer box first (W2), then it scrolls. -->
+            <div class="qcard__body">
+            <p class="q" kioskContent>{{ q.stem }}</p>
+            <div class="sub" style="font: 700 14px/1 var(--font); color: var(--text-faint)">{{ 'grade.rubric' | translate }}</div>
+            <div class="rubric">
+              @for (r of q.rubric; track $index) {
+                <div><i>{{ $index + 1 }}</i><span kioskContent>{{ r }}</span></div>
+              }
+            </div>
+            <div class="sub" style="font: 700 14px/1 var(--font); color: var(--text-faint); margin-top: 6px">{{ 'grade.answer' | translate }}</div>
+            <textarea id="gradetext" [value]="exhibit.text()" [disabled]="exhibit.locked() || exhibit.source().kind === 'dash'" (input)="exhibit.type(value($event))"></textarea>
+            @if (!fromDash()) {
+            <div style="display: flex; gap: 10px; flex-wrap: wrap">
+              <button
+                class="chip"
+                [class.used]="exhibit.source().kind === 'sample' && $any(exhibit.source()).key === 'strong'"
+                data-act="sample"
+                data-s="strong"
+                [disabled]="exhibit.locked()"
+                (click)="exhibit.useSample('strong')">
+                {{ 'grade.useStrong' | translate }}
+              </button>
+              <button
+                class="chip"
+                [class.used]="exhibit.source().kind === 'sample' && $any(exhibit.source()).key === 'weak'"
+                data-act="sample"
+                data-s="weak"
+                [disabled]="exhibit.locked()"
+                (click)="exhibit.useSample('weak')">
+                {{ 'grade.useWeak' | translate }}
+              </button>
+            </div>
+            }
+            </div>
+            <div class="grade-go">
+              @if (exhibit.source().kind !== 'sample') {
+                <kiosk-live-row
+                  [liveKey]="liveKey"
+                  kind="grade"
+                  [label]="'live.grade' | translate"
+                  [params]="exhibit.liveParams()"
+                  [preparedAt]="null"
+                  [noFallback]="true"
+                  [offer]="!exhibit.gradedLive()"
+                  [disabled]="!exhibit.liveParams() || exhibit.stage() !== 'answer'" />
+              } @else if (exhibit.stage() === 'answer') {
+                <button class="btn btn-primary btn-sm" data-act="submitGrade" [disabled]="exhibit.locked()" (click)="exhibit.submitSample()">
+                  {{ 'grade.submit' | translate }}
+                </button>
+              }
+            </div>
+            @if (missLine(); as m) {
+              <div class="msg-error">{{ m.key | translate: m.params }}</div>
+            }
+            @if (exhibit.failed() === 'review') {
+              <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+            }
+          </div>
+          <div class="acard glass">
+            <div class="narrate">{{ 'grade.narrate' | translate }}</div>
+            @if (!calling()) {
+              <div class="mini-trace">
+                @for (s of steps(); track s.key) {
+                  <span [class]="s.cls">{{ s.key | translate }}</span>
+                }
+              </div>
+            }
+            @switch (exhibit.stage()) {
+              @case ('answer') {
+                @if (q.picture) {
+                  <figure class="grade-fig">
+                    <span class="pic-wrap">
+                      <img [src]="q.picture" [alt]="q.captionKey | translate" />
+                      <span class="ai-mark"><kiosk-icon name="ai" />{{ 'ai.mark' | translate }}</span>
+                    </span>
+                    <figcaption>{{ q.captionKey | translate }}</figcaption>
+                  </figure>
+                }
+                <div class="grade-empty">{{ 'grade.empty' | translate }}</div>
+              }
+              @case ('review') {
+                @if (exhibit.review(); as r) {
+                  <div class="review">
+                    <h4>{{ 'grade.review.title' | translate }}</h4>
+                    <p>{{ 'grade.review.body' | translate }}</p>
+                    @if (reviewSource(); as src) {
+                      @if (src.origin === 'live') {
+                        <span class="stamp live-done"><kiosk-icon name="bolt" />{{ 'grade.liveStamp' | translate }}</span>
+                      } @else if (src.when) {
+                        <span class="stamp"><kiosk-icon name="clock" />{{ 'stamp.prepared' | translate: { when: src.when } }}<kiosk-prepared-info /></span>
+                      }
+                    }
+                  </div>
+                  @for (c of r.criteria; track $index; let i = $index) {
+                    <div class="crow">
+                      <span
+                        ><span kioskContent>{{ c.title }}</span>
+                        @if (exhibit.final()[i] !== c.ai) {
+                          <span class="tag-adj">{{ 'grade.adjusted' | translate }}</span>
+                        }
+                      </span>
+                      <span class="ai">{{ 'grade.aiScore' | translate }} {{ c.ai }}/{{ c.max }}</span>
+                      <span class="adj">
+                        <button class="stp" data-act="adj" [attr.data-c]="i" data-d="-1" [disabled]="exhibit.final()[i] <= 0 || !!exhibit.busy()" (click)="exhibit.adjust(i, -1)">−</button>
+                        <span class="val">{{ exhibit.final()[i] }}/{{ c.max }}</span>
+                        <button class="stp" data-act="adj" [attr.data-c]="i" data-d="1" [disabled]="exhibit.final()[i] >= c.max || !!exhibit.busy()" (click)="exhibit.adjust(i, 1)">+</button>
+                      </span>
+                    </div>
+                  }
+                  <div class="sub" style="font: 700 13px/1 var(--font); color: var(--text-faint)">{{ 'grade.review.comment' | translate }}</div>
+                  <textarea id="gradecomment" [value]="exhibit.comment()" [disabled]="!!exhibit.busy()" (input)="exhibit.editComment(value($event))"></textarea>
+                  @for (n of exhibit.notes(); track $index) {
+                    <p class="rv-next" kioskContent>{{ n }}</p>
+                  }
+                  <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
+                    <button class="btn btn-curiosity btn-sm" data-act="release" [disabled]="!!exhibit.busy()" (click)="exhibit.release()">{{ 'grade.approve' | translate }}</button>
+                    <span class="stamp"><kiosk-icon name="info" />{{ 'grade.kioskOnly' | translate }}</span>
+                  </div>
+                  @if (exhibit.failed() === 'release') {
+                    <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                  }
+                }
+              }
+              @case ('released') {
+                @if (released(); as g) {
+                  <div class="result">
+                    <!-- W29: the circle holds the score alone; where the grade came from sits under it. -->
+                    <div class="score-col">
+                      <div class="score">
+                        <div><b>{{ g.total }}</b><span>{{ 'grade.score' | translate }}</span></div>
+                      </div>
+                      <div class="score-src">
+                        @if (g.origin === 'live') {
+                          <span class="stamp live-done"><kiosk-icon name="bolt" />{{ 'grade.liveStamp' | translate }}</span>
+                        } @else if (g.when) {
+                          <span class="stamp"><kiosk-icon name="clock" />{{ 'stamp.prepared' | translate: { when: g.when } }}<kiosk-prepared-info /></span>
+                        }
+                      </div>
+                    </div>
+                    <div class="crit">
+                      @for (c of g.criteria; track $index) {
+                        <div>
+                          <b>{{ c.final ?? c.ai }}/{{ c.max }}</b
+                          ><span
+                            ><span kioskContent>{{ c.feedback || c.title }}</span>
+                            @if (c.final !== null && c.final !== c.ai) {
+                              <span class="tag-adj">{{ 'grade.adjusted' | translate }}</span>
+                            }
+                          </span>
+                        </div>
+                      }
+                    </div>
+                  </div>
+                  <div class="sub" style="font: 700 14px/1 var(--font); color: var(--text-faint)">{{ 'grade.why' | translate }}</div>
+                  <div class="explain" kioskContent>{{ g.comment }}</div>
+                  @if (g.total !== g.aiTotal) {
+                    <p class="rv-next">{{ 'grade.finalNote' | translate: { ai: g.aiTotal, f: g.total } }}</p>
+                  }
+                  <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
+                    <span class="badge ok"><kiosk-icon name="check" />{{ 'grade.releasedBy' | translate }}</span>
+                    @if (exhibit.dash(); as d) {
+                      <button class="btn btn-frame btn-sm" data-act="dbxSeeResults" (click)="seeResults(d.bankKey)">{{ 'dbx.seeResults' | translate }} <kiosk-icon name="arrow" /></button>
+                    }
+                  </div>
+                }
+              }
+            }
+          </div>
+        </div>
+      }
+    }
+  }
+</div>
+
+<ng-template #footer>
+  <kiosk-tour-footer><kiosk-xray-button kind="grade" /></kiosk-tour-footer>
+</ng-template>

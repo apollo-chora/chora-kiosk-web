@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.hawker.root",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/329f1cee-b210-7b7f-97fc-fe47446601c8/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "329f1cee-b210-7b7f-97fc-fe47446601c8",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Hawker succession",
+    "focalConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+    "rationale": "Retiring hawkers can train a newcomer to take over their stall and recipes.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:39:10Z"
+  }
+}

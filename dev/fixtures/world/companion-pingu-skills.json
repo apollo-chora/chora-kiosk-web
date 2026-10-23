@@ -1,0 +1,79 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption companion_instance_handlers.go (the skills read, camelCased by the edge, in the shape companions.service.ts normalises); grants of the species path: progress_mirror at stage 1 (migration 0086), explain_anew and recap_scribe at 2 (docs/design/kiosk/apollo-kiosk-mockup.html (Version 6), CX_STAGE_UP woke); slots stage + 1 (growth/slots.go)",
+  "method": "GET",
+  "path": "/api/v1/me/companions/4468bbd0-6fd6-77dc-aa5f-c38cd27693ea/skills",
+  "status": 200,
+  "body": {
+    "companionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+    "skillGrants": [
+      "progress_mirror"
+    ],
+    "equippedSkills": [],
+    "grants": [
+      {
+        "skillKey": "progress_mirror",
+        "skillKind": "active",
+        "slotCost": 1,
+        "equipped": false,
+        "unlockedVia": "species_path",
+        "unlockedAtStage": 1,
+        "catalogueActive": true
+      }
+    ],
+    "skillSlotsUnlocked": 2,
+    "slotsUsed": 0,
+    "evolutionTier": "flash-lite",
+    "growthStage": 1
+  },
+  "variants": [
+    {
+      "after": [
+        "^FIXTURE world/answer-set\\.water\\.res\\.r6-0\\.json$"
+      ],
+      "status": 200,
+      "body": {
+        "companionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "skillGrants": [
+          "progress_mirror",
+          "explain_anew",
+          "recap_scribe"
+        ],
+        "equippedSkills": [],
+        "grants": [
+          {
+            "skillKey": "progress_mirror",
+            "skillKind": "active",
+            "slotCost": 1,
+            "equipped": false,
+            "unlockedVia": "species_path",
+            "unlockedAtStage": 1,
+            "catalogueActive": true
+          },
+          {
+            "skillKey": "explain_anew",
+            "skillKind": "active",
+            "slotCost": 1,
+            "equipped": false,
+            "unlockedVia": "species_path",
+            "unlockedAtStage": 2,
+            "catalogueActive": true
+          },
+          {
+            "skillKey": "recap_scribe",
+            "skillKind": "active",
+            "slotCost": 1,
+            "equipped": false,
+            "unlockedVia": "species_path",
+            "unlockedAtStage": 2,
+            "catalogueActive": true
+          }
+        ],
+        "skillSlotsUnlocked": 3,
+        "slotsUsed": 0,
+        "evolutionTier": "flash-lite",
+        "growthStage": 2
+      }
+    }
+  ]
+}

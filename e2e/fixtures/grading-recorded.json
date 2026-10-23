@@ -1,0 +1,234 @@
+{
+ "source": "Recorded read-only from the chora-kiosk stack on 2026-10-18 (14:3x UTC) by the T3 web session: the golden run's two graded samples (manifest choices sample.strong and sample.weak, prepared 04:55 UTC), their published test set and their instructor's grading reads, as the edge answered them. Used by e2e/grade-fit.spec.ts only.",
+ "samples": {
+  "sample.strong": {
+   "ai_points_earned": 10,
+   "assessment_id": "01a14d5d-a6dd-7c8e-b4ea-8c840daca095",
+   "points_possible": 10,
+   "question_id": "01a14d5d-86f4-7dc2-8327-13874395428c",
+   "submission_id": "01a14d5d-a6e2-75de-8f5d-4ae9c12eee26",
+   "test_set_id": "01a14d5d-9fca-7715-9b34-1e9787cf610a",
+   "test_set_question_id": "01a14d5d-9fcb-7c26-ba28-5dc112a217e8"
+  },
+  "sample.weak": {
+   "ai_points_earned": 0.8,
+   "assessment_id": "01a14d5d-d5fc-700a-aac0-ce9e82c5c436",
+   "points_possible": 10,
+   "question_id": "01a14d5d-86f4-7dc2-8327-13874395428c",
+   "submission_id": "01a14d5d-d601-7964-ba37-73e032aa0a97",
+   "test_set_id": "01a14d5d-9fca-7715-9b34-1e9787cf610a",
+   "test_set_question_id": "01a14d5d-9fcb-7c26-ba28-5dc112a217e8"
+  }
+ },
+ "accept_question_id": "01a14d5d-86f4-7dc2-8327-13874395428c",
+ "test_set": {
+  "author_gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+  "created_at": "2026-10-18T04:55:43.818225Z",
+  "description": "",
+  "id": "01a14d5d-9fca-7715-9b34-1e9787cf610a",
+  "published_at": "2026-10-18T04:55:45.618Z",
+  "question_count": 1,
+  "questions": [
+   {
+    "added_at": "2026-10-18T04:55:43.81905Z",
+    "display_order": 1,
+    "id": "01a14d5d-9fcb-7c26-ba28-5dc112a217e8",
+    "payload_snapshot": {
+     "stem": "The illustration below shows Singapore's four water sources: a reservoir fed by rain, a pipeline from Johor, a NEWater plant, and a desalination plant by the sea. Using the illustration, explain why Singapore invests in NEWater and desalination even though it buys water from Johor under an agreement that ends in 2061.",
+     "rubric": [
+      {
+       "weight": 0.4,
+       "description": "2061 agreement risk",
+       "criterion_id": "c1"
+      },
+      {
+       "weight": 0.4,
+       "description": "Independence from rain and other countries",
+       "criterion_id": "c2"
+      },
+      {
+       "weight": 0.2,
+       "description": "Trade-off",
+       "criterion_id": "c3"
+      }
+     ],
+     "image_url": "/blobs/chora-kiosk-pictures/tenants/01a1411f-7f20-7834-bdd5-6f80318297bf/jobs/01a14d5b-4b21-76c0-b638-f568fddec7f0/01a14d5bd1db713b881a8ce4a324a178.png",
+     "model_answer": "Singapore invests in NEWater and desalination because the water agreement with Johor ends in 2061, and there is no guarantee it will be renewed or extended. Relying on imported water therefore poses a supply risk. NEWater treats used water and desalination turns seawater into drinking water, both within Singapore, so they do not depend on rainfall or on another country. However, these methods require significant energy, making them more expensive and carbon-intensive."
+    },
+    "points": 10,
+    "question_atom_id": "01a14d5d-86f4-735b-a780-71f80c4acdf7",
+    "question_id": "01a14d5d-86f4-7dc2-8327-13874395428c",
+    "question_type": "oe",
+    "snapshot_at": "2026-10-18T04:55:37.460901Z",
+    "test_set_id": "01a14d5d-9fca-7715-9b34-1e9787cf610a",
+    "test_set_question_id": "01a14d5d-9fcb-7c26-ba28-5dc112a217e8",
+    "updated_at": "2026-10-18T04:55:43.81905Z"
+   }
+  ],
+  "source_job_id": "01a14d5d-9ef8-7b96-8846-53cd09d00e50",
+  "state": "PUBLISHED",
+  "tenant_id": "01a1411f-7f20-7834-bdd5-6f80318297bf",
+  "test_set_id": "01a14d5d-9fca-7715-9b34-1e9787cf610a",
+  "title": "Water for Life: open question",
+  "total_points": 10,
+  "updated_at": "2026-10-18T04:55:45.618035Z"
+ },
+ "reads": {
+  "sample.strong": {
+   "ai_overall_comment": "You scored 100% (10 out of 10 points), well above the 70% passing threshold. Your explanation of Singapore's investment in NEWater and desalination was thorough—you clearly identified the 2061 agreement risk, the importance of water independence from rainfall and other countries, and the energy trade-off. To push even further, you might mention that higher energy use also makes NEWater and desalination more expensive and carbon-intensive. Excellent work overall.",
+   "assessment_id": "01a14d5d-a6dd-7c8e-b4ea-8c840daca095",
+   "attempt_number": 1,
+   "learner_gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+   "overall_comment": "You scored 100% (10 out of 10 points), well above the 70% passing threshold. Your explanation of Singapore's investment in NEWater and desalination was thorough—you clearly identified the 2061 agreement risk, the importance of water independence from rainfall and other countries, and the energy trade-off. To push even further, you might mention that higher energy use also makes NEWater and desalination more expensive and carbon-intensive. Excellent work overall.",
+   "overall_comment_provenance": "AI",
+   "passed": true,
+   "passing_threshold_percent": 70,
+   "questions": [
+    {
+     "ai_comment": "This is a complete answer: it identifies the 2061 agreement risk, the independence from rainfall and other countries, and the energy trade-off. A stretch would be to mention that higher energy use also makes NEWater and desalination more expensive and carbon-intensive.",
+     "ai_points_earned": 10,
+     "comment": "This is a complete answer: it identifies the 2061 agreement risk, the independence from rainfall and other countries, and the energy trade-off. A stretch would be to mention that higher energy use also makes NEWater and desalination more expensive and carbon-intensive.",
+     "comment_provenance": "AI",
+     "criterion_scores": [
+      {
+       "criterion_id": "c1",
+       "feedback": "Learner states imported water depends on an agreement with Malaysia that ends in 2061 and explicitly calls it a risk.",
+       "max_score": 1,
+       "score": 1,
+       "title": "2061 agreement risk"
+      },
+      {
+       "criterion_id": "c2",
+       "feedback": "Learner says NEWater and desalination give Singapore water that does not depend on rain or on another country.",
+       "max_score": 1,
+       "score": 1,
+       "title": "Independence from rain and other countries"
+      },
+      {
+       "criterion_id": "c3",
+       "feedback": "Learner identifies the trade-off that both NEWater and desalination use a lot of energy.",
+       "max_score": 1,
+       "score": 1,
+       "title": "Trade-off"
+      }
+     ],
+     "grading_dispatch": "LLM_EVALUATOR",
+     "learner_answer": {
+      "oe_response_text": "Imported water depends on an agreement with Malaysia that ends in 2061, which is a risk. NEWater and desalination give Singapore water that does not depend on rain or on another country. The trade-off is that both use a lot of energy."
+     },
+     "model_answer": "Singapore invests in NEWater and desalination because the water agreement with Johor ends in 2061, and there is no guarantee it will be renewed or extended. Relying on imported water therefore poses a supply risk. NEWater treats used water and desalination turns seawater into drinking water, both within Singapore, so they do not depend on rainfall or on another country. However, these methods require significant energy, making them more expensive and carbon-intensive.",
+     "model_answer_provenance": "AI",
+     "oe_graded_at": "2026-10-18T04:55:54.346198Z",
+     "points_earned": 10,
+     "points_possible": 10,
+     "prompt": "The illustration below shows Singapore's four water sources: a reservoir fed by rain, a pipeline from Johor, a NEWater plant, and a desalination plant by the sea. Using the illustration, explain why Singapore invests in NEWater and desalination even though it buys water from Johor under an agreement that ends in 2061.",
+     "quality_flagged": false,
+     "question_id": "01a14d5d-86f4-7dc2-8327-13874395428c",
+     "question_type": "oe",
+     "rubric": [
+      {
+       "criterion_id": "c1",
+       "description": "2061 agreement risk",
+       "weight": 0.4
+      },
+      {
+       "criterion_id": "c2",
+       "description": "Independence from rain and other countries",
+       "weight": 0.4
+      },
+      {
+       "criterion_id": "c3",
+       "description": "Trade-off",
+       "weight": 0.2
+      }
+     ],
+     "score_provenance": "AI",
+     "test_set_question_id": "01a14d5d-9fcb-7c26-ba28-5dc112a217e8"
+    }
+   ],
+   "review_status": "PENDING_REVIEW",
+   "state": "GRADED",
+   "submission_id": "01a14d5d-a6e2-75de-8f5d-4ae9c12eee26",
+   "total_points_earned": 10,
+   "total_points_possible": 10
+  },
+  "sample.weak": {
+   "ai_overall_comment": "You scored 8% on this assessment, which is below the 70% passing threshold. You made a good start by identifying Singapore's limited natural freshwater as a reason for needing more water sources. To improve, focus on explaining why the Johor agreement ending in 2061 creates risk, and how NEWater and desalination provide independence from rain and imports. A stronger answer would also mention that NEWater treats used water and desalination uses seawater, and that both methods are energy-intensive. With that added detail, you can show a fuller understanding of Singapore's water strategy.",
+   "assessment_id": "01a14d5d-d5fc-700a-aac0-ce9e82c5c436",
+   "attempt_number": 1,
+   "learner_gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+   "overall_comment": "You scored 8% on this assessment, which is below the 70% passing threshold. You made a good start by identifying Singapore's limited natural freshwater as a reason for needing more water sources. To improve, focus on explaining why the Johor agreement ending in 2061 creates risk, and how NEWater and desalination provide independence from rain and imports. A stronger answer would also mention that NEWater treats used water and desalination uses seawater, and that both methods are energy-intensive. With that added detail, you can show a fuller understanding of Singapore's water strategy.",
+   "overall_comment_provenance": "AI",
+   "passed": false,
+   "passing_threshold_percent": 70,
+   "questions": [
+    {
+     "ai_comment": "The answer identifies Singapore's limited natural freshwater as a reason for needing more sources, but it does not explain the 2061 Johor agreement risk, the independence NEWater/desalination offer from rain and other countries, or the energy/cost trade-off. To raise the score, mention that the agreement may not be renewed, that NEWater treats used water and desalination uses seawater (so they do not rely on rain or imports), and that these methods are energy-intensive.",
+     "ai_points_earned": 0.8,
+     "comment": "The answer identifies Singapore's limited natural freshwater as a reason for needing more sources, but it does not explain the 2061 Johor agreement risk, the independence NEWater/desalination offer from rain and other countries, or the energy/cost trade-off. To raise the score, mention that the agreement may not be renewed, that NEWater treats used water and desalination uses seawater (so they do not rely on rain or imports), and that these methods are energy-intensive.",
+     "comment_provenance": "AI",
+     "criterion_scores": [
+      {
+       "criterion_id": "c1",
+       "feedback": "No mention of the Johor agreement ending in 2061 or the risk of non-renewal; the learner only states Singapore needs more water sources.",
+       "max_score": 1,
+       "score": 0,
+       "title": "2061 agreement risk"
+      },
+      {
+       "criterion_id": "c2",
+       "feedback": "The learner notes Singapore is 'small and has no big rivers', which hints at limited natural freshwater, but does not explain that NEWater and desalination provide water independent of rainfall or other countries; no mention of rain/import independence.",
+       "max_score": 1,
+       "score": 0.2,
+       "title": "Independence from rain and other countries"
+      },
+      {
+       "criterion_id": "c3",
+       "feedback": "No mention of energy, cost, or carbon trade-off; the answer does not address drawbacks of NEWater or desalination.",
+       "max_score": 1,
+       "score": 0,
+       "title": "Trade-off"
+      }
+     ],
+     "grading_dispatch": "LLM_EVALUATOR",
+     "learner_answer": {
+      "oe_response_text": "Singapore is small and has no big rivers, so it needs more water sources."
+     },
+     "model_answer": "Singapore invests in NEWater and desalination because the water agreement with Johor ends in 2061, and there is no guarantee it will be renewed or extended. Relying on imported water therefore poses a supply risk. NEWater treats used water and desalination turns seawater into drinking water, both within Singapore, so they do not depend on rainfall or on another country. However, these methods require significant energy, making them more expensive and carbon-intensive.",
+     "model_answer_provenance": "AI",
+     "oe_graded_at": "2026-10-18T04:56:14.287615Z",
+     "points_earned": 0.8,
+     "points_possible": 10,
+     "prompt": "The illustration below shows Singapore's four water sources: a reservoir fed by rain, a pipeline from Johor, a NEWater plant, and a desalination plant by the sea. Using the illustration, explain why Singapore invests in NEWater and desalination even though it buys water from Johor under an agreement that ends in 2061.",
+     "quality_flagged": false,
+     "question_id": "01a14d5d-86f4-7dc2-8327-13874395428c",
+     "question_type": "oe",
+     "rubric": [
+      {
+       "criterion_id": "c1",
+       "description": "2061 agreement risk",
+       "weight": 0.4
+      },
+      {
+       "criterion_id": "c2",
+       "description": "Independence from rain and other countries",
+       "weight": 0.4
+      },
+      {
+       "criterion_id": "c3",
+       "description": "Trade-off",
+       "weight": 0.2
+      }
+     ],
+     "score_provenance": "AI",
+     "test_set_question_id": "01a14d5d-9fcb-7c26-ba28-5dc112a217e8"
+    }
+   ],
+   "review_status": "PENDING_REVIEW",
+   "state": "GRADED",
+   "submission_id": "01a14d5d-d601-7964-ba37-73e032aa0a97",
+   "total_points_earned": 0.8,
+   "total_points_possible": 10
+  }
+ }
+}

@@ -1,0 +1,77 @@
+// Copied from chora-web at eeaec46eb (src/styles/_surface-accents.scss), values unchanged; only the comments' dashes differ (the kiosk's no-dash style rule).
+// =====================================================================
+// CHORA surface accent variants
+// Per CLAUDE.md §2 - glassmorphism design system shared across the 5
+// surfaces with per-surface accent overrides. Add a `.surface-{letter}`
+// class to a surface-root container; descendants pick up the override.
+//
+// Token contract: each variant overrides --primary / --primary-hover /
+// --secondary (and an optional gradient) without touching glass-bg /
+// shadows / text tokens. Surface accents complement the polyglass base.
+// =====================================================================
+
+.surface-aplus {
+  // A+ (A-plus) - learner + author. Canonical Chora blue (--chora-color-primary)
+  // + curiosity violet (--chora-color-curiosity) per the original brand palette.
+  --primary:        #1976d2;            // = --chora-color-primary (Material Blue 700)
+  --primary-hover:  #1565c0;            // Material Blue 800
+  --secondary:      #7c4dff;            // = --chora-color-curiosity (vivid violet)
+  --surface-accent-gradient: linear-gradient(135deg, #1976d2, #7c4dff);
+}
+
+.surface-cplus {
+  // C+ (Circle+) - social. Cyan-led to match Stitch C+ canon ("your
+  // curiosity, your circle" - sky/openness/electric social vibe). Resolved
+  // 2026-05-12 evening after Stage 1 reconciliation surfaced a clash with
+  // the Stage 0 placeholder (pink/orange). Stitch is the design source of
+  // truth per `feedback_stitch_canonical_theme` memory.
+  --primary:        #00d4ff;
+  --primary-hover:  #0891b2;
+  --secondary:      #7c3aed;
+  --surface-accent-gradient: linear-gradient(135deg, #0891b2, #00d4ff);
+}
+
+.surface-hplus {
+  // H+ (Hub+) - tenant admin. Neutral on authority - supports white-label
+  // / franchise / self-host; deeper slate-anchored teal feels operational.
+  --primary:        #0f766e;
+  --primary-hover:  #115e59;
+  --secondary:      #0284c7;
+  --surface-accent-gradient: linear-gradient(135deg, #0f766e, #14b8a6);
+}
+
+.surface-oplus {
+  // O+ (Observability+) - governance. IMDA-aligned violet/magenta echoes
+  // the audit + accountability brand.
+  --primary:        #7b2d8e;
+  --primary-hover:  #6b2480;
+  --secondary:      #c4107b;
+  --surface-accent-gradient: linear-gradient(135deg, #6b2480, #7b2d8e);
+}
+
+.surface-rplus {
+  // R+ (Rhythm+) - instructor / training delivery.
+  // Mirrors A+ palette during build-out per user directive 2026-05-17
+  // (preferred over the amber A700 attempt). Distinct R+ palette deferred
+  // until product decides on an R+-specific accent.
+  --primary:        #1976d2;            // = --chora-color-primary (Material Blue 700)
+  --primary-hover:  #1565c0;            // Material Blue 800
+  --secondary:      #7c4dff;            // = --chora-color-curiosity (vivid violet)
+  --surface-accent-gradient: linear-gradient(135deg, #1976d2, #7c4dff);
+}
+
+// ─── Brand gradient helper ────────────────────────────────────────────
+// Apply to any element that should pick up the surface gradient (badges,
+// progress fills, CTAs). Falls back to the polyglass default gradient
+// when no `.surface-*` ancestor is present.
+.surface-accent-bg {
+  background: var(--surface-accent-gradient, linear-gradient(135deg, var(--primary), var(--secondary)));
+}
+
+.surface-accent-text {
+  background: var(--surface-accent-gradient, linear-gradient(135deg, var(--primary), var(--secondary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

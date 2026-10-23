@@ -1,0 +1,67 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption growth_edge_uploads_handler.go:67-97 (the job; the panel only while AWAITING_REVIEW); paper.nature, its panel the mockup world's stand-in",
+  "method": "GET",
+  "path": "/api/v1/me/growth-edges/uploads/d648bbdb-5d82-7fb6-8266-22b70946cc52",
+  "status": 200,
+  "body": {
+    "upload_id": "d648bbdb-5d82-7fb6-8266-22b70946cc52",
+    "status": "AWAITING_REVIEW",
+    "review": {
+      "familiar": {
+        "familiar_id": "cc69f1d2-9824-7d13-b9ee-9b732f56e480",
+        "name": "Nova"
+      },
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "5c20e86f-2ed5-7794-b101-1608408ee02b",
+          "concept_label": "Otter Diet and Classification",
+          "summary": "Understanding the dietary requirements of smooth-coated otters as carnivores.",
+          "strength": 0.9,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "0659606f-7fa9-7f6c-8331-e4bcedbef9ba",
+          "concept_label": "Ecological Functions of Mangroves",
+          "summary": "Recognizing the critical environmental roles mangroves play in coastal protection and as nurseries for marine life.",
+          "strength": 0.8,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "cacb8c02-166d-704f-af90-78cc95815636",
+          "concept_label": "Sustainable Architecture: Supertrees",
+          "summary": "Understanding that Supertrees are man-made steel structures designed for environmental functions rather than natural trees.",
+          "strength": 0.9,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "9282d725-149f-7992-9801-f77573cff22a",
+          "concept_label": "Plant Transpiration and Cooling",
+          "summary": "Identifying that plants cool the air not just through shade, but through the release of water vapour.",
+          "strength": 0.4,
+          "suggested_difficulty": "standard"
+        }
+      ],
+      "candidate_struggles": [],
+      "available_outputs": []
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/growth-edges/uploads/d648bbdb-5d82-7fb6-8266-22b70946cc52/resume$"
+      ],
+      "status": 200,
+      "body": {
+        "upload_id": "d648bbdb-5d82-7fb6-8266-22b70946cc52",
+        "status": "COMPLETED",
+        "upserted_growth_edge_ids": [
+          "3e84ab38-6fe3-7fe2-8a6a-b325389cdb34",
+          "41978af0-122f-7625-a557-72ca761fa6c0",
+          "b8b28de9-6069-748c-a908-f2337f379bc6",
+          "b5e5a0aa-2806-7ea0-a549-1278cff8ad80"
+        ]
+      }
+    }
+  ]
+}

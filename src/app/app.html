@@ -1,0 +1,107 @@
+<div
+  id="stage"
+  [class.t-nus]="store.scene() === 'idle'"
+  [class.t-chora]="store.scene() !== 'idle'"
+  [style.width.px]="fit().stageWidth"
+  [style.height.px]="fit().stageHeight"
+  [style.transform]="'scale(' + fit().scale + ')'"
+>
+  <header kioskFrameHeader></header>
+
+  <main id="scene" #scene aria-live="polite" [style.left.px]="fit().sceneLeft" [style.top.px]="fit().sceneTop">
+    @switch (store.scene()) {
+      @case ('idle') {
+        <kiosk-idle-scene />
+      }
+      @case ('hook') {
+        <kiosk-hook-scene />
+      }
+      @case ('hall') {
+        <kiosk-hall-scene />
+      }
+      @case ('maps') {
+        <kiosk-maps-scene />
+      }
+      @case ('comp') {
+        <kiosk-companions-scene />
+      }
+      @case ('dash') {
+        <kiosk-dashboard-scene />
+      }
+      @case ('grade') {
+        <kiosk-grade-scene />
+      }
+      @case ('engine') {
+        <kiosk-engine-scene />
+      }
+      @case ('crews') {
+        <kiosk-crews-scene />
+      }
+      @case ('safety') {
+        <kiosk-safety-scene />
+      }
+      @case ('gov') {
+        <kiosk-gov-scene />
+      }
+      @case ('local') {
+        <kiosk-local-scene />
+      }
+      @case ('own') {
+        <kiosk-own-goal-scene />
+      }
+    }
+  </main>
+
+  <footer class="frame-bottom" id="bottom" [class.hidden]="store.scene() === 'idle'">
+    @if (footer(); as tpl) {
+      <ng-container [ngTemplateOutlet]="tpl" />
+    }
+  </footer>
+
+  <kiosk-tour-end />
+  <div class="overlay" id="ov-xray" [class.show]="store.overlay() === 'xray'">
+    <div class="sheet glass" id="xray-sheet">
+      @if (store.overlay() === 'xray') {
+        <kiosk-xray-sheet />
+      }
+    </div>
+  </div>
+  <div class="overlay" id="ov-disclosure" [class.show]="store.overlay() === 'disclosure'">
+    <div class="sheet glass" id="disclosure-sheet">
+      @if (store.overlay() === 'disclosure') {
+        <kiosk-about-sheet />
+      }
+    </div>
+  </div>
+  <div class="overlay" id="ov-idle" [class.show]="store.overlay() === 'idle'">
+    <div class="warnbox glass" id="idle-box">
+      @if (store.overlay() === 'idle') {
+        <kiosk-idle-warn />
+      }
+    </div>
+  </div>
+  <div class="overlay" id="ov-fresh" [class.show]="store.overlay() === 'fresh'">
+    <div class="warnbox glass" id="fresh-box">
+      @if (store.overlay() === 'fresh') {
+        <kiosk-fresh-start />
+      }
+    </div>
+  </div>
+  <div class="overlay paused" id="ov-paused" [class.show]="store.paused()">
+    <p>{{ 'paused' | translate }}</p>
+  </div>
+
+  <aside kioskPresenter id="presenter"></aside>
+
+  <div class="credits" id="credits" data-act="hideCredits" [class.show]="store.creditsShown()" (click)="store.hideCredits()">
+    @if (store.creditsShown()) {
+      <kiosk-credits />
+    }
+  </div>
+
+  <div id="resetcard" aria-live="polite" [class.show]="store.resetCardShown()">
+    @if (store.resetCardShown()) {
+      <kiosk-reset-card />
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption companion_growth_handlers.go (growthResp), camelCased and wrapped in {data} by the gateway's companion bridge (companionbridge.go); stage, EXP and abilities of kiosk/world/world.json; tools of curve.go toolsByStage",
+  "method": "GET",
+  "path": "/api/v1/me/companions/cc69f1d2-9824-7d13-b9ee-9b732f56e480/growth",
+  "status": 200,
+  "body": {
+    "data": {
+      "companionId": "cc69f1d2-9824-7d13-b9ee-9b732f56e480",
+      "growthStage": 2,
+      "stageName": "",
+      "displayName": "Nova",
+      "species": "owl",
+      "shinyVariant": false,
+      "rarity": "common",
+      "expCurrent": 68,
+      "expNextThreshold": 200,
+      "expCumulative": 118,
+      "effectiveLlmTier": "flash-lite",
+      "effectiveMaxOutputTokens": 1024,
+      "unlockedTools": [
+        "atom_search",
+        "cite_atom"
+      ],
+      "ahaMomentConsumed": false,
+      "hatchedAt": "2026-10-01T02:00:00Z",
+      "lastStageUpAt": null
+    }
+  }
+}

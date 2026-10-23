@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.hawker.centres",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/365cd2c9-1cb6-7305-bd02-dcae92a68fa1/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "365cd2c9-1cb6-7305-bd02-dcae92a68fa1",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Incubation stalls",
+    "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+    "rationale": "New hawkers can start in a ready-fitted stall at half the usual rent at first.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:38:20Z"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_questions_handler.go (status ready, sanitised: is_correct and explainer stripped, options re-keyed by served_id.go and sorted; V5 trace); set.hawker.kopi.r4; the question of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/me/goals/1948dea7-3474-7a37-9b70-a20c2f4d8d16/campaign/questions",
+  "query": {
+    "concept_id": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+    "rung": "4"
+  },
+  "status": 200,
+  "body": {
+    "status": "ready",
+    "concept_id": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+    "concept_key": "kopi",
+    "rung": 4,
+    "questions": {
+      "candidates": [
+        {
+          "question_type": "mcq",
+          "stem": "At a kopitiam, what do you get when you order “kopi O”?",
+          "options": [
+            {
+              "option_id": "089e0e2973cf0e12",
+              "label": "Black coffee with sugar"
+            },
+            {
+              "option_id": "2a420715c873bff3",
+              "label": "Coffee with evaporated milk"
+            },
+            {
+              "option_id": "63f8bc67a774795a",
+              "label": "Iced tea"
+            },
+            {
+              "option_id": "d17ba5130fa66c06",
+              "label": "Coffee with condensed milk"
+            }
+          ]
+        }
+      ]
+    },
+    "source": "question_bank",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:45:10Z",
+        "completed_at": "2026-10-20T05:45:14Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:10Z",
+        "completed_at": "2026-10-20T05:45:14Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:10Z",
+        "completed_at": "2026-10-20T05:45:14Z"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:14Z",
+        "completed_at": "2026-10-20T05:45:18Z",
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:24Z",
+        "completed_at": "2026-10-20T05:45:28Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:28Z",
+        "completed_at": "2026-10-20T05:45:32Z",
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:45:32Z",
+        "completed_at": "2026-10-20T05:45:36Z",
+        "attempt": 1,
+        "accepted": true
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:45:36Z",
+        "completed_at": "2026-10-20T05:45:40Z",
+        "attempt": 1
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:36Z",
+        "completed_at": "2026-10-20T05:45:40Z"
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:36Z",
+        "completed_at": "2026-10-20T05:45:40Z"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:45:36Z",
+        "completed_at": "2026-10-20T05:45:40Z"
+      }
+    ],
+    "trace_id": "9e005dda855e0eca7c3c0bd3bbc4f077"
+  }
+}

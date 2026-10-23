@@ -1,0 +1,51 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "creation question_jobs_handler.go (acceptResponse: persisted questions, mana_debited); draft.h4 as written, overrides not applied",
+  "method": "POST",
+  "path": "/api/atoms/9b623743-8432-74b7-8782-e9a22d5b7ec7/question-jobs/4a586b99-7296-779f-b948-8d373cf51e6c/accept",
+  "status": 200,
+  "body": {
+    "persisted": [
+      {
+        "question_id": "707089ff-5262-72b9-a76b-10603276fc17",
+        "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+        "tenant_id": "7ec9347e-d14e-74aa-a2b8-70c2684ceba9",
+        "type": "mcq",
+        "prompt": "The diagram shows how used water becomes NEWater. Which stage destroys germs that slip through the membranes?",
+        "revision": 1,
+        "latest_revision_id": "6f5ebc74-7231-73f7-a3f2-79f673be8fc7",
+        "created_at": "2026-10-20T05:46:40Z",
+        "updated_at": "2026-10-20T05:46:40Z",
+        "mcq_payload": {
+          "options": [
+            {
+              "option_id": "opt_1",
+              "label": "Microfiltration",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_2",
+              "label": "Reverse osmosis",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_3",
+              "label": "UV disinfection",
+              "is_correct": true,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_4",
+              "label": "Chlorination",
+              "is_correct": false,
+              "explainer": ""
+            }
+          ]
+        }
+      }
+    ],
+    "mana_debited": 0
+  }
+}

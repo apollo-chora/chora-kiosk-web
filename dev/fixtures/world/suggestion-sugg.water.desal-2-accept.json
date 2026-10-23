@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.water.desal",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/d4c34971-2398-7c92-a73b-1c4c4c82adeb/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "d4c34971-2398-7c92-a73b-1c4c4c82adeb",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Energy use",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Pushing seawater through membranes takes a lot of electricity.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:31:40Z"
+  }
+}

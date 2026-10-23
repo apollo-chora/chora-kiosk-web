@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); sugg.water.desal",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/ee17c829-e411-7125-abc0-f9a8696631bc/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "ee17c829-e411-7125-abc0-f9a8696631bc",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Seawater intake",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Where desalination starts: seawater drawn in from the coast.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:31:40Z"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption growth_edge_uploads_handler.go:67-97 (the job; the panel only while AWAITING_REVIEW); paper.water.essay, its panel the mockup world's stand-in",
+  "method": "GET",
+  "path": "/api/v1/me/growth-edges/uploads/14fe892c-e979-75fd-92d2-6a3486c085fe",
+  "status": 200,
+  "body": {
+    "upload_id": "14fe892c-e979-75fd-92d2-6a3486c085fe",
+    "status": "AWAITING_REVIEW",
+    "review": {
+      "familiar": {
+        "familiar_id": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "name": "Pingu"
+      },
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "03d63495-1df5-7d04-b222-f747bdec1882",
+          "concept_label": "How NEWater is treated",
+          "summary": "The learner thinks NEWater is boiled to make it safe.",
+          "strength": 0.8,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "9a00ff74-a896-71ad-8baf-5754c91f4ad7",
+          "concept_label": "Who uses NEWater",
+          "summary": "The learner thinks most NEWater goes to home taps for drinking.",
+          "strength": 0.8,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "25f20776-0020-7abd-996b-cf3e7c665c7b",
+          "concept_label": "Why desalination costs more",
+          "summary": "The learner again blames dirty seawater for the cost, not the energy the process needs.",
+          "strength": 0.8,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "38ef230b-2a31-76c5-ab52-91653f9d3b71",
+          "concept_label": "Brine disposal",
+          "summary": "The learner thinks the leftover brine is harmless and can be poured back into the sea anywhere.",
+          "strength": 0.8,
+          "suggested_difficulty": "standard"
+        }
+      ],
+      "candidate_struggles": [],
+      "available_outputs": []
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/growth-edges/uploads/14fe892c-e979-75fd-92d2-6a3486c085fe/resume$"
+      ],
+      "status": 200,
+      "body": {
+        "upload_id": "14fe892c-e979-75fd-92d2-6a3486c085fe",
+        "status": "COMPLETED",
+        "upserted_growth_edge_ids": [
+          "3666dfc8-d53c-71e9-918c-a5760bc3967f",
+          "5518c353-f10f-7645-a353-f414770f2efe",
+          "e907164f-a7cd-76d0-b75a-2c3f01411b46",
+          "1eac1844-6651-78ce-9843-d15d433a1545"
+        ]
+      }
+    }
+  ]
+}

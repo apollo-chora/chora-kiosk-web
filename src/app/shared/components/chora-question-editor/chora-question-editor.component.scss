@@ -1,0 +1,182 @@
+:host {
+  display: block;
+}
+
+.chora-question-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+
+  &__field-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted, #64748b);
+  }
+
+  &__prompt,
+  &__model-answer,
+  &__option-label,
+  &__option-explainer {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--chora-color-border, rgba(15, 23, 42, 0.15));
+    border-radius: 8px;
+    padding: 0.5rem 0.65rem;
+    font: inherit;
+    color: var(--text-main, #0f172a);
+    background: var(--chora-color-surface-0, #fff);
+    // Height is driven by cdkTextareaAutosize so the full content is always
+    // visible (wraps + grows): manual resize would fight the autosize.
+    resize: none;
+    overflow: hidden;
+    line-height: 1.45;
+
+    &:focus-visible {
+      outline: 2px solid var(--chora-color-accent-aplus, #3b82f6);
+      outline-offset: 1px;
+      border-color: var(--chora-color-accent-aplus, #3b82f6);
+    }
+  }
+
+  &__prompt {
+    font-weight: 600;
+  }
+
+  &__option-explainer {
+    margin-top: 0.35rem;
+    font-size: 13px;
+    color: var(--text-muted, #64748b);
+    font-style: italic;
+  }
+
+  &__options {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  &__option {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: start;
+    gap: 0.6rem;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid var(--chora-color-border, rgba(15, 23, 42, 0.12));
+    border-radius: 10px;
+    background: var(--chora-color-surface-0, #fff);
+
+    // Mirror the chora-question-review "correct" highlight.
+    &--correct {
+      border-color: rgba(16, 185, 129, 0.55);
+      background: rgba(16, 185, 129, 0.06);
+    }
+  }
+
+  &__letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--chora-color-accent-aplus-soft, rgba(59, 130, 246, 0.12));
+    color: var(--chora-color-accent-aplus, #3b82f6);
+    font-weight: 700;
+    font-size: 13px;
+    flex: 0 0 auto;
+
+    .chora-question-editor__option--correct & {
+      background: rgba(16, 185, 129, 0.16);
+      color: #059669;
+    }
+  }
+
+  &__option-body {
+    min-width: 0;
+  }
+
+  &__correct-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted, #64748b);
+    white-space: nowrap;
+    cursor: pointer;
+
+    input {
+      cursor: pointer;
+    }
+  }
+
+  &__option-remove,
+  &__add-option {
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    transition: background 0.15s ease, color 0.15s ease;
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+
+  &__option-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    color: var(--text-muted, #64748b);
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus-visible {
+      background: rgba(220, 38, 38, 0.1);
+      color: #dc2626;
+    }
+  }
+
+  &__add-option {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--chora-color-accent-aplus, #3b82f6);
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus-visible {
+      background: var(--chora-color-accent-aplus-soft, rgba(59, 130, 246, 0.12));
+    }
+  }
+
+  &__errors {
+    margin: 0.2rem 0 0;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    background: rgba(220, 38, 38, 0.08);
+    color: #b91c1c;
+    font-size: 12.5px;
+  }
+
+  &__errors-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0.1rem 0;
+    }
+  }
+}

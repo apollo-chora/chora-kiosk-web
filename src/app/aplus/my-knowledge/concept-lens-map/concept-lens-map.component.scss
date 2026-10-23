@@ -1,0 +1,426 @@
+// =====================================================================
+// Concept fisheye LENS: A+ "My Knowledge" (owner-approved 2026-07-03).
+// Theme 1 "Indigo Monochrome": one hue top-to-bottom: paper-white hexes,
+// a single saturated indigo for the focus, a pale-indigo root tint. Node
+// shadows are NEUTRAL GREY (softer/larger under the focus so it lifts) and
+// come from a per-node inline `filter` (see nodeShadowFilter): never here.
+// NO rim. NO pan/zoom (the SVG scales via preserveAspectRatio).
+// =====================================================================
+
+:host {
+  display: block;
+}
+
+.concept-lens {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+// ── The scene (fixed viewBox, responsive box) ───────────────────────
+.concept-lens__scene {
+  // Theme 1 tokens: prefer real Chora indigo where it exists.
+  --lens-hexfill: #ffffff;
+  --lens-hexstroke: rgba(84, 90, 150, 0.16);
+  --lens-focusfill: var(--primary, #4f46e5);
+  --lens-focusstroke: rgba(64, 51, 201, 0.5);
+  --lens-rootfill: #e6e8fb;
+  --lens-rootstroke: rgba(84, 90, 150, 0.32);
+  --lens-hexink: #2b2f56;
+  --lens-focusink: #ffffff;
+  --lens-rootink: #3730a3;
+  --lens-edge: rgba(84, 90, 150, 0.22);
+  // Growth-lens hex overlays: light tints (dark ink stays legible), warm =
+  // "grow next", green = "settled". Mirror the drawer chip palette (#c5221f /
+  // #1b873f) so map + drawer read as one signal.
+  --lens-shakyfill: #fce8e6;
+  --lens-shakystroke: #d1453f;
+  // Faint always-on cue: a muted warm border (no fill), a whisper vs the bold
+  // Growth paint so a weakness is never invisible yet Explore stays clean.
+  --lens-shakycue: rgba(209, 69, 63, 0.45);
+  // Due-for-review (Ebbinghaus): a distinct, slightly stronger amber border
+  // (mirrors the drawer Due chip #b45309); more urgent than plain shaky.
+  --lens-duecue: rgba(217, 119, 6, 0.6);
+  --lens-masteredfill: #e7f4ec;
+  --lens-masteredstroke: #1b873f;
+
+  // ── Campaign overlay (WS-C7, ADR-227 D15): CHROME only: border/pips/flag/
+  // badge compose OVER the lens paint fill (never restyle the base hex fill).
+  // Indigo-monochrome family, restrained; cooling reads a cool frost blue,
+  // province a deeper indigo wall with an emerald banner.
+  --lens-pip-filled: #4f46e5; // cleared rung: saturated indigo
+  --lens-pip-empty: rgba(84, 90, 150, 0.24); // uncleared rung: faint slate
+  --lens-frost: #2f74d0; // cooling snowflake + border: cool blue (≥3:1 on white)
+  --lens-frost-tint: rgba(96, 165, 250, 0.14);
+  --lens-fort: #3730a3; // province wall: deep indigo
+  --lens-fort-tint: rgba(55, 48, 163, 0.07);
+  --lens-banner: #1b873f; // province flag: emerald (composes with mastered green)
+  --lens-banner-pole: #4b3f8f;
+  --lens-held-disc: #3730a3;
+  --lens-held-ink: #ffffff;
+  --lens-march: #4033c9; // march standard: deep indigo
+  --lens-fog-fill: rgba(224, 227, 242, 0.72); // face-down fog: muted
+  --lens-fog-stroke: rgba(84, 90, 150, 0.5);
+  --lens-fog-ink: rgba(55, 48, 163, 0.68); // ? glyph (≥3:1 on the muted fill)
+
+  display: block;
+  width: 100%;
+  height: clamp(430px, 62vh, 640px);
+  // A soft NEUTRAL stage, tablet-first; keeps the field calm. Indigo radial tint
+  // removed per owner CR 2026-07-06 (My-Knowledge map/dashboard only).
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(241, 243, 247, 0.6), rgba(247, 248, 251, 0.35));
+  touch-action: manipulation;
+
+  &.is-loading {
+    opacity: 0.55;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+}
+
+@media (min-width: 1280px) {
+  .concept-lens__scene {
+    height: clamp(480px, 64vh, 700px);
+  }
+}
+
+// ── Whole-map horizontal glide (drawer-aware re-centring) ───────────
+// A CSS transform on the group in user (viewBox) units: eased so opening /
+// closing the drawer glides the map so the focus re-centres on the visible
+// canvas. Separate element from the per-node rAF transforms, so it can't fight
+// them.
+.lens-shift {
+  transition: transform 0.5s var(--chora-ease-reveal, ease);
+}
+
+// ── Edges ───────────────────────────────────────────────────────────
+.lens-edge {
+  fill: none;
+  stroke: var(--lens-edge);
+  stroke-linecap: round;
+  opacity: 0.72;
+
+  // Lateral (non-hierarchy) links read as a lighter, dashed tie.
+  &--lateral {
+    stroke-dasharray: 3 6;
+    opacity: 0.55;
+  }
+}
+
+// ── Nodes ───────────────────────────────────────────────────────────
+// IMPORTANT: never transition `transform` here: the re-focus is driven per
+// animation frame in TS (rAF), and a CSS transform transition would fight it.
+.lens-node {
+  cursor: pointer;
+  // Only tonal properties ease; the transform is rAF-owned.
+  &:focus {
+    outline: none;
+  }
+}
+
+// The focus's PARENT recedes so a child fanned in the parent's direction is
+// never visually blocked by it (owner 2026-07-16). Still visible + clickable:
+// a semi-transparent upward linkage, not one of the six child slots.
+.lens-node--dimmed:not(.lens-node--focus) {
+  opacity: 0.5;
+  transition: opacity 0.3s var(--chora-ease-reveal, ease);
+}
+
+// Off-spine nodes (the parent's siblings / cousins of the focus): faint
+// background context, so they never clutter the focal path or the ancestor
+// landmass they may overlap (owner 2026-07-16). Fainter than a dimmed ancestor.
+.lens-node--faded:not(.lens-node--focus) {
+  opacity: 0.28;
+  transition: opacity 0.3s var(--chora-ease-reveal, ease);
+}
+
+.lens-hex {
+  fill: var(--lens-hexfill);
+  stroke: var(--lens-hexstroke);
+  stroke-width: 1.3;
+  transition:
+    fill 0.4s var(--chora-ease-reveal, ease),
+    stroke 0.4s var(--chora-ease-reveal, ease);
+}
+
+// Faint always-on shaky cue (every lens, map-canvas §5): a weakness is never
+// invisible. A whisper of warmth on the border only (no fill), so Explore stays
+// a clean structure view; the bold `.lens-node--shaky` rule below overrides it
+// under the Growth lens. Placed FIRST so the bold paint wins when both apply.
+.lens-node--cue-shaky .lens-hex {
+  stroke: var(--lens-shakycue);
+  stroke-width: 1.4;
+}
+
+// Due-for-review cue: a distinct amber border, more urgent than plain shaky.
+// After the shaky cue (equal specificity → wins) so a due node reads amber in
+// Explore/Mastery; the bold Growth `.lens-node--shaky` fill below still wins
+// under the Growth lens.
+.lens-node--cue-due .lens-hex {
+  stroke: var(--lens-duecue);
+  stroke-width: 1.7;
+}
+
+// ── Growth-lens hex overlays (WS-D §5: Explore=all · Growth=shaky · Mastery=
+// mastered). A soft tint over the paper-white hex HIGHLIGHTS where to grow /
+// what's settled while the dark label ink stays legible. Placed BEFORE focus
+// (equal specificity → focus wins by order) and outweighed by the root rule
+// (3 classes), so a selected/root hex keeps its own identity. The `.lens-hex`
+// fill/stroke transition eases the paint in when the lens switches.
+.lens-node--shaky .lens-hex {
+  fill: var(--lens-shakyfill);
+  stroke: var(--lens-shakystroke);
+  stroke-width: 1.6;
+}
+.lens-node--mastered .lens-hex {
+  fill: var(--lens-masteredfill);
+  stroke: var(--lens-masteredstroke);
+  stroke-width: 1.6;
+}
+
+// Root (when it is not the current focus): a pale indigo anchor.
+.lens-node--root:not(.lens-node--focus) .lens-hex {
+  fill: var(--lens-rootfill);
+  stroke: var(--lens-rootstroke);
+}
+
+// Focus: the single saturated indigo; carries the lifted (inline) grey shadow.
+.lens-node--focus .lens-hex {
+  fill: var(--lens-focusfill);
+  stroke: var(--lens-focusstroke);
+  stroke-width: 1.8;
+}
+
+// Hover / keyboard focus affordance on a non-focus node: indigo edge only.
+.lens-node:hover:not(.lens-node--focus) .lens-hex,
+.lens-node:focus-visible:not(.lens-node--focus) .lens-hex {
+  stroke: var(--primary, #4f46e5);
+  stroke-width: 1.9;
+}
+
+// ── Labels (wrapped, ≤2 lines) ──────────────────────────────────────
+.lens-label {
+  fill: var(--lens-hexink);
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 640;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.lens-node--root:not(.lens-node--focus) .lens-label {
+  fill: var(--lens-rootink);
+}
+
+.lens-node--focus .lens-label {
+  fill: var(--lens-focusink);
+  font-weight: 730;
+}
+
+// ── Campaign overlay chrome (WS-C7, always-on) ──────────────────────
+// Additive icon/border layer that COMPOSES over the lens paint fill: it never
+// restyles the base `.lens-hex` fill/stroke, so mastered/focus/root identity is
+// untouched. Every state is also carried in the node aria-label (never colour
+// alone). All of it sits INSIDE the node's scale(z), so it tracks the fisheye.
+
+// Subtle fill tints (+ frost border) overlaid above the fill, below the label.
+.lens-tint {
+  pointer-events: none;
+  &--fort {
+    fill: var(--lens-fort-tint);
+  }
+  &--frost {
+    fill: var(--lens-frost-tint);
+    stroke: var(--lens-frost);
+    stroke-width: 1.5;
+  }
+}
+
+// Province "fortified wall": an inset stroked ring drawn ON TOP of the fill:
+// a second, inner border that reads as ramparts around the conquered hex.
+.lens-hex-fort {
+  fill: none;
+  stroke: var(--lens-fort);
+  stroke-width: 1.7;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+// Rung-pip ladder (climbing / cooling): 6 dots, `rungsCleared` filled.
+.lens-pips {
+  pointer-events: none;
+}
+.lens-pip {
+  fill: var(--lens-pip-empty);
+  transition: fill 0.2s var(--chora-ease-reveal, ease);
+  &--filled {
+    fill: var(--lens-pip-filled);
+  }
+}
+// On an indigo focus hex the pips must stay legible against the dark fill.
+.lens-node--focus .lens-pip {
+  fill: rgba(255, 255, 255, 0.34);
+  &.lens-pip--filled {
+    fill: #ffffff;
+  }
+}
+
+// Cooling snowflake glyph (the frost tint + ring carry the rest).
+.lens-frost {
+  fill: var(--lens-frost);
+  font-size: 15px;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+// Province banner: an emerald pennant on a slate pole at the hex top vertex.
+.lens-banner {
+  pointer-events: none;
+}
+.lens-banner__pole {
+  fill: none;
+  stroke: var(--lens-banner-pole);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+.lens-banner__flag {
+  fill: var(--lens-banner);
+}
+
+// Held-count badge: a small circled number over won hierarchy-descendants.
+.lens-held {
+  pointer-events: none;
+}
+.lens-held__disc {
+  fill: var(--lens-held-disc);
+}
+.lens-held__num {
+  fill: var(--lens-held-ink);
+  font-size: 10px;
+  font-weight: 760;
+  text-anchor: middle;
+}
+
+// March standard (crenellated rook) on the campaign focus: distinct from the
+// root crown; deep indigo so it reads on the paper-white field.
+.lens-march {
+  fill: var(--lens-march);
+  pointer-events: none;
+}
+
+// ── Fog ghosts (face-down pending suggestions fanned around a focal) ─
+.lens-fog-ghost {
+  cursor: pointer;
+  animation: lens-fog-in 0.2s var(--chora-ease-reveal, ease) both;
+  &:focus {
+    outline: none;
+  }
+}
+// Transparent hit target: kept clickable so the tap area stays ≥44px near the
+// focus even though the visible fog hex is small.
+.lens-fog-ghost__hit {
+  fill: transparent;
+  pointer-events: all;
+}
+.lens-fog-ghost__hex {
+  fill: var(--lens-fog-fill);
+  stroke: var(--lens-fog-stroke);
+  stroke-width: 1.3;
+  stroke-dasharray: 3 3;
+  transition: stroke 0.2s var(--chora-ease-reveal, ease);
+}
+.lens-fog-ghost__glyph {
+  fill: var(--lens-fog-ink);
+  font-size: 20px;
+  font-weight: 720;
+  text-anchor: middle;
+  pointer-events: none;
+}
+.lens-fog-ghost:hover .lens-fog-ghost__hex,
+.lens-fog-ghost:focus-visible .lens-fog-ghost__hex {
+  stroke: var(--primary, #4f46e5);
+  stroke-dasharray: none;
+}
+
+// Opacity-only reveal: a transform keyframe would clobber the ghost's inline
+// SVG translate/scale, so fade in place.
+@keyframes lens-fog-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ── "Make this my root" control + lonely hint ───────────────────────
+.concept-lens__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.concept-lens__root-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(79, 70, 229, 0.35);
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--primary, #4f46e5);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s var(--chora-ease-reveal, ease),
+    border-color 0.2s var(--chora-ease-reveal, ease);
+
+  i {
+    font-size: 12px;
+  }
+
+  &:hover:not(:disabled) {
+    background: rgba(79, 70, 229, 0.14);
+    border-color: rgba(79, 70, 229, 0.55);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--text-muted);
+    border-color: var(--glass-border);
+    background: rgba(148, 163, 184, 0.14);
+  }
+  &:focus-visible {
+    outline: 3px solid var(--primary, #4f46e5);
+    outline-offset: 2px;
+  }
+}
+
+.concept-lens__lonely {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 44ch;
+}
+
+// ── Motion ──────────────────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .lens-hex,
+  .lens-shift,
+  .lens-pip,
+  .lens-fog-ghost__hex {
+    transition: none;
+  }
+  .lens-fog-ghost {
+    animation: none;
+  }
+  .concept-lens__scene.is-loading {
+    transition: none;
+  }
+}

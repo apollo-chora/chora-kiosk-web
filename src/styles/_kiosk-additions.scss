@@ -1,0 +1,1075 @@
+// What the kiosk build needs that the approved mockup's stylesheet (mockup.css) does not
+// have. Each rule names why. Never restyle what the mockup shows here: that is a ruling.
+
+// The host elements Angular adds around a scene or a sheet take no box of their own, so
+// the mockup's absolute positions inside #scene and the overlays hold.
+kiosk-idle-scene,
+kiosk-hook-scene,
+kiosk-about-sheet,
+kiosk-credits,
+kiosk-idle-warn {
+  display: contents;
+}
+
+// W91 (K207): the hall's sixth tile, "Your own goal", after the Engine Room's card (the tour's five keep their
+// places), so the row takes a sixth column; the mockup's cards keep their height. The Companions card keeps its
+// art's width (its column's minimum), so the other five share the rest; at the mockup's 1.08fr the Engine Room's
+// text, under its kicker, ran 2px past its card in English, so it takes 1.3fr and wraps as it did in five columns.
+// Measured in e2e/own-fit.spec.ts at 1366 x 768 and 1600 x 900, in English and Chinese.
+.hall .cards {
+  grid-template-columns: repeat(4, 1fr) 1.3fr 1fr;
+}
+.own-card .art chora-breed-art {
+  height: 100%;
+}
+
+// W91 (K207): Your own goal, the still storyboard of the full product (round3-design.html section 6), laid out
+// like the hall: its head, K207's line, then the five steps in a row, each a picture of the product's own screen
+// (buttons, fields, notes) over its caption. Nothing in it can be pressed.
+.own {
+  position: absolute;
+  inset: 0;
+  padding: 34px 48px;
+}
+.own h1 {
+  font: 800 46px/1.1 var(--font);
+  margin: 8px 0 10px;
+  color: var(--text-main);
+  text-wrap: balance;
+}
+.own .lede {
+  font: 400 21px/1.45 var(--font);
+  color: var(--text-muted);
+  margin: 0 0 22px;
+  max-width: 1180px;
+}
+.own-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+.own-step {
+  height: 468px;
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  overflow: hidden;
+}
+.own-sn {
+  font: 750 15px/1.2 var(--font);
+  letter-spacing: 0.04em;
+  color: var(--primary-strong);
+}
+.own-mock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1.5px dashed var(--hair-strong);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  font: 400 15px/1.35 var(--font);
+  color: var(--text-main);
+}
+.own-b {
+  align-self: flex-start;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 650;
+}
+.own-f {
+  padding: 7px 10px;
+  border: 1px solid var(--hair-strong);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-muted);
+}
+.own-t {
+  font-weight: 700;
+}
+.own-m {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.own-cap {
+  margin: auto 0 0;
+  font: 400 16px/1.45 var(--font);
+  color: var(--text-muted);
+}
+
+// K138 pass 7, W45: the comparison table grew to eleven rows (K168, K172), so in English the About
+// sheet's content ran past its 820px cap (mockup.css .sheet scrolls as a whole) and Close scrolled out of
+// view with it, and the Engine Room's last row went under the footer. The sheet is now a column: the
+// table scrolls inside it and Close stays below it, on screen; the Engine Room's table scrolls inside a
+// box that ends above the footer. Each keeps its natural height when it fits (Chinese does).
+// Measured in e2e/table-fit.spec.ts at 1366 x 768 and 1600 x 900.
+#disclosure-sheet {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+// (The sheet's own children sit inside the kiosk-about-sheet host, which takes no box: display contents.)
+#disclosure-sheet > kiosk-about-sheet > * {
+  flex: none;
+}
+#disclosure-sheet > kiosk-about-sheet > .disc-scroll {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+.exhibit.ex-local {
+  display: flex;
+  flex-direction: column;
+}
+.ex-local > .ex-head {
+  flex: none;
+}
+// K208 (W92): the architecture diagram opens the page and the table follows; the two scroll together
+// (the diagram spans the stage, so it stands taller than the room under the header).
+.ex-local > .local-scroll {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ex-local .arch-card {
+  flex: none;
+  padding: 14px 18px 10px;
+}
+.ex-local .arch-card svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ex-local .local-table {
+  flex: none;
+}
+
+// The reset card's failure line (ADR-260 D9's table), which the mockup never shows: the
+// card stays up and says so in the warning colour, never red (R61).
+#resetcard .rc-failed {
+  margin: 14px 0 0;
+  font: 650 19px/1.4 var(--font);
+  color: #ffd29a;
+}
+
+// D8's stack walk (19 Oct): the mockup's reset steps (.rc-steps, V5) were styled for a light card (the
+// running step text-main #1e293b, a done one success-strong), but #resetcard is dark navy, so the
+// running step read at about 1.3:1 a moment after Done. On the dark card: the step to come in muted
+// white, the running one white with a gold spinner (as .rc-spin), a done one in the presenter's
+// on-dark green (.p-row i). Measured in e2e/shell.spec.ts.
+#resetcard .rc-steps li {
+  color: rgba(255, 255, 255, 0.62);
+}
+#resetcard .rc-steps li.run {
+  color: #fff;
+}
+#resetcard .rc-steps li.run i {
+  border-color: var(--curiosity-fill);
+  border-right-color: transparent;
+}
+#resetcard .rc-steps li.done {
+  color: #22c55e;
+}
+
+// K37: the gold glow on the ideas to click next, inside production's lens. mockup.css scopes the
+// same rule to the mockup's own lens root (.lens); production's root is .concept-lens.
+.concept-lens .lens-glow {
+  fill: none;
+  stroke: var(--curiosity-fill);
+  stroke-width: 3.5;
+  animation: lensGlow 2.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+// K47: the story frames production's lens right of the caption (the mockup's lens kept the caption
+// and drawer edges itself; production's centres its focus in its own box). The lens sizes its scene
+// by the window height (vh), which means nothing on the scaled stage, so the frame sets it.
+#lenshost {
+  left: 560px;
+}
+#lenshost .concept-lens {
+  gap: 0;
+}
+#lenshost .concept-lens__scene {
+  height: 757px;
+}
+// K36 keeps the map and drops its editing: production's "Make this my root" control is not shown.
+#lenshost .concept-lens__controls {
+  display: none;
+}
+
+// Step 4a's hand edit is production's question editor, which asks for an explanation per option and
+// so stands taller than the mockup's form: while it is open the draft keeps to the studio's row and
+// scrolls, and Save and Cancel stay in view at its foot.
+.studio.sub-a .draft:has(> form.hand-edit) {
+  align-self: stretch;
+  overflow-y: auto;
+}
+.studio.sub-a .hand-edit .he-acts {
+  position: sticky;
+  bottom: -22px;
+  padding: 10px 0;
+  background: var(--glass);
+}
+
+// Step 4b shows the model's own picture where the mockup drew its diagram and art (.canvas .illus
+// svg at 100%): it fits the canvas whole, never sizes it, so a wide picture cannot push the card
+// off the stage and a tall diagram is not cropped.
+#canvas > img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// K38: production's breed art (shared/components/breed-art) draws itself at its own size (96 or 240 px);
+// in the Companions exhibit it fills the mockup's art box instead (.cx-art, 44 px in the roster, 96 px
+// on the sheet), as the mockup's own portrait does.
+// (One element more than production's scoped `.breed-art` rule, which is injected after this sheet.)
+.cx-art > chora-breed-art,
+.cx-art > chora-breed-art > .breed-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// K38: the picked Companion's map, framed in the mockup's COMP_BOX (x 560, y 262, 1004 by 483 on the
+// 1600 stage) as the hook frames its own (#lenshost above); production's map controls are not shown.
+#complens {
+  left: 560px;
+  top: 262px;
+  right: auto;
+  bottom: auto;
+  width: 1004px;
+  height: 483px;
+}
+#complens .concept-lens {
+  gap: 0;
+}
+#complens .concept-lens__scene {
+  height: 483px;
+}
+#complens .concept-lens__controls {
+  display: none;
+}
+
+// K36: a region of the atlas shows production's map framed in the mockup's MAP_BOX (x 36, y 160,
+// 1528 by 585 on the 1600 stage), as the hook and Companions frame theirs; its map controls are not shown.
+#maplens {
+  left: 36px;
+  top: 160px;
+  right: auto;
+  bottom: auto;
+  width: 1528px;
+  height: 585px;
+}
+#maplens .concept-lens {
+  gap: 0;
+}
+#maplens .concept-lens__scene {
+  height: 585px;
+}
+#maplens .concept-lens__controls {
+  display: none;
+}
+
+// K138 W2: production's open question is far longer than the mockup's (the golden run's stem is
+// 319 characters, the mockup's 59), and at 1366 x 768 it pushed the grading card's Submit and LIVE
+// rows under the footer. With a long stem (grade-scene.component.ts LONG_STEM) the cards take the
+// height the header leaves (from the dashboard the header wraps to two lines) and end 10px above
+// the footer, as the mockup's fixed 610px grid does under a one-line header; the question card
+// sets denser, and the answer box gives up height first (never below three lines; it scrolls
+// inside itself). A short stem keeps the mockup's layout exactly.
+.exhibit.long-stem {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+.exhibit.long-stem > .grade-grid {
+  flex: 1 1 0;
+  height: auto;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
+}
+.exhibit.long-stem .qcard {
+  gap: 10px;
+  min-height: 0;
+}
+.exhibit.long-stem .qcard .q {
+  font-size: 17px;
+  line-height: 1.4;
+}
+.exhibit.long-stem #gradetext {
+  flex: 0 1 132px;
+  height: auto;
+  min-height: 109px;
+}
+
+// D8's stack walk en-28 (19 Oct), orchestrator ruling (a): the golden run's rung-6 Reservoirs quiz
+// question (a 278-character stem, options up to 176) scrolled the Companions drawer 282px, so a visitor
+// saw options A and B in part and C and D not at all. A long question (companions-scene.component.ts
+// LONG_QUESTION) sets the drawer dense on the W2 pattern: the note and stem step down a size, and the
+// options take one row each in smaller type, so all four begin above the fold. A short question keeps
+// the mockup's drawer exactly.
+.kd-body.long-q {
+  gap: 8px;
+}
+.kd-body.long-q .camp-line {
+  font-size: 13px;
+  line-height: 1.35;
+}
+.kd-body.long-q .q-stem {
+  font-size: 15px;
+  line-height: 1.33;
+}
+.kd-body.long-q .opts {
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+.kd-body.long-q .opt {
+  padding: 5px 9px;
+  font-size: 13.5px;
+  line-height: 1.25;
+}
+
+// The owner's round 1 (A), 19 Oct: scrolled to its end, step 3's drawer left its LIVE row flush
+// against the bottom edge. The question tier (the mockup's .tier.t3, inline min-height:0) shrank
+// to fit the drawer, so its overflowing rows ran past the body's bottom padding and the scroll
+// ended on the last row itself. No row of a drawer body shrinks now, so the padding always
+// follows the last row, and the padding is twice the mockup's 14px. Measured in
+// e2e/drawer-fit.spec.ts on the golden run's longest question with a LIVE call running.
+.kd-body > * {
+  flex-shrink: 0;
+}
+.kd-body {
+  padding-bottom: 28px;
+}
+
+// K138 W4: a verdict or a won banner scrolls itself into view in its drawer (RevealDirective);
+// the drawer's own scroll box carries it smoothly, at once for a visitor who asks for less motion.
+.kd-body {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  .kd-body {
+    scroll-behavior: auto;
+  }
+}
+
+// K138 W7: step 4b's draft card holds production's real question, its critic note and the version
+// history, which ran 80px past the card's foot at 1366 x 768 and cut the newest version off. As in
+// 4a (TRACKER 0.8), the card scrolls inside itself, and each new version's row brings itself into
+// view (RevealDirective in the history).
+.studio:not(.sub-a) .draft {
+  overflow-y: auto;
+}
+
+// K138 W11: the golden run's long AI greetings ran the Companions dose rail past the footer (Ember's put
+// "New greeting" at 692 to 720px, under the footer at 703, at 1366 x 768), and nothing scrolled. The dose
+// now takes the drawer's height, its body row is bounded by it, the rail ends at its content or at that
+// row, whichever comes first, and only the greeting's box gives up height, scrolling inside itself (a
+// scroll box is the one flex item allowed below its content's height). Measured in e2e/dose-fit.spec.ts.
+.comp-dose .cx-dose {
+  height: 100%;
+}
+.comp-dose .cx-dose__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  grid-template-rows: minmax(0, 1fr);
+}
+.comp-dose .cx-rail {
+  max-height: 100%;
+  min-height: 0;
+}
+.comp-dose .cx-rail__quote {
+  min-height: 4.5em;
+  overflow-y: auto;
+}
+
+// W43 (K172): one plain line under the mana balance (what spends mana here), in the 64px strip's room
+// (mockup.css .db-today, .db-stat .lbl and .val). Measured in e2e/take-fit.spec.ts at both sizes.
+.db-stat .db-mana-note {
+  display: block;
+  margin-top: 3px;
+  font: 500 12.5px/1.2 var(--font);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+// K138 pass 6, W40: the take card is a fixed 512px column (mockup.css), and Hawker culture's open
+// question (the golden run's longest stem, with its picture beside it) pushed Back and Submit 18px past
+// its bottom edge, because the answer box kept its 140px minimum. The box still grows into any room
+// (flex: 1) and now gives way down to three lines of its 17px/1.45 type with its padding and border.
+// Measured in e2e/take-fit.spec.ts at 1366 x 768 and 1600 x 900.
+#dbxtext {
+  min-height: 92px;
+}
+
+// K138 W14: Submit with questions unanswered warns first (an unanswered question scores 0). The take
+// card is a fixed 512px column whose last question can fill it (water's open question with its picture),
+// so the warning sits in the nav row between Back and Submit anyway and adds no row of its own; in the
+// warning colour, never red (R61).
+.dbx-nav .dbx-unanswered {
+  flex: 1 1 auto;
+  margin: 0;
+  text-align: right;
+  font: 600 13.5px/1.35 var(--font);
+  color: var(--warning-strong);
+}
+
+// K138 W29: the released grade's circle holds the score alone (the owner, 19 Oct: "some visual imbalance
+// for the 10 out of 10 element"); its stamp, prepared or live, sits under it on one line with its icon.
+.result .score-col {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.result .score-col .score-src {
+  margin-top: 0;
+  flex-wrap: nowrap;
+}
+.result .score-col .stamp {
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+// K158 W20: a fourth ability narrows each button, so in English "Suggest ideas to march into" wraps to
+// two lines, the row (mockup.css, top 136px) grew from 48 to 67px, and what sits at top 196px met it 7px
+// up: the intro, the dose and the marked test under it, the ideas and quiz drawer over it. The row now
+// always holds two lines, in both languages (switching moves nothing), and all four start the mockup's
+// own 12px under it. Measured in e2e/prepared-info.spec.ts, dose-fit.spec.ts, weak-fit.spec.ts and
+// drawer-fit.spec.ts.
+$comp-abilities-top: 136px;
+// Two lines of .ab-btn's 16px/1.15 type, with its 13px padding and 2px border (mockup.css).
+$comp-abilities-height: 2 * 16px * 1.15 + 2 * 13px + 2 * 2px;
+$comp-region-top: $comp-abilities-top + $comp-abilities-height + 12px;
+.comp-abilities {
+  min-height: $comp-abilities-height;
+}
+.comp-dose,
+.kdrawer.in-comp {
+  top: $comp-region-top;
+}
+
+// K161 W21: the Companion's role and the bridge to story steps 2 and 3, in the closed drawer's place
+// (.kdrawer.in-comp: right 36px) until an ability is picked. W36: the hint "Pick one of the four above"
+// docks on the HUD's row at the same right edge (mockup.css: .comp-pick top 214px, right 36px), and the
+// intro sat on top of it; the intro now starts under the hint's pill, where the map starts (#complens).
+// Measured in e2e/prepared-info.spec.ts at 1366 x 768 and 1600 x 900.
+$comp-pick-top: 214px;
+// The pill: 16px type, 9px padding and a 1px border (mockup.css .comp-pick .pill-in).
+$comp-pick-height: 16px + 2 * 9px + 2 * 1px;
+.comp-intro {
+  position: absolute;
+  top: $comp-pick-top + $comp-pick-height + 12px;
+  right: 36px;
+  width: 430px;
+  z-index: 6;
+  padding: 18px 20px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.comp-intro p {
+  margin: 0;
+  font: 500 16px/1.45 var(--font);
+  color: var(--text-main);
+}
+.comp-intro p + p {
+  color: var(--text-muted);
+}
+
+// K161 W30: the info mark after a prepared stamp's words, and its note, placed in the window (fixed)
+// by the component so a drawer's scroll box never clips it.
+.prep-info {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--primary-strong);
+  cursor: pointer;
+}
+.prep-info svg {
+  width: 15px;
+  height: 15px;
+}
+.prep-info:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+.prep-note {
+  position: fixed;
+  z-index: 60;
+  width: 320px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--hair);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  font: 500 14px/1.45 var(--font);
+  color: var(--text-main);
+  white-space: normal;
+  text-align: left;
+}
+
+// K164 W31: a start button checking K151's answer shows the dashboard's small spinner beside its words.
+.idle .starts .btn .db-spin {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  vertical-align: -2px;
+  border-radius: 50%;
+  border: 2.5px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+
+// K158 W20: the marked test takes the map's place, as the dose does (.comp-dose in mockup.css): the
+// paper at the region's height on the left, its proposed weak spots, Save and the LIVE row on the right
+// (the list scrolls when a panel is long, so Save and the LIVE row stay in reach). Spaced so a run of
+// three spots shows at once in both languages (e2e/weak-fit.spec.ts).
+.comp-weak {
+  position: absolute;
+  left: 560px;
+  right: 36px;
+  top: $comp-region-top;
+  bottom: 8px;
+  overflow: hidden;
+}
+.cx-weak {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  height: 100%;
+  min-height: 0;
+}
+.cx-weak__paper {
+  margin: 0;
+  height: 100%;
+  min-height: 0;
+}
+.cx-weak__paper img {
+  display: block;
+  height: 100%;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+  background: #fff;
+}
+.cx-weak__side {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+.cx-weak__line {
+  margin: 0;
+  font: 700 17px/1.3 var(--font);
+  color: var(--text-main);
+}
+.cx-weak__hint {
+  margin: 0;
+  font: 500 14px/1.4 var(--font);
+  color: var(--text-muted);
+}
+.cx-weak__edges {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cx-edge {
+  padding: 8px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+.cx-edge--dropped {
+  opacity: 0.55;
+}
+.cx-edge__label {
+  margin: 0 0 2px;
+  font: 700 15px/1.3 var(--font);
+  color: var(--text-main);
+}
+.cx-edge__summary {
+  margin: 0 0 6px;
+  font: 500 13px/1.4 var(--font);
+  color: var(--text-muted);
+}
+.cx-edge__choices,
+.cx-edge__into {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cx-edge__ask {
+  margin: 6px 0 4px;
+  font: 600 13px/1.3 var(--font);
+  color: var(--text-muted);
+}
+// W38: the golden run's own spots are two to three lines each, so the choice and target buttons take the
+// dose rail's compact size (mockup.css .comp-dose .cx-rail .btn-sm), 11px shorter, and three spots show whole.
+.cx-edge .btn-sm {
+  padding: 6px 14px;
+  font-size: 15px;
+}
+.cx-edge .btn.on {
+  background: var(--curiosity-fill);
+  border-color: var(--curiosity-fill);
+  color: var(--curiosity-ink);
+}
+.cx-weak__save {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+// W42 (K170): why Save is off, beside it, in the muted hint's voice (never red: it is not an error).
+.cx-weak__saveOff {
+  flex: 1 1 auto;
+  margin: 0;
+  font: 500 13.5px/1.35 var(--font);
+  color: var(--text-muted);
+}
+.cx-weak__saved {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--primary-bg);
+  color: var(--primary-strong);
+  font: 600 15px/1.4 var(--font);
+}
+
+// W52 (K182): the paper is the popup's tap target, its caption a pill over the paper's foot, so the
+// panel's own layout (weak-fit.spec.ts) does not move.
+.cx-weak__open {
+  position: relative;
+  display: block;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.cx-weak__open:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+.cx-weak__tap {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  max-width: calc(100% - 20px);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 42, 67, 0.86);
+  color: #fff;
+  font: 600 13px/1.3 var(--font);
+  text-align: center;
+  pointer-events: none;
+}
+
+// W52 (K182): how the Companion read its marked test, over the panel and INSIDE #scene (the host is
+// placed by #scene, as .comp-weak is), so the header and the footer, Next included, never move or
+// hide. The sheet is the scene less 10 px; the paper takes its full height (705 px on the 1600 x 900
+// grid, about 602 px at 1366 x 768) and the extract scrolls inside its own column, under a head row
+// (title, source, Close) that never scrolls. Measured in e2e/paper-pop.spec.ts at both sizes.
+kiosk-paper-pop.paper-pop {
+  position: absolute;
+  inset: 0;
+  z-index: 35;
+  display: block;
+  background: rgba(0, 18, 40, 0.6);
+}
+.paper-pop__sheet {
+  position: absolute;
+  inset: 10px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px;
+  border-radius: 18px;
+  // Opaque: through the glass the panel underneath showed as ghost text beside the cards.
+  background: #f8fafc;
+}
+.paper-pop__paper {
+  display: block;
+  height: 100%;
+  width: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+  background: #fff;
+}
+.paper-pop__side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+}
+.paper-pop__head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.paper-pop__head h3 {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font: 780 24px/1.2 var(--font);
+  color: var(--text-main);
+}
+.paper-pop__head .stamp,
+.paper-pop__head .live-tag,
+.paper-pop__head .btn {
+  flex: none;
+}
+.paper-pop__how,
+.paper-pop__earlier {
+  flex: none;
+  margin: 0;
+  font: 500 14px/1.45 var(--font);
+  color: var(--text-muted);
+}
+.paper-pop__list {
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pp-q,
+.pp-apart {
+  flex: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+.pp-q__h,
+.pp-apart__h {
+  margin: 0 0 4px;
+  font: 700 16px/1.3 var(--font);
+  color: var(--text-main);
+}
+.pp-q p {
+  margin: 0 0 4px;
+  font: 500 14px/1.4 var(--font);
+  color: var(--text-main);
+}
+.pp-q__note,
+.pp-q__none {
+  color: var(--text-muted);
+}
+.pp-q__spotH {
+  margin-top: 6px;
+  font-weight: 700;
+}
+.pp-spot {
+  margin-top: 4px;
+  padding: 2px 0 2px 10px;
+  border-left: 3px solid var(--curiosity-fill);
+}
+.pp-spot__label {
+  display: block;
+  font: 700 14.5px/1.3 var(--font);
+  color: var(--text-main);
+}
+.pp-spot__summary {
+  display: block;
+  font: 500 13.5px/1.4 var(--font);
+  color: var(--text-muted);
+}
+
+// K201 (amends K183, K184's layout and K185): the credits read the programme line; two columns about a
+// hairline rule, aligned at the top, the team on the left (the first read) and the faculty on the right;
+// then the project contact; then how to close. The page's own gap is 0: the spacing is the margins below.
+// One type system of three styles over the mockup's base rules: every label (the team's, both faculty roles
+// and the contact) in small tracked gold capitals, every name at medium weight, every title muted; nothing
+// bold or large. Sizes: the design page approved (version 4) gives them in units of 1/1366 of the screen's
+// width; the stage is 1600 wide, so each is the unit times 1600/1366, and the 1366 x 768 screen shows the
+// approved frame exactly (a name 22 px, a label 12 px, a title 14 px on screen; orchestrator, A). The
+// hairline stays 1px, as the design draws it.
+.credits {
+  gap: 0;
+}
+.credits .c-org {
+  margin-top: 0;
+  font: 500 16.4px/1.4 var(--font);
+  letter-spacing: 0.04em;
+  color: var(--frame-muted);
+}
+.credits .c-lbl {
+  margin: 0;
+  font: 600 14.1px/1 var(--font);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffd29a;
+}
+:lang(zh) .credits .c-lbl {
+  letter-spacing: 0.08em;
+}
+.credits .c-cols {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 56.2px;
+}
+.credits .c-col {
+  display: flex;
+  flex-direction: column;
+}
+.credits .c-col.team {
+  align-items: flex-end;
+  gap: 16.4px;
+  padding-right: 56.2px;
+  text-align: right;
+}
+.credits .c-names {
+  display: flex;
+  flex-direction: column;
+  gap: 9.4px;
+}
+.credits .c-names > div,
+.credits .c-person {
+  font: 500 25.8px/1.35 var(--font);
+  color: #fff;
+}
+.credits .c-col.fac {
+  align-items: flex-start;
+  gap: 30.5px;
+  padding-left: 56.2px;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  text-align: left;
+}
+.credits .c-fac {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.credits .c-fac .c-person {
+  margin-top: 9.4px;
+}
+.credits .c-title {
+  font: 400 16.4px/1.4 var(--font);
+  color: var(--frame-muted);
+}
+.credits .c-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11.7px;
+  margin-top: 56.2px;
+}
+.credits .c-mail {
+  font: 400 17.6px/1.35 var(--font);
+  letter-spacing: 0.02em;
+  color: var(--frame-muted);
+}
+.credits .c-close {
+  margin-top: 46.9px;
+  font: 500 15.2px/1 var(--font);
+  color: var(--frame-faint);
+}
+
+// K189 (2): the one list of waiting ideas keeps each fresh idea's origin (K101): a LIVE press's ideas carry
+// the LIVE tag beside their kind, sized like the kind's own badge (mockup .sugg-row b .sugg-kind).
+.sugg-row b .sugg-live {
+  margin: 0 7px 0 0;
+  padding: 2px 6px;
+  vertical-align: 2px;
+  font-size: 10.5px;
+}
+
+// K204 (W88): each lens tab's caption sits under the tabs, two lines, its lead bold, on a card like the tabs'
+// own so it reads over the map's frame. The campaign line moves up beside the tabs, where the one-line
+// caption sat above the frame, so the bar covers no more of the map than before (mockup regionHTML, inline).
+.lens-bar {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.lens-bar .lens-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.lens-bar .camp-hud {
+  position: static;
+}
+.lens-bar .lens-cap {
+  width: 540px;
+  max-width: none;
+  padding: 9px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--hair-strong);
+  color: var(--text-main);
+}
+.lens-bar .lens-cap b {
+  font-weight: 750;
+}
+
+// K205 (W89): under the greeting, what it draws on (mockup cx-rail__why, inline).
+.cx-rail__why {
+  margin: 6px 0 0;
+  font: 500 12.5px/1.4 var(--font);
+  color: var(--text-muted);
+}
+
+// K203 (W87): after the first photo, the invitation over the pre-filled request (mockup pic-tanks, inline).
+.pic-tanks {
+  margin: 10px 0 0;
+  font: 500 14px/1.45 var(--font);
+  color: var(--text-main);
+}
+
+// K206 (W90): Pingu's "Read my marked test" holds two documents as tabs over the panel's side, in the
+// panel's own button style (btn btn-quiet btn-sm, the picked one .on as a choice is); the essay's tab
+// carries a small gold NEW. The essay's caption reads in the hint's place, in the panel's text colour
+// (it says what the LIVE press will do). A marked test's prepared stamp stands where its LIVE row stood.
+// In the popup, the essay's answer is listed line by line as its page draws it: the teacher's underline
+// in red, and each line's margin (a tick, or the hint) beside it.
+.cx-weak__docs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cx-weak__docs .btn-sm {
+  padding: 6px 14px;
+  font-size: 15px;
+}
+.cx-weak__docs .btn.on {
+  background: var(--curiosity-fill);
+  border-color: var(--curiosity-fill);
+  color: var(--curiosity-ink);
+}
+.cx-doc__new {
+  margin-left: 8px;
+  font: 800 11px/1 var(--font);
+  letter-spacing: 0.06em;
+  color: var(--curiosity-strong);
+}
+.cx-weak__docs .btn.on .cx-doc__new {
+  color: inherit;
+}
+.cx-weak__essayCap {
+  margin: 0;
+  font: 500 14px/1.4 var(--font);
+  color: var(--text-main);
+}
+.cx-weak__stamp {
+  display: flex;
+  align-items: center;
+}
+.cx-edge__label .live-tag {
+  margin-left: 8px;
+  vertical-align: 1px;
+}
+.pp-lines {
+  margin: 0 0 4px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pp-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: baseline;
+  font: 500 14px/1.4 var(--font);
+  color: var(--text-main);
+}
+.pp-line u {
+  text-decoration-color: #c62828;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.pp-line__margin {
+  color: #c62828;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+// K206: the prepared stamp (left) and Save (right) share the panel's foot row; a Save-off note wraps.
+.cx-weak__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+.cx-weak__foot:empty {
+  display: none;
+}
+.cx-weak__foot > .cx-weak__save {
+  flex: 1 1 auto;
+}
+
+// K218 (W96): once a hex is won, the fresh-ideas ask stands apart in its own box under the banner, the gold
+// curiosity ramp (R61) of the r4 mockup's Drawer board; its LIVE row and the ideas it brings sit inside.
+.won-ask {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(245, 158, 11, 0.55);
+  border-radius: 16px;
+  background: rgba(245, 158, 11, 0.07);
+}
+.won-ask__head {
+  margin: 0;
+  font: 750 17px/1.3 var(--font);
+  color: var(--text-main);
+}
+
+// W97 (the owner's walk, 22 Oct): a LIVE row calling (its trace chips and "Stop waiting") is taller than
+// its button, and on a full card it ran past the card's bottom: the grading card on the dashboard's longest
+// question (hawker's teh tarik with its three criteria, under the two-line header) and the dose's greeting
+// rail. The LIVE row and the lines under it are the card's foot and never give way; the part above does,
+// by its own rule first (the answer box to its three lines, W2; the greeting box to its floor, K138 W11),
+// then it scrolls inside itself. Measured in e2e/live-fit.spec.ts on every card with a LIVE row.
+.qcard__body,
+.cx-rail__talk {
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  flex: 0 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+.cx-rail__talk {
+  align-self: stretch;
+  align-items: center;
+}

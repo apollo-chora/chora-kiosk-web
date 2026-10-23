@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.root",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/270254fd-942e-77aa-badd-e4ca66e19119/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "270254fd-942e-77aa-badd-e4ca66e19119",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Linggiu Reservoir",
+    "focalConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+    "rationale": "A reservoir in Johor, paid for by Singapore, that keeps the Johor River supply up.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:35:50Z"
+  }
+}

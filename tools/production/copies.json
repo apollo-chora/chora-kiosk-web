@@ -1,0 +1,179 @@
+{
+  "about": "Production files kiosk-web copies (T3.3, T3.6), checked by copies.mjs: a verbatim copy equals production's file after the three rules (imports re-pointed, translate to @ngx-translate/core, dashes); an adapted one says why and marks each change KIOSK.",
+  "commit": "eeaec46eb",
+  "files": [
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/discovery-graph/concept-graph.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/campaign.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/concept-lens-map/concept-lens.ts",
+      "mode": "adapted",
+      "why": "K202 (W86): no fit radius (a fixed LAYOUT_RING per level), LINK_MIN of line between linked ideas and between landmass tiers, neighbourhoodZoom in place of neighbourhoodFitScale (it zooms hexes and gaps together, the link floor counted), chromeClearZoom (K204: the ring keeps clear of a card over the frame) and RELAX_PASSES 24, each marked KIOSK."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/concept-lens-map/concept-lens.spec.ts",
+      "mode": "adapted",
+      "why": "K202 and K204: the layout cases assert the fixed rings, and neighbourhoodZoom and chromeClearZoom replace the neighbourhoodFitScale cases, marked KIOSK."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/concept-lens-map/concept-lens-map.component.ts",
+      "mode": "adapted",
+      "why": "The kiosk adds the gold glow on the ideas to click next (K37): a glowIds input and one path, marked KIOSK. It also leaves out a fog ghost that would touch an idea, and shows at most 6 minus the idea's children (K174), read on the settled layout, marked KIOSK. K202, K204: the frameHalfX, frameHalfY and chrome inputs (the box's real extent and a card over it), the ring zoom, the link floor in relaxOverlaps and the ring marker, marked KIOSK."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/concept-lens-map/concept-lens-map.component.html",
+      "mode": "adapted",
+      "why": "The kiosk adds the gold glow on the ideas to click next (K37): a glowIds input and one path, marked KIOSK. K202: the ring marker class lens-node--ring, marked KIOSK."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/concept-lens-map/concept-lens-map.component.scss",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/concept-lens-map/concept-lens-map.component.spec.ts",
+      "mode": "adapted",
+      "why": "The spec provides ngx-translate's service: production's translate service is providedIn root, ngx-translate's is not."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/daily-dose/campaign-practice/campaign-practice.service.ts",
+      "mode": "adapted",
+      "why": "load takes an explicit rung (a prepared set sits at rungs cleared plus one) and answer a fresh_set_id (Q-fresh, K103)."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/daily-dose/campaign-practice/campaign-practice.service.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/core/services/bff-client.service.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/core/services/bff-client.service.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/core/interceptors/api-error.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/core/interceptors/api-error.model.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/discovery-graph/concept-graph.service.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/discovery-graph/concept-graph.service.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/dashboard/goal/goal.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/dashboard/goal/goal.service.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/dashboard/goal/goal.service.spec.ts",
+      "mode": "adapted",
+      "why": "The spec names production's cloud API origin; the kiosk's product API is same-origin (ADR-260 D2)."
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/maps.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/maps.service.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/my-knowledge/maps.service.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/atom-authoring/atom-authoring.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/atom-authoring/atom-authoring.model.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/chora-question-editor/chora-question-editor.component.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/chora-question-editor/chora-question-editor.component.html",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/chora-question-editor/chora-question-editor.component.scss",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/chora-question-editor/chora-question-editor.component.spec.ts",
+      "mode": "adapted",
+      "why": "The spec provides ngx-translate's service: production's translate service is providedIn root, ngx-translate's is not."
+    },
+    {
+      "from": "chora-web/src/app/shared/components/chora-question-editor/chora-question-editor.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/chora-question-review/chora-question-review.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/breed-art/breed-art.component.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/breed-art/breed-art.component.html",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/breed-art/breed-art.component.scss",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/shared/components/breed-art/breed-art.component.spec.ts",
+      "mode": "adapted",
+      "why": "The spec provides ngx-translate's service: production's translate service is providedIn root, ngx-translate's is not."
+    },
+    {
+      "from": "chora-web/src/app/core/familiar/familiar-growth.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/core/familiar/familiar-growth.model.spec.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/daily-dose/daily-dose.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/atomic-session/atomic-session.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/me-assessments/me-assessments.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/test-set-editor/test-set-editor.model.ts",
+      "mode": "verbatim"
+    },
+    {
+      "from": "chora-web/src/app/features/surfaces/aplus/question-banks/question-banks.model.ts",
+      "mode": "verbatim"
+    }
+  ]
+}

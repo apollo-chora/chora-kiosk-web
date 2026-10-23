@@ -1,0 +1,20 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "services/chora-kiosk-conductor/API.md section 2 (8db3427e1), example values",
+  "method": "POST",
+  "path": "/api/v1/kiosk/session",
+  "status": 200,
+  "body": {
+    "access_token": "dev-fixture-token-not-a-jwt",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+    "tenant_id": "01a1411f-7f20-7834-bdd5-6f80318297bf",
+    "roles": [
+      "learner",
+      "author",
+      "instructor",
+      "auditor"
+    ]
+  }
+}

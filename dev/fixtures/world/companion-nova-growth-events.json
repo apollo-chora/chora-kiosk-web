@@ -1,0 +1,24 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption companion_growth_handlers.go (eventRecordResp), camelCased and wrapped in {data} by the edge, as recorded from the stack on 18 Oct; the seed's grant of kiosk/world/world.json exp_seeded, then each prepared dose open crediting the active Companion (K102, capped once a day)",
+  "method": "GET",
+  "path": "/api/v1/me/companions/cc69f1d2-9824-7d13-b9ee-9b732f56e480/growth-events",
+  "status": 200,
+  "body": {
+    "data": {
+      "events": [
+        {
+          "awardedAt": "2026-10-01T02:00:00Z",
+          "dailyCapHit": false,
+          "expDelta": 118,
+          "expTotalAfter": 118,
+          "growthEventId": "d5e4bafc-d968-765a-824a-8ca341f2ceb5",
+          "source": "admin_grant",
+          "stageAfter": 2,
+          "stageBefore": 2,
+          "triggeredStageUp": false
+        }
+      ]
+    }
+  }
+}

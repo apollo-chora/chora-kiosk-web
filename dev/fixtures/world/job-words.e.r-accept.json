@@ -1,0 +1,51 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "creation question_jobs_handler.go (acceptResponse: persisted questions, mana_debited); words.e.r as written, overrides not applied",
+  "method": "POST",
+  "path": "/api/atoms/9b623743-8432-74b7-8782-e9a22d5b7ec7/question-jobs/f278e4bb-e2f2-7a09-a4d2-7f0992c24512/accept",
+  "status": 200,
+  "body": {
+    "persisted": [
+      {
+        "question_id": "047302aa-f2af-7378-990e-7d785128406f",
+        "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+        "tenant_id": "7ec9347e-d14e-74aa-a2b8-70c2684ceba9",
+        "type": "mcq",
+        "prompt": "At a NEWater plant, a guide shows visitors how used water is cleaned. Which stage destroys germs that slip through the membranes?",
+        "revision": 1,
+        "latest_revision_id": "28446144-f311-7a33-9a55-8487e563d33b",
+        "created_at": "2026-10-20T05:53:20Z",
+        "updated_at": "2026-10-20T05:53:20Z",
+        "mcq_payload": {
+          "options": [
+            {
+              "option_id": "opt_1",
+              "label": "Microfiltration",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_2",
+              "label": "Reverse osmosis",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_3",
+              "label": "UV disinfection",
+              "is_correct": true,
+              "explainer": "UV light damages the germs’ DNA, so they cannot multiply."
+            },
+            {
+              "option_id": "opt_4",
+              "label": "Chlorination",
+              "is_correct": false,
+              "explainer": ""
+            }
+          ]
+        }
+      }
+    ],
+    "mana_debited": 0
+  }
+}

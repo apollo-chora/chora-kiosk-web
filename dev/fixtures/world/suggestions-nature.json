@@ -1,0 +1,127 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go (suggestionDTO, pending only, ?goalId= fenced); every batch of kiosk/world/prepared-choices.json on this map, the hidden ones too",
+  "method": "GET",
+  "path": "/api/v1/me/concept-graph/suggestions",
+  "query": {
+    "goalId": "ee509ced-84c3-7947-b40e-aaac7b613781"
+  },
+  "status": 200,
+  "body": {
+    "suggestions": [
+      {
+        "suggestionId": "55615ef6-d924-776c-b325-b898a657220d",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Vertical gardens",
+        "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+        "rationale": "Supertrees are covered in living plants, like gardens standing upright.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:32:30Z"
+      },
+      {
+        "suggestionId": "4d8c1026-9405-7c71-b21a-17ef193621cd",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Solar power",
+        "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+        "rationale": "Some Supertrees carry solar panels on top.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:32:30Z"
+      },
+      {
+        "suggestionId": "49950d76-98b9-7f19-8641-78262fe56d2e",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Gardens by the Bay",
+        "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+        "rationale": "The garden at Marina Bay where the Supertrees stand, beside two cooled glass domes.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:36:40Z"
+      },
+      {
+        "suggestionId": "eeaf30a2-38de-7c78-894b-5cde8b96e1c9",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Rainwater harvesting",
+        "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+        "rationale": "Some Supertrees collect rainwater that is used to water the gardens’ plants.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:36:40Z"
+      },
+      {
+        "suggestionId": "95a8c05d-469a-7ba1-904c-89447f1ce226",
+        "kind": "concept",
+        "status": "pending",
+        "title": "OneMillionTrees movement",
+        "focalConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+        "rationale": "A drive to plant one million more trees across Singapore from 2020 to 2030.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:37:30Z"
+      },
+      {
+        "suggestionId": "3f161993-deb4-7002-b92c-4fefcc423a9b",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Bukit Timah Nature Reserve",
+        "focalConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+        "rationale": "It holds Singapore’s largest remaining patch of primary rainforest.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:37:30Z"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/55615ef6-d924-776c-b325-b898a657220d/(accept|dismiss)$",
+        "^POST /api/v1/me/concept-graph/suggestions/4d8c1026-9405-7c71-b21a-17ef193621cd/(accept|dismiss)$"
+      ],
+      "status": 200,
+      "body": {
+        "suggestions": [
+          {
+            "suggestionId": "49950d76-98b9-7f19-8641-78262fe56d2e",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Gardens by the Bay",
+            "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+            "rationale": "The garden at Marina Bay where the Supertrees stand, beside two cooled glass domes.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:36:40Z"
+          },
+          {
+            "suggestionId": "eeaf30a2-38de-7c78-894b-5cde8b96e1c9",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Rainwater harvesting",
+            "focalConceptId": "6258893b-7bcb-709a-bced-d0978db78a85",
+            "rationale": "Some Supertrees collect rainwater that is used to water the gardens’ plants.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:36:40Z"
+          },
+          {
+            "suggestionId": "95a8c05d-469a-7ba1-904c-89447f1ce226",
+            "kind": "concept",
+            "status": "pending",
+            "title": "OneMillionTrees movement",
+            "focalConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+            "rationale": "A drive to plant one million more trees across Singapore from 2020 to 2030.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:37:30Z"
+          },
+          {
+            "suggestionId": "3f161993-deb4-7002-b92c-4fefcc423a9b",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Bukit Timah Nature Reserve",
+            "focalConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+            "rationale": "It holds Singapore’s largest remaining patch of primary rainforest.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:37:30Z"
+          }
+        ]
+      }
+    }
+  ]
+}

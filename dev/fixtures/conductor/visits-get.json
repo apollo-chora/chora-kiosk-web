@@ -1,0 +1,20 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "services/chora-kiosk-conductor/API.md section 4 (8db3427e1), example values",
+  "method": "GET",
+  "path": "/api/v1/kiosk/visits",
+  "status": 200,
+  "body": {
+    "day": "2026-10-20",
+    "counts": {
+      "started": 41,
+      "hook_done": 33,
+      "hall": 19,
+      "maps": 9,
+      "comp": 11,
+      "dash": 5,
+      "grade": 6,
+      "engine": 7
+    }
+  }
+}

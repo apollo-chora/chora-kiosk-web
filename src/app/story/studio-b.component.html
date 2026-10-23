@@ -1,0 +1,136 @@
+<div class="studio" [class.ro]="reviewing()">
+  <div class="studio-head">
+    <div>
+      <div class="kicker on-blue">{{ 'h4.kickerB' | translate }}</div>
+      <h2>{{ 'h4.titleB' | translate }}</h2>
+    </div>
+    <span class="role-chip"><kiosk-icon name="hat" />{{ 'h4.role' | translate }}</span>
+  </div>
+
+  @if (studio.draft(); as d) {
+    <div class="draft glass">
+      <div class="label"><span class="dot"></span>{{ 'draft.labelPic' | translate }}</div>
+      <p class="stem sm" kioskContent>{{ d.question.prompt }}</p>
+      <div class="draft-opts sm">
+        @for (o of d.question.options; track $index) {
+          <div class="dopt" [class.key]="o.is_correct">
+            <span class="mk">{{ letter($index) }}</span><span kioskContent>{{ o.label }}</span>
+            @if (o.is_correct) {
+              <em>{{ 'draft.key' | translate }}</em>
+            }
+          </div>
+        }
+      </div>
+      @if (explainer()) {
+        <p class="d-explain">{{ 'draft.explainLabel' | translate }} <span kioskContent>{{ explainer() }}</span></p>
+      }
+      @if (studio.pictureChanged()) {
+        <div class="critic fixed" id="critic"><kiosk-icon name="info" /><span>{{ 'pic.fixedText' | translate }}</span></div>
+      } @else if (criticKey(); as key) {
+        <div class="critic" id="critic">
+          <kiosk-icon name="info" />
+          <span
+            >{{ key | translate }}
+            @if (studio.firstCritic()?.notes) {
+              <span kioskContent>{{ studio.firstCritic()?.notes }}</span>
+            }
+          </span>
+        </div>
+      }
+      <kiosk-studio-history />
+      <div class="spacer"></div>
+      <div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
+        @if (studio.kept()) {
+          <span class="stamp"><kiosk-icon name="check" />{{ 'rev.kept' | translate }}</span>
+        }
+      </div>
+    </div>
+  }
+
+  <div class="imgcard glass">
+    <div class="head">
+      <b>{{ 'img.label' | translate }} <span class="mode-tag">{{ modeKey() | translate }}</span></b
+      ><button class="link" data-act="xray" [attr.data-kind]="xrayKind()" (click)="bts.open(xrayKind())">{{ 'q.how' | translate }}</button>
+    </div>
+    <div class="canvas" id="canvas">
+      @if (studio.picture(); as p) {
+        <img [src]="p.imageUrl" [attr.alt]="('img.label' | translate) + ': ' + (modeKey() | translate)" />
+        <span class="ai-mark"><kiosk-icon name="ai" />{{ 'ai.mark' | translate }}</span>
+      }
+    </div>
+    <!-- K189 (3): "Redo it" shows from the start, greyed until a change exists to redo; K186: gone once its redo is live. -->
+    <div id="revstatus">
+      @if (calling()) {
+        <kiosk-live-row [liveKey]="liveKey" kind="picture" [label]="'live.redo' | translate" />
+      } @else {
+        @if (studio.change(); as ch) {
+          @if (ch.state === 'failed') {
+            <div class="msg-error">{{ ch.key | translate: ch.params }}</div>
+          }
+        }
+        <div class="live-row-line">
+          @if (studio.lastPicture()) {
+            <span class="badge ok"><kiosk-icon name="check" />{{ 'rev.done' | translate }}</span>
+          }
+          <kiosk-live-row
+            [liveKey]="liveKey"
+            kind="picture"
+            [label]="'live.redo' | translate"
+            [params]="studio.pictureRedoParams()"
+            [preparedAt]="redoStamp()"
+            [disabled]="reviewing() || !studio.pictureRedoParams()"
+            [offer]="studio.picturePrepared()" />
+        </div>
+      }
+    </div>
+    <div class="ask-zone">
+      @if (reviewing()) {
+        <div class="row">
+          <span class="rv-note"><kiosk-icon name="check" />{{ 'rv.done4b' | translate }}</span><span class="rv-next">{{ 'rv.next' | translate }}</span>
+        </div>
+      } @else {
+        <div class="q">{{ (studio.picture()?.style === 'diagram' ? 'img.ask' : 'img.askStyle') | translate }}</div>
+      }
+      <div class="chips" id="chips">
+        @for (c of studio.pictureChips(); track c) {
+          <button class="chip" [class.used]="studio.pictureUsed().has(c)" data-act="rev" [attr.data-kind]="c" [disabled]="chipOff(c)" (click)="studio.picChip(c)">
+            {{ 'chip.' + c | translate }}
+          </button>
+        }
+      </div>
+      @if (!reviewing()) {
+        @if (studio.tanksOffer()) {
+          <!-- K203 (W87): after the first photo, an invitation to a better one; the box below holds the request. -->
+          <p class="pic-tanks">{{ 'pic.tanksCap' | translate }}</p>
+        }
+        <form class="ask" (submit)="sendTyped($event)">
+          <input
+            id="revinput"
+            type="text"
+            maxlength="140"
+            autocomplete="off"
+            [placeholder]="'input.ph' | translate"
+            [value]="typedText()"
+            (input)="typedText.set($any($event.target).value)" />
+          <button class="live-btn sm" type="submit" data-act="live" [attr.data-key]="liveKey" [disabled]="!pictureOn() || busy() || sendOff()">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span class="live-tag">{{ 'live.tag' | translate }}</span>
+            <span class="live-label">{{ 'live.send' | translate }}</span>
+            <span class="live-eta">{{ waitKey | translate }}</span>
+          </button>
+        </form>
+        @switch (whyOff()) {
+          @case ('busy') {
+            @if (!calling()) {
+              <span class="live-why">{{ 'live.busy' | translate }}</span>
+            }
+          }
+          @case (null) {}
+          @default {
+            <span class="live-why">{{ 'live.off' | translate }}</span>
+          }
+        }
+      }
+    </div>
+  </div>
+</div>

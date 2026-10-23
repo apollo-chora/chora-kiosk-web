@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.root",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/544820e8-5485-7473-9207-2cbbcb18fe4e/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "544820e8-5485-7473-9207-2cbbcb18fe4e",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Water efficiency labels",
+    "focalConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+    "rationale": "Ticks on taps, toilets and washing machines show how much water they save.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:35:50Z"
+  }
+}

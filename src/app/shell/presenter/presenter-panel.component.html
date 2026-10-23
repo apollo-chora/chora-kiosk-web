@@ -1,0 +1,104 @@
+@if (store.presenterOpen()) {
+  <div class="p-head">
+    <b>{{ 'presenter.title' | translate }}</b>
+    <button class="x" data-act="presenter" [attr.aria-label]="'presenter.close' | translate" (click)="store.togglePresenter()">×</button>
+  </div>
+  <div class="p-tabs">
+    @for (t of tabs; track t) {
+      <button data-act="ptab" [attr.data-tab]="t" [class.on]="store.presenterTab() === t" (click)="tab(t)">
+        {{ 'presenter.tab.' + t | translate }}
+      </button>
+    }
+  </div>
+  <div class="p-body">
+    @switch (store.presenterTab()) {
+      @case ('run') {
+        <div class="p-sec">{{ 'presenter.jump' | translate }}</div>
+        <div class="p-grid" style="grid-template-columns: 1fr 1fr 1fr">
+          @for (j of jumps; track j.to) {
+            <button
+              class="p-btn"
+              data-act="jump"
+              [attr.data-to]="j.to"
+              [class.on]="store.talkKey() === j.to"
+              [disabled]="!store.canJump(j.to)"
+              (click)="store.jumpTo(j.to)"
+            >
+              {{ j.n ? j.n + ' ' + (j.label | translate) : (j.label | translate) }}
+            </button>
+          }
+        </div>
+        <div class="p-sec">{{ 'presenter.status' | translate }}</div>
+        <div class="p-grid">
+          <button class="p-btn wide" data-act="resetAll" (click)="resetAll()">{{ 'presenter.reset' | translate }}</button>
+          <button class="p-btn" data-act="pauseIdle" (click)="store.toggleIdlePaused()">
+            {{ (store.idlePaused() ? 'presenter.resumeIdle' : 'presenter.pauseIdle') | translate }}
+          </button>
+          <button class="p-btn" data-act="playCredits" (click)="playCredits()">{{ 'presenter.credits' | translate }}</button>
+          <button class="p-btn wide" data-act="liveSim" (click)="live.setPresenterOff(!live.presenterOff())">
+            {{ (live.presenterOff() ? 'presenter.liveOn' : 'presenter.liveOff') | translate }}
+          </button>
+        </div>
+        <div class="p-idle-wait" style="display: contents">
+          <div class="p-sec">{{ 'presenter.idleAfter' | translate }}</div>
+          <div class="p-grid" style="grid-template-columns: repeat(4, 1fr)">
+            @for (m of idleWaits; track m) {
+              <button
+                class="p-btn"
+                data-act="idleMinutes"
+                [attr.data-min]="m"
+                [class.on]="store.idleMinutes() === m"
+                [attr.aria-pressed]="store.idleMinutes() === m"
+                (click)="store.setIdleMinutes(m)"
+              >
+                {{ 'presenter.idleMinutes' | translate: { n: m } }}
+              </button>
+            }
+          </div>
+        </div>
+        <div class="p-sec">{{ 'presenter.now' | translate }}</div>
+        <div class="p-talk">{{ talkNow() ? (talkNow()! | translate) : '' }}</div>
+      }
+      @case ('talk') {
+        <div class="p-sec">{{ 'presenter.now' | translate }}</div>
+        <div class="p-talk">{{ talkNow() ? (talkNow()! | translate) : '' }}</div>
+        <div class="p-sec">{{ 'presenter.next' | translate }}</div>
+        <div class="p-talk" style="opacity: 0.7">{{ talkNext() ? (talkNext()! | translate) : '' }}</div>
+      }
+      @case ('ready') {
+        <div [class]="'p-row ' + liveView().tone">
+          <i></i><span>{{ liveView().text }}</span>
+        </div>
+        <div class="p-again">
+          <button class="btn btn-ghost btn-sm" data-act="readyAgain" [disabled]="readiness.checking()" (click)="checkAgain()">
+            {{ 'ready.again' | translate }}
+          </button>
+        </div>
+        @for (row of rowsView(); track row.key) {
+          <div [class]="'p-row ' + row.tone"><i></i><span>{{ row.text }}</span></div>
+        }
+      }
+      @case ('visits') {
+        <div class="p-sec">{{ 'presenter.visitsToday' | translate }}</div>
+        @if (visits.today(); as v) {
+          @for (k of visitEvents; track k) {
+            <div class="p-visit" style="margin-bottom: 10px">
+              <div style="display: flex; justify-content: space-between">
+                <span>{{ visitLabel[k] | translate }}</span><b>{{ v.counts[k] }}</b>
+              </div>
+              <div class="bar"><i [style.width]="barWidth(v.counts[k])"></i></div>
+            </div>
+          }
+        } @else if (visits.unreadable()) {
+          <div class="p-talk">{{ 'presenter.visitsUnreadable' | translate }}</div>
+        }
+      }
+    }
+    <div class="p-keys">
+      {{ 'presenter.keys' | translate }}: <kbd>→</kbd> <kbd>PgDn</kbd> <kbd>Space</kbd> {{ 'presenter.k.next' | translate }} ·
+      <kbd>←</kbd> <kbd>PgUp</kbd> {{ 'presenter.k.back' | translate }} · <kbd>Esc</kbd> {{ 'presenter.k.up' | translate }} ·
+      <kbd>B</kbd> {{ 'presenter.k.pause' | translate }} · <kbd>F5</kbd> {{ 'presenter.k.restart' | translate }} ·
+      <kbd>`</kbd> {{ 'presenter.k.panel' | translate }}
+    </div>
+  </div>
+}

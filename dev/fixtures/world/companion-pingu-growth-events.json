@@ -1,0 +1,137 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption companion_growth_handlers.go (eventRecordResp), camelCased and wrapped in {data} by the edge, as recorded from the stack on 18 Oct; the seed's grant of kiosk/world/world.json exp_seeded, then each prepared dose open crediting the active Companion (K102, capped once a day)",
+  "method": "GET",
+  "path": "/api/v1/me/companions/4468bbd0-6fd6-77dc-aa5f-c38cd27693ea/growth-events",
+  "status": 200,
+  "body": {
+    "data": {
+      "events": [
+        {
+          "awardedAt": "2026-10-20T06:31:40Z",
+          "dailyCapHit": true,
+          "expDelta": 0,
+          "expTotalAfter": 32,
+          "growthEventId": "e56d26e8-0c1c-78de-8ae5-1844865e77af",
+          "source": "daily_dose_open",
+          "stageAfter": 1,
+          "stageBefore": 1,
+          "triggeredStageUp": false
+        },
+        {
+          "awardedAt": "2026-10-20T06:30:50Z",
+          "dailyCapHit": true,
+          "expDelta": 0,
+          "expTotalAfter": 32,
+          "growthEventId": "b51e7658-209b-70be-9f30-7b32e2efef51",
+          "source": "daily_dose_open",
+          "stageAfter": 1,
+          "stageBefore": 1,
+          "triggeredStageUp": false
+        },
+        {
+          "awardedAt": "2026-10-20T06:30:00Z",
+          "dailyCapHit": true,
+          "expDelta": 2,
+          "expTotalAfter": 32,
+          "growthEventId": "5cd25447-571b-7c81-b6db-b47507461830",
+          "source": "daily_dose_open",
+          "stageAfter": 1,
+          "stageBefore": 1,
+          "triggeredStageUp": false
+        },
+        {
+          "awardedAt": "2026-10-01T02:00:00Z",
+          "dailyCapHit": false,
+          "expDelta": 30,
+          "expTotalAfter": 30,
+          "growthEventId": "f080d8b5-b826-7b1c-9d4c-168a2c58b869",
+          "source": "admin_grant",
+          "stageAfter": 1,
+          "stageBefore": 1,
+          "triggeredStageUp": false
+        }
+      ]
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^FIXTURE world/answer-set\\.water\\.res\\.r6-0\\.json$"
+      ],
+      "status": 200,
+      "body": {
+        "data": {
+          "events": [
+            {
+              "awardedAt": "2026-10-20T07:35:50Z",
+              "dailyCapHit": false,
+              "expDelta": 25,
+              "expTotalAfter": 65,
+              "growthEventId": "c266f770-95f7-7ea8-9802-11b56c7b5dc7",
+              "source": "campaign_node_won",
+              "stageAfter": 2,
+              "stageBefore": 1,
+              "triggeredStageUp": true
+            },
+            {
+              "awardedAt": "2026-10-20T07:35:50Z",
+              "dailyCapHit": false,
+              "expDelta": 8,
+              "expTotalAfter": 40,
+              "growthEventId": "5121a818-5540-79cd-a99f-19a48bad895d",
+              "source": "campaign_rung_cleared",
+              "stageAfter": 1,
+              "stageBefore": 1,
+              "triggeredStageUp": false
+            },
+            {
+              "awardedAt": "2026-10-20T06:31:40Z",
+              "dailyCapHit": true,
+              "expDelta": 0,
+              "expTotalAfter": 32,
+              "growthEventId": "e56d26e8-0c1c-78de-8ae5-1844865e77af",
+              "source": "daily_dose_open",
+              "stageAfter": 1,
+              "stageBefore": 1,
+              "triggeredStageUp": false
+            },
+            {
+              "awardedAt": "2026-10-20T06:30:50Z",
+              "dailyCapHit": true,
+              "expDelta": 0,
+              "expTotalAfter": 32,
+              "growthEventId": "b51e7658-209b-70be-9f30-7b32e2efef51",
+              "source": "daily_dose_open",
+              "stageAfter": 1,
+              "stageBefore": 1,
+              "triggeredStageUp": false
+            },
+            {
+              "awardedAt": "2026-10-20T06:30:00Z",
+              "dailyCapHit": true,
+              "expDelta": 2,
+              "expTotalAfter": 32,
+              "growthEventId": "5cd25447-571b-7c81-b6db-b47507461830",
+              "source": "daily_dose_open",
+              "stageAfter": 1,
+              "stageBefore": 1,
+              "triggeredStageUp": false
+            },
+            {
+              "awardedAt": "2026-10-01T02:00:00Z",
+              "dailyCapHit": false,
+              "expDelta": 30,
+              "expTotalAfter": 30,
+              "growthEventId": "f080d8b5-b826-7b1c-9d4c-168a2c58b869",
+              "source": "admin_grant",
+              "stageAfter": 1,
+              "stageBefore": 1,
+              "triggeredStageUp": false
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

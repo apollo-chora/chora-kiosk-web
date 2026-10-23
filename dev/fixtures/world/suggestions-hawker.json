@@ -1,0 +1,127 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go (suggestionDTO, pending only, ?goalId= fenced); every batch of kiosk/world/prepared-choices.json on this map, the hidden ones too",
+  "method": "GET",
+  "path": "/api/v1/me/concept-graph/suggestions",
+  "query": {
+    "goalId": "1948dea7-3474-7a37-9b70-a20c2f4d8d16"
+  },
+  "status": 200,
+  "body": {
+    "suggestions": [
+      {
+        "suggestionId": "98f8e9f5-1dd9-776f-8821-09fc9c36a93e",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Family-run stalls",
+        "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "rationale": "Many hawker stalls are run by families who pass their recipes down.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:33:20Z"
+      },
+      {
+        "suggestionId": "686e913d-f298-79d9-97e2-979858d8d29c",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Tray return",
+        "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "rationale": "Diners return their trays, so the next person finds a clean table.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:33:20Z"
+      },
+      {
+        "suggestionId": "365cd2c9-1cb6-7305-bd02-dcae92a68fa1",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Incubation stalls",
+        "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "rationale": "New hawkers can start in a ready-fitted stall at half the usual rent at first.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:38:20Z"
+      },
+      {
+        "suggestionId": "508d8ef3-3886-78fb-8354-e45267230d98",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Satay",
+        "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "rationale": "Small pieces of meat grilled on skewers and eaten with a peanut dip.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:38:20Z"
+      },
+      {
+        "suggestionId": "329f1cee-b210-7b7f-97fc-fe47446601c8",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Hawker succession",
+        "focalConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "rationale": "Retiring hawkers can train a newcomer to take over their stall and recipes.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:39:10Z"
+      },
+      {
+        "suggestionId": "8ff6b37e-7afc-70e2-8be9-891c75e1f0f9",
+        "kind": "concept",
+        "status": "pending",
+        "title": "Laksa",
+        "focalConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "rationale": "Rice noodles in a spicy soup made rich with coconut milk.",
+        "modelId": "gpt-oss:120b",
+        "createdAt": "2026-10-20T05:39:10Z"
+      }
+    ]
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/98f8e9f5-1dd9-776f-8821-09fc9c36a93e/(accept|dismiss)$",
+        "^POST /api/v1/me/concept-graph/suggestions/686e913d-f298-79d9-97e2-979858d8d29c/(accept|dismiss)$"
+      ],
+      "status": 200,
+      "body": {
+        "suggestions": [
+          {
+            "suggestionId": "365cd2c9-1cb6-7305-bd02-dcae92a68fa1",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Incubation stalls",
+            "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "rationale": "New hawkers can start in a ready-fitted stall at half the usual rent at first.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:38:20Z"
+          },
+          {
+            "suggestionId": "508d8ef3-3886-78fb-8354-e45267230d98",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Satay",
+            "focalConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "rationale": "Small pieces of meat grilled on skewers and eaten with a peanut dip.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:38:20Z"
+          },
+          {
+            "suggestionId": "329f1cee-b210-7b7f-97fc-fe47446601c8",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Hawker succession",
+            "focalConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "rationale": "Retiring hawkers can train a newcomer to take over their stall and recipes.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:39:10Z"
+          },
+          {
+            "suggestionId": "8ff6b37e-7afc-70e2-8be9-891c75e1f0f9",
+            "kind": "concept",
+            "status": "pending",
+            "title": "Laksa",
+            "focalConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "rationale": "Rice noodles in a spicy soup made rich with coconut milk.",
+            "modelId": "gpt-oss:120b",
+            "createdAt": "2026-10-20T05:39:10Z"
+          }
+        ]
+      }
+    }
+  ]
+}

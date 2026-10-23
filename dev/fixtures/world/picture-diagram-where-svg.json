@@ -1,0 +1,9 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "a picture the golden run would make, drawn by make-fixtures.mjs (the stages of layoutDiagram, mockup 4366)",
+  "method": "GET",
+  "path": "/KIOSK_DEV_FIXTURE/pictures/diagram-where.svg",
+  "status": 200,
+  "file": "pictures/diagram-where.svg",
+  "content_type": "image/svg+xml"
+}

@@ -1,0 +1,113 @@
+// Breed art: Phyllis demo Dragon canon (7 stages). Fallback overlay
+// watermark for the 7 non-Dragon breeds during M14.G art commission
+// gap.
+
+:host {
+  display: inline-block;
+}
+
+.breed-art {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--breed-art-w);
+  height: var(--breed-art-h);
+  margin: 0;
+  padding: 0;
+  border-radius: 14px;
+  background: var(--breed-accent-soft, rgba(79, 70, 229, 0.05));
+  overflow: hidden;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+// Bare: no framing fill/border, for transparent PNG cut-outs rendered
+// on a container that already provides its own surface.
+.breed-art.is-bare {
+  background: transparent;
+  border-radius: 0;
+}
+
+.breed-art__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+.breed-art[data-mood='curious'] {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: breed-art-bob 2.4s ease-in-out infinite;
+  }
+}
+
+.breed-art[data-mood='sleepy'] {
+  filter: saturate(0.7) brightness(0.95);
+}
+
+.breed-art[data-mood='celebrating'] {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: breed-art-bounce 0.9s cubic-bezier(0.4, 1.6, 0.5, 1) infinite;
+  }
+}
+
+@keyframes breed-art-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+@keyframes breed-art-bounce {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.04) translateY(-4px); }
+}
+
+.breed-art.is-shiny {
+  filter: drop-shadow(0 0 8px var(--breed-accent-glow, rgba(79, 70, 229, 0.4)));
+}
+
+.breed-art__shiny {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff8c5, #f4d03f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #a86b00;
+  box-shadow: 0 2px 6px rgba(244, 208, 63, 0.4);
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: breed-art-shine 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes breed-art-shine {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+
+.breed-art__fallback-badge {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.65);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+
+  i { font-size: 8px; }
+}

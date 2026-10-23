@@ -1,0 +1,2644 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "PREPARED-CHOICES.md section 6; every choice of kiosk/world/prepared-choices.json, the generator's ids and times; values from docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/kiosk/prewarm/manifest",
+  "status": 200,
+  "body": {
+    "format": "chora-kiosk/prewarm-manifest/v1",
+    "made_at": "2026-10-20T06:36:50Z",
+    "commit": "dev-fixture",
+    "list_sha256": "45d15c9e41dfadb83e02ae326740d285e3c6bc94ed0696fbe5f804100bec5658",
+    "world": {
+      "goal.water": "8897f102-bb85-7701-ba94-9c60bbca2258",
+      "goal.nature": "ee509ced-84c3-7947-b40e-aaac7b613781",
+      "goal.hawker": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+      "concept.water.root": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+      "concept.water.used": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+      "concept.water.res": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+      "concept.water.import": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+      "concept.water.newater": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+      "concept.water.desal": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+      "concept.nature.root": "098a7404-7057-743c-9c7e-7f3089251951",
+      "concept.nature.otters": "9e7abbb8-d7fb-75d1-b444-96cac1a15cd5",
+      "concept.nature.supertrees": "6258893b-7bcb-709a-bced-d0978db78a85",
+      "concept.nature.connectors": "c34a44c5-04f5-724e-81cf-e673c05aeedd",
+      "concept.hawker.root": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+      "concept.hawker.unesco": "df1b5701-d242-76a8-8502-8397e7021366",
+      "concept.hawker.centres": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+      "concept.hawker.kopi": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+      "companion.pingu": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+      "companion.nova": "cc69f1d2-9824-7d13-b9ee-9b732f56e480",
+      "companion.ember": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+      "atom.water.newater-process": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+      "atom.water.four-taps": "7f79b39c-8a69-79a5-8eb4-646623792616",
+      "atom.water.johor": "130d19dd-d756-7607-9858-7ab8769128b9",
+      "atom.nature.connectors": "0ae247e3-d9fd-76b2-9939-0119a9ecd456",
+      "atom.nature.sungei-buloh": "aa03a490-0d6f-7cb3-b7c3-ce7a16143a1c",
+      "atom.nature.heat": "e0aedfe3-ff1c-7773-9b5e-115f45657bea",
+      "atom.hawker.centres": "7b0fd791-7ff9-7cd0-91f4-61cbd6da546f",
+      "atom.hawker.kaya": "a19c9b9d-4b6d-7fa6-8d70-5d27d803ed28",
+      "atom.hawker.teh-tarik": "dc8af17e-95dc-71db-a19b-6ea3da668b8c",
+      "concept.water.saving": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+      "concept.water.taps": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+      "concept.water.catch": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+      "concept.nature.mangroves": "791d9edf-32a7-75bd-8272-160e4b4de755",
+      "concept.nature.heat": "d365677b-dc02-738a-b261-2da9e7658bb3",
+      "concept.hawker.chicken": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+      "concept.hawker.safety": "e996c516-a7c9-7715-8363-ee79ff806b67",
+      "atom.water.marina-reservoir": "4c127903-ffa5-73c0-a295-08d953db1103",
+      "atom.water.marina-barrage": "8c98ece8-4c6c-708f-a66a-8f9f74461bf7",
+      "atom.water.catching-rain": "d5996628-d975-724b-b2c5-2b8e591a09b4",
+      "atom.nature.mangroves": "f77a993d-e221-758f-9095-2c59ba7980ff",
+      "atom.nature.otters-return": "24c462ff-9736-74b5-94ca-c95e66b2c0c8",
+      "atom.nature.otters-city": "92ceb828-0372-73b2-b808-059a6d5c3658",
+      "atom.hawker.food-safety": "47f96252-28e7-7132-8ab3-c7374dc1870e",
+      "atom.hawker.unesco-heritage": "5e3e94f5-90b9-7226-b808-e811f8c8a606",
+      "atom.hawker.unesco-why": "35306634-d631-7bac-aeca-3d5f576e206e",
+      "atom.hawker.chicken-rice": "95902747-30b9-72b2-b09f-7b8d4fe5a175"
+    },
+    "templates": {
+      "word_revision": {
+        "lines": [
+          "Write a new version of this multiple-choice question that follows the instruction below.",
+          "Change what the instruction asks for and keep the rest of the question as it is.",
+          "",
+          "Question: {stem}",
+          "{options}",
+          "Correct answer: {answer}",
+          "",
+          "Instruction: {instruction}"
+        ],
+        "option_line": "{letter}. {label}",
+        "option_line_explained": "{letter}. {label} (explanation: {explainer})",
+        "example": {
+          "candidate": {
+            "prompt": "The diagram shows how used water becomes NEWater. Which stage destroys germs that slip through the membranes?",
+            "mcq_payload": {
+              "options": [
+                {
+                  "label": "Microfiltration",
+                  "is_correct": false,
+                  "explainer": ""
+                },
+                {
+                  "label": "Reverse osmosis",
+                  "is_correct": false,
+                  "explainer": ""
+                },
+                {
+                  "label": "UV disinfection",
+                  "is_correct": true,
+                  "explainer": "UV light damages the germs' DNA, so they cannot multiply."
+                },
+                {
+                  "label": "Chlorination",
+                  "is_correct": false,
+                  "explainer": ""
+                }
+              ]
+            }
+          },
+          "instruction": "Replace the option that could also be right",
+          "prompt": "Write a new version of this multiple-choice question that follows the instruction below.\nChange what the instruction asks for and keep the rest of the question as it is.\n\nQuestion: The diagram shows how used water becomes NEWater. Which stage destroys germs that slip through the membranes?\nA. Microfiltration\nB. Reverse osmosis\nC. UV disinfection (explanation: UV light damages the germs' DNA, so they cannot multiply.)\nD. Chlorination\nCorrect answer: C\n\nInstruction: Replace the option that could also be right"
+        }
+      }
+    },
+    "choices": {
+      "sugg.water.desal": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:31:40Z",
+        "run_at": "2026-10-20T05:31:00Z",
+        "params_sha256": "d3bc4981ea42467a02f7b97316c4c5ab01d085049fee94c1a9e6bb17093d6cfa",
+        "params": {
+          "goal": "goal.water",
+          "focal": "concept.water.desal",
+          "min_count": 3,
+          "hidden": false
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "focal_concept_id": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+          "request_id": "58088579-4355-7977-86f0-960b56ce53f3",
+          "suggestion_ids": [
+            "ee17c829-e411-7125-abc0-f9a8696631bc",
+            "ebb87080-8b5e-75cf-babc-858c3c8ebf2c",
+            "d4c34971-2398-7c92-a73b-1c4c4c82adeb"
+          ],
+          "titles": [
+            "Seawater intake",
+            "Reverse osmosis",
+            "Energy use"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "sugg.nature.supertrees": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:32:30Z",
+        "run_at": "2026-10-20T05:31:50Z",
+        "params_sha256": "729edbedcba383595eb47923f27d17b0170ef7ef8b3ed6ec60399ac666850286",
+        "params": {
+          "goal": "goal.nature",
+          "focal": "concept.nature.supertrees",
+          "min_count": 2,
+          "max_concepts": 5,
+          "hidden": false
+        },
+        "records": {
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "focal_concept_id": "6258893b-7bcb-709a-bced-d0978db78a85",
+          "request_id": "4a35a5f3-0ce4-7201-a715-901ac9d9fca8",
+          "suggestion_ids": [
+            "55615ef6-d924-776c-b325-b898a657220d",
+            "4d8c1026-9405-7c71-b21a-17ef193621cd"
+          ],
+          "titles": [
+            "Vertical gardens",
+            "Solar power"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "sugg.hawker.centres": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:33:20Z",
+        "run_at": "2026-10-20T05:32:40Z",
+        "params_sha256": "41df3987314a8f42696e052902f556a91704568272f1e054114ed0217a544031",
+        "params": {
+          "goal": "goal.hawker",
+          "focal": "concept.hawker.centres",
+          "min_count": 2,
+          "max_concepts": 3,
+          "hidden": false
+        },
+        "records": {
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "focal_concept_id": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+          "request_id": "1cd58538-3eed-76bf-89f6-e3382d71ca2c",
+          "suggestion_ids": [
+            "98f8e9f5-1dd9-776f-8821-09fc9c36a93e",
+            "686e913d-f298-79d9-97e2-979858d8d29c"
+          ],
+          "titles": [
+            "Family-run stalls",
+            "Tray return"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.water.newater": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:34:10Z",
+        "run_at": "2026-10-20T05:33:30Z",
+        "params_sha256": "d35654a04e5970fc1e28941ff7b7b99e02c5810aeda5dda687abe9b0989562f7",
+        "params": {
+          "goal": "goal.water",
+          "focal": "concept.water.newater",
+          "min_count": 2,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "focal_concept_id": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+          "request_id": "c9486932-596f-769c-a22d-23e1b7ab14ab",
+          "suggestion_ids": [
+            "82f19d33-8b9b-7489-a248-116fa8fe559c",
+            "7467574c-286f-74ad-a289-ed19331b0317"
+          ],
+          "titles": [
+            "Deep Tunnel Sewerage System",
+            "Wafer fabs"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.water.desal": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:35:00Z",
+        "run_at": "2026-10-20T05:34:20Z",
+        "params_sha256": "02ff10216a18b199c32e1f84e77a84a2e57b150b55eeb789180fdd0faee1414c",
+        "params": {
+          "goal": "goal.water",
+          "focal": "concept.water.desal",
+          "min_count": 2,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "focal_concept_id": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+          "request_id": "f7e23619-64fc-79b3-a342-8c88b941722c",
+          "suggestion_ids": [
+            "ed679741-bb2f-7ad5-bf6d-8586b09466f1",
+            "c6d31a1a-d1f0-7744-a049-e7a381c9bdb0"
+          ],
+          "titles": [
+            "Marina East dual-mode plant",
+            "Brine"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.water.root": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:35:50Z",
+        "run_at": "2026-10-20T05:35:10Z",
+        "params_sha256": "9eca07123fc0c635d0b6e5685f04a71ae26e235f7345f5b77c27156ae01c8fe7",
+        "params": {
+          "goal": "goal.water",
+          "focal": "concept.water.root",
+          "min_count": 2,
+          "max_concepts": 2,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "focal_concept_id": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+          "request_id": "f1b55b4f-ecf8-7cd6-8b42-e85816b82307",
+          "suggestion_ids": [
+            "544820e8-5485-7473-9207-2cbbcb18fe4e",
+            "270254fd-942e-77aa-badd-e4ca66e19119"
+          ],
+          "titles": [
+            "Water efficiency labels",
+            "Linggiu Reservoir"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.nature.supertrees": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:36:40Z",
+        "run_at": "2026-10-20T05:36:00Z",
+        "params_sha256": "3cedd57c94b8716450e83449202868e2fb016e73663d43a0440b3479fae60a69",
+        "params": {
+          "goal": "goal.nature",
+          "focal": "concept.nature.supertrees",
+          "min_count": 2,
+          "max_concepts": 5,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "focal_concept_id": "6258893b-7bcb-709a-bced-d0978db78a85",
+          "request_id": "bc53de3f-a92a-7ba6-9848-f7cd18a68a34",
+          "suggestion_ids": [
+            "49950d76-98b9-7f19-8641-78262fe56d2e",
+            "eeaf30a2-38de-7c78-894b-5cde8b96e1c9"
+          ],
+          "titles": [
+            "Gardens by the Bay",
+            "Rainwater harvesting"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.nature.root": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:37:30Z",
+        "run_at": "2026-10-20T05:36:50Z",
+        "params_sha256": "1b4db8084d35758ee70648b640dcd76e0622b612c4630df03630c4fb4a8a08a5",
+        "params": {
+          "goal": "goal.nature",
+          "focal": "concept.nature.root",
+          "min_count": 2,
+          "max_concepts": 3,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "focal_concept_id": "098a7404-7057-743c-9c7e-7f3089251951",
+          "request_id": "deeb774d-860e-7899-92dc-c919f6975d82",
+          "suggestion_ids": [
+            "95a8c05d-469a-7ba1-904c-89447f1ce226",
+            "3f161993-deb4-7002-b92c-4fefcc423a9b"
+          ],
+          "titles": [
+            "OneMillionTrees movement",
+            "Bukit Timah Nature Reserve"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.hawker.centres": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:38:20Z",
+        "run_at": "2026-10-20T05:37:40Z",
+        "params_sha256": "fbcc7060e19dbb71017c4c2223c9eee43a771a8e9b73d45c4764dc05d20503ea",
+        "params": {
+          "goal": "goal.hawker",
+          "focal": "concept.hawker.centres",
+          "min_count": 2,
+          "max_concepts": 3,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "focal_concept_id": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+          "request_id": "95c26034-3404-7428-acdf-5dc2493d059a",
+          "suggestion_ids": [
+            "365cd2c9-1cb6-7305-bd02-dcae92a68fa1",
+            "508d8ef3-3886-78fb-8354-e45267230d98"
+          ],
+          "titles": [
+            "Incubation stalls",
+            "Satay"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.hawker.root": {
+        "kind": "suggestions",
+        "stage": "main",
+        "hidden": true,
+        "prepared_at": "2026-10-20T05:39:10Z",
+        "run_at": "2026-10-20T05:38:30Z",
+        "params_sha256": "775db03adb0e1457e2929f74fea9fb521c35f3b303123dabdac6ca9ecfc68281",
+        "params": {
+          "goal": "goal.hawker",
+          "focal": "concept.hawker.root",
+          "min_count": 2,
+          "max_concepts": 2,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "focal_concept_id": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+          "request_id": "10cd67b8-d252-7db0-bd36-dee170a352fc",
+          "suggestion_ids": [
+            "329f1cee-b210-7b7f-97fc-fe47446601c8",
+            "8ff6b37e-7afc-70e2-8be9-891c75e1f0f9"
+          ],
+          "titles": [
+            "Hawker succession",
+            "Laksa"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "v1.reverse-osmosis": {
+        "kind": "adoptable_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:40:00Z",
+        "run_at": "2026-10-20T05:39:20Z",
+        "params_sha256": "8c388c5d37ad6f701de7d24e3de138047ffe2f055bf089b0360b3b5225114184",
+        "params": {
+          "goal": "goal.water",
+          "parent": "concept.water.desal",
+          "from": "sugg.water.desal",
+          "concept_key": "reverse-osmosis",
+          "also_in": [],
+          "rung": 1
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "suggestion_id": "ebb87080-8b5e-75cf-babc-858c3c8ebf2c",
+          "title": "Reverse osmosis",
+          "concept_key": "reverse-osmosis",
+          "rung": 1,
+          "twin_concept_id": "0520fed3-5558-7fa5-ba56-59ef6fc75cc9",
+          "twin_edge_id": "5f2bf116-9f1a-7122-8d94-bfb6e707e1e8",
+          "trace_id": "89286d55c076effa65a559ae535eb43e",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.water.res.r6": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:40:50Z",
+        "run_at": "2026-10-20T05:40:10Z",
+        "params_sha256": "bb071b514bcd2e03914f1919b892835ecb4ab3af8de050d322dcf80e4f916599",
+        "params": {
+          "goal": "goal.water",
+          "concept": "concept.water.res",
+          "rung": 6
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "concept_id": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "concept_key": "reservoirs",
+          "rung": 6,
+          "trace_id": "d938c3b13d82f20ac0f53dc943c26b17",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.water.import.r3": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:41:40Z",
+        "run_at": "2026-10-20T05:41:00Z",
+        "params_sha256": "c1626a7d33bddc33dc42533c5670f07c343ecd88a71577966dede4e55579e658",
+        "params": {
+          "goal": "goal.water",
+          "concept": "concept.water.import",
+          "rung": 3
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "concept_id": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+          "concept_key": "imported-water",
+          "rung": 3,
+          "trace_id": "34ae5915f00c10b250f07e8ff0af3f01",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.water.used.r3": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:42:30Z",
+        "run_at": "2026-10-20T05:41:50Z",
+        "params_sha256": "70a931a2697e4f0e0d977d7054057e2379cfd370d7a6369ad5d150f620fe00b6",
+        "params": {
+          "goal": "goal.water",
+          "concept": "concept.water.used",
+          "rung": 3
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "concept_id": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+          "concept_key": "used-water",
+          "rung": 3,
+          "trace_id": "2d0fc18c03337c3c7cba753c3af44981",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.nature.otters.r3": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:43:20Z",
+        "run_at": "2026-10-20T05:42:40Z",
+        "params_sha256": "dc4a76301b0495ed0bc7890a6d45340111d1427728d3565231d2106dfc2fa324",
+        "params": {
+          "goal": "goal.nature",
+          "concept": "concept.nature.otters",
+          "rung": 3
+        },
+        "records": {
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "concept_id": "9e7abbb8-d7fb-75d1-b444-96cac1a15cd5",
+          "concept_key": "smooth-coated-otters",
+          "rung": 3,
+          "trace_id": "2068cf85e7f03ece28d51860ba317675",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.nature.connectors.r4": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:44:10Z",
+        "run_at": "2026-10-20T05:43:30Z",
+        "params_sha256": "2e7c08d0b0d2c358b8f46da8b577d353a44038bdf0c1fcd2f43a711b832ae04e",
+        "params": {
+          "goal": "goal.nature",
+          "concept": "concept.nature.connectors",
+          "rung": 4
+        },
+        "records": {
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "concept_id": "c34a44c5-04f5-724e-81cf-e673c05aeedd",
+          "concept_key": "park-connectors",
+          "rung": 4,
+          "trace_id": "9e988b155c9e4d7e862b8bd9960b1cec",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.hawker.unesco.r3": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:45:00Z",
+        "run_at": "2026-10-20T05:44:20Z",
+        "params_sha256": "47987c84204b24da63830cbe7ab5f71ace971dd2de19bf5709e3db3d1929d503",
+        "params": {
+          "goal": "goal.hawker",
+          "concept": "concept.hawker.unesco",
+          "rung": 3
+        },
+        "records": {
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "concept_id": "df1b5701-d242-76a8-8502-8397e7021366",
+          "concept_key": "unesco-listing",
+          "rung": 3,
+          "trace_id": "8c8870a244dafa3419468d6eccaae4e8",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "set.hawker.kopi.r4": {
+        "kind": "practice_set",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:45:50Z",
+        "run_at": "2026-10-20T05:45:10Z",
+        "params_sha256": "2fb44cc9ea525ec4092852e197b4a83499b5a3e4b488ee080d16b0020929739c",
+        "params": {
+          "goal": "goal.hawker",
+          "concept": "concept.hawker.kopi",
+          "rung": 4
+        },
+        "records": {
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "concept_id": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+          "concept_key": "kopi",
+          "rung": 4,
+          "trace_id": "9e005dda855e0eca7c3c0bd3bbc4f077",
+          "question_count": 1
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.h4": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:46:40Z",
+        "run_at": "2026-10-20T05:46:00Z",
+        "params_sha256": "eebd251eff707eb852773245274682cdae3a87c754c0d7f2d8684348c8817bd0",
+        "params": {
+          "atom": "atom.water.newater-process",
+          "question_type": "mcq",
+          "image_for_stem": true,
+          "expect_image_mode": "mermaid",
+          "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up about how Singapore turns used water into NEWater. Ask which treatment stage destroys germs that slip through the membranes. Use exactly these four options in this order: Microfiltration, Reverse osmosis, UV disinfection, Chlorination. The correct answer is UV disinfection. Do not add explanations. Add a flow diagram of the NEWater process that shows only these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, NEWater."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "question_type": "mcq",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/diagram-v1.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/stem.svg",
+          "image_mode": "mermaid"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.r": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:47:30Z",
+        "run_at": "2026-10-20T05:46:50Z",
+        "params_sha256": "fa619b76bb017d7f9dc1b339b24c2a6080fab382033625586ddb22ec2643e08c",
+        "params": {
+          "from": "draft.h4",
+          "instruction": "Turn it into a real-life scenario"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "5d3e21f7-bd2d-7484-aa41-f9fdff598056",
+          "draft_id": "04f1fd8c-1438-7f2c-95aa-d0710fe5ed07",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.s": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:48:20Z",
+        "run_at": "2026-10-20T05:47:40Z",
+        "params_sha256": "5dbe99d4e85c07612e93b847576eab713ab5331ff77d305b5273e0327879cb4d",
+        "params": {
+          "from": "draft.h4",
+          "instruction": "Make the question simpler"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "08b1d1a8-564b-7ae5-9695-2bb947b0bbee",
+          "draft_id": "1532b75d-5ef8-753b-8de5-4e06df47587f",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.e": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:49:10Z",
+        "run_at": "2026-10-20T05:48:30Z",
+        "params_sha256": "6c6fcddccfd7b87dfadda7ce52cf0552dda4a4f246db4c52f01f6b34b1772bd4",
+        "params": {
+          "from": "draft.h4",
+          "instruction": "Add a one-line explanation"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "9ae0426d-5d1b-74bb-ae45-3207db7b07db",
+          "draft_id": "9f2f05cc-37a4-79d5-b2d4-92df0b04a592",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.r.s": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:50:00Z",
+        "run_at": "2026-10-20T05:49:20Z",
+        "params_sha256": "bde5b88b6e695aa3d633eba51e4d01120da2ee73378e15874014c42065eb2c40",
+        "params": {
+          "from": "words.r",
+          "instruction": "Make the question simpler"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "9b8eef82-3fb3-7766-83f5-15f77029e0ba",
+          "draft_id": "684061b0-a26f-70f2-9f4f-081abaf26975",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "04f1fd8c-1438-7f2c-95aa-d0710fe5ed07"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.r.e": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:50:50Z",
+        "run_at": "2026-10-20T05:50:10Z",
+        "params_sha256": "7443e62bacb0bac6ec0a407f46fbea2a15a369aa52d7db8b7d3682049aeca77c",
+        "params": {
+          "from": "words.r",
+          "instruction": "Add a one-line explanation"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "aaa4cb40-7fc5-7a84-ba29-dd699bd44087",
+          "draft_id": "170d8e66-0d72-7f9a-8916-052a12b96786",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "04f1fd8c-1438-7f2c-95aa-d0710fe5ed07"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.s.r": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:51:40Z",
+        "run_at": "2026-10-20T05:51:00Z",
+        "params_sha256": "e83a843899b5ef1da70ad6be6c9ccb819a898a5ae8d1d065851b874374c6eb39",
+        "params": {
+          "from": "words.s",
+          "instruction": "Turn it into a real-life scenario"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "4e6f4d57-4d3e-7c59-9bf8-2bcb0e89051f",
+          "draft_id": "83c5811c-1ec6-7788-a380-5ca10e675244",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "1532b75d-5ef8-753b-8de5-4e06df47587f"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.s.e": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:52:30Z",
+        "run_at": "2026-10-20T05:51:50Z",
+        "params_sha256": "a76bc4d02376f31e035247dcdc13e2e0200ee8bafc12415b3339689acc53f38e",
+        "params": {
+          "from": "words.s",
+          "instruction": "Add a one-line explanation"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "56172ce7-c3c6-75e5-9c2c-62571b486022",
+          "draft_id": "320cf3ac-32a6-7256-a256-976cd2e40343",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "1532b75d-5ef8-753b-8de5-4e06df47587f"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.e.r": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:53:20Z",
+        "run_at": "2026-10-20T05:52:40Z",
+        "params_sha256": "e7495bb01fe4820fa5762e258f0acca2053932026de2915ad44d79d57e506a64",
+        "params": {
+          "from": "words.e",
+          "instruction": "Turn it into a real-life scenario"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "f278e4bb-e2f2-7a09-a4d2-7f0992c24512",
+          "draft_id": "3c584d21-b253-7aeb-bdb7-b22fbd1654f8",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "9f2f05cc-37a4-79d5-b2d4-92df0b04a592"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.e.s": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:54:10Z",
+        "run_at": "2026-10-20T05:53:30Z",
+        "params_sha256": "7c7e4ba301fe4ca7fe8c6acc1544ae6b5671b28a4fee82cea19b21f529de4a9c",
+        "params": {
+          "from": "words.e",
+          "instruction": "Make the question simpler"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "fcdc344c-5720-70b6-b3c3-9a5b8f0ae4f2",
+          "draft_id": "a480f69f-046e-7f3f-8d37-c0ec60731abd",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "9f2f05cc-37a4-79d5-b2d4-92df0b04a592"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.r.s.e": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:55:00Z",
+        "run_at": "2026-10-20T05:54:20Z",
+        "params_sha256": "ac36c36214ddc48e9b498e5459ceb913856a5d7513098d0936ce79b66a277216",
+        "params": {
+          "from": "words.r.s",
+          "instruction": "Add a one-line explanation"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "0241a477-d20e-7d18-8da0-58a63ee02cb6",
+          "draft_id": "f57020a3-220c-7896-8bde-2f080b3651f0",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "684061b0-a26f-70f2-9f4f-081abaf26975"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.r.e.s": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:55:50Z",
+        "run_at": "2026-10-20T05:55:10Z",
+        "params_sha256": "a2d36ef85575ff6a279dd519346690fced65a27cffac61c8b988a80a58cfe97b",
+        "params": {
+          "from": "words.r.e",
+          "instruction": "Make the question simpler"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "51a11a55-1cbf-7ef1-a0dd-6ac0517815a8",
+          "draft_id": "175c8012-c22d-7d1f-afcf-0d0470f836a7",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "170d8e66-0d72-7f9a-8916-052a12b96786"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.s.r.e": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:56:40Z",
+        "run_at": "2026-10-20T05:56:00Z",
+        "params_sha256": "cfbbffec6580757285601a6341bf99fbac42cd6e5e328794fc1bcccc607a6a92",
+        "params": {
+          "from": "words.s.r",
+          "instruction": "Add a one-line explanation"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "0c62a741-6d08-7cce-8ee7-59dede41f2b9",
+          "draft_id": "a8ed210b-2500-7584-870c-87cabb9f537c",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "83c5811c-1ec6-7788-a380-5ca10e675244"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.s.e.r": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:57:30Z",
+        "run_at": "2026-10-20T05:56:50Z",
+        "params_sha256": "b6d9f62bfa44b0395e8e06f47966a3c7a1b46ec9eee425ff5f154d7965c44839",
+        "params": {
+          "from": "words.s.e",
+          "instruction": "Turn it into a real-life scenario"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "1a5d2f56-67ba-7027-838e-21e75b055285",
+          "draft_id": "51c667b6-6122-7cbe-afec-7076d6626869",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "320cf3ac-32a6-7256-a256-976cd2e40343"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.e.r.s": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:58:20Z",
+        "run_at": "2026-10-20T05:57:40Z",
+        "params_sha256": "ccf1135ae59b8589305906da7c3bef890f0e453f59a1df3bfe09d29aca79563e",
+        "params": {
+          "from": "words.e.r",
+          "instruction": "Make the question simpler"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "85325d46-1449-79c0-85a3-9d3258bfba69",
+          "draft_id": "2b49f84e-7639-7e7c-8e78-aaca21461ad1",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "3c584d21-b253-7aeb-bdb7-b22fbd1654f8"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "words.e.s.r": {
+        "kind": "word_revision",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T05:59:10Z",
+        "run_at": "2026-10-20T05:58:30Z",
+        "params_sha256": "c186556a61cced483f6a826c8a4cd83372a890464d3b7162e121460eef4ddc8c",
+        "params": {
+          "from": "words.e.s",
+          "instruction": "Turn it into a real-life scenario"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "job_id": "1463f364-29f7-717e-9d39-22b3929c3b64",
+          "draft_id": "28f80ef1-cbed-7f48-a8b1-53ab923ac43a",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null,
+          "from_draft_id": "a480f69f-046e-7f3f-8d37-c0ec60731abd"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.uv": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:00:00Z",
+        "run_at": "2026-10-20T05:59:20Z",
+        "params_sha256": "c64f6509935bc8b9c8bea8ccccf394f9d2ecd4cddceb5fa0edddba18cf6478f2",
+        "params": {
+          "draft": "draft.h4",
+          "source": null,
+          "mode": "mermaid",
+          "prompt": "Redraw the flow diagram of the NEWater process with these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, UV disinfection, NEWater."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "22bcfef0-bb18-78ed-a16e-994da0841888",
+          "mode": "mermaid",
+          "source_image_gcs_uri": null,
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/diagram-uv.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-22bcfef0-bb18-78ed-a16e-994da0841888.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.where": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:00:50Z",
+        "run_at": "2026-10-20T06:00:10Z",
+        "params_sha256": "620e01e93dd1f8b6482f8dacd0919a1feb71ef61a18d3eb54d7d132ad836424a",
+        "params": {
+          "draft": "draft.h4",
+          "source": null,
+          "mode": "mermaid",
+          "prompt": "Redraw the flow diagram of the NEWater process with these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, NEWater. Then show where NEWater goes: to industry such as wafer fabs, and to the reservoirs."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "3d287783-8725-7211-9008-1855790d87ed",
+          "mode": "mermaid",
+          "source_image_gcs_uri": null,
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/diagram-where.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-3d287783-8725-7211-9008-1855790d87ed.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.uv.where": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:01:40Z",
+        "run_at": "2026-10-20T06:01:00Z",
+        "params_sha256": "f61e4bd5e590d10714ab69b0ef31504ea36ca97fdf3183dc7339442c7f4323ec",
+        "params": {
+          "draft": "draft.h4",
+          "source": null,
+          "mode": "mermaid",
+          "prompt": "Redraw the flow diagram of the NEWater process with these stages, top to bottom: used water, water reclamation plant, microfiltration, reverse osmosis, UV disinfection, NEWater. Then show where NEWater goes: to industry such as wafer fabs, and to the reservoirs."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "b33497f9-663f-7004-84a4-cd038a02e26d",
+          "mode": "mermaid",
+          "source_image_gcs_uri": null,
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/diagram-uv-where.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-b33497f9-663f-7004-84a4-cd038a02e26d.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.illus": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:02:30Z",
+        "run_at": "2026-10-20T06:01:50Z",
+        "params_sha256": "47baf71107260c25cfaba5cd8594c9836dda8f015fa8459e5a5f800d5c496e9c",
+        "params": {
+          "draft": "draft.h4",
+          "source": null,
+          "mode": "scene",
+          "prompt": "Turn the diagram into a friendly illustration of how used water becomes NEWater: water passing through fine membranes, then glowing UV lamps, then clean water flowing out. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "5f025a07-d1da-783f-b5ac-80ee7211df81",
+          "mode": "scene",
+          "source_image_gcs_uri": null,
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/flat.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-5f025a07-d1da-783f-b5ac-80ee7211df81.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.illus.sketch": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:03:20Z",
+        "run_at": "2026-10-20T06:02:40Z",
+        "params_sha256": "fa5293039ee1d3ed31b780ba5e82ac45b0e4545e8950bc8d19857c78a76dfe15",
+        "params": {
+          "draft": "draft.h4",
+          "source": "pic.illus",
+          "mode": "scene",
+          "prompt": "Restyle this picture as a pencil sketch of the same scene. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "1cb5859b-badd-716a-8edf-238705fe91f8",
+          "mode": "scene",
+          "source_image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-5f025a07-d1da-783f-b5ac-80ee7211df81.jpg",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/sketch.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-1cb5859b-badd-716a-8edf-238705fe91f8.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.illus.photo": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:04:10Z",
+        "run_at": "2026-10-20T06:03:30Z",
+        "params_sha256": "a46e10d5e506349df16136e51428348f6756b683fd28b0559c0e3aad235099e9",
+        "params": {
+          "draft": "draft.h4",
+          "source": "pic.illus",
+          "mode": "scene",
+          "prompt": "Restyle this picture as a photorealistic photograph of the same scene. It must look like a real photograph taken in a water treatment plant, not like artwork. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "5befcf57-2741-74a7-bafe-2d6304b9cff6",
+          "mode": "scene",
+          "source_image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-5f025a07-d1da-783f-b5ac-80ee7211df81.jpg",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/photo.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-5befcf57-2741-74a7-bafe-2d6304b9cff6.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.illus.photo.tanks": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:05:00Z",
+        "run_at": "2026-10-20T06:04:20Z",
+        "params_sha256": "6f24f8956b0446c36dae3c9e8c0c746bb7257bb6e0ec39b0725cb9ae39e2bc72",
+        "params": {
+          "draft": "draft.h4",
+          "source": "pic.illus.photo",
+          "mode": "scene",
+          "prompt": "Show steel tanks and membrane units instead of the glass and sponges"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "b61c943f-9442-7ff1-a471-192ff78212d3",
+          "mode": "scene",
+          "source_image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-5befcf57-2741-74a7-bafe-2d6304b9cff6.jpg",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/photo.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-b61c943f-9442-7ff1-a471-192ff78212d3.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.sketch.photo": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:05:50Z",
+        "run_at": "2026-10-20T06:05:10Z",
+        "params_sha256": "4327c008a3c0465d669604cfc99f71a118c651a4d41f9d03a8f1532801a38b38",
+        "params": {
+          "draft": "draft.h4",
+          "source": "pic.illus.sketch",
+          "mode": "scene",
+          "prompt": "Restyle this picture as a photorealistic photograph of the same scene. It must look like a real photograph taken in a water treatment plant, not like artwork. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "22ae066d-1383-776f-9aaf-f20d752f93bf",
+          "mode": "scene",
+          "source_image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-1cb5859b-badd-716a-8edf-238705fe91f8.jpg",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/photo.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-22ae066d-1383-776f-9aaf-f20d752f93bf.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.sketch.photo.tanks": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:06:40Z",
+        "run_at": "2026-10-20T06:06:00Z",
+        "params_sha256": "f3bca94df5fe4fef16f5359926e72779e50e596c2206e36ca18a288950417302",
+        "params": {
+          "draft": "draft.h4",
+          "source": "pic.sketch.photo",
+          "mode": "scene",
+          "prompt": "Show steel tanks and membrane units instead of the glass and sponges"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "1d752870-c8d2-7401-97d7-df9375527b01",
+          "mode": "scene",
+          "source_image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-22ae066d-1383-776f-9aaf-f20d752f93bf.jpg",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/photo.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-1d752870-c8d2-7401-97d7-df9375527b01.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "pic.photo.sketch": {
+        "kind": "picture_regen",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:07:30Z",
+        "run_at": "2026-10-20T06:06:50Z",
+        "params_sha256": "3ecce2bae02b29bf368274fc8946ff86fce0c57dea5e767a5a13a14091c03226",
+        "params": {
+          "draft": "draft.h4",
+          "source": "pic.illus.photo",
+          "mode": "scene",
+          "prompt": "Restyle this picture as a pencil sketch of the same scene. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "parent_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "regen_job_id": "f720983c-e8ab-7f95-ab5e-42feac78150d",
+          "mode": "scene",
+          "source_image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-5befcf57-2741-74a7-bafe-2d6304b9cff6.jpg",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/sketch.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/regen-f720983c-e8ab-7f95-ab5e-42feac78150d.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.water.q1": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:08:20Z",
+        "run_at": "2026-10-20T06:07:40Z",
+        "params_sha256": "2bd744488e69d472ed20f8843b3a0bfd09e423efea1ea28f9811a58ea3c45530",
+        "params": {
+          "atom": "atom.water.four-taps",
+          "question_type": "mcq",
+          "image_for_stem": false,
+          "expect_image_mode": null,
+          "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up: which of Singapore's Four National Taps cleans used water until it is safe enough to drink? Use these four options in this order: Local catchment water, NEWater, Desalinated water, Imported water. The correct answer is NEWater. Give each option a one-sentence explanation."
+        },
+        "records": {
+          "atom_id": "7f79b39c-8a69-79a5-8eb4-646623792616",
+          "job_id": "f0a0566f-550a-78b1-a1c0-8ad94cf55dd2",
+          "draft_id": "32a33961-ccb8-7c3e-83a6-45195dc1ae2b",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.water.q3": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:09:10Z",
+        "run_at": "2026-10-20T06:08:30Z",
+        "params_sha256": "172a4ea452c98feb338f59c5890343569c7929757e8febc5e1d573ac2ef67318",
+        "params": {
+          "atom": "atom.water.johor",
+          "question_type": "oe",
+          "image_for_stem": true,
+          "expect_image_mode": "scene",
+          "metadata": null,
+          "prompt": "Write one open-ended question for visitors aged 12 and up: Singapore buys part of its water from Johor under an agreement that ends in 2061, so why does Singapore also invest in NEWater and desalination? Give a rubric of three criteria: names the 2061 end of the agreement as a risk (4 points); explains that NEWater and desalination do not depend on rain or on another country (4 points); notes a trade-off such as their high energy use (2 points). Give a model answer. Add an illustration of Singapore's four water sources: a reservoir fed by rain, a pipeline from Johor, a NEWater plant and a desalination plant by the sea. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "130d19dd-d756-7607-9858-7ab8769128b9",
+          "job_id": "a4d38696-19c0-7339-883c-9030e7105ab4",
+          "draft_id": "fae90d84-74c9-7ce7-b9ec-3b9123845506",
+          "question_type": "oe",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/taps.jpg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/fae90d84-74c9-7ce7-b9ec-3b9123845506/stem.jpg",
+          "image_mode": "scene"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.nature.q1": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:10:00Z",
+        "run_at": "2026-10-20T06:09:20Z",
+        "params_sha256": "e553f69c7d9753623444f3b3ff6a5f9da34b7806b6cc0eecb87dadc0df469122",
+        "params": {
+          "atom": "atom.nature.connectors",
+          "question_type": "mcq",
+          "image_for_stem": false,
+          "expect_image_mode": null,
+          "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up: what are Singapore's park connectors built for? Use these four options in this order: Carrying rainwater from parks to the reservoirs; Giving buses a faster route across the island; Linking parks so people can walk, jog and cycle between them; Fencing nature reserves off from visitors. The correct answer is the third option. Give each option a one-sentence explanation."
+        },
+        "records": {
+          "atom_id": "0ae247e3-d9fd-76b2-9939-0119a9ecd456",
+          "job_id": "cc86143a-adfe-73f6-8449-3d69461b4920",
+          "draft_id": "2ac73292-d72f-7c6c-898e-fbb47224572c",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.nature.q2": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:10:50Z",
+        "run_at": "2026-10-20T06:10:10Z",
+        "params_sha256": "8e6ec0c3ababe629a3fa16ac9198b55c0aee0d12295d7376893115dc56b2be41",
+        "params": {
+          "atom": "atom.nature.sungei-buloh",
+          "question_type": "mcq",
+          "image_for_stem": true,
+          "expect_image_mode": "scene",
+          "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up about the birds in the picture, shorebirds feeding on the mudflats of Sungei Buloh Wetland Reserve: why do they stop at Sungei Buloh each year? Use these four options in this order: To nest and raise their chicks; To rest and feed on their long migration; To escape Singapore's cold season; To be fed by the reserve's rangers. The correct answer is the second option. Give each option a one-sentence explanation. Add an illustration of shorebirds such as sandpipers and plovers feeding on a muddy shore beside mangroves at low tide. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "aa03a490-0d6f-7cb3-b7c3-ce7a16143a1c",
+          "job_id": "89e09c53-276f-744a-b4f2-2fc2850cb7a2",
+          "draft_id": "deffd401-813c-709d-866b-f861a533227a",
+          "question_type": "mcq",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-nature-shorebirds.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/deffd401-813c-709d-866b-f861a533227a/stem.svg",
+          "image_mode": "scene"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.nature.q3": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:11:40Z",
+        "run_at": "2026-10-20T06:11:00Z",
+        "params_sha256": "997422945c1090c6fc12f2415e752151f4b5dd4e11200aec768197d4e758b39c",
+        "params": {
+          "atom": "atom.nature.heat",
+          "question_type": "oe",
+          "image_for_stem": true,
+          "expect_image_mode": "scene",
+          "metadata": null,
+          "prompt": "Write one open-ended question for visitors aged 12 and up about the picture, two Singapore streets on the same hot afternoon, one lined with big shady trees and one with none: why does the street with trees feel cooler, and what else do such trees give a city like Singapore? Give a rubric of three criteria: explains that the trees' shade stops the sun from heating the road, the pavement and the people below (4 points); explains that leaves give off water vapour, which cools the air around them (4 points); names one more benefit, such as cleaner air, a home for birds and insects, or slowing the rain that runs off the streets (2 points). Give a model answer. Add an illustration of two Singapore streets side by side on a sunny afternoon: one shaded by a row of large rain trees with people walking comfortably, the other with no trees, bright and glaring. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "e0aedfe3-ff1c-7773-9b5e-115f45657bea",
+          "job_id": "4a995c77-8f52-74d7-b215-a84962d7061f",
+          "draft_id": "c5a52efb-f6a8-77e6-a63d-bc7b66f05ccf",
+          "question_type": "oe",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-nature-streets.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/c5a52efb-f6a8-77e6-a63d-bc7b66f05ccf/stem.svg",
+          "image_mode": "scene"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.hawker.q1": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:12:30Z",
+        "run_at": "2026-10-20T06:11:50Z",
+        "params_sha256": "c3d32a93437adc7fb1f49e1d729fbbbe2d5c7162eaa13faf159f992a531e7846",
+        "params": {
+          "atom": "atom.hawker.centres",
+          "question_type": "mcq",
+          "image_for_stem": false,
+          "expect_image_mode": null,
+          "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up: at a hawker centre, what does it mean to \"chope\" a seat? Use these four options in this order: To wipe it clean after eating; To reserve it, often with a packet of tissues; To share it with a stranger at a busy table; To pay for it before ordering. The correct answer is the second option. Give each option a one-sentence explanation."
+        },
+        "records": {
+          "atom_id": "7b0fd791-7ff9-7cd0-91f4-61cbd6da546f",
+          "job_id": "f93052b8-4c65-7048-973f-9bb2f0ce25bc",
+          "draft_id": "53424f28-3eba-7a18-a66f-ed203427f57e",
+          "question_type": "mcq",
+          "image_url": null,
+          "image_gcs_uri": null,
+          "image_mode": null
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.hawker.q2": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:13:20Z",
+        "run_at": "2026-10-20T06:12:40Z",
+        "params_sha256": "ea977db27c3c169f1b170465bd8d958e09fa225348cd619727f7e3e1db4bc881",
+        "params": {
+          "atom": "atom.hawker.kaya",
+          "question_type": "mcq",
+          "image_for_stem": true,
+          "expect_image_mode": "scene",
+          "metadata": null,
+          "prompt": "Write one multiple-choice question for visitors aged 12 and up about the breakfast in the picture, a kaya toast set from a Singapore coffee shop: kaya, the spread in the toast, is made mainly from which ingredients? Use these four options in this order: Peanuts, butter and salt; Durian, cream and sugar; Coconut milk, eggs and sugar; Mango, milk and honey. The correct answer is the third option. Give each option a one-sentence explanation. Add a photorealistic picture of a kaya toast set on a marble coffee-shop table: toasted bread spread with kaya and a slab of cold butter, two soft-boiled eggs in a small dish, and a cup of kopi. It must look like a real photograph, not like artwork. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "a19c9b9d-4b6d-7fa6-8d70-5d27d803ed28",
+          "job_id": "ece9565c-7df2-7633-a351-5ec6f4cf6316",
+          "draft_id": "67679495-8f6c-74d6-a037-ea92a52d61cf",
+          "question_type": "mcq",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-hawker-kaya.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/67679495-8f6c-74d6-a037-ea92a52d61cf/stem.svg",
+          "image_mode": "scene"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "draft.hawker.q3": {
+        "kind": "question_draft",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:14:10Z",
+        "run_at": "2026-10-20T06:13:30Z",
+        "params_sha256": "05cec43818d27f56c27b6d451848e2a70c8f1e4eae2dbdfd661ddc5ed6551528",
+        "params": {
+          "atom": "atom.hawker.teh-tarik",
+          "question_type": "oe",
+          "image_for_stem": true,
+          "expect_image_mode": "scene",
+          "metadata": null,
+          "prompt": "Write one open-ended question for visitors aged 12 and up about the picture, a drinks stall holder at a Singapore hawker centre pouring teh tarik from one mug to another held far apart: why is teh tarik \"pulled\" like this, and why do skills like this matter to hawker culture? Give a rubric of three criteria: explains that pouring from a height mixes the tea with the condensed milk (3 points); explains that it cools the tea to drinking temperature and gives it a frothy top (4 points); explains that hawkers pass the skill down, and that it is part of the hawker culture UNESCO recognised in 2020 (3 points). Give a model answer. Add a photorealistic picture of a hawker pouring a long stream of milky tea between two steel mugs held far apart at a busy hawker centre stall. It must look like a real photograph, not like artwork. No words, letters or labels in the picture."
+        },
+        "records": {
+          "atom_id": "dc8af17e-95dc-71db-a19b-6ea3da668b8c",
+          "job_id": "e0f72f4e-45d1-7e39-b68d-415b3b22b9d7",
+          "draft_id": "c5c7fff0-5435-738e-aa99-6207fb4bd868",
+          "question_type": "oe",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-hawker-teh-tarik.svg",
+          "image_gcs_uri": "gs://kiosk-dev-fixture/questions/c5c7fff0-5435-738e-aa99-6207fb4bd868/stem.svg",
+          "image_mode": "scene"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.water.q1": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:15:00Z",
+        "run_at": "2026-10-20T06:14:20Z",
+        "params_sha256": "b6dd5aa2fcd69caf5f4cb445a0982f22e3fb05043b9d1d480d3dffcb7771cfb0",
+        "params": {
+          "draft": "draft.water.q1",
+          "picture": null
+        },
+        "records": {
+          "atom_id": "7f79b39c-8a69-79a5-8eb4-646623792616",
+          "job_id": "f0a0566f-550a-78b1-a1c0-8ad94cf55dd2",
+          "draft_id": "32a33961-ccb8-7c3e-83a6-45195dc1ae2b",
+          "question_id": "76a6d5eb-5c7a-7153-ad70-4fb14c3ddf4e",
+          "image_url": null
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "copy.water.q2": {
+        "kind": "manual_copy",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:15:50Z",
+        "run_at": "2026-10-20T06:15:10Z",
+        "params_sha256": "047973a7b5496cef770992c9d253a7a6cc0a9fd5177dcf1c2f628e5253ea5910",
+        "params": {
+          "from": "draft.h4",
+          "picture": "original"
+        },
+        "records": {
+          "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+          "manual_job_id": "98e3b16f-1f15-7878-aad9-5653ec996b7f",
+          "from_job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+          "from_draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+          "question_id": "dff3c5e3-7e01-73e5-8fe8-67b712f24d04",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/diagram-v1.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.water.q3": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:16:40Z",
+        "run_at": "2026-10-20T06:16:00Z",
+        "params_sha256": "ae3ade94d1f9f485026530eaad119057e3fbdc07acd735cc8c563afe886b9771",
+        "params": {
+          "draft": "draft.water.q3",
+          "picture": "original"
+        },
+        "records": {
+          "atom_id": "130d19dd-d756-7607-9858-7ab8769128b9",
+          "job_id": "a4d38696-19c0-7339-883c-9030e7105ab4",
+          "draft_id": "fae90d84-74c9-7ce7-b9ec-3b9123845506",
+          "question_id": "65fc70b3-e94e-7a8e-b3d1-9ce5fc96a0a4",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/taps.jpg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.nature.q1": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:17:30Z",
+        "run_at": "2026-10-20T06:16:50Z",
+        "params_sha256": "13c475f2997b5e060f1909f5e56e84f26909b90c0a078ded06860a0b60b97562",
+        "params": {
+          "draft": "draft.nature.q1",
+          "picture": null
+        },
+        "records": {
+          "atom_id": "0ae247e3-d9fd-76b2-9939-0119a9ecd456",
+          "job_id": "cc86143a-adfe-73f6-8449-3d69461b4920",
+          "draft_id": "2ac73292-d72f-7c6c-898e-fbb47224572c",
+          "question_id": "573b6f5d-b8e0-7cfe-b5ea-a86b43cbf870",
+          "image_url": null
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.nature.q2": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:18:20Z",
+        "run_at": "2026-10-20T06:17:40Z",
+        "params_sha256": "ca85654e5057da4371828f1b584ea9270232275fe0ec98c85dd9a7273eaaa702",
+        "params": {
+          "draft": "draft.nature.q2",
+          "picture": "original"
+        },
+        "records": {
+          "atom_id": "aa03a490-0d6f-7cb3-b7c3-ce7a16143a1c",
+          "job_id": "89e09c53-276f-744a-b4f2-2fc2850cb7a2",
+          "draft_id": "deffd401-813c-709d-866b-f861a533227a",
+          "question_id": "fcfc2ee0-9e56-783f-9707-dab92fc04c27",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-nature-shorebirds.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.nature.q3": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:19:10Z",
+        "run_at": "2026-10-20T06:18:30Z",
+        "params_sha256": "88c631bee48ec7743868cc1deba28142cca993a1a8d54ae8a90725d1ff3d26ec",
+        "params": {
+          "draft": "draft.nature.q3",
+          "picture": "original"
+        },
+        "records": {
+          "atom_id": "e0aedfe3-ff1c-7773-9b5e-115f45657bea",
+          "job_id": "4a995c77-8f52-74d7-b215-a84962d7061f",
+          "draft_id": "c5a52efb-f6a8-77e6-a63d-bc7b66f05ccf",
+          "question_id": "5e97b69d-a009-7495-8856-0606e0e34399",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-nature-streets.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.hawker.q1": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:20:00Z",
+        "run_at": "2026-10-20T06:19:20Z",
+        "params_sha256": "1a8d6ce1198db2d163a01df132d3f6642638219cc3d84b3bdfafcc1a10904205",
+        "params": {
+          "draft": "draft.hawker.q1",
+          "picture": null
+        },
+        "records": {
+          "atom_id": "7b0fd791-7ff9-7cd0-91f4-61cbd6da546f",
+          "job_id": "f93052b8-4c65-7048-973f-9bb2f0ce25bc",
+          "draft_id": "53424f28-3eba-7a18-a66f-ed203427f57e",
+          "question_id": "220e7e4b-b3ba-787d-8b2a-8b4ab50a0e75",
+          "image_url": null
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.hawker.q2": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:20:50Z",
+        "run_at": "2026-10-20T06:20:10Z",
+        "params_sha256": "139746e7798ca42e417ff942a6522a8fcc29246899c80e6f66e5d842d6a4f322",
+        "params": {
+          "draft": "draft.hawker.q2",
+          "picture": "original"
+        },
+        "records": {
+          "atom_id": "a19c9b9d-4b6d-7fa6-8d70-5d27d803ed28",
+          "job_id": "ece9565c-7df2-7633-a351-5ec6f4cf6316",
+          "draft_id": "67679495-8f6c-74d6-a037-ea92a52d61cf",
+          "question_id": "e0d2384f-0e21-7edd-86e8-0db3cfa6268e",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-hawker-kaya.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "accept.hawker.q3": {
+        "kind": "accept",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:21:40Z",
+        "run_at": "2026-10-20T06:21:00Z",
+        "params_sha256": "9343bb8a8c901c0ec719dd6c42e23527c9435a2af04bdf410d0fe3d61f41dadc",
+        "params": {
+          "draft": "draft.hawker.q3",
+          "picture": "original"
+        },
+        "records": {
+          "atom_id": "dc8af17e-95dc-71db-a19b-6ea3da668b8c",
+          "job_id": "e0f72f4e-45d1-7e39-b68d-415b3b22b9d7",
+          "draft_id": "c5c7fff0-5435-738e-aa99-6207fb4bd868",
+          "question_id": "9a40f704-b237-7d9e-9f22-4b8674aa2e2c",
+          "image_url": "/KIOSK_DEV_FIXTURE/pictures/scene-hawker-teh-tarik.svg"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "bank.water": {
+        "kind": "bank",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:22:30Z",
+        "run_at": "2026-10-20T06:21:50Z",
+        "params_sha256": "9247ab78f368e2b6de7db47918b7d2e2a3260ae51a367a79534066b03eec8960",
+        "params": {
+          "name": "Singapore’s water",
+          "description": "",
+          "test_set_title": "Water for Life: Unit 1 quiz",
+          "questions": [
+            "accept.water.q1",
+            "copy.water.q2",
+            "accept.water.q3"
+          ]
+        },
+        "records": {
+          "bank_id": "fb994036-be1b-76e7-a968-44fd7dec0726",
+          "question_ids": [
+            "76a6d5eb-5c7a-7153-ad70-4fb14c3ddf4e",
+            "dff3c5e3-7e01-73e5-8fe8-67b712f24d04",
+            "65fc70b3-e94e-7a8e-b3d1-9ce5fc96a0a4"
+          ],
+          "assemble_job_id": "80d960aa-0603-770e-8daa-f3c580608ec5",
+          "test_set_id": "8ee1c1b9-bfe4-7da1-a221-f0c7649231bd"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "bank.nature": {
+        "kind": "bank",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:23:20Z",
+        "run_at": "2026-10-20T06:22:40Z",
+        "params_sha256": "5d5dd6a573f8ad68434b571d9e74a4dd350a965f48a34a3832b3f1a2d1843f94",
+        "params": {
+          "name": "City in Nature",
+          "description": "",
+          "test_set_title": "Nature Ranger: Unit 1 quiz",
+          "questions": [
+            "accept.nature.q1",
+            "accept.nature.q2",
+            "accept.nature.q3"
+          ]
+        },
+        "records": {
+          "bank_id": "d006f46a-0965-777f-8a1a-bfb3553c6d5a",
+          "question_ids": [
+            "573b6f5d-b8e0-7cfe-b5ea-a86b43cbf870",
+            "fcfc2ee0-9e56-783f-9707-dab92fc04c27",
+            "5e97b69d-a009-7495-8856-0606e0e34399"
+          ],
+          "assemble_job_id": "8d5d45cc-936c-70b7-bea9-fbc44bd0fe5e",
+          "test_set_id": "78a1e902-5cd9-7c11-af98-c9bfb4ac82a8"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "bank.hawker": {
+        "kind": "bank",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:24:10Z",
+        "run_at": "2026-10-20T06:23:30Z",
+        "params_sha256": "d4e05ae6419ed71c7a5467d59d4f2129f1930483a0f50d3d568d551d5e451e48",
+        "params": {
+          "name": "Hawker culture",
+          "description": "",
+          "test_set_title": "Food Heritage: Unit 1 quiz",
+          "questions": [
+            "accept.hawker.q1",
+            "accept.hawker.q2",
+            "accept.hawker.q3"
+          ]
+        },
+        "records": {
+          "bank_id": "50437aa0-b2a6-710a-986a-2a4399142c68",
+          "question_ids": [
+            "220e7e4b-b3ba-787d-8b2a-8b4ab50a0e75",
+            "e0d2384f-0e21-7edd-86e8-0db3cfa6268e",
+            "9a40f704-b237-7d9e-9f22-4b8674aa2e2c"
+          ],
+          "assemble_job_id": "a38dc1e5-bd76-7898-9db8-a9b1c11aaab3",
+          "test_set_id": "a9a76785-009b-723f-b052-4067f536631c"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "bank.grading": {
+        "kind": "bank",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:25:00Z",
+        "run_at": "2026-10-20T06:24:20Z",
+        "params_sha256": "5d72a0350dccc4c22b27072e54293367b6189156ceeb81408f966be7df351468",
+        "params": {
+          "name": "Singapore’s water: open question",
+          "description": "",
+          "test_set_title": "Water for Life: open question",
+          "questions": [
+            "accept.water.q3"
+          ]
+        },
+        "records": {
+          "bank_id": "9e164321-ebd1-7ea7-a6c7-1e7b060426b2",
+          "question_ids": [
+            "65fc70b3-e94e-7a8e-b3d1-9ce5fc96a0a4"
+          ],
+          "assemble_job_id": "2023f882-2f6a-785a-b3fa-1e55de2c1bed",
+          "test_set_id": "8a235354-cf8a-70a8-af62-9e1f9f12fcb2"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "sample.strong": {
+        "kind": "graded_sample",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:25:50Z",
+        "run_at": "2026-10-20T06:25:10Z",
+        "params_sha256": "d44616f7c1d110811791d948ba5281335366018387836dd62c99428e278a0ed6",
+        "params": {
+          "bank": "bank.grading",
+          "answer": "Imported water depends on an agreement with Malaysia that ends in 2061, which is a risk. NEWater and desalination give Singapore water that does not depend on rain or on another country. The trade-off is that both use a lot of energy."
+        },
+        "records": {
+          "assessment_id": "33914ef3-ed66-7798-9fae-b53fb10e6982",
+          "submission_id": "d7d97145-1075-7535-8155-b1574b78ab8b",
+          "test_set_id": "8a235354-cf8a-70a8-af62-9e1f9f12fcb2",
+          "test_set_question_id": "a09d17c0-4c6e-7a67-a752-a99f47f90104",
+          "question_id": "65fc70b3-e94e-7a8e-b3d1-9ce5fc96a0a4",
+          "ai_points_earned": 10,
+          "points_possible": 10
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "sample.weak": {
+        "kind": "graded_sample",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:26:40Z",
+        "run_at": "2026-10-20T06:26:00Z",
+        "params_sha256": "6fa2499a4dbd37de909c75ed070544a0002e1deb7f67482744dd0da6a06594e8",
+        "params": {
+          "bank": "bank.grading",
+          "answer": "Singapore is small and has no big rivers, so it needs more water sources."
+        },
+        "records": {
+          "assessment_id": "957aef31-1278-74a9-935e-6a46d0a8239b",
+          "submission_id": "7018ced8-5cfa-7e48-a8bd-5afc2556a80c",
+          "test_set_id": "8a235354-cf8a-70a8-af62-9e1f9f12fcb2",
+          "test_set_question_id": "fa304661-d317-78aa-9c6a-53d7cecc1f80",
+          "question_id": "65fc70b3-e94e-7a8e-b3d1-9ce5fc96a0a4",
+          "ai_points_earned": 2,
+          "points_possible": 10
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "greet.pingu": {
+        "kind": "greeting",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:27:30Z",
+        "run_at": "2026-10-20T06:26:50Z",
+        "params_sha256": "a273655edfdaf44792b254b493a2d0bc3a27387029b4565cd32ef865581c4724",
+        "params": {
+          "companion": "companion.pingu"
+        },
+        "records": {
+          "companion_id": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+          "turn_id": "40751bfd-0bc1-75ac-a30b-d41a3a483b04",
+          "model": "gpt-oss:120b"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "greet.nova": {
+        "kind": "greeting",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:28:20Z",
+        "run_at": "2026-10-20T06:27:40Z",
+        "params_sha256": "4d8f473aa5154c8646cc8e57d88854851469ae36e73b3458d44031e0d5229064",
+        "params": {
+          "companion": "companion.nova"
+        },
+        "records": {
+          "companion_id": "cc69f1d2-9824-7d13-b9ee-9b732f56e480",
+          "turn_id": "9e4d16c5-b504-7179-8f60-05a24e04208d",
+          "model": "gpt-oss:120b"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "greet.ember": {
+        "kind": "greeting",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:29:10Z",
+        "run_at": "2026-10-20T06:28:30Z",
+        "params_sha256": "7d55fb5114ad088417965053a6bdb152ff0af4fb251351ecdb80f7f3ea2ce9e6",
+        "params": {
+          "companion": "companion.ember"
+        },
+        "records": {
+          "companion_id": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+          "turn_id": "f26ce705-a339-7cbc-8b34-cb9879897ac3",
+          "model": "gpt-oss:120b"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "dose.water": {
+        "kind": "dose_open",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:30:00Z",
+        "run_at": "2026-10-20T06:29:20Z",
+        "params_sha256": "fca5fc074b162c2f483d3af3052578969b677a62089a6c00c7b6276c73805514",
+        "params": {
+          "goal": "goal.water"
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "dose_id": "f536b586-9107-7701-9445-88d8d33d876f",
+          "served_on": "2026-10-20",
+          "atom_ids": [
+            "7f79b39c-8a69-79a5-8eb4-646623792616",
+            "130d19dd-d756-7607-9858-7ab8769128b9",
+            "4c127903-ffa5-73c0-a295-08d953db1103",
+            "8c98ece8-4c6c-708f-a66a-8f9f74461bf7",
+            "d5996628-d975-724b-b2c5-2b8e591a09b4"
+          ],
+          "greeting_companion_id": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "dose.nature": {
+        "kind": "dose_open",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:30:50Z",
+        "run_at": "2026-10-20T06:30:10Z",
+        "params_sha256": "8342542130d7328b70cc7b75fd21cd1f5e9bd9299cc674a2fb4b7e725bcd625a",
+        "params": {
+          "goal": "goal.nature"
+        },
+        "records": {
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "dose_id": "811ea431-4933-78a8-8cf9-c38dfa682360",
+          "served_on": "2026-10-20",
+          "atom_ids": [
+            "f77a993d-e221-758f-9095-2c59ba7980ff",
+            "e0aedfe3-ff1c-7773-9b5e-115f45657bea",
+            "24c462ff-9736-74b5-94ca-c95e66b2c0c8",
+            "92ceb828-0372-73b2-b808-059a6d5c3658",
+            "0ae247e3-d9fd-76b2-9939-0119a9ecd456"
+          ],
+          "greeting_companion_id": "cc69f1d2-9824-7d13-b9ee-9b732f56e480"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "dose.hawker": {
+        "kind": "dose_open",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:31:40Z",
+        "run_at": "2026-10-20T06:31:00Z",
+        "params_sha256": "101498df6475f86155dc04f78bb4c097effaad47c4ba38356f89b1be972840a3",
+        "params": {
+          "goal": "goal.hawker"
+        },
+        "records": {
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "dose_id": "0af3772a-9d9c-762f-a1f9-d576d7df5091",
+          "served_on": "2026-10-20",
+          "atom_ids": [
+            "7b0fd791-7ff9-7cd0-91f4-61cbd6da546f",
+            "47f96252-28e7-7132-8ab3-c7374dc1870e",
+            "5e3e94f5-90b9-7226-b808-e811f8c8a606",
+            "35306634-d631-7bac-aeca-3d5f576e206e",
+            "95902747-30b9-72b2-b09f-7b8d4fe5a175"
+          ],
+          "greeting_companion_id": "b4463c8d-5671-70bd-9693-1500a5413cf3"
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "paper.water": {
+        "kind": "weakness_paper",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:32:30Z",
+        "run_at": "2026-10-20T06:31:50Z",
+        "params_sha256": "1cb6ac5e9f4f0efc80e19f9b746035c9e8d066e80d5da148c9f095c3d3d1decb",
+        "params": {
+          "paper": "paper-water.png",
+          "goal": "goal.water",
+          "companion": "companion.pingu",
+          "upload_kind": "marked_test"
+        },
+        "records": {
+          "upload_id": "14d42c45-fbd5-7cd1-8452-ddfb329a8295",
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "companion_id": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+          "sha256": "2d74272106bd6392e18814e09c5749a66ef4ac78003a4af485d58591d5850d70",
+          "status": "AWAITING_REVIEW",
+          "proposed_edges": [
+            {
+              "id": "7ceb34d5-1906-7f6a-82d9-a2b6bc33f00d",
+              "concept": "Singapore's Four National Taps",
+              "descriptor": "The learner is familiar with the general concept of multiple water sources but is currently conflating rainwater with the broader category of local catchment and missing desalinated water.",
+              "confidence": 0.4
+            },
+            {
+              "id": "df3ac2f2-7155-76ab-b0a1-c18eaa94dc2d",
+              "concept": "Desalination Process: Salt Removal",
+              "descriptor": "The learner can identify that filtration occurs in desalination but is unable to distinguish between the role of microfiltration (particle removal) and reverse osmosis (salt removal).",
+              "confidence": 0.8
+            },
+            {
+              "id": "af95b010-2980-7e1e-bfe0-e98b38d0bc2e",
+              "concept": "Energy Costs of Desalination",
+              "descriptor": "The learner attributes the higher cost of desalinated water to the 'cleanliness' of the source water rather than the energy requirements of the process.",
+              "confidence": 0.7
+            }
+          ]
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "paper.nature": {
+        "kind": "weakness_paper",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:33:20Z",
+        "run_at": "2026-10-20T06:32:40Z",
+        "params_sha256": "e7c0c0a22491d84f7c076275d494379a229c4dd4592f6e64b149ab195e7ba2d3",
+        "params": {
+          "paper": "paper-nature.png",
+          "goal": "goal.nature",
+          "companion": "companion.nova",
+          "upload_kind": "marked_test"
+        },
+        "records": {
+          "upload_id": "d648bbdb-5d82-7fb6-8266-22b70946cc52",
+          "goal_id": "ee509ced-84c3-7947-b40e-aaac7b613781",
+          "companion_id": "cc69f1d2-9824-7d13-b9ee-9b732f56e480",
+          "sha256": "496bb70bb4de528207553c2e77f2017bc0778654260c28820dd734fa448f0c06",
+          "status": "AWAITING_REVIEW",
+          "proposed_edges": [
+            {
+              "id": "5c20e86f-2ed5-7794-b101-1608408ee02b",
+              "concept": "Otter Diet and Classification",
+              "descriptor": "Understanding the dietary requirements of smooth-coated otters as carnivores.",
+              "confidence": 0.9
+            },
+            {
+              "id": "0659606f-7fa9-7f6c-8331-e4bcedbef9ba",
+              "concept": "Ecological Functions of Mangroves",
+              "descriptor": "Recognizing the critical environmental roles mangroves play in coastal protection and as nurseries for marine life.",
+              "confidence": 0.8
+            },
+            {
+              "id": "cacb8c02-166d-704f-af90-78cc95815636",
+              "concept": "Sustainable Architecture: Supertrees",
+              "descriptor": "Understanding that Supertrees are man-made steel structures designed for environmental functions rather than natural trees.",
+              "confidence": 0.9
+            },
+            {
+              "id": "9282d725-149f-7992-9801-f77573cff22a",
+              "concept": "Plant Transpiration and Cooling",
+              "descriptor": "Identifying that plants cool the air not just through shade, but through the release of water vapour.",
+              "confidence": 0.4
+            }
+          ]
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "paper.hawker": {
+        "kind": "weakness_paper",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:34:10Z",
+        "run_at": "2026-10-20T06:33:30Z",
+        "params_sha256": "74a024ccaa544058c61f7af9b5edf3f5af67e99462baaa972861aa0f3f7df7df",
+        "params": {
+          "paper": "paper-hawker.png",
+          "goal": "goal.hawker",
+          "companion": "companion.ember",
+          "upload_kind": "marked_test"
+        },
+        "records": {
+          "upload_id": "bb4db956-552b-78bf-8cec-718113c262cd",
+          "goal_id": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+          "companion_id": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+          "sha256": "90f83fb51a2376558163e1560028480d558f6c522c471dd4efcf03af9adf37bd",
+          "status": "AWAITING_REVIEW",
+          "proposed_edges": [
+            {
+              "id": "e5687d12-7301-7202-9ac4-558ecb7ef8d1",
+              "concept": "UNESCO Intangible Cultural Heritage",
+              "descriptor": "Distinguishing between tangible World Heritage sites (places) and Intangible Cultural Heritage (living practices).",
+              "confidence": 0.9
+            },
+            {
+              "id": "747ddd2d-74e0-79b1-b207-395d67d0579d",
+              "concept": "Singaporean Coffee Nomenclature",
+              "descriptor": "Understanding the specific suffixes in local coffee ordering (e.g., 'O' vs 'C').",
+              "confidence": 0.7
+            },
+            {
+              "id": "6556df82-2ecf-7c9b-a798-8d81df96aeff",
+              "concept": "Historical Purpose of Hawker Centres",
+              "descriptor": "Understanding the public health and hygiene drivers behind the transition from street hawking to centralized centres in the 1970s/80s.",
+              "confidence": 0.9
+            },
+            {
+              "id": "8427baeb-984d-723e-be17-9f10c12d3f3b",
+              "concept": "Teh Tarik Preparation Technique",
+              "descriptor": "Recognizing the functional purposes of the 'pulling' motion in Teh Tarik beyond temperature control.",
+              "confidence": 0.4
+            }
+          ]
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "paper.water.essay": {
+        "kind": "weakness_paper",
+        "stage": "main",
+        "hidden": false,
+        "prepared_at": "2026-10-20T06:35:00Z",
+        "run_at": "2026-10-20T06:34:20Z",
+        "params_sha256": "375e1191f3d4c36ede78dcd819de6a049e348febd2dee5f40aad83722150fdfd",
+        "params": {
+          "paper": "paper-water-essay.png",
+          "goal": "goal.water",
+          "companion": "companion.pingu",
+          "upload_kind": "marked_test"
+        },
+        "records": {
+          "upload_id": "14fe892c-e979-75fd-92d2-6a3486c085fe",
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "companion_id": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+          "sha256": "ea31915ea725dd317ff8a767b79f017bf6bf35e292e4079125ae8019f90cf4a9",
+          "status": "AWAITING_REVIEW",
+          "proposed_edges": [
+            {
+              "id": "03d63495-1df5-7d04-b222-f747bdec1882",
+              "concept": "How NEWater is treated",
+              "descriptor": "The learner thinks NEWater is boiled to make it safe.",
+              "confidence": 0.8
+            },
+            {
+              "id": "9a00ff74-a896-71ad-8baf-5754c91f4ad7",
+              "concept": "Who uses NEWater",
+              "descriptor": "The learner thinks most NEWater goes to home taps for drinking.",
+              "confidence": 0.8
+            },
+            {
+              "id": "25f20776-0020-7abd-996b-cf3e7c665c7b",
+              "concept": "Why desalination costs more",
+              "descriptor": "The learner again blames dirty seawater for the cost, not the energy the process needs.",
+              "confidence": 0.8
+            },
+            {
+              "id": "38ef230b-2a31-76c5-ab52-91653f9d3b71",
+              "concept": "Brine disposal",
+              "descriptor": "The learner thinks the leftover brine is harmless and can be poured back into the sea anywhere.",
+              "confidence": 0.8
+            }
+          ]
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      },
+      "fresh.water.res": {
+        "kind": "suggestions",
+        "stage": "res-won",
+        "hidden": true,
+        "prepared_at": "2026-10-20T06:35:50Z",
+        "run_at": "2026-10-20T06:35:10Z",
+        "params_sha256": "c2603188658ac233c0462a4563c63e6e66fcdd270db3619c6d6a0bc93ced1352",
+        "params": {
+          "goal": "goal.water",
+          "focal": "concept.water.res",
+          "min_count": 2,
+          "hidden": true
+        },
+        "records": {
+          "goal_id": "8897f102-bb85-7701-ba94-9c60bbca2258",
+          "focal_concept_id": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "request_id": "4812c2ae-e2cd-78cb-8b46-e857a1c02519",
+          "suggestion_ids": [
+            "e75f2ccc-78c7-7179-965d-d0371968305f",
+            "776b7607-4e96-7d1a-939c-35da8893a9c8"
+          ],
+          "titles": [
+            "Marina Barrage",
+            "ABC Waters Programme"
+          ],
+          "edge_suggestion_ids": []
+        },
+        "models": {
+          "hard": "deepseek-v4-pro",
+          "middle": "gpt-oss:120b",
+          "light": "gpt-oss:120b",
+          "companion": "gpt-oss:120b",
+          "image": "gemini-3-pro-image",
+          "embedding": "gemini-embedding-001"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "services/chora-kiosk-conductor/API.md section 5 (8db3427e1), example values",
+  "method": "GET",
+  "path": "/api/v1/kiosk/reset",
+  "sequence": [
+    {
+      "status": 200,
+      "body": {
+        "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+        "state": "running",
+        "phase": "pausing",
+        "phases": [
+          {
+            "id": "pausing",
+            "state": "running",
+            "started_at": "2026-10-20T06:31:21Z",
+            "finished_at": null
+          },
+          {
+            "id": "restoring_data",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          },
+          {
+            "id": "clearing_queues_and_pictures",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          },
+          {
+            "id": "starting",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          }
+        ],
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": null,
+        "took_s": null,
+        "estimate_s": 31,
+        "failed_phase": null,
+        "failed_step": null
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+        "state": "running",
+        "phase": "restoring_data",
+        "phases": [
+          {
+            "id": "pausing",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:21Z",
+            "finished_at": "2026-10-20T06:31:22Z"
+          },
+          {
+            "id": "restoring_data",
+            "state": "running",
+            "started_at": "2026-10-20T06:31:22Z",
+            "finished_at": null
+          },
+          {
+            "id": "clearing_queues_and_pictures",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          },
+          {
+            "id": "starting",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          }
+        ],
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": null,
+        "took_s": null,
+        "estimate_s": 31,
+        "failed_phase": null,
+        "failed_step": null
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+        "state": "running",
+        "phase": "restoring_data",
+        "phases": [
+          {
+            "id": "pausing",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:21Z",
+            "finished_at": "2026-10-20T06:31:22Z"
+          },
+          {
+            "id": "restoring_data",
+            "state": "running",
+            "started_at": "2026-10-20T06:31:22Z",
+            "finished_at": null
+          },
+          {
+            "id": "clearing_queues_and_pictures",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          },
+          {
+            "id": "starting",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          }
+        ],
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": null,
+        "took_s": null,
+        "estimate_s": 31,
+        "failed_phase": null,
+        "failed_step": null
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+        "state": "running",
+        "phase": "clearing_queues_and_pictures",
+        "phases": [
+          {
+            "id": "pausing",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:21Z",
+            "finished_at": "2026-10-20T06:31:22Z"
+          },
+          {
+            "id": "restoring_data",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:22Z",
+            "finished_at": "2026-10-20T06:31:23Z"
+          },
+          {
+            "id": "clearing_queues_and_pictures",
+            "state": "running",
+            "started_at": "2026-10-20T06:31:23Z",
+            "finished_at": null
+          },
+          {
+            "id": "starting",
+            "state": "pending",
+            "started_at": null,
+            "finished_at": null
+          }
+        ],
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": null,
+        "took_s": null,
+        "estimate_s": 31,
+        "failed_phase": null,
+        "failed_step": null
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+        "state": "running",
+        "phase": "starting",
+        "phases": [
+          {
+            "id": "pausing",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:21Z",
+            "finished_at": "2026-10-20T06:31:22Z"
+          },
+          {
+            "id": "restoring_data",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:22Z",
+            "finished_at": "2026-10-20T06:31:23Z"
+          },
+          {
+            "id": "clearing_queues_and_pictures",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:23Z",
+            "finished_at": "2026-10-20T06:31:24Z"
+          },
+          {
+            "id": "starting",
+            "state": "running",
+            "started_at": "2026-10-20T06:31:24Z",
+            "finished_at": null
+          }
+        ],
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": null,
+        "took_s": null,
+        "estimate_s": 31,
+        "failed_phase": null,
+        "failed_step": null
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "reset_id": "0192f3c4-8b1e-7a3d-9c55-2f6e1b7d4a10",
+        "state": "done",
+        "phase": null,
+        "phases": [
+          {
+            "id": "pausing",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:21Z",
+            "finished_at": "2026-10-20T06:31:22Z"
+          },
+          {
+            "id": "restoring_data",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:22Z",
+            "finished_at": "2026-10-20T06:31:23Z"
+          },
+          {
+            "id": "clearing_queues_and_pictures",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:23Z",
+            "finished_at": "2026-10-20T06:31:24Z"
+          },
+          {
+            "id": "starting",
+            "state": "done",
+            "started_at": "2026-10-20T06:31:24Z",
+            "finished_at": "2026-10-20T06:31:25Z"
+          }
+        ],
+        "started_at": "2026-10-20T06:31:21Z",
+        "finished_at": "2026-10-20T06:31:52Z",
+        "took_s": 31,
+        "estimate_s": 31,
+        "failed_phase": null,
+        "failed_step": null
+      }
+    }
+  ]
+}

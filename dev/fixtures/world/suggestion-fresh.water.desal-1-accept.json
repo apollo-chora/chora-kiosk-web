@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.desal",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/c6d31a1a-d1f0-7744-a049-e7a381c9bdb0/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "c6d31a1a-d1f0-7744-a049-e7a381c9bdb0",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Brine",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "The very salty water left over from desalination. PUB studies how to recover minerals.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:35:00Z"
+  }
+}

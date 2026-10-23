@@ -1,0 +1,626 @@
+<div class="exhibit">
+  <div class="ex-head">
+    <div>
+      <div class="crumb">{{ 'comp.kicker' | translate }}</div>
+      <h2>{{ 'comp.title' | translate }}</h2>
+      <p>{{ 'comp.sub' | translate }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- leveled while the stage-up moment shows (mockup line 4894): mockup.css then hides the EXP hint (K138 W6). -->
+<div class="comp-left" [class.leveled]="!!sheet()?.up">
+  @switch (exhibit.status()) {
+    @case ('failed') {
+      <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+    }
+    @case ('ready') {
+      <div class="cx-roster">
+        @for (c of exhibit.roster(); track c.id) {
+          <button class="cx-mate" [class.on]="c.id === exhibit.selected()?.id" data-act="mate" [attr.data-id]="c.id" (click)="exhibit.select(c.id)">
+            <div class="cx-art cx-art--sm"><chora-breed-art [species]="species(c)" [stage]="stage(c)" size="sm" [bare]="true" [altText]="name(c)" /></div>
+            <span><b>{{ name(c) }}</b><small kioskContent>{{ c.map.title }}</small></span>
+          </button>
+        }
+      </div>
+      @if (sheet(); as v) {
+        <section class="cx-sheet" [attr.data-cx-sheet]="v.c.id">
+          @if (v.up; as up) {
+            <div class="cx-up" role="status" aria-live="polite">
+              <div class="cx-up__art">
+                <div class="cx-up__from">
+                  <div class="cx-art cx-art--sm"><chora-breed-art [species]="species(v.c)" [stage]="up.fromStage" size="sm" [bare]="true" [altText]="up.fromLabel" /></div>
+                </div>
+                <span class="cx-up__arrow" aria-hidden="true"><kiosk-icon name="arrow" /></span>
+                <div class="cx-up__to">
+                  <div class="cx-art cx-art--md"><chora-breed-art [species]="species(v.c)" [stage]="stage(v.c)" size="md" [bare]="true" [altText]="v.epithet" /></div>
+                </div>
+              </div>
+              <div class="cx-up__text">
+                <p class="cx-up__eyebrow">{{ 'cx.up.eyebrow' | translate }}</p>
+                <p class="cx-up__heading">{{ 'cx.up.heading' | translate: { name: v.name, label: v.epithet } }}</p>
+                <p class="cx-up__line"><span kioskContent>{{ up.fromLabel }}</span> → <span kioskContent>{{ v.epithet }}</span> · {{ 'cx.up.why' | translate: { n: up.gained } }}</p>
+                <p class="cx-up__line">{{ 'cx.up.slots' | translate: { n: up.slots } }}</p>
+                <div class="cx-up__pills">
+                  <span class="cx-label">{{ 'cx.up.woke' | translate }}</span>
+                  @for (w of up.woke; track w.key) {
+                    <span class="cx-pill">{{ w.words ? (w.words | translate) : w.key }}@if (!w.active) {<em class="cxp-tool__off">{{ 'cxp.notActiveShort' | translate }}</em>}</span>
+                  }
+                  @for (a of up.abilities; track a.key) {
+                    <span class="cx-pill cx-pill--ability">{{ a.words ? (a.words | translate) : a.key }}@if (a.unshipped) {<em class="cxp-tool__off">{{ 'cxp.notActiveShort' | translate }}</em>}</span>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+          <header class="cx-sheet__banner">
+            <div class="cx-sheet__portrait" [class.cx-sheet__portrait--new]="!!v.up">
+              <div class="cx-art cx-art--lg">
+                <chora-breed-art [species]="species(v.c)" [stage]="stage(v.c)" size="lg" [bare]="true" [altText]="v.name + ', ' + v.epithet" />
+              </div>
+            </div>
+            <div class="cx-sheet__ident">
+              <h3 class="cx-sheet__name">{{ v.name }}</h3>
+              <p class="cx-sheet__epithet">
+                <span kioskContent [class.cx-new]="!!v.up">{{ v.epithet }}</span><span class="cx-dot" aria-hidden="true">·</span><span class="cx-ai">{{ 'cx.sheet.aiCompanion' | translate }}</span>
+              </p>
+              <p class="cx-sheet__goal">
+                <span class="cx-label">{{ 'cx.sheet.goal' | translate }}</span><span kioskContent>{{ v.c.map.title }}</span>
+              </p>
+            </div>
+          </header>
+          <dl class="cx-tiles">
+            <div class="cx-tile" [class.cx-changed]="v.changed.stage"><dt>{{ 'cx.sheet.stage' | translate }}</dt><dd>{{ v.c.growth.growthStage }}</dd></div>
+            <div class="cx-tile" [class.cx-changed]="v.changed.mind"><dt>{{ 'cx.sheet.mind' | translate }}</dt><dd class="cx-tile__sm">{{ v.mindKey | translate }}</dd></div>
+            <div class="cx-tile" [class.cx-changed]="v.changed.total"><dt>{{ 'cx.sheet.totalExp' | translate }}</dt><dd>{{ v.c.growth.expCumulative }}</dd></div>
+            <div class="cx-tile" [class.cx-changed]="v.changed.abilities"><dt>{{ 'cx.sheet.abilities' | translate }}</dt><dd>{{ v.c.growth.unlockedTools.length }}</dd></div>
+          </dl>
+          @if (v.matured) {
+            <p class="cx-matured"><kiosk-icon name="check" />{{ 'cx.sheet.matured' | translate }}</p>
+          } @else {
+            <div class="cx-exp">
+              <div class="cx-exp__row">
+                <span class="cx-label">{{ 'cx.sheet.exp' | translate }}</span>
+                <span class="cx-exp__num">{{ 'cx.sheet.expOf' | translate: { a: v.c.growth.expCurrent, b: v.c.growth.expNextThreshold } }}</span>
+              </div>
+              <div class="cx-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" [attr.aria-valuenow]="v.pct" [attr.aria-label]="'cx.sheet.expAria' | translate">
+                <div class="cx-bar__fill" [class.cx-bar__fill--grow]="v.lit" [style.width.%]="v.pct"></div>
+              </div>
+              <p class="cx-hint">{{ 'cx.sheet.expHint' | translate }}</p>
+            </div>
+          }
+          <div class="cx-focus">
+            <span class="cx-label">{{ 'cx.sheet.focus' | translate }}</span>
+            <b class="cx-focus__name" kioskContent>{{ v.c.focusTitle }}</b>
+            <span class="cx-focus__sub">{{ 'cx.sheet.focusSub' | translate }}</span>
+          </div>
+        </section>
+      }
+    }
+  }
+</div>
+
+@if (exhibit.status() === 'ready' && exhibit.selected(); as c) {
+  <div class="comp-abilities">
+    <button class="ab-btn" [class.on]="exhibit.view() === 'suggest'" data-act="ability" data-ab="suggest" [disabled]="exhibit.busy()" (click)="exhibit.openSuggest()">
+      <kiosk-icon name="ab_suggest" /><span>{{ 'comp.ab.suggest' | translate }}</span>
+    </button>
+    <button class="ab-btn" [class.on]="exhibit.view() === 'quiz'" data-act="ability" data-ab="quiz" [disabled]="exhibit.busy()" (click)="exhibit.openQuiz()">
+      <kiosk-icon name="ab_quiz" /><span>{{ 'comp.ab.quiz' | translate }}</span>
+    </button>
+    <button class="ab-btn" [class.on]="exhibit.view() === 'dose'" data-act="ability" data-ab="dose" [disabled]="exhibit.busy()" (click)="exhibit.openDose()">
+      <kiosk-icon name="ab_dose" /><span>{{ 'comp.ab.dose' | translate }}</span>
+    </button>
+    <button class="ab-btn" [class.on]="exhibit.view() === 'weak'" data-act="ability" data-ab="weak" [disabled]="exhibit.busy()" (click)="exhibit.openWeak()">
+      <kiosk-icon name="pen" /><span>{{ 'comp.ab.weak' | translate }}</span>
+    </button>
+  </div>
+  @if (exhibit.view() === 'dose') {
+    <div class="comp-dose">
+      @if (exhibit.dose()?.state === 'failed') {
+        <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+      }
+      @if (doseView(); as d) {
+        <section class="cx-dose" [attr.data-cx-dose]="c.id" aria-labelledby="cx-dose-h">
+          <header class="cx-dose__head">
+            <div class="cx-dose__titleblock">
+              <h3 id="cx-dose-h" class="cx-dose__title">{{ 'cx.dose.heading' | translate }}</h3>
+              <span class="cx-picker"><kiosk-icon name="clock" />{{ 'cx.dose.picker' | translate }}</span>
+              <p class="cx-dose__date">{{ d.day }} · <span kioskContent>{{ c.map.title }}</span></p>
+            </div>
+            <div class="cx-chips" role="group" [attr.aria-label]="'cx.dose.chipsAria' | translate">
+              <span class="cx-chipc cx-chipc--review">{{ 'cx.dose.pct_review' | translate: { n: d.read.composition.reviewPercent } }}</span>
+              <span class="cx-chipc cx-chipc--new">{{ 'cx.dose.pct_new' | translate: { n: d.read.composition.newPercent } }}</span>
+              <span class="cx-chipc cx-chipc--stretch">{{ 'cx.dose.pct_stretch' | translate: { n: d.read.composition.stretchPercent } }}</span>
+            </div>
+            <div class="cx-dose__stats">
+              <div><span class="cx-label">{{ 'cx.dose.totalXp' | translate }}</span><b>{{ 'cx.dose.xp' | translate: { n: d.read.totalXp } }}</b></div>
+              <div><span class="cx-label">{{ 'cx.dose.tomorrow' | translate }}</span><b class="cx-dose__countdown" data-cx-countdown>{{ d.countdown }}</b></div>
+            </div>
+          </header>
+          <div class="cx-dose__body">
+            @if (exhibit.doseQuiz(); as q) {
+              <section class="cxq" aria-labelledby="cxq-stem">
+                <header class="cx-card__head">
+                  <span [class]="'cx-cat cx-cat--' + q.card.category">{{ 'cx.dose.cat_' + q.card.category | translate }}</span>
+                  <span class="cx-card__topic" kioskContent>{{ q.card.topic }}</span>
+                  <span class="cx-card__xp">{{ 'cx.dose.xp' | translate: { n: q.card.xp } }}</span>
+                </header>
+                <p class="cxq__kicker">{{ 'cxq.kicker' | translate: { title: q.card.title } }}</p>
+                <h4 class="cxq__stem" id="cxq-stem" kioskContent>{{ q.question.prompt }}</h4>
+                <div class="opts" [class.done]="q.answer?.state === 'done'">
+                  @for (o of q.question.options | visitOrder; track o.option_id; let i = $index) {
+                    <button [class]="'opt ' + doseOptionClass(o.option_id)" data-act="cxqAnswer" [disabled]="!!q.answer" (click)="exhibit.answerDose(o.option_id)">
+                      <span class="mk">{{ markers[i] }}</span><span kioskContent>{{ o.text ?? o.label }}</span>
+                    </button>
+                  }
+                </div>
+                <div class="cxq__verdict" aria-live="polite">
+                  @switch (q.answer?.state) {
+                    @case ('checking') {
+                      <div class="verdict" style="background: var(--primary-bg); color: var(--primary-strong)">
+                        <div class="mini-trace"><span class="run">{{ 'q.checking' | translate }}</span></div>
+                      </div>
+                    }
+                    @case ('failed') {
+                      <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                    }
+                    @case ('done') {}
+                    @default {
+                      <p class="cxq__rules">{{ 'q.rules' | translate }}</p>
+                    }
+                  }
+                  @if (q.answer; as a) {
+                    @if (a.state === 'done') {
+                      <div class="verdict" [class.ok]="a.correct" [class.no]="!a.correct">
+                        <b>{{ (a.correct ? 'q.right' : 'q.miss') | translate }}</b>
+                        @if (a.explainer) {
+                          <span kioskContent>{{ a.explainer }}</span>
+                        }
+                        <span class="rules">{{ 'q.rules' | translate }}</span>
+                      </div>
+                    }
+                  }
+                </div>
+                <footer class="cxq__foot">
+                  <span>
+                    @if (q.answer; as a) {
+                      @if (a.state === 'done' && a.credit && a.credit !== 'waiting') {
+                        <span class="cxq__exp">{{ 'cxq.compExp' | translate: { n: a.credit.exp, name: a.credit.name } }}</span>
+                      }
+                    }
+                  </span>
+                  <span class="cxq__btns">
+                    <button class="btn btn-quiet btn-sm" data-act="cxqBack" (click)="exhibit.closeDoseQuiz()">{{ 'cxq.back' | translate }}</button>
+                    @if (q.answer?.state === 'done' && q.index < d.total - 1) {
+                      <button class="btn btn-primary btn-sm" data-act="cxqNext" (click)="exhibit.closeDoseQuiz(true)">{{ 'cxq.next' | translate }}<kiosk-icon name="arrow" /></button>
+                    }
+                  </span>
+                </footer>
+              </section>
+            } @else {
+            <div class="cx-stack">
+              <div class="cx-stack__cards" [attr.data-behind]="d.total - 1 - d.index < 2 ? d.total - 1 - d.index : 2">
+                <article class="cx-card" [attr.aria-label]="'cx.dose.cardOf' | translate: { n: d.index + 1, total: d.total }">
+                  <header class="cx-card__head">
+                    <span [class]="'cx-cat cx-cat--' + d.card.category">{{ 'cx.dose.cat_' + d.card.category | translate }}</span>
+                    <span class="cx-card__topic" kioskContent>{{ d.card.topic }}</span>
+                    @if (d.answered) {
+                      <span class="cx-card__xp cxq-done">{{ 'cxq.doneMiss' | translate }}</span>
+                    } @else {
+                      <span class="cx-card__xp">{{ 'cx.dose.xp' | translate: { n: d.card.xp } }}</span>
+                    }
+                  </header>
+                  <h4 class="cx-card__title" kioskContent>{{ d.card.title }}</h4>
+                  @if (d.body; as body) {
+                    <p class="cx-card__summary" kioskContent>{{ body }}</p>
+                  } @else {
+                    <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+                  }
+                  <footer class="cx-card__foot">
+                    <span class="cx-card__why">
+                      @if (d.why; as why) {
+                        {{ why | translate: { name: name(c), focus: c.focusTitle } }}
+                      }
+                    </span>
+                    @if (d.playable) {
+                      <button class="btn btn-primary btn-sm" data-act="cxDosePlay" [disabled]="exhibit.busy()" (click)="exhibit.playDose()">
+                        {{ (d.answered ? 'cxq.seeAnswer' : 'cx.dose.play') | translate }}<kiosk-icon name="arrow" />
+                      </button>
+                    }
+                  </footer>
+                </article>
+              </div>
+              <nav class="cx-stack__nav" [attr.aria-label]="'cx.dose.navAria' | translate">
+                <button class="btn btn-quiet btn-sm" data-act="cxDosePrev" [disabled]="d.index === 0" (click)="exhibit.doseGo(d.index - 1)">{{ 'cx.dose.prev' | translate }}</button>
+                <div class="cx-dots">
+                  @for (k of d.read.cards; track k.atomId; let i = $index) {
+                    <button
+                      class="cx-dot-btn"
+                      [class.on]="i === d.index"
+                      data-act="cxDoseGo"
+                      [attr.aria-label]="'cx.dose.goTo' | translate: { n: i + 1, total: d.total }"
+                      [attr.aria-current]="i === d.index ? 'true' : null"
+                      (click)="exhibit.doseGo(i)"></button>
+                  }
+                </div>
+                <button class="btn btn-quiet btn-sm" data-act="cxDoseNext" [disabled]="d.index === d.total - 1" (click)="exhibit.doseGo(d.index + 1)">{{ 'cx.dose.next' | translate }}</button>
+              </nav>
+              <div class="cx-progress" aria-hidden="true"><div [style.width.%]="((d.index + 1) * 100) / d.total"></div></div>
+            </div>
+            }
+            <aside class="cx-rail" aria-labelledby="cx-rail-name">
+              <div class="cx-rail__avatar">
+                <div class="cx-art cx-art--md"><chora-breed-art [species]="species(c)" [stage]="stage(c)" size="md" [bare]="true" [altText]="name(c)" /></div>
+                <span class="cx-rail__level" aria-hidden="true">{{ c.growth.growthStage }}</span>
+              </div>
+              <p class="cx-rail__name" id="cx-rail-name">{{ name(c) }}</p>
+              <p class="cx-rail__rank">{{ 'cx.dose.level' | translate: { n: c.growth.growthStage } }}</p>
+              <!-- W97: the greeting and its lines give way above the LIVE row (the rail's foot): the greeting box first (K138 W11), then they scroll. -->
+              <div class="cx-rail__talk">
+              @if (d.quote; as quote) {
+                <blockquote class="cx-rail__quote" kioskContent>{{ quote }}</blockquote>
+                <p class="cx-rail__ai">
+                  @if (d.before; as b) {
+                    {{ 'cx.dose.aiGreetingBefore' | translate: { when: b.when, focus: b.focus } }}<kiosk-prepared-info />
+                  } @else {
+                    {{ 'cx.dose.aiGreeting' | translate }}
+                  }
+                </p>
+              }
+              <!-- K205 (W89): what each greeting draws on, in the Companion's own name. -->
+              <p class="cx-rail__why">{{ 'cx.dose.greetWhy' | translate: { name: name(c) } }}</p>
+              </div>
+              <kiosk-live-row
+                [liveKey]="'greet:comp:' + c.id"
+                kind="greet"
+                [label]="'live.greetShort' | translate"
+                [params]="{ companionId: c.id }"
+                [preparedAt]="d.preparedAt" />
+            </aside>
+          </div>
+        </section>
+      }
+    </div>
+  } @else if (exhibit.view() === 'weak') {
+    <!-- K158: the marked test takes the map's place, as the dose does: the paper, its proposed weak spots, Save.
+         K206 (W90) and K210: Pingu's panel holds two documents as tabs, its marked test (its prepared reading)
+         and its essay, the one LIVE read; Nova's and Ember's hold one each, with no LIVE read at all. -->
+    <div class="comp-weak">
+      @if (exhibit.weak()?.state === 'failed') {
+        <section class="cx-weak"><p class="msg-error">{{ 'hook.loadFailed' | translate }}</p></section>
+      }
+      @if (weakPanel(); as p) {
+        <section class="cx-weak" [attr.data-cx-weak]="c.id" aria-labelledby="cx-weak-line">
+          <figure class="cx-weak__paper">
+            @if (p.shown) {
+              <!-- W52 (K182): a tap on the paper opens how the Companion read it (the popup at this template's end). -->
+              <button class="cx-weak__open" data-act="paperOpen" (click)="exhibit.openPaper()">
+                <img [src]="p.paper.src" [alt]="'comp.weakPaper' | translate: { title: p.paper.title, subtitle: p.paper.subtitle }" />
+                <span class="cx-weak__tap">{{ 'comp.paperTap' | translate: { name: name(c) } }}</span>
+              </button>
+            } @else {
+              <!-- K206: the essay before its press has no reading to show, so its page is no tap target. -->
+              <img [src]="p.paper.src" [alt]="'comp.weakPaper' | translate: { title: p.paper.title, subtitle: p.paper.subtitle }" />
+            }
+          </figure>
+          <div class="cx-weak__side">
+            @if (p.essay) {
+              <div class="cx-weak__docs" role="group" [attr.aria-label]="'comp.ab.weak' | translate">
+                <button
+                  class="btn btn-quiet btn-sm"
+                  data-act="weakDoc"
+                  data-doc="test"
+                  [class.on]="p.doc === 'test'"
+                  [attr.aria-pressed]="p.doc === 'test'"
+                  (click)="exhibit.showWeakDoc('test')">
+                  <span class="cx-doc__label">{{ 'comp.doc.test' | translate }}</span>
+                </button>
+                <button
+                  class="btn btn-quiet btn-sm"
+                  data-act="weakDoc"
+                  data-doc="essay"
+                  [class.on]="p.doc === 'essay'"
+                  [attr.aria-pressed]="p.doc === 'essay'"
+                  (click)="exhibit.showWeakDoc('essay')">
+                  <span class="cx-doc__label">{{ 'comp.doc.essay' | translate }}</span><span class="cx-doc__new">{{ 'comp.doc.new' | translate }}</span>
+                </button>
+              </div>
+            }
+            <p class="cx-weak__line" id="cx-weak-line">{{ 'comp.weakPaper' | translate: { title: p.paper.title, subtitle: p.paper.subtitle } }}</p>
+            @if (p.doc === 'essay') {
+              <p class="cx-weak__essayCap">{{ 'comp.essayCap' | translate: { name: name(c) } }}</p>
+            } @else {
+              <p class="cx-weak__hint">{{ 'comp.weakHint' | translate: { name: name(c) } }}</p>
+            }
+            @if (p.failed) {
+              <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+            }
+            @if (p.review; as w) {
+              <div class="cx-weak__edges">
+                @for (e of w.edges; track e.proposed_edge_id) {
+                  <article class="cx-edge" [attr.data-edge]="e.proposed_edge_id" [class.cx-edge--dropped]="w.choices.get(e.proposed_edge_id)?.decision === 'reject'">
+                    <h4 class="cx-edge__label">
+                      <span class="cx-edge__name" kioskContent>{{ e.concept_label }}</span>
+                      @if (p.live) {
+                        <span class="live-tag">{{ 'live.tag' | translate }}</span>
+                      }
+                    </h4>
+                    <p class="cx-edge__summary" kioskContent>{{ e.summary }}</p>
+                    <div class="cx-edge__choices" role="group" [attr.aria-label]="e.concept_label">
+                      @for (d of weakChoices(w, e.proposed_edge_id); track d.key) {
+                        <button
+                          class="btn btn-quiet btn-sm"
+                          data-act="weakDecide"
+                          [attr.data-decision]="d.key"
+                          [class.on]="d.on"
+                          [attr.aria-pressed]="d.on"
+                          [disabled]="w.saving || w.notSaved"
+                          (click)="weakness.decide(c.id, p.doc, e.proposed_edge_id, d.key)">
+                          {{ d.label | translate }}
+                        </button>
+                      }
+                    </div>
+                    @if (w.choices.get(e.proposed_edge_id)?.decision === 'merge') {
+                      <p class="cx-edge__ask">{{ 'comp.weakInto' | translate }}</p>
+                      <div class="cx-edge__into">
+                        <!-- K206: the targets are this document's own kept weak spots; no merge crosses documents. -->
+                        @for (t of intoTargets(w, e.proposed_edge_id); track t.proposed_edge_id) {
+                          <button
+                            class="btn btn-quiet btn-sm"
+                            data-act="weakInto"
+                            [attr.data-into]="t.proposed_edge_id"
+                            [class.on]="w.choices.get(e.proposed_edge_id)?.into === t.proposed_edge_id"
+                            [attr.aria-pressed]="w.choices.get(e.proposed_edge_id)?.into === t.proposed_edge_id"
+                            [disabled]="w.saving || w.notSaved"
+                            (click)="weakness.into(c.id, p.doc, e.proposed_edge_id, t.proposed_edge_id)">
+                            <span kioskContent>{{ t.concept_label }}</span>
+                          </button>
+                        }
+                      </div>
+                    }
+                  </article>
+                }
+              </div>
+            }
+            <!-- K206: one foot over both documents' readings: one Save saves them all, the saved line counts all kept. -->
+            @if (p.foot.saveFailed) {
+              <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+            }
+            @if (p.foot.notSaved) {
+              <!-- W42 (K170): the job did not complete; a second Save cannot complete it before the reset. -->
+              <p class="msg-error cx-weak__notSaved" role="status">{{ 'comp.weakNotSaved' | translate: { name: name(c) } }}</p>
+            }
+            <!-- K206: the prepared stamp and Save share one row, so Pingu's tabs cost the spot list no height. -->
+            <div class="cx-weak__foot">
+              @if (p.doc !== 'essay' || !p.essay) {
+                <!-- K206, K210: a marked test keeps its prepared reading, with its own time (K101), and has no LIVE read. -->
+                <div class="cx-weak__stamp">
+                  <span class="stamp"><kiosk-icon name="clock" />{{ 'stamp.prepared' | translate: { when: when(p.paper.preparedAt) } }}<kiosk-prepared-info /></span>
+                </div>
+              }
+              @if (p.foot.save) {
+                <div class="cx-weak__save">
+                  @if (weakness.saveOff()) {
+                    <p class="cx-weak__saveOff">{{ 'comp.weakSaveOff' | translate }}</p>
+                  }
+                  <button class="btn btn-primary btn-sm" data-act="weakSave" [disabled]="!p.foot.canSave || weakness.saveOff()" (click)="weakness.save(c.id)">
+                    {{ (p.foot.saving ? 'comp.weakSaving' : 'comp.weakConfirm') | translate }}
+                  </button>
+                </div>
+              }
+            </div>
+            @if (p.foot.kept !== null) {
+              <p class="cx-weak__saved" role="status">{{ savedKey(p.foot.kept) | translate: { name: name(c), n: p.foot.kept } }}</p>
+            }
+            @if (p.doc === 'essay' && p.essay; as e) {
+              <kiosk-live-row
+                [liveKey]="'weak:comp:' + c.id"
+                kind="weak"
+                [label]="'live.essay' | translate: { name: name(c) }"
+                [params]="e.paper.live"
+                [preparedAt]="p.essayPreparedAt"
+                [disabled]="p.foot.saving" />
+            }
+          </div>
+        </section>
+      }
+    </div>
+  } @else {
+    <div class="lens-host" id="complens">
+      <!-- Remounted per language (the lens computes its labels with translate.instant()) and per map. -->
+      @for (l of [lang()]; track l) {
+        @for (m of [c.map]; track m.goalId) {
+          <chora-aplus-concept-lens-map
+            [concepts]="m.concepts"
+            [edges]="m.edges"
+            [focusId]="exhibit.lensFocusId()"
+            [rootId]="c.rootId"
+            [campaign]="m.campaign ?? null"
+            [frameHalfX]="frame.halfX"
+            [shiftX]="exhibit.view() ? frame.drawerShift : 0" />
+        }
+      }
+    </div>
+    <div class="comp-hud">
+      <kiosk-icon name="flag" /><span>{{ 'hud.march' | translate: { name: name(c), c: c.focusTitle } }}</span
+      ><span class="hud-won">{{ 'hud.won' | translate: { w: won(c), n: c.map.concepts.length } }}</span>
+    </div>
+    <div class="kdrawer glass in-comp" id="panel" [class.open]="!!exhibit.view()">
+      @if (exhibit.view() === 'quiz') {
+        <div class="kd-bar"><span>{{ 'kd.bar' | translate }}</span></div>
+        @if (exhibit.march(); as mq) {
+          <h3 class="kd-title" kioskContent>{{ mq.title }}</h3>
+          <div class="kd-tabs"><button class="on" tabindex="-1">{{ 'kd.tab.overview' | translate }}</button></div>
+          <div class="kd-body" [class.long-q]="longQuiz()">
+            <!-- en-28 ruling (A): a long question drops this note, so all four options begin above the fold. -->
+            @if (exhibit.quizAnswer().state === 'none' && !longQuiz()) {
+              <div class="tier t1">
+                <div class="kd-sub">{{ 'comp.quizHead' | translate }}</div>
+                <div class="camp-line" style="margin-top: 6px">{{ (mq.counted > 0 ? 'comp.lastRung' : 'comp.twoRight') | translate }}</div>
+              </div>
+            }
+            <div class="tier t2">
+              <kiosk-ladder [cleared]="mq.rung - 1" />
+            </div>
+            <div class="tier t3" style="display: flex; flex-direction: column; gap: 10px; min-height: 0">
+              @switch (exhibit.quiz().state) {
+                @case ('none') {
+                  <p class="q-stem">{{ 'kd.noPractice' | translate }}</p>
+                }
+                @case ('failed') {
+                  <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                }
+              }
+              @if (exhibit.quiz(); as q) {
+                @if (q.state === 'ready') {
+                  <p class="q-stem" kioskContent>{{ q.question.stem }}</p>
+                  <div class="opts" [class.done]="exhibit.quizAnswer().state === 'done'">
+                    @for (o of q.question.options | visitOrder; track o.optionId; let i = $index) {
+                      <button [class]="'opt ' + optionClass(o.optionId)" data-act="answer" [disabled]="exhibit.quizAnswer().state !== 'none'" (click)="exhibit.answerQuiz(o.optionId)">
+                        <span class="mk">{{ markers[i] }}</span><span kioskContent>{{ o.text }}</span>
+                      </button>
+                    }
+                  </div>
+                  @switch (exhibit.quizAnswer().state) {
+                    @case ('checking') {
+                      <div class="verdict" style="background: var(--primary-bg); color: var(--primary-strong)">
+                        <div class="mini-trace"><span class="run">{{ 'q.checking' | translate }}</span></div>
+                      </div>
+                    }
+                    @case ('failed') {
+                      <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                    }
+                  }
+                  @if (exhibit.quizAnswer(); as a) {
+                    @if (a.state === 'done') {
+                      <div class="verdict" kioskReveal [class.ok]="a.result.correct" [class.no]="!a.result.correct">
+                        <!-- W22: &ngsp; keeps the space Angular drops between two elements ("Correct.This"). -->
+                        <b>{{ (a.result.correct ? 'q.right' : 'q.miss') | translate }}</b>&ngsp;<span kioskContent>{{ a.result.explainer }}</span
+                        ><span class="rules">{{ 'q.rules' | translate }}</span>
+                      </div>
+                      @if (a.result.won) {
+                        <div class="won-banner" kioskReveal>
+                          <kiosk-icon name="flag" />
+                          <div>{{ 'kd.hexWon' | translate }} @if (exhibit.grew(); as g) {<span>{{ 'kd.hexWonExp' | translate: { name: name(c), n: g.gained } }}</span>}</div>
+                        </div>
+                      } @else if (a.result.counted) {
+                        <div class="camp-line">{{ 'kd.counted' | translate: { n: a.result.current_rung_correct } }}</div>
+                      }
+                    }
+                  }
+                  <!-- W23: the story's two badges where step 3 has them, after the question, on every question. Above the
+                       stem they wrapped to two rows and hid option D's first line on a long question (ruling (A), en-28). -->
+                  <div class="badges">
+                    <span class="badge"><kiosk-icon name="pen" />{{ 'badge.writer' | translate }}</span>
+                    <span class="badge ok"><kiosk-icon name="check" />{{ 'badge.critic' | translate }}</span>
+                  </div>
+                  @if (exhibit.quizWon()) {
+                    <!-- K222 (K218, W96): a won hex takes no more questions, and says so where "Write a new question" stood. -->
+                    <p class="gated won-done">{{ 'kd.wonNoQ' | translate: { idea: mq.title } }}</p>
+                    <!-- The hidden batch the ask stands on (K64) shows only on a miss, at its own time beside it (gap (b));
+                         nothing prepared is listed before, so no prepared stamp (R1, condition (a)). K222: the ask set apart
+                         in its own box, its heading saying what the press will do (gap (c)'s line folded in, K219), the ideas
+                         it brings listed inside. -->
+                    @if (exhibit.wonBatch()) {
+                      <section class="won-ask" [attr.aria-labelledby]="'won-ask-' + mq.id">
+                        <h4 class="won-ask__head" [id]="'won-ask-' + mq.id">{{ 'kd.wonAskHead' | translate: { name: name(c), idea: mq.title } }}</h4>
+                        <kiosk-live-row
+                          [liveKey]="'sugg:comp:' + mq.id"
+                          kind="sugg"
+                          [label]="'live.suggWon' | translate: { name: name(c) }"
+                          [params]="{ focalConceptId: mq.id, goalId: c.goalId }"
+                          [preparedAt]="list().preparedAt"
+                          [fallbackAt]="list().fallbackAt"
+                          [liveAt]="list().liveAt"
+                          [additive]="true"
+                          [disabled]="exhibit.busy()" />
+                        @if (exhibit.fresh().length) {
+                          @if (list().nothingNew) {
+                            <p class="gated sugg-empty" role="status">{{ 'live.suggEmpty' | translate }}</p>
+                          } @else if (list().rows.length) {
+                            <kiosk-sugg-rows [rows]="list().rows" [disabled]="exhibit.busy()" (decide)="exhibit.decide($event.id, $event.choice, $event.fresh)" />
+                          } @else {
+                            <p class="gated sugg-emptied">{{ (list().added ? 'kd.sugg.allOnMap' : 'kd.sugg.none') | translate: { name: name(c) } }}</p>
+                          }
+                        }
+                      </section>
+                    }
+                  } @else {
+                    <kiosk-live-row
+                      [liveKey]="'q:comp:' + mq.id"
+                      kind="q"
+                      [label]="'live.q' | translate"
+                      [params]="{ goalId: c.goalId, conceptId: mq.id, rung: mq.rung }"
+                      [preparedAt]="q.preparedAt"
+                      [disabled]="exhibit.quizAnswer().state === 'checking'" />
+                  }
+                }
+              }
+            </div>
+          </div>
+        }
+      }
+      @if (exhibit.view() === 'suggest') {
+        <div class="kd-bar"><span>{{ 'kd.bar' | translate }}</span></div>
+        @if (exhibit.focal(); as f) {
+          <h3 class="kd-title" kioskContent>{{ f.title }}</h3>
+          <div class="kd-tabs"><button class="on" tabindex="-1">{{ 'kd.tab.sugg' | translate }}</button></div>
+          <div class="kd-body">
+            @if (list().nothingNew) {
+              <p class="gated sugg-empty" role="status">{{ 'live.suggEmpty' | translate }}</p>
+            } @else {
+              <p class="comp-note tier t1">{{ 'comp.suggHint' | translate: { name: name(c) } }}</p>
+            }
+            <!-- K189 (2): one list, a press's fresh ideas at its top; an emptied one says where its ideas went (condition (a)). -->
+            <div class="tier t2">
+              <div class="kd-sub">{{ 'kd.suggBy' | translate: { name: name(c) } }}</div>
+              @if (list().rows.length) {
+                <kiosk-sugg-rows [rows]="list().rows" [disabled]="exhibit.busy()" (decide)="exhibit.decide($event.id, $event.choice, $event.fresh)" />
+              } @else {
+                <p class="gated sugg-emptied">{{ (list().added ? 'kd.sugg.allOnMap' : 'kd.sugg.none') | translate: { name: name(c) } }}</p>
+              }
+            </div>
+            <div class="tier t3">
+              <!-- R1: the prepared stamp only while a prepared idea is left in the list, then the live one; after a
+                   miss, the hidden batch shown carries its own time beside it (gap (b)). -->
+              <kiosk-live-row
+                [liveKey]="'sugg:comp:' + f.id"
+                kind="sugg"
+                [label]="'live.sugg' | translate: { name: name(c) }"
+                [params]="{ focalConceptId: f.id, goalId: c.goalId }"
+                [preparedAt]="list().preparedAt"
+                [fallbackAt]="list().fallbackAt"
+                [liveAt]="list().liveAt"
+                [additive]="true"
+                [disabled]="exhibit.busy()" />
+            </div>
+          </div>
+        } @else {
+          <h3 class="kd-title">{{ name(c) }}</h3>
+          <div class="kd-body"><div class="gated">{{ 'comp.noSugg' | translate: { name: name(c) } }}</div></div>
+        }
+      }
+    </div>
+    @if (!exhibit.view()) {
+      <!-- W21 (K161): what a Companion is for, in the closed drawer's place until an ability is picked
+           (the header cannot grow: the abilities and the drawer sit at fixed heights under it). -->
+      <div class="comp-intro glass" role="note">
+        <p>{{ 'comp.intro' | translate }}</p>
+        <p>{{ 'comp.bridge' | translate }}</p>
+      </div>
+      <div class="comp-pick">
+        <span class="pill-in"><kiosk-icon name="pointer" /><span>{{ 'comp.pick' | translate }}</span></span>
+      </div>
+    }
+  }
+  @if (exhibit.paperOpen() && exhibit.weakShown(); as w) {
+    @if (w.state === 'review' || w.state === 'saved') {
+      <kiosk-paper-pop [weak]="w" [name]="name(c)" (closed)="exhibit.closePaper()" />
+    }
+  }
+}
+
+<ng-template #footer>
+  <kiosk-tour-footer><kiosk-xray-button kind="comp" /></kiosk-tour-footer>
+</ng-template>

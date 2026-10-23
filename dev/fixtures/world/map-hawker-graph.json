@@ -1,0 +1,692 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption maps_handler.go (MapGraph, campaign nodes); the map of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6) (HOOK_MAP, ATLAS); after an accept, the batch's concepts under its focal",
+  "method": "GET",
+  "path": "/api/v1/me/maps/1948dea7-3474-7a37-9b70-a20c2f4d8d16/graph",
+  "status": 200,
+  "body": {
+    "goalId": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+    "title": "Hawker culture",
+    "rootConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+    "attachedCompanionId": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+    "attachedCompanionName": "Ember",
+    "concepts": [
+      {
+        "conceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "title": "Hawker culture",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+        "title": "UNESCO listing",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "title": "Hawker centres",
+        "atomRefs": [],
+        "provenance": "learner_authored",
+        "growthEdge": {
+          "edgeId": "0417a709-119c-7f07-a694-5ad0d2eb1977",
+          "conceptKey": "hawker-centres",
+          "strength": 0.35,
+          "isDue": true
+        }
+      },
+      {
+        "conceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+        "title": "Food safety",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+        "title": "Chicken rice",
+        "atomRefs": [],
+        "provenance": "learner_authored",
+        "mastered": true
+      },
+      {
+        "conceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+        "title": "Kopi",
+        "atomRefs": [],
+        "provenance": "learner_authored",
+        "growthEdge": {
+          "edgeId": "ea6957a1-05a2-7733-b32b-4b57ba84c4da",
+          "conceptKey": "kopi",
+          "strength": 0.6,
+          "isDue": false
+        }
+      }
+    ],
+    "edges": [
+      {
+        "edgeId": "e23b125b-2073-72aa-966f-19f976b149e1",
+        "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "targetConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "0e1fe7b8-9fb0-7c4e-b039-3e0faf02c8aa",
+        "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "targetConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "887dbc79-b6fd-7ba4-b4f2-fee75aa15060",
+        "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+        "targetConceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "db7f466f-01e2-782f-bd76-ebb6c8cb1893",
+        "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "targetConceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "72690b1f-701e-7999-b339-2f9a4268754d",
+        "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "targetConceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      }
+    ],
+    "campaign": {
+      "focusConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+      "frontierTotal": 5,
+      "frontierWon": 1,
+      "canSeal": false,
+      "nodes": {
+        "e7277425-cd94-7694-adf1-c24cb7bd33b1": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-04T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "df1b5701-d242-76a8-8502-8397e7021366": {
+          "rungsCleared": 2,
+          "currentRungCorrect": 0,
+          "cooling": false,
+          "advancedToday": false
+        },
+        "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-07T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "e996c516-a7c9-7715-8363-ee79ff806b67": {
+          "cooling": false,
+          "advancedToday": false
+        },
+        "cc4b6885-2ed7-7ee9-aed9-067d7216f284": {
+          "cooling": false,
+          "advancedToday": false
+        },
+        "5c2c4303-998d-7519-a7ce-74a445932a6f": {
+          "rungsCleared": 3,
+          "currentRungCorrect": 0,
+          "cooling": false,
+          "advancedToday": false
+        }
+      }
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/98f8e9f5-1dd9-776f-8821-09fc9c36a93e/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/686e913d-f298-79d9-97e2-979858d8d29c/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+        "title": "Hawker culture",
+        "rootConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "attachedCompanionId": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+        "attachedCompanionName": "Ember",
+        "concepts": [
+          {
+            "conceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "title": "Hawker culture",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+            "title": "UNESCO listing",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "title": "Hawker centres",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "0417a709-119c-7f07-a694-5ad0d2eb1977",
+              "conceptKey": "hawker-centres",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+            "title": "Food safety",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+            "title": "Chicken rice",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+            "title": "Kopi",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "ea6957a1-05a2-7733-b32b-4b57ba84c4da",
+              "conceptKey": "kopi",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "e6883ae7-b3d2-7669-8d5c-e8667067a88e",
+            "title": "Family-run stalls",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "5bbf1888-23eb-7837-b314-1fe682378c77",
+            "title": "Tray return",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "e23b125b-2073-72aa-966f-19f976b149e1",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "0e1fe7b8-9fb0-7c4e-b039-3e0faf02c8aa",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "887dbc79-b6fd-7ba4-b4f2-fee75aa15060",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "db7f466f-01e2-782f-bd76-ebb6c8cb1893",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72690b1f-701e-7999-b339-2f9a4268754d",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "ea7895e1-d742-7f09-b184-7bce1f78db1f",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "e6883ae7-b3d2-7669-8d5c-e8667067a88e",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "23f7875b-3578-710b-aa38-32129660e92e",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "5bbf1888-23eb-7837-b314-1fe682378c77",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+          "frontierTotal": 7,
+          "frontierWon": 1,
+          "canSeal": false,
+          "nodes": {
+            "e7277425-cd94-7694-adf1-c24cb7bd33b1": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-04T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "df1b5701-d242-76a8-8502-8397e7021366": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-07T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "e996c516-a7c9-7715-8363-ee79ff806b67": {
+              "cooling": false,
+              "advancedToday": false
+            },
+            "cc4b6885-2ed7-7ee9-aed9-067d7216f284": {
+              "cooling": false,
+              "advancedToday": false
+            },
+            "5c2c4303-998d-7519-a7ce-74a445932a6f": {
+              "rungsCleared": 3,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "e6883ae7-b3d2-7669-8d5c-e8667067a88e": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "5bbf1888-23eb-7837-b314-1fe682378c77": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/365cd2c9-1cb6-7305-bd02-dcae92a68fa1/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/508d8ef3-3886-78fb-8354-e45267230d98/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+        "title": "Hawker culture",
+        "rootConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "attachedCompanionId": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+        "attachedCompanionName": "Ember",
+        "concepts": [
+          {
+            "conceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "title": "Hawker culture",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+            "title": "UNESCO listing",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "title": "Hawker centres",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "0417a709-119c-7f07-a694-5ad0d2eb1977",
+              "conceptKey": "hawker-centres",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+            "title": "Food safety",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+            "title": "Chicken rice",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+            "title": "Kopi",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "ea6957a1-05a2-7733-b32b-4b57ba84c4da",
+              "conceptKey": "kopi",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "1b7bd64e-e8c9-7ab8-bd32-299622b77be3",
+            "title": "Incubation stalls",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "2479b6f8-fed1-7318-a727-b55dccd8bf62",
+            "title": "Satay",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "e23b125b-2073-72aa-966f-19f976b149e1",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "0e1fe7b8-9fb0-7c4e-b039-3e0faf02c8aa",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "887dbc79-b6fd-7ba4-b4f2-fee75aa15060",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "db7f466f-01e2-782f-bd76-ebb6c8cb1893",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72690b1f-701e-7999-b339-2f9a4268754d",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "b37117cb-06e0-764a-9400-f41555901d22",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "1b7bd64e-e8c9-7ab8-bd32-299622b77be3",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "62747ff6-fce8-709a-9405-261549c17952",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "2479b6f8-fed1-7318-a727-b55dccd8bf62",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+          "frontierTotal": 7,
+          "frontierWon": 1,
+          "canSeal": false,
+          "nodes": {
+            "e7277425-cd94-7694-adf1-c24cb7bd33b1": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-04T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "df1b5701-d242-76a8-8502-8397e7021366": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-07T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "e996c516-a7c9-7715-8363-ee79ff806b67": {
+              "cooling": false,
+              "advancedToday": false
+            },
+            "cc4b6885-2ed7-7ee9-aed9-067d7216f284": {
+              "cooling": false,
+              "advancedToday": false
+            },
+            "5c2c4303-998d-7519-a7ce-74a445932a6f": {
+              "rungsCleared": 3,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "1b7bd64e-e8c9-7ab8-bd32-299622b77be3": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "2479b6f8-fed1-7318-a727-b55dccd8bf62": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/329f1cee-b210-7b7f-97fc-fe47446601c8/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/8ff6b37e-7afc-70e2-8be9-891c75e1f0f9/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "1948dea7-3474-7a37-9b70-a20c2f4d8d16",
+        "title": "Hawker culture",
+        "rootConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+        "attachedCompanionId": "b4463c8d-5671-70bd-9693-1500a5413cf3",
+        "attachedCompanionName": "Ember",
+        "concepts": [
+          {
+            "conceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "title": "Hawker culture",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+            "title": "UNESCO listing",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "title": "Hawker centres",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "0417a709-119c-7f07-a694-5ad0d2eb1977",
+              "conceptKey": "hawker-centres",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+            "title": "Food safety",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+            "title": "Chicken rice",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+            "title": "Kopi",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "ea6957a1-05a2-7733-b32b-4b57ba84c4da",
+              "conceptKey": "kopi",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "441001d5-4f52-744b-b506-78456b91f60e",
+            "title": "Hawker succession",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "1997693b-a8f4-7d81-b870-7e0a11c7a0fe",
+            "title": "Laksa",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "e23b125b-2073-72aa-966f-19f976b149e1",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "0e1fe7b8-9fb0-7c4e-b039-3e0faf02c8aa",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "887dbc79-b6fd-7ba4-b4f2-fee75aa15060",
+            "sourceConceptId": "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224",
+            "targetConceptId": "e996c516-a7c9-7715-8363-ee79ff806b67",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "db7f466f-01e2-782f-bd76-ebb6c8cb1893",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "cc4b6885-2ed7-7ee9-aed9-067d7216f284",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72690b1f-701e-7999-b339-2f9a4268754d",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "443f3ee9-021e-72f9-8169-98e97c242157",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "441001d5-4f52-744b-b506-78456b91f60e",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "58de1965-e3e1-7bee-976c-1c7b31daed44",
+            "sourceConceptId": "e7277425-cd94-7694-adf1-c24cb7bd33b1",
+            "targetConceptId": "1997693b-a8f4-7d81-b870-7e0a11c7a0fe",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "df1b5701-d242-76a8-8502-8397e7021366",
+          "frontierTotal": 7,
+          "frontierWon": 1,
+          "canSeal": false,
+          "nodes": {
+            "e7277425-cd94-7694-adf1-c24cb7bd33b1": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-04T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "df1b5701-d242-76a8-8502-8397e7021366": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "cf94cbe2-8a7c-70fc-bfa6-17a28ef1c224": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-07T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "e996c516-a7c9-7715-8363-ee79ff806b67": {
+              "cooling": false,
+              "advancedToday": false
+            },
+            "cc4b6885-2ed7-7ee9-aed9-067d7216f284": {
+              "cooling": false,
+              "advancedToday": false
+            },
+            "5c2c4303-998d-7519-a7ce-74a445932a6f": {
+              "rungsCleared": 3,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "441001d5-4f52-744b-b506-78456b91f60e": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "1997693b-a8f4-7d81-b870-7e0a11c7a0fe": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    }
+  ]
+}

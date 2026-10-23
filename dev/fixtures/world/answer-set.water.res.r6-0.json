@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); set.water.res.r6, option Send its rain through drains and canals into a reservoir",
+  "method": "POST",
+  "path": "/api/v1/me/goals/8897f102-bb85-7701-ba94-9c60bbca2258/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+    "selected_option_id": "f5a65de47ce7f503"
+  },
+  "status": 200,
+  "body": {
+    "correct": true,
+    "rung": 6,
+    "is_refresher": false,
+    "counted": true,
+    "cleared_rung": 6,
+    "won": true,
+    "paced_today": false,
+    "rungs_cleared": 6,
+    "current_rung_correct": 0,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "f5a65de47ce7f503",
+    "explainer": "Collecting rain through drains and canals into reservoirs is how about two thirds of Singapore’s land already feeds its water supply."
+  }
+}

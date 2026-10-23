@@ -1,0 +1,2002 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption maps_handler.go (MapGraph, campaign nodes); the map of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6) (HOOK_MAP, ATLAS); after an accept, the batch's concepts under its focal",
+  "method": "GET",
+  "path": "/api/v1/me/maps/8897f102-bb85-7701-ba94-9c60bbca2258/graph",
+  "status": 200,
+  "body": {
+    "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+    "title": "Singapore’s water",
+    "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+    "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+    "attachedCompanionName": "Pingu",
+    "concepts": [
+      {
+        "conceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "title": "Singapore’s water",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+        "title": "Saving water",
+        "atomRefs": [],
+        "provenance": "learner_authored",
+        "mastered": true
+      },
+      {
+        "conceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "title": "Desalination",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+        "title": "Used water",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+        "title": "Four National Taps",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+        "title": "NEWater",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+        "title": "Local catchment",
+        "atomRefs": [],
+        "provenance": "learner_authored"
+      },
+      {
+        "conceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+        "title": "Reservoirs",
+        "atomRefs": [],
+        "provenance": "learner_authored",
+        "growthEdge": {
+          "edgeId": "9f90a69b-1c2e-7b01-bf42-e6a44ad5da39",
+          "conceptKey": "reservoirs",
+          "strength": 0.35,
+          "isDue": true
+        }
+      },
+      {
+        "conceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+        "title": "Imported water",
+        "atomRefs": [],
+        "provenance": "learner_authored",
+        "growthEdge": {
+          "edgeId": "3deca7ec-2e32-78aa-afcb-7269868ee24e",
+          "conceptKey": "imported-water",
+          "strength": 0.6,
+          "isDue": false
+        }
+      }
+    ],
+    "edges": [
+      {
+        "edgeId": "9becfd10-79b0-7e04-be3a-b98d3d0fa4c1",
+        "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "targetConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "72d9c172-4b54-7f04-8002-3180b76c86d8",
+        "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "targetConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "f91bb616-20b5-7a86-a304-27006a234543",
+        "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "066c6611-4d35-7151-b83b-5daa126f7306",
+        "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "9bbcddc8-c8c9-76ac-9e5d-1b10bcd60196",
+        "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+        "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "28b23640-f794-7fc9-8b6a-b473264ab31a",
+        "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+        "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "975a715f-35ed-7edd-b989-6815b3bd1da2",
+        "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+        "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      },
+      {
+        "edgeId": "8b805373-0549-783e-9d72-50f32d83c5a3",
+        "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+        "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+        "class": "hierarchy",
+        "provenance": "learner_authored"
+      }
+    ],
+    "campaign": {
+      "focusConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+      "frontierTotal": 8,
+      "frontierWon": 5,
+      "canSeal": false,
+      "nodes": {
+        "058a0178-0cf0-74b9-a182-ca9eea39d11b": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-02T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "32c9a1f4-84bd-76e7-8e84-5160ed18e24a": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-03T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "98aba993-f628-7690-84b8-46dfe80e9ca0": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-13T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "4ddee60a-f75f-7e36-8b96-112416b255dd": {
+          "rungsCleared": 2,
+          "currentRungCorrect": 0,
+          "cooling": false,
+          "advancedToday": false
+        },
+        "8b3902ee-21b9-73b6-b67a-dc41776de69c": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-05T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "84626923-f03d-7ee0-bdc6-7340c0f69e3c": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-11T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "9a5c8e72-ebcc-79b2-8c94-00a25607aae3": {
+          "rungsCleared": 6,
+          "currentRungCorrect": 0,
+          "wonAt": "2026-10-08T02:00:00Z",
+          "cooling": false,
+          "advancedToday": false
+        },
+        "58d5d391-bc91-79d5-8798-d96affc33f6c": {
+          "rungsCleared": 5,
+          "currentRungCorrect": 1,
+          "cooling": false,
+          "advancedToday": false
+        },
+        "069bad0b-755f-7ed8-8bdb-9f3403c50e26": {
+          "rungsCleared": 2,
+          "currentRungCorrect": 0,
+          "cooling": false,
+          "advancedToday": false
+        }
+      }
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/ee17c829-e411-7125-abc0-f9a8696631bc/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/ebb87080-8b5e-75cf-babc-858c3c8ebf2c/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/d4c34971-2398-7c92-a73b-1c4c4c82adeb/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+        "title": "Singapore’s water",
+        "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "attachedCompanionName": "Pingu",
+        "concepts": [
+          {
+            "conceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "title": "Singapore’s water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "title": "Saving water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "title": "Desalination",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "title": "Used water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "title": "Four National Taps",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "title": "NEWater",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "title": "Local catchment",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "title": "Reservoirs",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "9f90a69b-1c2e-7b01-bf42-e6a44ad5da39",
+              "conceptKey": "reservoirs",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "title": "Imported water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "3deca7ec-2e32-78aa-afcb-7269868ee24e",
+              "conceptKey": "imported-water",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "ba49a4d4-5d5b-7d20-953c-9e8bd30fd9ab",
+            "title": "Seawater intake",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "6cf0bffd-5324-7a37-8738-e7ee27be85a9",
+            "title": "Reverse osmosis",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "e4525df1-3b28-759d-ad9c-a4ec325bd4a0",
+            "title": "Energy use",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "9becfd10-79b0-7e04-be3a-b98d3d0fa4c1",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72d9c172-4b54-7f04-8002-3180b76c86d8",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "f91bb616-20b5-7a86-a304-27006a234543",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "066c6611-4d35-7151-b83b-5daa126f7306",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "9bbcddc8-c8c9-76ac-9e5d-1b10bcd60196",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "28b23640-f794-7fc9-8b6a-b473264ab31a",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "975a715f-35ed-7edd-b989-6815b3bd1da2",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "8b805373-0549-783e-9d72-50f32d83c5a3",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "c533b0c5-3429-7ac6-9434-6d028930caaa",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "ba49a4d4-5d5b-7d20-953c-9e8bd30fd9ab",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "06f3e848-62ad-7a8f-a54a-7ea4a8c57f7b",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "6cf0bffd-5324-7a37-8738-e7ee27be85a9",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "560c8c65-58d7-7021-92d6-8f315b4bc59d",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "e4525df1-3b28-759d-ad9c-a4ec325bd4a0",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "frontierTotal": 11,
+          "frontierWon": 5,
+          "canSeal": false,
+          "nodes": {
+            "058a0178-0cf0-74b9-a182-ca9eea39d11b": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-02T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "32c9a1f4-84bd-76e7-8e84-5160ed18e24a": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-03T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "98aba993-f628-7690-84b8-46dfe80e9ca0": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-13T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "4ddee60a-f75f-7e36-8b96-112416b255dd": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "8b3902ee-21b9-73b6-b67a-dc41776de69c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-05T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "84626923-f03d-7ee0-bdc6-7340c0f69e3c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-11T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "9a5c8e72-ebcc-79b2-8c94-00a25607aae3": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-08T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "58d5d391-bc91-79d5-8798-d96affc33f6c": {
+              "rungsCleared": 5,
+              "currentRungCorrect": 1,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "069bad0b-755f-7ed8-8bdb-9f3403c50e26": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "ba49a4d4-5d5b-7d20-953c-9e8bd30fd9ab": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "6cf0bffd-5324-7a37-8738-e7ee27be85a9": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "e4525df1-3b28-759d-ad9c-a4ec325bd4a0": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/82f19d33-8b9b-7489-a248-116fa8fe559c/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/7467574c-286f-74ad-a289-ed19331b0317/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+        "title": "Singapore’s water",
+        "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "attachedCompanionName": "Pingu",
+        "concepts": [
+          {
+            "conceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "title": "Singapore’s water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "title": "Saving water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "title": "Desalination",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "title": "Used water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "title": "Four National Taps",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "title": "NEWater",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "title": "Local catchment",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "title": "Reservoirs",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "9f90a69b-1c2e-7b01-bf42-e6a44ad5da39",
+              "conceptKey": "reservoirs",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "title": "Imported water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "3deca7ec-2e32-78aa-afcb-7269868ee24e",
+              "conceptKey": "imported-water",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "ee76174a-014c-7bd1-8f83-8e330a12be55",
+            "title": "Deep Tunnel Sewerage System",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "ef0ab007-7ff0-7182-8778-886ecb0301dd",
+            "title": "Wafer fabs",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "9becfd10-79b0-7e04-be3a-b98d3d0fa4c1",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72d9c172-4b54-7f04-8002-3180b76c86d8",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "f91bb616-20b5-7a86-a304-27006a234543",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "066c6611-4d35-7151-b83b-5daa126f7306",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "9bbcddc8-c8c9-76ac-9e5d-1b10bcd60196",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "28b23640-f794-7fc9-8b6a-b473264ab31a",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "975a715f-35ed-7edd-b989-6815b3bd1da2",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "8b805373-0549-783e-9d72-50f32d83c5a3",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "8bf75eac-bda4-7fee-9df2-1a76a29e3591",
+            "sourceConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "targetConceptId": "ee76174a-014c-7bd1-8f83-8e330a12be55",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "4812429f-b9a0-7f02-95bf-0dc9a1703df8",
+            "sourceConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "targetConceptId": "ef0ab007-7ff0-7182-8778-886ecb0301dd",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "frontierTotal": 10,
+          "frontierWon": 5,
+          "canSeal": false,
+          "nodes": {
+            "058a0178-0cf0-74b9-a182-ca9eea39d11b": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-02T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "32c9a1f4-84bd-76e7-8e84-5160ed18e24a": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-03T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "98aba993-f628-7690-84b8-46dfe80e9ca0": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-13T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "4ddee60a-f75f-7e36-8b96-112416b255dd": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "8b3902ee-21b9-73b6-b67a-dc41776de69c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-05T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "84626923-f03d-7ee0-bdc6-7340c0f69e3c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-11T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "9a5c8e72-ebcc-79b2-8c94-00a25607aae3": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-08T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "58d5d391-bc91-79d5-8798-d96affc33f6c": {
+              "rungsCleared": 5,
+              "currentRungCorrect": 1,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "069bad0b-755f-7ed8-8bdb-9f3403c50e26": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "ee76174a-014c-7bd1-8f83-8e330a12be55": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "ef0ab007-7ff0-7182-8778-886ecb0301dd": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/ed679741-bb2f-7ad5-bf6d-8586b09466f1/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/c6d31a1a-d1f0-7744-a049-e7a381c9bdb0/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+        "title": "Singapore’s water",
+        "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "attachedCompanionName": "Pingu",
+        "concepts": [
+          {
+            "conceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "title": "Singapore’s water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "title": "Saving water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "title": "Desalination",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "title": "Used water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "title": "Four National Taps",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "title": "NEWater",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "title": "Local catchment",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "title": "Reservoirs",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "9f90a69b-1c2e-7b01-bf42-e6a44ad5da39",
+              "conceptKey": "reservoirs",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "title": "Imported water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "3deca7ec-2e32-78aa-afcb-7269868ee24e",
+              "conceptKey": "imported-water",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "21398be5-b859-7e66-b1bc-d4a7cf3f5ded",
+            "title": "Marina East dual-mode plant",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "b9810080-ee35-74f9-a8ec-d9f9ad5599e5",
+            "title": "Brine",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "9becfd10-79b0-7e04-be3a-b98d3d0fa4c1",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72d9c172-4b54-7f04-8002-3180b76c86d8",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "f91bb616-20b5-7a86-a304-27006a234543",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "066c6611-4d35-7151-b83b-5daa126f7306",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "9bbcddc8-c8c9-76ac-9e5d-1b10bcd60196",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "28b23640-f794-7fc9-8b6a-b473264ab31a",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "975a715f-35ed-7edd-b989-6815b3bd1da2",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "8b805373-0549-783e-9d72-50f32d83c5a3",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "b45bbc23-f61c-7dfd-8410-cb5c6a6f0ed9",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "21398be5-b859-7e66-b1bc-d4a7cf3f5ded",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "5b1288b1-de60-7b45-90ee-1dbde39fab47",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "b9810080-ee35-74f9-a8ec-d9f9ad5599e5",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "frontierTotal": 10,
+          "frontierWon": 5,
+          "canSeal": false,
+          "nodes": {
+            "058a0178-0cf0-74b9-a182-ca9eea39d11b": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-02T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "32c9a1f4-84bd-76e7-8e84-5160ed18e24a": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-03T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "98aba993-f628-7690-84b8-46dfe80e9ca0": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-13T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "4ddee60a-f75f-7e36-8b96-112416b255dd": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "8b3902ee-21b9-73b6-b67a-dc41776de69c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-05T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "84626923-f03d-7ee0-bdc6-7340c0f69e3c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-11T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "9a5c8e72-ebcc-79b2-8c94-00a25607aae3": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-08T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "58d5d391-bc91-79d5-8798-d96affc33f6c": {
+              "rungsCleared": 5,
+              "currentRungCorrect": 1,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "069bad0b-755f-7ed8-8bdb-9f3403c50e26": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "21398be5-b859-7e66-b1bc-d4a7cf3f5ded": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "b9810080-ee35-74f9-a8ec-d9f9ad5599e5": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/544820e8-5485-7473-9207-2cbbcb18fe4e/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/270254fd-942e-77aa-badd-e4ca66e19119/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+        "title": "Singapore’s water",
+        "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "attachedCompanionName": "Pingu",
+        "concepts": [
+          {
+            "conceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "title": "Singapore’s water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "title": "Saving water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "title": "Desalination",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "title": "Used water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "title": "Four National Taps",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "title": "NEWater",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "title": "Local catchment",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "title": "Reservoirs",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "9f90a69b-1c2e-7b01-bf42-e6a44ad5da39",
+              "conceptKey": "reservoirs",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "title": "Imported water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "3deca7ec-2e32-78aa-afcb-7269868ee24e",
+              "conceptKey": "imported-water",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "4495fdd2-4d4a-733a-a24f-22065ad7db62",
+            "title": "Water efficiency labels",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "53f04a23-3d33-728b-8837-838f822428c7",
+            "title": "Linggiu Reservoir",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "9becfd10-79b0-7e04-be3a-b98d3d0fa4c1",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72d9c172-4b54-7f04-8002-3180b76c86d8",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "f91bb616-20b5-7a86-a304-27006a234543",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "066c6611-4d35-7151-b83b-5daa126f7306",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "9bbcddc8-c8c9-76ac-9e5d-1b10bcd60196",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "28b23640-f794-7fc9-8b6a-b473264ab31a",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "975a715f-35ed-7edd-b989-6815b3bd1da2",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "8b805373-0549-783e-9d72-50f32d83c5a3",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "44ab8bb0-c6b2-707b-9d50-cd2e20d77f2c",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "4495fdd2-4d4a-733a-a24f-22065ad7db62",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "837b2334-7659-7b3b-a827-351ddd0481a6",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "53f04a23-3d33-728b-8837-838f822428c7",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "frontierTotal": 10,
+          "frontierWon": 5,
+          "canSeal": false,
+          "nodes": {
+            "058a0178-0cf0-74b9-a182-ca9eea39d11b": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-02T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "32c9a1f4-84bd-76e7-8e84-5160ed18e24a": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-03T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "98aba993-f628-7690-84b8-46dfe80e9ca0": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-13T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "4ddee60a-f75f-7e36-8b96-112416b255dd": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "8b3902ee-21b9-73b6-b67a-dc41776de69c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-05T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "84626923-f03d-7ee0-bdc6-7340c0f69e3c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-11T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "9a5c8e72-ebcc-79b2-8c94-00a25607aae3": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-08T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "58d5d391-bc91-79d5-8798-d96affc33f6c": {
+              "rungsCleared": 5,
+              "currentRungCorrect": 1,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "069bad0b-755f-7ed8-8bdb-9f3403c50e26": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "4495fdd2-4d4a-733a-a24f-22065ad7db62": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "53f04a23-3d33-728b-8837-838f822428c7": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/e75f2ccc-78c7-7179-965d-d0371968305f/(accept)$",
+        "^POST /api/v1/me/concept-graph/suggestions/776b7607-4e96-7d1a-939c-35da8893a9c8/(accept)$"
+      ],
+      "status": 200,
+      "body": {
+        "goalId": "8897f102-bb85-7701-ba94-9c60bbca2258",
+        "title": "Singapore’s water",
+        "rootConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+        "attachedCompanionId": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "attachedCompanionName": "Pingu",
+        "concepts": [
+          {
+            "conceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "title": "Singapore’s water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "title": "Saving water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "mastered": true
+          },
+          {
+            "conceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "title": "Desalination",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "title": "Used water",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "title": "Four National Taps",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "title": "NEWater",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "title": "Local catchment",
+            "atomRefs": [],
+            "provenance": "learner_authored"
+          },
+          {
+            "conceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "title": "Reservoirs",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "9f90a69b-1c2e-7b01-bf42-e6a44ad5da39",
+              "conceptKey": "reservoirs",
+              "strength": 0.35,
+              "isDue": true
+            }
+          },
+          {
+            "conceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "title": "Imported water",
+            "atomRefs": [],
+            "provenance": "learner_authored",
+            "growthEdge": {
+              "edgeId": "3deca7ec-2e32-78aa-afcb-7269868ee24e",
+              "conceptKey": "imported-water",
+              "strength": 0.6,
+              "isDue": false
+            }
+          },
+          {
+            "conceptId": "f8425816-7041-7560-9336-05fae82cc180",
+            "title": "Marina Barrage",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "conceptId": "bb8ebb2c-7713-768a-93e2-546cdd21bff2",
+            "title": "ABC Waters Programme",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "9becfd10-79b0-7e04-be3a-b98d3d0fa4c1",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "72d9c172-4b54-7f04-8002-3180b76c86d8",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "f91bb616-20b5-7a86-a304-27006a234543",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "066c6611-4d35-7151-b83b-5daa126f7306",
+            "sourceConceptId": "058a0178-0cf0-74b9-a182-ca9eea39d11b",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "9bbcddc8-c8c9-76ac-9e5d-1b10bcd60196",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "28b23640-f794-7fc9-8b6a-b473264ab31a",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "975a715f-35ed-7edd-b989-6815b3bd1da2",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "8b805373-0549-783e-9d72-50f32d83c5a3",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy",
+            "provenance": "learner_authored"
+          },
+          {
+            "edgeId": "dbc4fa9e-2627-750c-9385-f749eb0a2514",
+            "sourceConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "targetConceptId": "f8425816-7041-7560-9336-05fae82cc180",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          },
+          {
+            "edgeId": "f959fad2-6723-77bc-91a2-0b965eaf2d7f",
+            "sourceConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "targetConceptId": "bb8ebb2c-7713-768a-93e2-546cdd21bff2",
+            "class": "hierarchy",
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "campaign": {
+          "focusConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+          "frontierTotal": 10,
+          "frontierWon": 5,
+          "canSeal": false,
+          "nodes": {
+            "058a0178-0cf0-74b9-a182-ca9eea39d11b": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-02T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "32c9a1f4-84bd-76e7-8e84-5160ed18e24a": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-03T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "98aba993-f628-7690-84b8-46dfe80e9ca0": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-13T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "4ddee60a-f75f-7e36-8b96-112416b255dd": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "8b3902ee-21b9-73b6-b67a-dc41776de69c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-05T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "84626923-f03d-7ee0-bdc6-7340c0f69e3c": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-11T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "9a5c8e72-ebcc-79b2-8c94-00a25607aae3": {
+              "rungsCleared": 6,
+              "currentRungCorrect": 0,
+              "wonAt": "2026-10-08T02:00:00Z",
+              "cooling": false,
+              "advancedToday": false
+            },
+            "58d5d391-bc91-79d5-8798-d96affc33f6c": {
+              "rungsCleared": 5,
+              "currentRungCorrect": 1,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "069bad0b-755f-7ed8-8bdb-9f3403c50e26": {
+              "rungsCleared": 2,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "f8425816-7041-7560-9336-05fae82cc180": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            },
+            "bb8ebb2c-7713-768a-93e2-546cdd21bff2": {
+              "rungsCleared": 0,
+              "currentRungCorrect": 0,
+              "cooling": false,
+              "advancedToday": false
+            }
+          }
+        }
+      }
+    }
+  ],
+  "patches": [
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7c99-b2a3-1f974214a2cb/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "a29afad2-1ae8-7957-8ce2-32f1b4c6740f",
+            "title": "Desalination plants",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "ac0bfa17-58dc-7091-a9f9-3ca683ac2399",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "a29afad2-1ae8-7957-8ce2-32f1b4c6740f",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "a29afad2-1ae8-7957-8ce2-32f1b4c6740f": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7a2c-bfbb-b256cc7d9ba9/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "5fa6eb12-e37f-7730-a9c7-5949460c121d",
+            "title": "Reverse osmosis technology",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "379c6254-f5f1-76b2-be80-832a9edf0a49",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "5fa6eb12-e37f-7730-a9c7-5949460c121d",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "5fa6eb12-e37f-7730-a9c7-5949460c121d": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7b9a-b285-db8969a99494/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "f9942471-dbae-751f-93f1-33ba6eabe332",
+            "title": "Energy consumption of desalination",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "03248fec-0fcc-7bb7-acd6-8588cc284efd",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "f9942471-dbae-751f-93f1-33ba6eabe332",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "f9942471-dbae-751f-93f1-33ba6eabe332": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-744a-a707-359fba1e1d83/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "d3827159-d4b6-7ab5-a02e-c1a8f0f69265",
+            "title": "Desalination's role in Four National Taps",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "f17bb91b-f037-7f5c-a312-4fd8fceab3a4",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "d3827159-d4b6-7ab5-a02e-c1a8f0f69265",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "d3827159-d4b6-7ab5-a02e-c1a8f0f69265": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7ff9-9101-d9aa903a39a8/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "3bd19f89-7e82-7980-bb38-f16f714d22aa",
+            "title": "Environmental impact of desalination",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "c17fe59e-a528-79ec-8682-c2b0415d1a73",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "3bd19f89-7e82-7980-bb38-f16f714d22aa",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "3bd19f89-7e82-7980-bb38-f16f714d22aa": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-7016-abdc-9dda75aa1b2d/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "1e130898-fa69-7269-959b-ed0ffab8920a",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-773e-b0b4-3fa577971e6e/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "94d7e70a-7f34-765d-a3b0-3469162888bb",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-722f-aae5-b44028e7b770/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "09c10aef-606c-7a4a-9f25-f33b72dca55f",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-53ce-796f-98a5-47dc92caeb23/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "f09f8f22-1025-740a-8f0c-e69d06361993",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "lateral"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7fea-9443-87428d98c761/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "60a8ff07-07f6-7da3-a1b4-36cda1f9cfb8",
+            "title": "Desalination",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "3c4ab7a1-efb4-79b7-a39c-c936bcfb1862",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "60a8ff07-07f6-7da3-a1b4-36cda1f9cfb8",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "60a8ff07-07f6-7da3-a1b4-36cda1f9cfb8": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7057-87fc-574e075c3d4a/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "322e5ceb-9ba6-772b-bfc2-393636b9ef4b",
+            "title": "Desalination Process",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "3de97d68-a908-7ffe-be97-98d08ef23bb1",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "322e5ceb-9ba6-772b-bfc2-393636b9ef4b",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "322e5ceb-9ba6-772b-bfc2-393636b9ef4b": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7623-8b8f-b4e2df7a74e5/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "f31dd728-5735-79f4-8e3c-804a8e2944b4",
+            "title": "Energy Use in Desalination",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "3de4a3b9-2f09-731b-84b4-7da9060a2f45",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "f31dd728-5735-79f4-8e3c-804a8e2944b4",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "f31dd728-5735-79f4-8e3c-804a8e2944b4": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-77c0-870f-e122f57d4df9/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "148dafe5-7f20-7c6f-94ef-09a2fd807ada",
+            "title": "Environmental Impact of Desalination",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "027790d8-4b3c-71cf-a3d9-748619b3a434",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "148dafe5-7f20-7c6f-94ef-09a2fd807ada",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "148dafe5-7f20-7c6f-94ef-09a2fd807ada": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-73c5-9c4c-9873c58f4070/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "14f37668-a16d-7b69-8034-bab8bf7c46ac",
+            "title": "Desalination Capacity in Singapore",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "20928037-a9d3-74ed-8153-450c5ca5da6b",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "14f37668-a16d-7b69-8034-bab8bf7c46ac",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "14f37668-a16d-7b69-8034-bab8bf7c46ac": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-73d5-9d19-9ec8318a7d6a/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "99d0a6b2-8720-7685-8c55-fe3a831527c3",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+            "class": "hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-74c7-8b84-0f9b4af5e295/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "cc5f962a-aeef-7ee1-a340-5c5fdf7918e4",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "class": "hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7e11-b461-89db41b4f576/(accept)$"
+      ],
+      "append": {
+        "concepts": [
+          {
+            "conceptId": "79dd1567-c1a6-7bd6-91bf-b6d488db976f",
+            "title": "Future Desalination Plans",
+            "atomRefs": [],
+            "provenance": "companion_suggested_accepted"
+          }
+        ],
+        "edges": [
+          {
+            "edgeId": "79a0ff08-95b0-7925-8e9e-7cabd7db8ec2",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+            "targetConceptId": "79dd1567-c1a6-7bd6-91bf-b6d488db976f",
+            "class": "hierarchy"
+          }
+        ]
+      },
+      "assign": {
+        "campaign.nodes": {
+          "79dd1567-c1a6-7bd6-91bf-b6d488db976f": {
+            "rungsCleared": 0,
+            "currentRungCorrect": 0,
+            "cooling": false,
+            "advancedToday": false
+          }
+        }
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7cf1-8095-8f9480b2db61/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "b1bc84b8-a224-7a5f-96af-1cd446d029ed",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "targetConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "class": "hierarchy"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7196-ba96-2ece0c9031ca/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "7985e14e-f6f5-7636-9bfd-e7de232f36ad",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "9a5c8e72-ebcc-79b2-8c94-00a25607aae3",
+            "targetConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+            "class": "lateral"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-70fc-b684-5f4cc1cf6247/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "2e86a4ea-c971-77ee-a44c-aab67f763166",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "32c9a1f4-84bd-76e7-8e84-5160ed18e24a",
+            "targetConceptId": "8b3902ee-21b9-73b6-b67a-dc41776de69c",
+            "class": "lateral"
+          }
+        ]
+      }
+    },
+    {
+      "after": [
+        "^POST /api/v1/me/concept-graph/suggestions/01a1544f-9a69-7458-937f-39a28eb82888/(accept)$"
+      ],
+      "append": {
+        "edges": [
+          {
+            "edgeId": "681d13e1-ecc6-73b4-b951-7d023c0b8fe5",
+            "provenance": "companion_suggested_accepted",
+            "sourceConceptId": "84626923-f03d-7ee0-bdc6-7340c0f69e3c",
+            "targetConceptId": "4ddee60a-f75f-7e36-8b96-112416b255dd",
+            "class": "lateral"
+          }
+        ]
+      }
+    }
+  ]
+}

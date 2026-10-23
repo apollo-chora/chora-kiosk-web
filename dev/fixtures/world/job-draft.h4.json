@@ -1,0 +1,123 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "creation question_jobs_handler.go (jobResponse; candidate_questions as candidateDraft); stage names from qgen_crew.py, counts illustrative; draft.h4: DRAFT and its chips of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6); the critic's note recorded through the edge (dev/world/step4-critique.recorded.json, K155)",
+  "method": "GET",
+  "path": "/api/atoms/9b623743-8432-74b7-8782-e9a22d5b7ec7/question-jobs/4a586b99-7296-779f-b948-8d373cf51e6c",
+  "status": 200,
+  "body": {
+    "job_id": "4a586b99-7296-779f-b948-8d373cf51e6c",
+    "atom_id": "9b623743-8432-74b7-8782-e9a22d5b7ec7",
+    "status": "succeeded",
+    "mana_charged": 1,
+    "created_at": "2026-10-20T05:46:00Z",
+    "started_at": "2026-10-20T05:46:01Z",
+    "completed_at": "2026-10-20T05:46:40Z",
+    "candidate_questions": [
+      {
+        "draft_id": "e4aaa25f-32ff-7981-a556-1f2b4049a0c1",
+        "type": "mcq",
+        "prompt": "The diagram shows how used water becomes NEWater. Which stage destroys germs that slip through the membranes?",
+        "mcq_payload": {
+          "options": [
+            {
+              "option_id": "opt_1",
+              "label": "Microfiltration",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_2",
+              "label": "Reverse osmosis",
+              "is_correct": false,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_3",
+              "label": "UV disinfection",
+              "is_correct": true,
+              "explainer": ""
+            },
+            {
+              "option_id": "opt_4",
+              "label": "Chlorination",
+              "is_correct": false,
+              "explainer": ""
+            }
+          ]
+        },
+        "model_used": "deepseek-v4-pro",
+        "image_url": "/KIOSK_DEV_FIXTURE/pictures/diagram-v1.svg",
+        "image_gcs_uri": "gs://kiosk-dev-fixture/questions/e4aaa25f-32ff-7981-a556-1f2b4049a0c1/stem.svg"
+      }
+    ],
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:46:00Z",
+        "completed_at": "2026-10-20T05:46:00Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:46:00Z",
+        "completed_at": "2026-10-20T05:46:01Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:46:01Z",
+        "completed_at": "2026-10-20T05:46:12Z",
+        "attempt": 1,
+        "input_tokens": 1460,
+        "output_tokens": 520,
+        "notes": "candidate produced"
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:46:12Z",
+        "completed_at": "2026-10-20T05:46:13Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:46:13Z",
+        "completed_at": "2026-10-20T05:46:21Z",
+        "attempt": 1,
+        "input_tokens": 1980,
+        "output_tokens": 240,
+        "notes": "Stem is clear; four well‑explained options include one correct UV disinfection with plausible distractors, and all required fields are present.",
+        "accepted": true,
+        "suggested_revisions": []
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:46:21Z",
+        "completed_at": "2026-10-20T05:46:21Z",
+        "attempt": 1,
+        "notes": "Stem is clear; four well‑explained options include one correct UV disinfection with plausible distractors, and all required fields are present."
+      },
+      {
+        "name": "render_image",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:46:21Z",
+        "completed_at": "2026-10-20T05:46:30Z",
+        "attempt": 1,
+        "notes": "rendered 1/1 image(s)"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:46:30Z",
+        "completed_at": "2026-10-20T05:46:30Z",
+        "attempt": 1,
+        "notes": "accepted"
+      }
+    ]
+  }
+}

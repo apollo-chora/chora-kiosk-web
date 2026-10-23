@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.desal",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/ed679741-bb2f-7ad5-bf6d-8586b09466f1/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "ed679741-bb2f-7ad5-bf6d-8586b09466f1",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Marina East dual-mode plant",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "It treats seawater in dry weather and reservoir water when it rains.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:35:00Z"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "services/chora-kiosk-conductor/API.md section 4 (8db3427e1), example values",
+  "method": "POST",
+  "path": "/api/v1/kiosk/visits",
+  "status": 204
+}

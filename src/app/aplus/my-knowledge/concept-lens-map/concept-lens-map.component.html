@@ -1,0 +1,179 @@
+<div class="concept-lens" data-testid="concept-lens-map">
+  <svg
+    class="concept-lens__scene"
+    [class.is-loading]="loading()"
+    [attr.viewBox]="viewBox"
+    preserveAspectRatio="xMidYMid meet"
+    role="application"
+    [attr.aria-label]="'aplus.knowledge.lens_aria' | translate"
+    data-testid="concept-lens-scene">
+    <!-- One shared hex clip (userSpaceOnUse): each node's label group references
+         it, so the label is clipped to THAT node's own hex: a hard guarantee no
+         glyph ever spills past the hexagon (past the char-estimate label shrink). -->
+    <defs>
+      <clipPath id="lens-hex-clip" clipPathUnits="userSpaceOnUse">
+        <path [attr.d]="hexPath"></path>
+      </clipPath>
+    </defs>
+    <!-- Whole-map group: glides horizontally so the focus re-centres on the
+         visible canvas as the drawer opens (CSS-eased; leaves per-node transforms
+         untouched). -->
+    <g class="lens-shift" [style.transform]="shiftTransform()" data-testid="concept-lens-shift">
+    <!-- Edges first (behind the nodes). Distorted quadratic curves. -->
+    <g class="lens-edges" aria-hidden="true">
+      @for (e of renderEdges(); track e.key) {
+        <path
+          class="lens-edge"
+          [class.lens-edge--lateral]="e.lateral"
+          [attr.d]="e.d"
+          [attr.stroke-width]="e.width"></path>
+      }
+    </g>
+
+    <!-- Fog ghosts: face-down pending suggestions fanned around their focal node
+         (behind the real nodes; the small hexes stay visible + clickable). -->
+    <g class="lens-fog">
+      @for (fg of renderFog(); track fg.suggestionId) {
+        <g
+          class="lens-fog-ghost"
+          [attr.data-testid]="'lens-fog-ghost-' + fg.suggestionId"
+          [attr.transform]="fg.transform"
+          role="button"
+          [attr.tabindex]="fg.tabindex"
+          [attr.aria-label]="fg.ariaLabel"
+          (click)="onFogTap(fg.focalConceptId)"
+          (keydown)="onFogKeydown($event, fg.focalConceptId)">
+          <!-- Generous transparent hit target (≥44px around the focus). -->
+          <circle class="lens-fog-ghost__hit" r="30"></circle>
+          <path class="lens-fog-ghost__hex" [attr.d]="fogHexPath"></path>
+          <text class="lens-fog-ghost__glyph" x="0" y="4" aria-hidden="true">?</text>
+        </g>
+      }
+    </g>
+
+    <!-- Every concept on screen; the lens magnifies the focus + its neighbourhood. -->
+    <g class="lens-nodes">
+      @for (n of renderNodes(); track n.conceptId) {
+        <!-- KIOSK (K202): lens-node--ring marks the focus's ring (its hierarchy children), which stays inside the frame. -->
+        <g
+          class="lens-node"
+          [class.lens-node--focus]="n.isFocus"
+          [class.lens-node--ring]="n.isRing"
+          [class.lens-node--root]="n.isRoot"
+          [class.lens-node--dimmed]="n.dimmed"
+          [class.lens-node--faded]="n.faded"
+          [class.lens-node--cue-shaky]="n.cue"
+          [class.lens-node--cue-due]="n.dueCue"
+          [class.lens-node--shaky]="n.paint === 'shaky'"
+          [class.lens-node--mastered]="n.paint === 'mastered'"
+          [class.lens-node--frontier]="n.campaignState === 'frontier'"
+          [class.lens-node--climbing]="n.campaignState === 'frontier-climbing'"
+          [class.lens-node--cooling]="n.campaignState === 'frontier-cooling'"
+          [class.lens-node--province]="n.campaignState === 'province'"
+          [class.lens-node--march]="n.marchFocus"
+          [attr.data-id]="n.conceptId"
+          [attr.data-testid]="'concept-lens-node-' + n.conceptId"
+          [attr.transform]="n.transform"
+          [style.filter]="n.filter"
+          role="button"
+          [attr.tabindex]="n.tabindex"
+          [attr.aria-label]="n.ariaLabel"
+          (click)="onSelect(n.conceptId)"
+          (keydown)="onNodeKeydown($event, n.conceptId)">
+          <title>{{ n.title }}</title>
+          <path class="lens-hex" [attr.d]="hexPath"></path>
+          <!-- KIOSK (K37): the gold glow on an idea to click next. -->
+          @if (!n.isFocus && glowSet().has(n.conceptId)) {
+            <path class="lens-glow" [attr.d]="glowHexPath" aria-hidden="true"></path>
+          }
+          <!-- Campaign fill tint + border overlaid ABOVE the lens fill and BELOW
+               the label: the fill stays lens-owned, the chrome composes on top:
+               province = subtle indigo wash + an inset fortified inner ring;
+               cooling = a frost wash + a cool-blue ring. -->
+          @if (n.campaignState === 'province') {
+            <path class="lens-tint lens-tint--fort" [attr.d]="hexPath" aria-hidden="true"></path>
+            <path class="lens-hex-fort" [attr.d]="fortHexPath" aria-hidden="true"></path>
+          }
+          @if (n.campaignState === 'frontier-cooling') {
+            <path class="lens-tint lens-tint--frost" [attr.d]="hexPath" aria-hidden="true"></path>
+          }
+          <!-- Transform-less clip group: the clip stays the FULL hex while the
+               label scales inside it (a scale on this group would shrink the clip
+               too and defeat the guarantee). -->
+          <g [attr.clip-path]="labelClip">
+            <text
+              class="lens-label"
+              [attr.transform]="'scale(' + n.labelScale + ')'">
+              @for (ln of n.labelLines; track $index) {
+                <tspan x="0" [attr.y]="ln.y">{{ ln.text }}</tspan>
+              }
+            </text>
+          </g>
+          <!-- Campaign chrome (icon layer; state also in aria-label: never
+               colour alone). All inside the node's scale(z) so it tracks the lens. -->
+          @if (n.pips.length) {
+            <g class="lens-pips" aria-hidden="true">
+              @for (pip of n.pips; track $index) {
+                <circle
+                  class="lens-pip"
+                  [class.lens-pip--filled]="pip.filled"
+                  [attr.cx]="pip.cx"
+                  [attr.cy]="pipY"
+                  r="2.5"></circle>
+              }
+            </g>
+          }
+          @if (n.campaignState === 'frontier-cooling') {
+            <text class="lens-frost" x="0" y="-20" aria-hidden="true">&#10052;</text>
+          }
+          @if (n.campaignState === 'province') {
+            <g class="lens-banner" aria-hidden="true" transform="translate(0 -40)">
+              <path class="lens-banner__pole" d="M0 3 L0 -13"></path>
+              <path class="lens-banner__flag" d="M0 -13 L9 -10 L0 -7 Z"></path>
+            </g>
+            @if (n.heldCount > 0) {
+              <g class="lens-held" aria-hidden="true" transform="translate(25 -22)">
+                <circle class="lens-held__disc" r="9"></circle>
+                <text class="lens-held__num" x="0" y="3.4">{{ n.heldCount }}</text>
+              </g>
+            }
+          }
+          @if (n.marchFocus) {
+            <path
+              class="lens-march"
+              aria-hidden="true"
+              [attr.d]="marchPath"
+              transform="translate(0 -38)"></path>
+          }
+        </g>
+      }
+    </g>
+    </g>
+  </svg>
+
+  <!-- "Make this my root" (acts on the focus) + the single-concept hint. -->
+  <div class="concept-lens__controls">
+    <button
+      type="button"
+      class="concept-lens__root-btn"
+      data-testid="concept-lens-make-root"
+      [disabled]="loading() || isRoot()"
+      (click)="onMakeRoot()">
+      <i class="fa-solid fa-crown" aria-hidden="true"></i>
+      @if (isRoot()) {
+        {{ 'aplus.knowledge.is_root' | translate }}
+      } @else {
+        {{ 'aplus.knowledge.make_root' | translate }}
+      }
+    </button>
+
+    @if (isLonely()) {
+      <p
+        class="concept-lens__lonely"
+        role="status"
+        data-testid="concept-lens-lonely">
+        {{ 'aplus.knowledge.lonely_focal' | translate }}
+      </p>
+    }
+  </div>
+</div>

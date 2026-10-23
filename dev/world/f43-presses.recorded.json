@@ -1,0 +1,211 @@
+{
+  "about": "The owner's two LIVE fresh-ideas presses on the atlas (19 Oct 2026, 13:17:20 and 13:17:37 UTC; FINDINGS F43 and F44): Singapore's water, Desalination, then \"Do it again\". The rows of chora_consumption's concept_suggestions for each run, read only by the orchestrator (make_f43_fixtures.py, 19 Oct 21:3x +08) in the product's ListPending order (created_at DESC), with each link's ends named by their titles on the map so the generator gives them the fixture world's ids. The fixture server answers Desalination's press with press 1, and Do it again with press 2 (K156: link ideas; their repeats are F44's, kept on purpose).",
+  "goal": "goal.water",
+  "focal": "Desalination",
+  "presses": [
+    {
+      "request_id": "01a1544f-3a4b-7adf-a871-4f156b28e6ee",
+      "status": "ready",
+      "requested_at": "2026-10-19T13:17:20.843518+00:00",
+      "completed_at": "2026-10-19T13:17:27.378123+00:00",
+      "rows": [
+        {
+          "suggestion_id": "01a1544f-53ce-7c99-b2a3-1f974214a2cb",
+          "kind": "concept",
+          "title": "Desalination plants",
+          "rationale": "Key infrastructure supplying fresh water via desalination",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-7a2c-bfbb-b256cc7d9ba9",
+          "kind": "concept",
+          "title": "Reverse osmosis technology",
+          "rationale": "Primary tech used in Singapore's desalination",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-7b9a-b285-db8969a99494",
+          "kind": "concept",
+          "title": "Energy consumption of desalination",
+          "rationale": "Assessing power needs and efficiency",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-744a-a707-359fba1e1d83",
+          "kind": "concept",
+          "title": "Desalination's role in Four National Taps",
+          "rationale": "How desalination fits the national water strategy",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-7ff9-9101-d9aa903a39a8",
+          "kind": "concept",
+          "title": "Environmental impact of desalination",
+          "rationale": "Brine discharge and marine effects in Singapore context",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-7016-abdc-9dda75aa1b2d",
+          "kind": "edge",
+          "source": "Four National Taps",
+          "target": "Imported water",
+          "class": "hierarchy",
+          "rationale": "Imported water is a component of Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-773e-b0b4-3fa577971e6e",
+          "kind": "edge",
+          "source": "Four National Taps",
+          "target": "NEWater",
+          "class": "hierarchy",
+          "rationale": "NEWater is a component of Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-722f-aae5-b44028e7b770",
+          "kind": "edge",
+          "source": "Four National Taps",
+          "target": "Local catchment",
+          "class": "hierarchy",
+          "rationale": "Local catchment is a component of Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-53ce-796f-98a5-47dc92caeb23",
+          "kind": "edge",
+          "source": "Reservoirs",
+          "target": "Local catchment",
+          "class": "lateral",
+          "rationale": "Reservoirs store water collected from local catchments",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:25.759098+00:00"
+        }
+      ]
+    },
+    {
+      "request_id": "01a1544f-7b46-73b2-9a42-1bee5561f579",
+      "status": "ready",
+      "requested_at": "2026-10-19T13:17:37.478206+00:00",
+      "completed_at": "2026-10-19T13:17:45.454085+00:00",
+      "rows": [
+        {
+          "suggestion_id": "01a1544f-9a69-7fea-9443-87428d98c761",
+          "kind": "concept",
+          "title": "Desalination",
+          "rationale": "Core water source complementing the Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-7057-87fc-574e075c3d4a",
+          "kind": "concept",
+          "title": "Desalination Process",
+          "rationale": "How seawater is turned into potable water in Singapore",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-7623-8b8f-b4e2df7a74e5",
+          "kind": "concept",
+          "title": "Energy Use in Desalination",
+          "rationale": "Assessing power demand of Singapore's desalination plants",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-77c0-870f-e122f57d4df9",
+          "kind": "concept",
+          "title": "Environmental Impact of Desalination",
+          "rationale": "Effects of brine discharge and marine ecology",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-73c5-9c4c-9873c58f4070",
+          "kind": "concept",
+          "title": "Desalination Capacity in Singapore",
+          "rationale": "Current output and role in national water security",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-73d5-9d19-9ec8318a7d6a",
+          "kind": "edge",
+          "source": "Four National Taps",
+          "target": "Imported water",
+          "class": "hierarchy",
+          "rationale": "Imported water is one of the Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-74c7-8b84-0f9b4af5e295",
+          "kind": "edge",
+          "source": "Four National Taps",
+          "target": "Local catchment",
+          "class": "hierarchy",
+          "rationale": "Local catchment is a tap under the Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-7e11-b461-89db41b4f576",
+          "kind": "concept",
+          "title": "Future Desalination Plans",
+          "rationale": "Planned expansions and technology upgrades",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-7cf1-8095-8f9480b2db61",
+          "kind": "edge",
+          "source": "Four National Taps",
+          "target": "NEWater",
+          "class": "hierarchy",
+          "rationale": "NEWater is a tap within the Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-7196-ba96-2ece0c9031ca",
+          "kind": "edge",
+          "source": "Local catchment",
+          "target": "Reservoirs",
+          "class": "lateral",
+          "rationale": "Reservoirs store water collected from local catchments",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-70fc-b684-5f4cc1cf6247",
+          "kind": "edge",
+          "source": "Saving water",
+          "target": "Four National Taps",
+          "class": "lateral",
+          "rationale": "Saving water complements the supply-focused Four National Taps",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        },
+        {
+          "suggestion_id": "01a1544f-9a69-7458-937f-39a28eb82888",
+          "kind": "edge",
+          "source": "NEWater",
+          "target": "Used water",
+          "class": "lateral",
+          "rationale": "NEWater treats used water into high-grade supply",
+          "model_id": "gpt-oss:120b",
+          "created_at": "2026-10-19T13:17:44.000975+00:00"
+        }
+      ]
+    }
+  ]
+}

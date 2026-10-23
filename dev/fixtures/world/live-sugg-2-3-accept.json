@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); dev/world/f43-presses.recorded.json (the owner's presses of 19 Oct, chora_consumption rows read only, ends by title), press 2",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/01a1544f-9a69-77c0-870f-e122f57d4df9/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "01a1544f-9a69-77c0-870f-e122f57d4df9",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "Environmental Impact of Desalination",
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0",
+    "rationale": "Effects of brine discharge and marine ecology",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-19T13:17:44.000975+00:00"
+  }
+}

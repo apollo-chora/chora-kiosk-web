@@ -1,0 +1,27 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go (202, suggestionGenerateResp); dev/world/f43-presses.recorded.json (the owner's presses of 19 Oct, chora_consumption rows read only, ends by title): press 1, then press 2 for every Do it again",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/generate",
+  "match_body": {
+    "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0"
+  },
+  "sequence": [
+    {
+      "status": 202,
+      "body": {
+        "status": "requested",
+        "requestId": "01a1544f-3a4b-7adf-a871-4f156b28e6ee",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0"
+      }
+    },
+    {
+      "status": 202,
+      "body": {
+        "status": "requested",
+        "requestId": "01a1544f-7b46-73b2-9a42-1bee5561f579",
+        "focalConceptId": "98aba993-f628-7690-84b8-46dfe80e9ca0"
+      }
+    }
+  ]
+}

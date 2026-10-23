@@ -1,0 +1,156 @@
+{
+  "recorded": "GET /api/v1/me/goals/{goal}/campaign/questions?concept_id={reservoirs}&rung=6 through the kiosk edge 127.0.0.1:18080, 2026-10-19 02:31:32 UTC: the golden run's prepared set set.water.res.r6 (consumption's served V5 trace, SanitizeServedTrace). Only trace_id and pipeline_trace are kept, verbatim.",
+  "trace_id": "9c9d66752af935530caffd6c3e5d7d67",
+  "pipeline_trace": [
+    {
+      "completed_at": "2026-10-18T04:40:06.279572+00:00",
+      "name": "validate_input",
+      "started_at": "2026-10-18T04:40:06.279565+00:00",
+      "status": "ACCEPTED"
+    },
+    {
+      "completed_at": "2026-10-18T04:40:06.286767+00:00",
+      "name": "guardrail_pre",
+      "notes": "not_screened (local edition)",
+      "started_at": "2026-10-18T04:40:06.286753+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "completed_at": "2026-10-18T04:40:06.290361+00:00",
+      "name": "plan_chunks",
+      "started_at": "2026-10-18T04:40:06.290354+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:32.455823+00:00",
+      "input_tokens": 1380,
+      "name": "generate",
+      "output_tokens": 2051,
+      "started_at": "2026-10-18T04:40:32.455551+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:32.458941+00:00",
+      "name": "guardrail_post",
+      "notes": "not_screened (local edition)",
+      "started_at": "2026-10-18T04:40:32.458936+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:38.835011+00:00",
+      "input_tokens": 4191,
+      "name": "critique",
+      "output_tokens": 1004,
+      "started_at": "2026-10-18T04:40:38.832921+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "accepted": false,
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:38.835150+00:00",
+      "name": "critique_verdict",
+      "started_at": "2026-10-18T04:40:38.835143+00:00",
+      "status": "REJECTED"
+    },
+    {
+      "accepted": false,
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:38.835158+00:00",
+      "name": "critique_verdict",
+      "started_at": "2026-10-18T04:40:38.835156+00:00",
+      "status": "REJECTED"
+    },
+    {
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:38.840843+00:00",
+      "name": "quality_gate",
+      "started_at": "2026-10-18T04:40:38.840833+00:00",
+      "status": "RETRY"
+    },
+    {
+      "attempt": 1,
+      "completed_at": "2026-10-18T04:40:38.847536+00:00",
+      "name": "regenerate_rejected",
+      "started_at": "2026-10-18T04:40:38.847516+00:00",
+      "status": "RETRY"
+    },
+    {
+      "attempt": 2,
+      "completed_at": "2026-10-18T04:40:55.920166+00:00",
+      "input_tokens": 1380,
+      "name": "generate",
+      "output_tokens": 2355,
+      "started_at": "2026-10-18T04:40:55.919816+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "attempt": 2,
+      "completed_at": "2026-10-18T04:40:55.924830+00:00",
+      "name": "guardrail_post",
+      "notes": "not_screened (local edition)",
+      "started_at": "2026-10-18T04:40:55.924821+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "attempt": 2,
+      "completed_at": "2026-10-18T04:41:01.452992+00:00",
+      "input_tokens": 4329,
+      "name": "critique",
+      "output_tokens": 987,
+      "started_at": "2026-10-18T04:41:01.452808+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "accepted": true,
+      "attempt": 2,
+      "completed_at": "2026-10-18T04:41:01.453012+00:00",
+      "name": "critique_verdict",
+      "started_at": "2026-10-18T04:41:01.453010+00:00",
+      "status": "ACCEPTED"
+    },
+    {
+      "accepted": true,
+      "attempt": 2,
+      "completed_at": "2026-10-18T04:41:01.453015+00:00",
+      "name": "critique_verdict",
+      "started_at": "2026-10-18T04:41:01.453014+00:00",
+      "status": "ACCEPTED"
+    },
+    {
+      "attempt": 2,
+      "completed_at": "2026-10-18T04:41:01.454619+00:00",
+      "name": "quality_gate",
+      "started_at": "2026-10-18T04:41:01.454614+00:00",
+      "status": "ACCEPTED"
+    },
+    {
+      "completed_at": "2026-10-18T04:41:01.460578+00:00",
+      "name": "publish_chunk",
+      "started_at": "2026-10-18T04:41:01.460574+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "completed_at": "2026-10-18T04:41:01.462644+00:00",
+      "name": "finalize_set",
+      "started_at": "2026-10-18T04:41:01.462640+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "completed_at": "2026-10-18T04:41:10.053317+00:00",
+      "input_tokens": 0,
+      "name": "compose_test_set",
+      "output_tokens": 0,
+      "started_at": "2026-10-18T04:41:10.052798+00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "completed_at": "2026-10-18T04:41:10.056634+00:00",
+      "name": "publish_completed",
+      "started_at": "2026-10-18T04:41:10.056625+00:00",
+      "status": "COMPLETED"
+    }
+  ]
+}

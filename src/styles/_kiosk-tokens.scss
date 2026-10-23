@@ -1,0 +1,50 @@
+// The kiosk's own tokens, from the approved mockup (Version 6, apollo-kiosk-mockup.html lines 18-61):
+// the NUS frame colours (start-up and credits pages only, K22) and the Chora product colours
+// the scenes use, with the gold curiosity ramp (R61; never a red button).
+// The font is the bundled Inter (variable, @fontsource-variable/inter) first; the Chinese
+// interface falls back to the system's Chinese face.
+:root {
+  --nus-blue: #003d7c;
+  --nus-blue-deep: #002c5c;
+  --nus-blue-ink: #001b3a;
+  --nus-orange: #ef7c00;
+  --on-orange: #1e293b; // 5.3:1 on NUS orange; never white on orange
+  --frame-muted: rgba(255, 255, 255, 0.78);
+  --frame-faint: rgba(255, 255, 255, 0.56);
+  --frame-hair: rgba(255, 255, 255, 0.16);
+  --text-main: #1e293b;
+  --text-muted: #485768;
+  --text-faint: #6b7d92;
+  --hair: rgba(30, 41, 59, 0.1);
+  --hair-strong: rgba(30, 41, 59, 0.18);
+  --primary: #1976d2;
+  --primary-hover: #1565c0;
+  --primary-strong: #0d47a1;
+  --primary-bg: rgba(25, 118, 210, 0.1);
+  --curiosity: #d97706;
+  --curiosity-fill: #f59e0b;
+  --curiosity-ink: #1e293b;
+  --curiosity-strong: #854d0e;
+  --curiosity-bg: rgba(245, 158, 11, 0.12);
+  --companion: #be185d;
+  --companion-bg: rgba(190, 24, 93, 0.1);
+  --success: #0f7a4d;
+  --success-strong: #0c6640;
+  --success-bg: rgba(15, 122, 77, 0.1);
+  --warning: #b45309;
+  --warning-strong: #92400e;
+  --warning-bg: rgba(245, 158, 11, 0.14);
+  --danger: #b42318;
+  --danger-bg: rgba(180, 35, 24, 0.1);
+  --unknown: #5a6b80;
+  --unknown-strong: #4a5a6e;
+  --unknown-bg: rgba(100, 116, 139, 0.12);
+  --glass: rgba(255, 255, 255, 0.94);
+  --ease-reveal: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --font: 'Inter Variable', 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); set.hawker.unesco.r3, option 2015",
+  "method": "POST",
+  "path": "/api/v1/me/goals/1948dea7-3474-7a37-9b70-a20c2f4d8d16/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "df1b5701-d242-76a8-8502-8397e7021366",
+    "selected_option_id": "a9ffd11325f06787"
+  },
+  "status": 200,
+  "body": {
+    "correct": false,
+    "rung": 3,
+    "is_refresher": false,
+    "counted": false,
+    "cleared_rung": 0,
+    "won": false,
+    "paced_today": false,
+    "rungs_cleared": 2,
+    "current_rung_correct": 0,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "ec67f6ed3435d9f5",
+    "explainer": "UNESCO inscribed Singapore’s hawker culture in December 2020."
+  }
+}

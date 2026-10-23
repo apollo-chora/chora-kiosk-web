@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.water.res",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/e75f2ccc-78c7-7179-965d-d0371968305f/dismiss",
+  "status": 200,
+  "body": {
+    "suggestionId": "e75f2ccc-78c7-7179-965d-d0371968305f",
+    "kind": "concept",
+    "status": "dismissed",
+    "title": "Marina Barrage",
+    "focalConceptId": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+    "rationale": "A dam across Marina Channel that made a city-centre reservoir and eases floods.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T06:35:50Z"
+  }
+}

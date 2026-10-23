@@ -1,0 +1,125 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_questions_handler.go (status ready, sanitised: is_correct and explainer stripped, options re-keyed by served_id.go and sorted; V5 trace); set.nature.otters.r3; the question of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/me/goals/ee509ced-84c3-7947-b40e-aaac7b613781/campaign/questions",
+  "query": {
+    "concept_id": "9e7abbb8-d7fb-75d1-b444-96cac1a15cd5",
+    "rung": "3"
+  },
+  "status": 200,
+  "body": {
+    "status": "ready",
+    "concept_id": "9e7abbb8-d7fb-75d1-b444-96cac1a15cd5",
+    "concept_key": "smooth-coated-otters",
+    "rung": 3,
+    "questions": {
+      "candidates": [
+        {
+          "question_type": "mcq",
+          "stem": "Smooth-coated otters are back in Singapore’s waterways. What do they mostly eat?",
+          "options": [
+            {
+              "option_id": "2f89d506931db2ff",
+              "label": "Fish"
+            },
+            {
+              "option_id": "91804987038ebf62",
+              "label": "Insects"
+            },
+            {
+              "option_id": "b8909eed90a918de",
+              "label": "Seeds"
+            },
+            {
+              "option_id": "ec8ba28e3dae6f06",
+              "label": "Leaves"
+            }
+          ]
+        }
+      ]
+    },
+    "source": "question_bank",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:42:40Z",
+        "completed_at": "2026-10-20T05:42:44Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:42:40Z",
+        "completed_at": "2026-10-20T05:42:44Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:42:40Z",
+        "completed_at": "2026-10-20T05:42:44Z"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:42:44Z",
+        "completed_at": "2026-10-20T05:42:48Z",
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:42:54Z",
+        "completed_at": "2026-10-20T05:42:58Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:42:58Z",
+        "completed_at": "2026-10-20T05:43:02Z",
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:43:02Z",
+        "completed_at": "2026-10-20T05:43:06Z",
+        "attempt": 1,
+        "accepted": true
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:43:06Z",
+        "completed_at": "2026-10-20T05:43:10Z",
+        "attempt": 1
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:06Z",
+        "completed_at": "2026-10-20T05:43:10Z"
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:06Z",
+        "completed_at": "2026-10-20T05:43:10Z"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:43:06Z",
+        "completed_at": "2026-10-20T05:43:10Z"
+      }
+    ],
+    "trace_id": "2068cf85e7f03ece28d51860ba317675"
+  }
+}

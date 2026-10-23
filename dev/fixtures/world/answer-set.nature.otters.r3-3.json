@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); set.nature.otters.r3, option Seeds",
+  "method": "POST",
+  "path": "/api/v1/me/goals/ee509ced-84c3-7947-b40e-aaac7b613781/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "9e7abbb8-d7fb-75d1-b444-96cac1a15cd5",
+    "selected_option_id": "b8909eed90a918de"
+  },
+  "status": 200,
+  "body": {
+    "correct": false,
+    "rung": 3,
+    "is_refresher": false,
+    "counted": false,
+    "cleared_rung": 0,
+    "won": false,
+    "paced_today": false,
+    "rungs_cleared": 2,
+    "current_rung_correct": 0,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "2f89d506931db2ff",
+    "explainer": "They mostly eat fish, so their return is a sign of healthier rivers and reservoirs."
+  }
+}

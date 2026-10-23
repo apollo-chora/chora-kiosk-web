@@ -1,0 +1,49 @@
+<div class="hall">
+  <div class="kicker on-blue">{{ 'hall.kicker' | translate }}</div>
+  <h1>{{ 'hall.title' | translate }}</h1>
+  <p class="lede">{{ 'hall.sub' | translate }}</p>
+  <div class="cards">
+    @for (c of learnerCards; track c.to) {
+      <button class="ex-card glass" data-act="open" [attr.data-to]="c.to" (click)="open(c.to)">
+        <div class="art">
+          @if (c.art) {
+            <kiosk-card-art [name]="c.art" />
+          } @else {
+            <div class="card-mates">
+              @for (m of mates(); track m.id) {
+                <div class="cx-art cx-art--md"><chora-breed-art [species]="m.species" [stage]="m.stage" size="md" [bare]="true" [altText]="m.name" /></div>
+              }
+            </div>
+          }
+        </div>
+        <h3>{{ c.key + '.title' | translate }}</h3>
+        <p>{{ c.key + '.body' | translate }}</p>
+        <div class="foot">
+          <span class="time">{{ 'ex.minute' | translate }}</span><span class="go"><kiosk-icon name="arrow" /></span>
+        </div>
+      </button>
+    }
+    <button class="ex-card engine-card" data-act="open" data-to="engine" (click)="open('engine')">
+      <div class="art"><kiosk-card-art name="card_engine" /></div>
+      <div class="kicker on-blue">{{ 'ex.engine.kicker' | translate }}</div>
+      <h3>{{ 'ex.engine.title' | translate }}</h3>
+      <p>{{ 'ex.engine.body' | translate }}</p>
+      <div class="foot">
+        <span class="time">{{ 'ex.minutes' | translate }}</span><span class="go"><kiosk-icon name="arrow" /></span>
+      </div>
+    </button>
+    <button class="ex-card glass own-card" data-act="openOwn" data-to="own" (click)="openOwn()">
+      <div class="art"><chora-breed-art species="owl" [stage]="0" size="md" [bare]="true" [altText]="'own.tile.title' | translate" /></div>
+      <h3>{{ 'own.tile.title' | translate }}</h3>
+      <p>{{ 'own.tile.body' | translate }}</p>
+      <div class="foot">
+        <span class="time">{{ 'ex.minute' | translate }}</span><span class="go"><kiosk-icon name="arrow" /></span>
+      </div>
+    </button>
+  </div>
+  <div class="replay">
+    <button class="link" data-act="replayHook" (click)="store.startOver()">{{ 'hall.replay' | translate }}</button>
+  </div>
+</div>
+
+<ng-template #footer><kiosk-tour-footer /></ng-template>

@@ -1,0 +1,143 @@
+<div class="studio sub-a" [class.ro]="reviewing()">
+  <div class="studio-head">
+    <div>
+      <div class="kicker on-blue">{{ 'h4.kickerA' | translate }}</div>
+      <h2>{{ 'h4.titleA' | translate }}</h2>
+    </div>
+    <span class="role-chip"><kiosk-icon name="hat" />{{ 'h4.role' | translate }}</span>
+  </div>
+
+  @switch (studio.status()) {
+    @case ('failed') {
+      <div class="draft glass"><div class="msg-error">{{ 'hook.loadFailed' | translate }}</div></div>
+    }
+    @case ('ready') {
+      @if (studio.draft(); as d) {
+        <div class="draft glass">
+          <div class="label">
+            <span class="dot"></span>{{ labelKey() | translate }}
+            @if (!studio.editing() && !reviewing()) {
+              <button class="link he-open" data-act="handEdit" (click)="openEdit()"><kiosk-icon name="pen" />{{ 'he.open' | translate }}</button>
+            }
+          </div>
+          @if (studio.editing()) {
+            <form class="hand-edit" (submit)="saveEdit($event)">
+              <chora-question-editor [(question)]="editQ" testIdPrefix="h4" />
+              <div class="he-acts">
+                <button class="btn btn-primary btn-sm" type="submit" [disabled]="!canSave()">{{ 'he.save' | translate }}</button>
+                <button class="link" type="button" data-act="handCancel" (click)="studio.cancelEdit()">{{ 'he.cancel' | translate }}</button>
+              </div>
+            </form>
+          } @else {
+            <p class="stem" kioskContent>{{ d.question.prompt }}</p>
+            <div class="draft-opts">
+              @for (o of d.question.options; track $index) {
+                <div class="dopt" [class.key]="o.is_correct">
+                  <span class="mk">{{ letter($index) }}</span><span kioskContent>{{ o.label }}</span>
+                  @if (o.is_correct) {
+                    <em>{{ 'draft.key' | translate }}</em>
+                  }
+                </div>
+              }
+            </div>
+            @if (explainer()) {
+              <p class="d-explain">{{ 'draft.explainLabel' | translate }} <span kioskContent>{{ explainer() }}</span></p>
+            }
+            <p class="pic-next">{{ 'draft.picNext' | translate }}</p>
+          }
+          @if (handLast()) {
+            <div class="critic"><kiosk-icon name="info" /><span>{{ 'critic.handText' | translate: { v: studio.criticCheckedVersion() } }}</span></div>
+          } @else if (criticKey(); as key) {
+            <div class="critic" [class.ok]="d.critic?.accepted && !d.critic?.notes">
+              <kiosk-icon [name]="d.critic?.accepted && !d.critic?.notes ? 'check' : 'info'" />
+              <span
+                >{{ key | translate }}
+                @if (d.critic?.notes) {
+                  <span kioskContent>{{ d.critic?.notes }}</span>
+                }
+              </span>
+            </div>
+          }
+          <kiosk-studio-history />
+        </div>
+
+        <div class="imgcard glass words">
+          <div class="head">
+            <b>{{ 'words.ask' | translate }}</b
+            ><button class="link" data-act="xray" [attr.data-kind]="xrayKind()" (click)="bts.open(xrayKind())">{{ 'q.how' | translate }}</button>
+          </div>
+          @if (reviewing()) {
+            <div class="row">
+              <span class="rv-note"><kiosk-icon name="check" />{{ 'rv.done4a' | translate }}</span><span class="rv-next">{{ 'rv.next' | translate }}</span>
+            </div>
+          } @else {
+            <p class="words-note">{{ 'words.note' | translate }}</p>
+          }
+          <div class="chips" id="chips">
+            @for (c of chips; track c) {
+              <button class="chip" [class.used]="studio.used().has(c)" data-act="revText" [attr.data-kind]="c" [disabled]="chipOff(c)" (click)="studio.chip(c)">
+                {{ 'chip.' + c | translate }}
+              </button>
+            }
+          </div>
+          @if (!reviewing() && !studio.editing()) {
+            <form class="ask" (submit)="sendTyped($event)">
+              <input
+                id="revtextinput"
+                type="text"
+                maxlength="140"
+                autocomplete="off"
+                [placeholder]="'input.phText' | translate"
+                [value]="typedText()"
+                (input)="typedText.set($any($event.target).value)" />
+              <button class="live-btn sm" type="submit" data-act="live" [attr.data-key]="liveKey" [disabled]="!wordsOn() || busy() || sendOff()">
+                <span class="live-dot" aria-hidden="true"></span>
+                <span class="live-tag">{{ 'live.tag' | translate }}</span>
+                <span class="live-label">{{ 'live.send' | translate }}</span>
+                <span class="live-eta">{{ waitKey | translate }}</span>
+              </button>
+            </form>
+            @switch (wordsWhyOff()) {
+              @case ('busy') {
+                @if (!calling()) {
+                  <span class="live-why">{{ 'live.busy' | translate }}</span>
+                }
+              }
+              @case (null) {}
+              @default {
+                <span class="live-why">{{ 'live.off' | translate }}</span>
+              }
+            }
+          }
+          <!-- K189 (3): "Redo it" shows from the start, greyed until a change exists to redo; K186: gone once its redo is live. -->
+          <div id="revstatus">
+            @if (calling()) {
+              <kiosk-live-row [liveKey]="liveKey" kind="words" [label]="'live.redo' | translate" />
+            } @else {
+              @if (studio.change(); as ch) {
+                @if (ch.state === 'failed') {
+                  <div class="msg-error">{{ ch.key | translate: ch.params }}</div>
+                }
+              }
+              <div class="live-row-line">
+                @if (last(); as r) {
+                  @if (r.how !== 'hand') {
+                    <span class="badge ok"><kiosk-icon name="check" />{{ 'rev.doneText' | translate }}</span>
+                  }
+                }
+                <kiosk-live-row
+                  [liveKey]="liveKey"
+                  kind="words"
+                  [label]="'live.redo' | translate"
+                  [params]="studio.redoParams()"
+                  [preparedAt]="redoStamp()"
+                  [disabled]="reviewing() || studio.editing() || !studio.redoParams()" />
+              </div>
+            }
+          </div>
+          <div class="hitl-note"><kiosk-icon name="hat" /><span>{{ 'he.why' | translate }}</span></div>
+        </div>
+      }
+    }
+  }
+</div>

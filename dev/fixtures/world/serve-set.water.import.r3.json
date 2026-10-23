@@ -1,0 +1,125 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_questions_handler.go (status ready, sanitised: is_correct and explainer stripped, options re-keyed by served_id.go and sorted; V5 trace); set.water.import.r3; the question of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/me/goals/8897f102-bb85-7701-ba94-9c60bbca2258/campaign/questions",
+  "query": {
+    "concept_id": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+    "rung": "3"
+  },
+  "status": 200,
+  "body": {
+    "status": "ready",
+    "concept_id": "069bad0b-755f-7ed8-8bdb-9f3403c50e26",
+    "concept_key": "imported-water",
+    "rung": 3,
+    "questions": {
+      "candidates": [
+        {
+          "question_type": "mcq",
+          "stem": "Singapore’s water agreement with Malaysia ends in 2061. Which plan best prepares the city for that day?",
+          "options": [
+            {
+              "option_id": "306c9ae82c48dd28",
+              "label": "Build more NEWater and desalination plants"
+            },
+            {
+              "option_id": "c6121e185c3314b9",
+              "label": "Close some reservoirs to cut costs"
+            },
+            {
+              "option_id": "e2b08b52fb6494ad",
+              "label": "Buy a bigger share of Johor’s water now"
+            },
+            {
+              "option_id": "efe4228fa1d917ce",
+              "label": "Stop collecting rain in reservoirs"
+            }
+          ]
+        }
+      ]
+    },
+    "source": "question_bank",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:41:00Z",
+        "completed_at": "2026-10-20T05:41:04Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:00Z",
+        "completed_at": "2026-10-20T05:41:04Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:00Z",
+        "completed_at": "2026-10-20T05:41:04Z"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:04Z",
+        "completed_at": "2026-10-20T05:41:08Z",
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:14Z",
+        "completed_at": "2026-10-20T05:41:18Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:18Z",
+        "completed_at": "2026-10-20T05:41:22Z",
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:41:22Z",
+        "completed_at": "2026-10-20T05:41:26Z",
+        "attempt": 1,
+        "accepted": true
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:41:26Z",
+        "completed_at": "2026-10-20T05:41:30Z",
+        "attempt": 1
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:26Z",
+        "completed_at": "2026-10-20T05:41:30Z"
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:26Z",
+        "completed_at": "2026-10-20T05:41:30Z"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:41:26Z",
+        "completed_at": "2026-10-20T05:41:30Z"
+      }
+    ],
+    "trace_id": "34ae5915f00c10b250f07e8ff0af3f01"
+  }
+}

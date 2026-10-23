@@ -1,0 +1,26 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_answers_handler.go (campaignAnswerResp; 2 correct clear a rung, campaign.go:52); set.hawker.kopi.r4, option Black coffee with sugar",
+  "method": "POST",
+  "path": "/api/v1/me/goals/1948dea7-3474-7a37-9b70-a20c2f4d8d16/campaign/questions/answer",
+  "match_body": {
+    "concept_id": "5c2c4303-998d-7519-a7ce-74a445932a6f",
+    "selected_option_id": "089e0e2973cf0e12"
+  },
+  "status": 200,
+  "body": {
+    "correct": true,
+    "rung": 4,
+    "is_refresher": false,
+    "counted": true,
+    "cleared_rung": 0,
+    "won": false,
+    "paced_today": false,
+    "rungs_cleared": 3,
+    "current_rung_correct": 1,
+    "needed_correct": 2,
+    "retention_r": 1,
+    "correct_option_id": "089e0e2973cf0e12",
+    "explainer": "Kopi O is black coffee with sugar. Kopi C adds evaporated milk; plain kopi comes with condensed milk."
+  }
+}

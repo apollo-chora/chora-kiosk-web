@@ -1,0 +1,14 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "edge weakness_resume_handler.go:48 (the orchestrator's answer verbatim, weakness_router.py _status_for); paper.water.essay",
+  "method": "POST",
+  "path": "/api/v1/me/growth-edges/uploads/14fe892c-e979-75fd-92d2-6a3486c085fe/resume",
+  "status": 200,
+  "body": {
+    "upload_id": "14fe892c-e979-75fd-92d2-6a3486c085fe",
+    "status": "completed",
+    "panel": null,
+    "interrupted": false,
+    "governance_status": "approved"
+  }
+}

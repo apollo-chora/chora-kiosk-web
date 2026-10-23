@@ -1,0 +1,17 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption concept_suggestion_handler.go:590-617 (200, the suggestion DTO); fresh.nature.root",
+  "method": "POST",
+  "path": "/api/v1/me/concept-graph/suggestions/95a8c05d-469a-7ba1-904c-89447f1ce226/accept",
+  "status": 200,
+  "body": {
+    "suggestionId": "95a8c05d-469a-7ba1-904c-89447f1ce226",
+    "kind": "concept",
+    "status": "accepted",
+    "title": "OneMillionTrees movement",
+    "focalConceptId": "098a7404-7057-743c-9c7e-7f3089251951",
+    "rationale": "A drive to plant one million more trees across Singapore from 2020 to 2030.",
+    "modelId": "gpt-oss:120b",
+    "createdAt": "2026-10-20T05:37:30Z"
+  }
+}

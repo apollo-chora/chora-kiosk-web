@@ -1,0 +1,299 @@
+{
+  "recorded": "2026-10-19T04:41:32+00:00 through the kiosk edge http://127.0.0.1:18080: GET /api/v1/test-sets/{nature} and, after POST /api/v1/assessments with shuffle_mcq_options true and POST .../submissions, GET /api/v1/me/assessments/{id} (K145). Verbatim.",
+  "created": {
+    "assessment_id": "01a15276-fe9f-7103-ae1b-532c7621f664",
+    "created_at": "2026-10-19T04:41:32.575138296Z",
+    "grading_config_snapshot": {
+      "mcq_dispatch": "DETERMINISTIC",
+      "oe_dispatch": "LLM_EVALUATOR_AGENT",
+      "llm_evaluator_model_tier": "T1",
+      "passing_threshold_percent": 70,
+      "per_question_feedback_enabled": false,
+      "auto_release": false
+    },
+    "instructor_gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+    "invited_gcids": [
+      "01a1411f-7f22-76c6-ab1d-362dddc20413"
+    ],
+    "max_attempts": 1,
+    "published_at": "2026-10-19T04:41:32.574526379Z",
+    "question_count": 3,
+    "scheduled_close_at": "2026-10-20T04:41:32.574526379Z",
+    "scheduled_open_at": "2026-10-19T04:41:32.574526379Z",
+    "shuffle_mcq_options": true,
+    "shuffle_questions": false,
+    "state": "OPEN",
+    "tenant_id": "01a1411f-7f20-7834-bdd5-6f80318297bf",
+    "test_set_id": "01a14d5d-9011-7043-b2dc-3844a25a2f15",
+    "test_set_revision_snapshot": 1,
+    "title": "Nature Ranger: Unit 1 quiz",
+    "total_points": 30,
+    "updated_at": "2026-10-19T04:41:32.574526379Z"
+  },
+  "started": {
+    "attempt_number": 1,
+    "closes_at": "2026-10-20T04:41:32.574526Z",
+    "idempotent_replay": false,
+    "opens_at": "2026-10-19T04:41:32.574526Z",
+    "submission_id": "01a15276-fead-73bd-aea6-d77197ed110c",
+    "time_limit_seconds": 86400
+  },
+  "test_set": {
+    "author_gcid": "01a1411f-7f22-76c6-ab1d-362dddc20413",
+    "created_at": "2026-10-18T04:55:39.793851Z",
+    "description": "",
+    "id": "01a14d5d-9011-7043-b2dc-3844a25a2f15",
+    "published_at": "2026-10-18T04:55:41.5814Z",
+    "question_count": 3,
+    "questions": [
+      {
+        "added_at": "2026-10-18T04:55:39.796461Z",
+        "display_order": 1,
+        "id": "01a14d5d-9014-7226-95ca-1dd34807dff2",
+        "payload_snapshot": {
+          "stem": "What are Singapore's park connectors built for?",
+          "options": [
+            {
+              "label": "Giving buses a faster route across the island",
+              "explainer": "Park connectors are designed for pedestrians and cyclists, not for bus traffic or public transport shortcuts.",
+              "option_id": "27b9a4e9-a65e-47d6-9146-5ef0e8f63d78",
+              "is_correct": false
+            },
+            {
+              "label": "Linking parks so people can walk, jog and cycle between them",
+              "explainer": "Park connectors form a network of green corridors that connect parks and nature areas for walking, jogging, and cycling.",
+              "option_id": "55c6ec52-867a-46dc-ad8b-8622e9132ce4",
+              "is_correct": true
+            },
+            {
+              "label": "Fencing nature reserves off from visitors",
+              "explainer": "Park connectors aim to improve access to green spaces, not to block visitors from nature reserves.",
+              "option_id": "47c70105-92bb-4da1-8908-6116c18016b3",
+              "is_correct": false
+            },
+            {
+              "label": "Carrying rainwater from parks to the reservoirs",
+              "explainer": "Park connectors are recreational routes, not drainage channels; Singapore's drainage network handles rainwater conveyance to reservoirs.",
+              "option_id": "a63d9569-973c-413b-babb-d4dbcfbc8006",
+              "is_correct": false
+            }
+          ]
+        },
+        "points": 10,
+        "question_atom_id": "01a14d5d-8700-790d-ae75-cea661df7a5e",
+        "question_id": "01a14d5d-8701-717a-8514-04ab5f5a6217",
+        "question_type": "mcq",
+        "snapshot_at": "2026-10-18T04:55:37.473097Z",
+        "test_set_id": "01a14d5d-9011-7043-b2dc-3844a25a2f15",
+        "test_set_question_id": "01a14d5d-9014-7226-95ca-1dd34807dff2",
+        "updated_at": "2026-10-18T04:55:39.796461Z"
+      },
+      {
+        "added_at": "2026-10-18T04:55:39.797908Z",
+        "display_order": 2,
+        "id": "01a14d5d-9015-7bed-9273-70e1011e7ed5",
+        "payload_snapshot": {
+          "stem": "Which visitors make Sungei Buloh Wetland Reserve famous every year?",
+          "options": [
+            {
+              "label": "Monarch butterflies on their way south",
+              "explainer": "Monarch butterflies migrate within the Americas, not through Singapore, so they do not stop at Sungei Buloh on their way south.",
+              "option_id": "aadc8061-ffb8-4508-8971-29bf48dce4e6",
+              "is_correct": false
+            },
+            {
+              "label": "Sea turtles that come ashore to nest",
+              "explainer": "Sea turtles nest on sandy beaches, not in Sungei Buloh's mangrove and mudflat habitats, so they are not an annual highlight there.",
+              "option_id": "4c350116-3c67-4cd2-bfbd-cf0dad759059",
+              "is_correct": false
+            },
+            {
+              "label": "Whale sharks that feed among its mangroves",
+              "explainer": "Whale sharks are marine filter feeders that do not enter the shallow mangrove channels of Sungei Buloh, so they are not its famous visitors.",
+              "option_id": "74bc966c-1ec4-4606-b884-cbc24695f027",
+              "is_correct": false
+            },
+            {
+              "label": "Migratory shorebirds that stop to rest and feed",
+              "explainer": "Every year, large flocks of migratory shorebirds stop at Sungei Buloh's mudflats to rest and refuel, making it a key stopover along the East Asian–Australasian Flyway.",
+              "option_id": "00092370-f53d-47c0-8532-3cb5c5cfa321",
+              "is_correct": true
+            }
+          ]
+        },
+        "points": 10,
+        "question_atom_id": "01a14d5d-8708-7841-b024-c152e0af5b68",
+        "question_id": "01a14d5d-870b-75bd-b599-7be7de9974ee",
+        "question_type": "mcq",
+        "snapshot_at": "2026-10-18T04:55:37.483376Z",
+        "test_set_id": "01a14d5d-9011-7043-b2dc-3844a25a2f15",
+        "test_set_question_id": "01a14d5d-9015-7bed-9273-70e1011e7ed5",
+        "updated_at": "2026-10-18T04:55:39.797908Z"
+      },
+      {
+        "added_at": "2026-10-18T04:55:39.799478Z",
+        "display_order": 3,
+        "id": "01a14d5d-9017-78e9-8a15-3d8862bdc19d",
+        "payload_snapshot": {
+          "stem": "How do roadside trees help a hot city like Singapore?",
+          "options": [
+            {
+              "label": "Their shade and the water their leaves give off cool the air",
+              "explainer": "This is correct because shade reduces surface heating and transpiration releases water vapour, cooling the surrounding air.",
+              "option_id": "67067e44-8a50-40fb-bf42-1e44130ddf37",
+              "is_correct": true
+            },
+            {
+              "label": "They store the day's heat and release it at night",
+              "explainer": "Trees actually cool their surroundings during the day through shade and evaporation, rather than storing heat to release later.",
+              "option_id": "d11ceeb8-3ade-4e99-bb32-ecc9a0853d69",
+              "is_correct": false
+            },
+            {
+              "label": "They bring rain to the streets every afternoon",
+              "explainer": "Trees do not cause daily rain, as rainfall depends on weather systems and larger climate patterns rather than roadside vegetation.",
+              "option_id": "510a8b74-a776-46da-9ae8-c67d47864bd1",
+              "is_correct": false
+            },
+            {
+              "label": "They block the sea breeze from reaching the roads",
+              "explainer": "Trees may slow wind slightly but they do not stop sea breezes, and they can still allow air movement that helps cool the area.",
+              "option_id": "585a6400-42b2-4bb4-b68b-47f2322a4ef3",
+              "is_correct": false
+            }
+          ]
+        },
+        "points": 10,
+        "question_atom_id": "01a14d5d-8719-7888-b459-f63366a3342f",
+        "question_id": "01a14d5d-871a-71e1-bcd0-5d63750ab78d",
+        "question_type": "mcq",
+        "snapshot_at": "2026-10-18T04:55:37.498123Z",
+        "test_set_id": "01a14d5d-9011-7043-b2dc-3844a25a2f15",
+        "test_set_question_id": "01a14d5d-9017-78e9-8a15-3d8862bdc19d",
+        "updated_at": "2026-10-18T04:55:39.799478Z"
+      }
+    ],
+    "source_job_id": "01a14d5d-8f37-7e72-be47-fe5cee13cf53",
+    "state": "PUBLISHED",
+    "tenant_id": "01a1411f-7f20-7834-bdd5-6f80318297bf",
+    "test_set_id": "01a14d5d-9011-7043-b2dc-3844a25a2f15",
+    "title": "Nature Ranger: Unit 1 quiz",
+    "total_points": 30,
+    "updated_at": "2026-10-18T04:55:41.58143Z"
+  },
+  "take": {
+    "assessment_id": "01a15276-fe9f-7103-ae1b-532c7621f664",
+    "learner_attempt_count": 1,
+    "learner_latest_submission_id": "01a15276-fead-73bd-aea6-d77197ed110c",
+    "learner_latest_submission_state": "STARTED",
+    "learner_remaining_attempts": 0,
+    "max_attempts": 1,
+    "question_count": 3,
+    "questions": [
+      {
+        "display_order": 1,
+        "points": 10,
+        "prompt": {
+          "options": [
+            {
+              "label": "Giving buses a faster route across the island",
+              "option_id": "27b9a4e9-a65e-47d6-9146-5ef0e8f63d78",
+              "text": "Giving buses a faster route across the island"
+            },
+            {
+              "label": "Linking parks so people can walk, jog and cycle between them",
+              "option_id": "55c6ec52-867a-46dc-ad8b-8622e9132ce4",
+              "text": "Linking parks so people can walk, jog and cycle between them"
+            },
+            {
+              "label": "Fencing nature reserves off from visitors",
+              "option_id": "47c70105-92bb-4da1-8908-6116c18016b3",
+              "text": "Fencing nature reserves off from visitors"
+            },
+            {
+              "label": "Carrying rainwater from parks to the reservoirs",
+              "option_id": "a63d9569-973c-413b-babb-d4dbcfbc8006",
+              "text": "Carrying rainwater from parks to the reservoirs"
+            }
+          ],
+          "stem": "What are Singapore's park connectors built for?"
+        },
+        "question_atom_id": "01a14d5d-8700-790d-ae75-cea661df7a5e",
+        "question_id": "01a14d5d-8701-717a-8514-04ab5f5a6217",
+        "question_type": "mcq",
+        "test_set_question_id": "01a14d5d-9014-7226-95ca-1dd34807dff2"
+      },
+      {
+        "display_order": 2,
+        "points": 10,
+        "prompt": {
+          "options": [
+            {
+              "label": "Monarch butterflies on their way south",
+              "option_id": "aadc8061-ffb8-4508-8971-29bf48dce4e6",
+              "text": "Monarch butterflies on their way south"
+            },
+            {
+              "label": "Sea turtles that come ashore to nest",
+              "option_id": "4c350116-3c67-4cd2-bfbd-cf0dad759059",
+              "text": "Sea turtles that come ashore to nest"
+            },
+            {
+              "label": "Whale sharks that feed among its mangroves",
+              "option_id": "74bc966c-1ec4-4606-b884-cbc24695f027",
+              "text": "Whale sharks that feed among its mangroves"
+            },
+            {
+              "label": "Migratory shorebirds that stop to rest and feed",
+              "option_id": "00092370-f53d-47c0-8532-3cb5c5cfa321",
+              "text": "Migratory shorebirds that stop to rest and feed"
+            }
+          ],
+          "stem": "Which visitors make Sungei Buloh Wetland Reserve famous every year?"
+        },
+        "question_atom_id": "01a14d5d-8708-7841-b024-c152e0af5b68",
+        "question_id": "01a14d5d-870b-75bd-b599-7be7de9974ee",
+        "question_type": "mcq",
+        "test_set_question_id": "01a14d5d-9015-7bed-9273-70e1011e7ed5"
+      },
+      {
+        "display_order": 3,
+        "points": 10,
+        "prompt": {
+          "options": [
+            {
+              "label": "They store the day's heat and release it at night",
+              "option_id": "d11ceeb8-3ade-4e99-bb32-ecc9a0853d69",
+              "text": "They store the day's heat and release it at night"
+            },
+            {
+              "label": "They block the sea breeze from reaching the roads",
+              "option_id": "585a6400-42b2-4bb4-b68b-47f2322a4ef3",
+              "text": "They block the sea breeze from reaching the roads"
+            },
+            {
+              "label": "They bring rain to the streets every afternoon",
+              "option_id": "510a8b74-a776-46da-9ae8-c67d47864bd1",
+              "text": "They bring rain to the streets every afternoon"
+            },
+            {
+              "label": "Their shade and the water their leaves give off cool the air",
+              "option_id": "67067e44-8a50-40fb-bf42-1e44130ddf37",
+              "text": "Their shade and the water their leaves give off cool the air"
+            }
+          ],
+          "stem": "How do roadside trees help a hot city like Singapore?"
+        },
+        "question_atom_id": "01a14d5d-8719-7888-b459-f63366a3342f",
+        "question_id": "01a14d5d-871a-71e1-bcd0-5d63750ab78d",
+        "question_type": "mcq",
+        "test_set_question_id": "01a14d5d-9017-78e9-8a15-3d8862bdc19d"
+      }
+    ],
+    "scheduled_close_at": "2026-10-20T04:41:32.574526Z",
+    "scheduled_open_at": "2026-10-19T04:41:32.574526Z",
+    "state": "OPEN",
+    "title": "Nature Ranger: Unit 1 quiz",
+    "total_points": 30
+  }
+}

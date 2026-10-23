@@ -1,0 +1,59 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption growth_edge_uploads_handler.go:67-97 (the job; the panel only while AWAITING_REVIEW); paper.water, its panel the mockup world's stand-in",
+  "method": "GET",
+  "path": "/api/v1/me/growth-edges/uploads/14d42c45-fbd5-7cd1-8452-ddfb329a8295",
+  "status": 200,
+  "body": {
+    "upload_id": "14d42c45-fbd5-7cd1-8452-ddfb329a8295",
+    "status": "AWAITING_REVIEW",
+    "review": {
+      "familiar": {
+        "familiar_id": "4468bbd0-6fd6-77dc-aa5f-c38cd27693ea",
+        "name": "Pingu"
+      },
+      "proposed_edges": [
+        {
+          "proposed_edge_id": "7ceb34d5-1906-7f6a-82d9-a2b6bc33f00d",
+          "concept_label": "Singapore's Four National Taps",
+          "summary": "The learner is familiar with the general concept of multiple water sources but is currently conflating rainwater with the broader category of local catchment and missing desalinated water.",
+          "strength": 0.4,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "df3ac2f2-7155-76ab-b0a1-c18eaa94dc2d",
+          "concept_label": "Desalination Process: Salt Removal",
+          "summary": "The learner can identify that filtration occurs in desalination but is unable to distinguish between the role of microfiltration (particle removal) and reverse osmosis (salt removal).",
+          "strength": 0.8,
+          "suggested_difficulty": "standard"
+        },
+        {
+          "proposed_edge_id": "af95b010-2980-7e1e-bfe0-e98b38d0bc2e",
+          "concept_label": "Energy Costs of Desalination",
+          "summary": "The learner attributes the higher cost of desalinated water to the 'cleanliness' of the source water rather than the energy requirements of the process.",
+          "strength": 0.7,
+          "suggested_difficulty": "standard"
+        }
+      ],
+      "candidate_struggles": [],
+      "available_outputs": []
+    }
+  },
+  "variants": [
+    {
+      "after": [
+        "^POST /api/v1/me/growth-edges/uploads/14d42c45-fbd5-7cd1-8452-ddfb329a8295/resume$"
+      ],
+      "status": 200,
+      "body": {
+        "upload_id": "14d42c45-fbd5-7cd1-8452-ddfb329a8295",
+        "status": "COMPLETED",
+        "upserted_growth_edge_ids": [
+          "ad2e6992-c3e4-7a73-89b0-3130b856d6c6",
+          "62f9d45d-5e33-7bff-bb54-681f9dddbcf7",
+          "fa510d66-f14b-76f9-aa52-02fa88512707"
+        ]
+      }
+    }
+  ]
+}

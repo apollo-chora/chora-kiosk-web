@@ -1,0 +1,299 @@
+@switch (story.status()) {
+  @case ('failed') {
+    <div class="caption glass" id="caption">
+      <div class="kicker">{{ 'h1.kicker' | translate }}</div>
+      <p class="msg-error">{{ 'hook.loadFailed' | translate }}</p>
+    </div>
+  }
+  @case ('ready') {
+    @if (story.beat() <= 3 && story.graph(); as graph) {
+      <div class="lens-host" id="lenshost">
+        <!-- Remounted per language: the lens computes its labels with translate.instant(). -->
+        @for (l of [lang()]; track l) {
+          <chora-aplus-concept-lens-map
+            [concepts]="graph.concepts"
+            [edges]="graph.edges"
+            [focusId]="story.lensFocusId()"
+            [rootId]="graph.rootConceptId"
+            [campaign]="graph.campaign ?? null"
+            [fogGhosts]="story.fogGhosts()"
+            [glowIds]="story.glowIds()"
+            [shiftX]="shiftX()"
+            (select)="onSelect($event)"
+            (settled)="drawConnector()" />
+        }
+      </div>
+      <svg class="conn-layer" id="conn" viewBox="0 0 1600 757">
+        @if (connector(); as c) {
+          <path class="conn" id="connpath" [attr.d]="c.d"></path>
+          <circle class="conn-dot" [attr.cx]="c.x1" [attr.cy]="c.y1" r="6"></circle>
+          <circle class="conn-dot" [attr.cx]="c.x2" [attr.cy]="c.y2" r="6"></circle>
+        }
+      </svg>
+
+      <div class="caption glass" id="caption">
+        @switch (story.beat()) {
+          @case (1) {
+            <div class="kicker">{{ 'h1.kicker' | translate }}</div>
+            <h2>{{ 'h1.title' | translate }}</h2>
+            <p>{{ (story.skipped().length ? (story.frontier().length ? 'h1.bodyOne' : 'h1.bodyNone') : 'h1.body') | translate }}</p>
+            @if (story.reviewing()) {
+              <ng-container *ngTemplateOutlet="done; context: { note: ('rv.picked' | translate: { c: branchTitle() }) }" />
+            } @else {
+              <div class="row">
+                <span class="hint"><kiosk-icon name="pointer" />{{ (story.skipped().length ? (story.frontier().length ? 'h1.hintOne' : 'h1.hintNone') : 'h1.hint') | translate }}</span>
+              </div>
+            }
+          }
+          @case (2) {
+            <div class="kicker">{{ 'h2.kicker' | translate }}</div>
+            <h2>{{ (story.branchCount() === 1 ? 'h2.titleOne' : 'h2.title') | translate: { n: branchN() } }}</h2>
+            <p>{{ 'h2.body' | translate }}</p>
+            @if (story.reviewing()) {
+              <ng-container *ngTemplateOutlet="done; context: { note: ('rv.added' | translate) }" />
+            } @else {
+              <!-- K189 (1): Next waits until the idea step 3 asks about is on the map, and the card says so. -->
+              @if (story.waitsFor(); as c) {
+                <div class="row">
+                  <span class="hint wait-ro"><kiosk-icon name="info" />{{ 'h2.waitRO' | translate: { c } }}</span>
+                </div>
+              } @else if (story.fullSkip(); as f) {
+                <!-- K190: the idea holds six, so step 3's idea cannot join and Next skips step 3. -->
+                <div class="row">
+                  <span class="hint full-skip"><kiosk-icon name="info" />{{ 'h2.fullSkip' | translate: f }}</span>
+                </div>
+              }
+              <div class="row">
+                @if (addAll(); as a) {
+                  <button class="btn btn-curiosity" data-act="accept" [disabled]="story.busy()" (click)="story.acceptBranch()">{{ a.key | translate: a.params }}</button>
+                }
+                @if (story.branchUntouched()) {
+                  <button class="link" data-act="skip" [disabled]="story.busy()" (click)="story.skipBranch()">{{ 'h2.skip' | translate }}</button>
+                }
+              </div>
+            }
+          }
+          @case (3) {
+            <div class="kicker">{{ 'h3.kicker' | translate }}</div>
+            @if (!story.panel()) {
+              <h2>{{ 'h3.titleA' | translate: { c: focusTitle() } }}</h2>
+              <p>{{ 'h3.bodyA' | translate }}</p>
+              @if (story.reviewing()) {
+                <ng-container *ngTemplateOutlet="done; context: { note: ('rv.opened' | translate) }" />
+              } @else {
+                <div class="row">
+                  <span class="hint"><kiosk-icon name="pointer" />{{ 'h3.hintA' | translate }}</span>
+                </div>
+              }
+            } @else {
+              <h2>{{ 'h3.titleB' | translate }}</h2>
+              <p>{{ (story.qLive() ? 'h3.bodyLive' : 'h3.bodyB') | translate }}</p>
+              <div class="row">
+                <button class="btn btn-frame btn-sm" data-act="next" (click)="story.next()">{{ 'h3.next' | translate }} <kiosk-icon name="arrow" /></button>
+              </div>
+            }
+          }
+        }
+      </div>
+
+      <div class="kdrawer glass" id="panel" [class.open]="story.drawerOpen()">
+        @if (story.beat() === 2 && story.branch()) {
+          <div class="kd-bar"><span>{{ 'kd.bar' | translate }}</span></div>
+          <h3 class="kd-title">{{ branchTitle() }}</h3>
+          <div class="kd-tabs"><button class="on" tabindex="-1">{{ 'kd.tab.sugg' | translate }}</button></div>
+          <div class="kd-body">
+            @if (list(); as l) {
+              <div class="tier t1 kd-sub">{{ 'kd.suggBy' | translate: { name: story.companionName() } }}</div>
+              @if (l.nothingNew) {
+                <p class="gated sugg-empty" role="status">{{ 'live.suggEmpty' | translate }}</p>
+              }
+              @if (l.rows.length) {
+                <!-- Add alone (R2): a dismissed Reverse osmosis would keep the story from step 3; "Leave them out" declines. -->
+                <div class="tier t2">
+                  <kiosk-sugg-rows [rows]="l.rows" [dismiss]="false" [viewOnly]="story.reviewing()" [disabled]="story.busy()" (decide)="story.addIdea($event.id)" />
+                </div>
+              } @else {
+                <p class="gated sugg-emptied">{{ (l.added || !story.branchUntouched() ? 'kd.sugg.allOnMap' : 'kd.sugg.none') | translate: { name: story.companionName() } }}</p>
+              }
+              <div class="tier t3">
+                <kiosk-live-row
+                  [liveKey]="'sugg:hook:' + story.branch()"
+                  kind="sugg"
+                  [label]="'live.sugg' | translate: { name: story.companionName() }"
+                  [params]="{ focalConceptId: story.branch(), goalId: story.goalId() }"
+                  [preparedAt]="l.preparedAt"
+                  [fallbackAt]="l.fallbackAt"
+                  [additive]="true"
+                  [disabled]="story.reviewing() || story.busy()" />
+              </div>
+            }
+          </div>
+        } @else if (story.panel()) {
+          <div class="kd-bar"><span>{{ 'kd.bar' | translate }}</span></div>
+          <h3 class="kd-title">{{ focusTitle() }}</h3>
+          <div class="kd-tabs"><button class="on" tabindex="-1">{{ 'kd.tab.overview' | translate }}</button></div>
+          <div class="kd-body" [class.ro]="story.reviewing() && story.answer().state === 'none'">
+            <div class="tier t1">
+              <div class="terrain"><span class="explore">{{ 'kd.t.explore' | translate }}</span></div>
+              <div class="camp-line" style="margin-top: 8px">
+                {{ 'kd.claimed' | translate }}
+                @if (story.answer(); as a) {
+                  @if (a.state === 'done' && a.result.counted) {
+                    · {{ 'kd.counted' | translate: { n: a.result.current_rung_correct } }}
+                  }
+                }
+              </div>
+            </div>
+            <div class="tier t2">
+              <div class="ladder">
+                @for (r of rungs; track r) {
+                  <span class="rungpill" [class.now]="r === 1">{{ 'rung.' + r | translate }}</span>
+                }
+              </div>
+            </div>
+            <div class="tier t3" style="display: flex; flex-direction: column; gap: 11px; min-height: 0">
+              <div class="kd-sub">{{ 'panel.practice' | translate }}</div>
+              @switch (story.practice().state) {
+                @case ('none') {
+                  <p class="q-stem">{{ 'kd.noPractice' | translate }}</p>
+                }
+                @case ('failed') {
+                  <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                }
+              }
+              @if (story.practice(); as p) {
+                @if (p.state === 'ready') {
+                  <p class="q-stem">{{ p.question.stem }}</p>
+                  <div class="opts" [class.done]="story.answer().state === 'done'">
+                    @for (o of p.question.options | visitOrder; track o.optionId; let i = $index) {
+                      <button
+                        class="opt"
+                        [class]="'opt ' + optionClass(o.optionId)"
+                        data-act="answer"
+                        [disabled]="story.answer().state !== 'none' || story.reviewing()"
+                        (click)="story.answerWith(o.optionId)">
+                        <span class="mk">{{ markers[i] }}</span><span>{{ o.text }}</span>
+                      </button>
+                    }
+                  </div>
+                  @switch (story.answer().state) {
+                    @case ('checking') {
+                      <div class="verdict" style="background: var(--primary-bg); color: var(--primary-strong)">
+                        <div class="mini-trace"><span class="run">{{ 'q.checking' | translate }}</span></div>
+                      </div>
+                    }
+                    @case ('failed') {
+                      <div class="msg-error">{{ 'hook.loadFailed' | translate }}</div>
+                    }
+                  }
+                  @if (story.answer(); as a) {
+                    @if (a.state === 'done') {
+                      <div class="verdict" kioskReveal [class.ok]="a.result.correct" [class.no]="!a.result.correct">
+                        <b>{{ (a.result.correct ? 'q.right' : 'q.miss') | translate }}</b> {{ a.result.explainer }}<span class="rules">{{ 'q.rules' | translate }}</span>
+                      </div>
+                    }
+                  }
+                  <div class="badges">
+                    <span class="badge"><kiosk-icon name="pen" />{{ 'badge.writer' | translate }}</span>
+                    <span class="badge ok"><kiosk-icon name="check" />{{ 'badge.critic' | translate }}</span>
+                  </div>
+                }
+              }
+              @if (story.focusConcept(); as focus) {
+                <kiosk-live-row
+                  [liveKey]="'q:hook:' + focus.conceptId"
+                  kind="q"
+                  [label]="'live.q' | translate"
+                  [params]="{ goalId: story.goalId(), conceptId: focus.conceptId, rung: story.practiceRung() }"
+                  [preparedAt]="questionPreparedAt()"
+                  [disabled]="story.reviewing()" />
+              }
+              @if (story.questionRun()) {
+                <button class="link" data-act="xray" data-kind="q" (click)="bts.open('q')">{{ 'q.how' | translate }}</button>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    } @else if (story.beat() === 4 && story.sub() === 'b') {
+      <kiosk-studio-b [reviewing]="story.reviewing()" />
+    } @else if (story.beat() === 5) {
+      <div class="closing">
+        <div class="kicker on-blue">{{ 'beat.5' | translate }}</div>
+        <h1>{{ 'h5.line' | translate }}</h1>
+        <p class="sub">{{ 'h5.sub' | translate }}</p>
+        @if (studio.kept(); as k) {
+          <p class="keep-ack kept"><kiosk-icon name="check" />{{ 'h5.kept' | translate: { n: k.n } }}</p>
+        } @else {
+          <p class="keep-ack"><kiosk-icon name="info" />{{ 'h5.notKept' | translate }}</p>
+        }
+        <div class="recap">
+          <span><i></i>{{ 'h5.r1' | translate }}</span><span><i></i>{{ 'h5.r2' | translate }}</span><span><i></i>{{ 'h5.r3' | translate }}</span>
+        </div>
+      </div>
+    } @else if (story.beat() === 4) {
+      <kiosk-studio-a [reviewing]="story.reviewing()" />
+      @if (story.swap()) {
+        <div class="interstitial" id="swap">
+          <div>
+            <div class="hats">
+              <span>{{ 'h4.hatLearner' | translate }}</span><span class="now">{{ 'h4.hatTeacher' | translate }}</span>
+            </div>
+            <h2>{{ 'h4.swapTitle' | translate }}</h2>
+            <p>{{ 'h4.swapBody' | translate }}</p>
+            <button class="btn btn-frame swap-go" data-act="swapGo" (click)="story.dismissSwap()">
+              {{ 'h4.swapGo' | translate }} <kiosk-icon name="arrow" />
+            </button>
+          </div>
+        </div>
+      }
+    }
+  }
+}
+
+<ng-template #done let-note="note">
+  <div class="row">
+    <span class="rv-note"><kiosk-icon name="check" />{{ note }}</span><span class="rv-next">{{ 'rv.next' | translate }}</span>
+  </div>
+</ng-template>
+
+<ng-template #footer>
+  <div class="fb-left">
+    <div class="beats" style="display: flex; gap: 20px">
+      @for (i of beats; track i) {
+        <span
+          class="beat"
+          [class.done]="i < story.beat()"
+          [class.now]="i === story.beat()"
+          style="display: flex; align-items: center; gap: 8px; font: 600 15px/1 var(--font)"
+          [style.color]="i === story.beat() ? 'var(--text-main)' : 'var(--text-faint)'">
+          <i
+            style="width: 12px; height: 12px; border-radius: 50%"
+            [style.background]="i === story.beat() ? 'var(--curiosity-fill)' : i < story.beat() ? 'var(--primary)' : 'rgba(30,41,59,.18)'"
+            [style.box-shadow]="i === story.beat() ? '0 0 0 4px rgba(245,158,11,.25)' : null"></i>
+          {{ 'beat.' + i | translate }}
+          @if (i === 4 && i === story.beat()) {
+            <em class="sub-step">{{ (story.sub() === 'b' ? 'beat.4b' : 'beat.4a') | translate }}</em>
+          }
+        </span>
+      }
+    </div>
+  </div>
+  <div class="fb-right">
+    <kiosk-xray-button [kind]="story.xrayKind()" />
+    @if (story.beat() === 5) {
+      <button class="btn btn-ghost btn-sm" data-act="done" (click)="store.endSession()">{{ 'nav.done' | translate }}</button>
+      <button class="btn btn-curiosity btn-sm" data-act="next" (click)="next()">{{ 'nav.explore' | translate }} <kiosk-icon name="arrow" /></button>
+    } @else {
+      @if (backShown()) {
+        <button class="btn btn-ghost btn-sm" data-act="back" (click)="back()">{{ 'nav.back' | translate }}</button>
+      }
+      @if (story.keepPending()) {
+        <button class="btn btn-ghost btn-sm" data-act="continueNoKeep" (click)="story.continueNoKeep()">{{ 'h4.noKeep' | translate }}</button>
+      }
+      <button class="btn btn-frame btn-sm" data-act="next" [disabled]="story.busy() || story.nextWaits()" (click)="next()">
+        {{ (story.keepPending() ? 'h4.keepGo' : 'nav.next') | translate }} <kiosk-icon name="arrow" />
+      </button>
+    }
+  </div>
+</ng-template>

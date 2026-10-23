@@ -1,0 +1,125 @@
+{
+  "fixture": "KIOSK_DEV_FIXTURE",
+  "source": "consumption goals_campaign_questions_handler.go (status ready, sanitised: is_correct and explainer stripped, options re-keyed by served_id.go and sorted; V5 trace); set.water.res.r6; the question of docs/design/kiosk/apollo-kiosk-mockup.html (Version 6)",
+  "method": "GET",
+  "path": "/api/v1/me/goals/8897f102-bb85-7701-ba94-9c60bbca2258/campaign/questions",
+  "query": {
+    "concept_id": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+    "rung": "6"
+  },
+  "status": 200,
+  "body": {
+    "status": "ready",
+    "concept_id": "58d5d391-bc91-79d5-8798-d96affc33f6c",
+    "concept_key": "reservoirs",
+    "rung": 6,
+    "questions": {
+      "candidates": [
+        {
+          "question_type": "mcq",
+          "stem": "You are planning a new housing estate so that its rain helps fill Singapore’s reservoirs. Which plan fits best?",
+          "options": [
+            {
+              "option_id": "0d3fbcfeffcfd7e2",
+              "label": "Pipe all its rain straight out to sea"
+            },
+            {
+              "option_id": "12f906233942973d",
+              "label": "Pave the whole estate so no puddles form"
+            },
+            {
+              "option_id": "b6477a02e1c2f9f5",
+              "label": "Buy more water from Johor instead"
+            },
+            {
+              "option_id": "f5a65de47ce7f503",
+              "label": "Send its rain through drains and canals into a reservoir"
+            }
+          ]
+        }
+      ]
+    },
+    "source": "question_bank",
+    "pipeline_trace": [
+      {
+        "name": "validate_input",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:40:10Z",
+        "completed_at": "2026-10-20T05:40:14Z"
+      },
+      {
+        "name": "guardrail_pre",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:10Z",
+        "completed_at": "2026-10-20T05:40:14Z",
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "plan_chunks",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:10Z",
+        "completed_at": "2026-10-20T05:40:14Z"
+      },
+      {
+        "name": "generate",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:14Z",
+        "completed_at": "2026-10-20T05:40:18Z",
+        "attempt": 1,
+        "input_tokens": 1820,
+        "output_tokens": 640
+      },
+      {
+        "name": "guardrail_post",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:24Z",
+        "completed_at": "2026-10-20T05:40:28Z",
+        "attempt": 1,
+        "notes": "not_screened (local edition)"
+      },
+      {
+        "name": "critique",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:28Z",
+        "completed_at": "2026-10-20T05:40:32Z",
+        "attempt": 1,
+        "input_tokens": 2110,
+        "output_tokens": 310
+      },
+      {
+        "name": "critique_verdict",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:40:32Z",
+        "completed_at": "2026-10-20T05:40:36Z",
+        "attempt": 1,
+        "accepted": true
+      },
+      {
+        "name": "quality_gate",
+        "status": "ACCEPTED",
+        "started_at": "2026-10-20T05:40:36Z",
+        "completed_at": "2026-10-20T05:40:40Z",
+        "attempt": 1
+      },
+      {
+        "name": "publish_chunk",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:36Z",
+        "completed_at": "2026-10-20T05:40:40Z"
+      },
+      {
+        "name": "finalize_set",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:36Z",
+        "completed_at": "2026-10-20T05:40:40Z"
+      },
+      {
+        "name": "publish_completed",
+        "status": "COMPLETED",
+        "started_at": "2026-10-20T05:40:36Z",
+        "completed_at": "2026-10-20T05:40:40Z"
+      }
+    ],
+    "trace_id": "d938c3b13d82f20ac0f53dc943c26b17"
+  }
+}

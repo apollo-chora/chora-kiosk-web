@@ -1,0 +1,64 @@
+{
+ "recorded": "GET /api/atoms/{atom}/question-jobs/{job} through the kiosk edge 127.0.0.1:18080, 2026-10-19 03:16:37 UTC: the golden run's prepared words.f job (an ai_draft word revision, creation's job read). Only pipeline_trace is kept, verbatim except each row's candidate_json (the draft, with its answer key), which is dropped.",
+ "pipeline_trace": [
+  {
+   "name": "validate_input",
+   "status": "ACCEPTED",
+   "started_at": "2026-10-18T04:44:47.708920+00:00",
+   "completed_at": "2026-10-18T04:44:47.708924+00:00"
+  },
+  {
+   "name": "guardrail_pre",
+   "notes": "not_screened (local edition)",
+   "status": "COMPLETED",
+   "started_at": "2026-10-18T04:44:47.711602+00:00",
+   "completed_at": "2026-10-18T04:44:47.711609+00:00"
+  },
+  {
+   "name": "generate",
+   "notes": "candidate produced",
+   "status": "COMPLETED",
+   "attempt": 1,
+   "started_at": "2026-10-18T04:44:59.917327+00:00",
+   "completed_at": "2026-10-18T04:44:59.917499+00:00",
+   "input_tokens": 869,
+   "output_tokens": 1892
+  },
+  {
+   "name": "guardrail_post",
+   "notes": "not_screened (local edition)",
+   "status": "COMPLETED",
+   "attempt": 1,
+   "started_at": "2026-10-18T04:44:59.920788+00:00",
+   "completed_at": "2026-10-18T04:44:59.920794+00:00"
+  },
+  {
+   "name": "critique",
+   "notes": "Stem is clear, correct answer correctly identified, and four options include non‑empty explainers with plausible distractors.",
+   "status": "ACCEPTED",
+   "attempt": 1,
+   "accepted": true,
+   "started_at": "2026-10-18T04:45:05.515810+00:00",
+   "completed_at": "2026-10-18T04:45:05.515950+00:00",
+   "input_tokens": 2952,
+   "output_tokens": 1018,
+   "suggested_revisions": []
+  },
+  {
+   "name": "quality_gate",
+   "notes": "Stem is clear, correct answer correctly identified, and four options include non‑empty explainers with plausible distractors.",
+   "status": "ACCEPTED",
+   "attempt": 1,
+   "started_at": "2026-10-18T04:45:05.517384+00:00",
+   "completed_at": "2026-10-18T04:45:05.517389+00:00"
+  },
+  {
+   "name": "publish_completed",
+   "notes": "accepted",
+   "status": "COMPLETED",
+   "attempt": 1,
+   "started_at": "2026-10-18T04:45:05.520511+00:00",
+   "completed_at": "2026-10-18T04:45:05.520513+00:00"
+  }
+ ]
+}
